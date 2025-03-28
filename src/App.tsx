@@ -2,6 +2,7 @@ import Experience from "./pages/experience/experience";
 import PhilosophyBanner from "./pages/filosofia/filosofia";
 import Header from "./pages/header";
 import Presentation from "./pages/presentation";
+import SkillsSection from "./pages/skills/skills";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Presentation />
         <Experience />
         <PhilosophyBanner />
+        <SkillsSection />
       </div>
     </div>
   );
