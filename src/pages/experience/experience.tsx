@@ -47,7 +47,7 @@ const Experience = () => {
       company: "Finger Consultoria",
       position: "UX Designer",
       description:
-        "Fundei a consultoria focada em UX, utilizando Figma e Adobe XD. Realizei testes de usabilidade e wireframes ",
+        "Fundei a Finger Consultoria para fornecer serviços de consultoria de carreira para estudantes.",
     },
   ];
 
@@ -58,7 +58,7 @@ const Experience = () => {
         display: "flex",
         flexDirection: "column",
         borderRadius: "16px",
-        margin: "0 64px",
+        margin: "0 64px 64px",
       }}
       ref={ref}
     >
