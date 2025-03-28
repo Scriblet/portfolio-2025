@@ -1,5 +1,6 @@
 import Experience from "./pages/experience/experience";
 import PhilosophyBanner from "./pages/filosofia/filosofia";
+import ContactForm from "./pages/formContact/contactForm";
 import GithubBanner from "./pages/github/github";
 import Header from "./pages/header";
 import Presentation from "./pages/presentation";
@@ -22,6 +23,7 @@ export default function App() {
         <PhilosophyBanner />
         <SkillsSection />
         <GithubBanner />
+        <ContactForm />
       </div>
     </div>
   );
