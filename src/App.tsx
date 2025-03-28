@@ -1,4 +1,5 @@
 import Experience from "./pages/experience/experience";
+import PhilosophyBanner from "./pages/filosofia/filosofia";
 import Header from "./pages/header";
 import Presentation from "./pages/presentation";
 
@@ -16,6 +17,7 @@ export default function App() {
       >
         <Presentation />
         <Experience />
+        <PhilosophyBanner />
       </div>
     </div>
   );

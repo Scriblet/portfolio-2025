@@ -15,6 +15,9 @@ function Presentation() {
       transition={{
         duration: 1.2, // Duração da animação
       }}
+      style={{
+        width: "100%",
+      }}
     >
       <Box
         component="div"
@@ -24,9 +27,11 @@ function Presentation() {
             : onlyMediumScreen
             ? "60vh"
             : onlyLargeScreen
-            ? "60vh"
-            : "83vh",
+            ? "vh"
+            : "86vh",
           display: "flex",
+          justifyContent: "space-between",
+          margin: "0 24px",
           borderRadius: "16px",
         }}
       >
@@ -40,7 +45,7 @@ function Presentation() {
           <CardMedia
             component="img"
             image={ImgPresentation}
-            alt="Lucas Nonato"
+            alt="Lucas Nonato. Jovem com cabelo cacheado volumoso e bigode sorri amplamente para a câmera. Ele usa uma camisa preta e uma alça transversal é visível em seu ombro. O fundo tem uma parede decorada com grafites coloridos em tons de roxo, verde e vermelho, com letras estilizadas."
             sx={{
               height: "100%",
               objectFit: "fill",
