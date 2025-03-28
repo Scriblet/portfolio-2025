@@ -11,7 +11,13 @@ function Presentation() {
     <Box
       component="div"
       sx={{
-        height: "80vh",
+        height: onlySmallScreen
+          ? "60vh"
+          : onlyMediumScreen
+          ? "60vh"
+          : onlyLargeScreen
+          ? "60vh"
+          : "100vh",
         display: "flex",
         borderRadius: "16px",
       }}
@@ -19,8 +25,7 @@ function Presentation() {
       <div
         className="container-image"
         style={{
-          width: "50%",
-          padding: "0",
+          padding: "120px",
           margin: "0",
         }}
       >
@@ -30,15 +35,15 @@ function Presentation() {
           alt="Lucas Nonato"
           sx={{
             height: "100%",
-            width: "100%",
-            objectFit: "cover",
+            objectFit: "fill",
+            borderRadius: "160px",
           }}
         />
       </div>
       <div
         className="container-texts"
         style={{
-          minWidth: "50%",
+          minWidth: "52%",
           height: "auto",
           padding: onlySmallScreen
             ? "0 0 0 6vw"

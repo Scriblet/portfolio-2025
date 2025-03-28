@@ -1,0 +1,39 @@
+// Definindo as 4 cores diferentes
+$experience-colors: (
+  #3c84c7,
+  // Porto Seguro
+  #0fa36b,
+  // Thoughtworks
+  // Arco Educação
+  #800080,
+  // Finger Consultoria
+  #e95d90
+);
+
+.bigNumbers {
+  font-size: 5rem;
+  font-weight: 400;
+  color: #8491a0;
+  margin: 0;
+}
+
+// Estilo base para os títulos das experiências
+.experience-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0;
+
+  // Gerando as classes dinâmicas
+  @for $i from 1 through length($experience-colors) {
+    &--color-#{$i} {
+      color: nth($experience-colors, $i);
+    }
+  }
+}
+
+.experienceText {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #8491a0;
+  max-width: 80%;
+}
