@@ -29,11 +29,11 @@ export default function Header() {
       <Toolbar variant="dense">
         <Typography
           variant="h4"
-          component={ScrollLink} // Alterado para ScrollLink
-          to="home" // ID da seção inicial
+          component={ScrollLink} 
+          to="home"
           smooth={true}
           duration={500}
-          offset={-80} // Ajuste conforme sua necessidade
+          offset={-80} 
           sx={{
             flexGrow: 1,
             textDecoration: "none",
@@ -45,9 +45,8 @@ export default function Header() {
           Lucas N.
         </Typography>
 
-        {/* Botão Experiência */}
         <ScrollLink
-          to="experience" // ID da seção de experiência
+          to="experience" 
           smooth={true}
           duration={500}
           offset={-80}
@@ -68,9 +67,8 @@ export default function Header() {
           </Button>
         </ScrollLink>
 
-        {/* Botão Habilidades */}
         <ScrollLink
-          to="skills" // ID da seção de habilidades
+          to="skills"
           smooth={true}
           duration={500}
           offset={-80}
@@ -93,7 +91,7 @@ export default function Header() {
 
         {/* Botão Contato */}
         <ScrollLink
-          to="contact" // ID da seção de contato
+          to="contact" 
           smooth={true}
           duration={500}
           offset={-80}
