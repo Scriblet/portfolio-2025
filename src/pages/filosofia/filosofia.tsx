@@ -50,7 +50,6 @@ const PhilosophyBanner = () => {
 
   return (
     <div ref={ref} style={{
-      maxWidth: "100%",
       padding: "24px 24px 24px 48px",
       backgroundColor: "#584732",
       display: "flex",
@@ -83,7 +82,6 @@ const PhilosophyBanner = () => {
           </Typography>
         </motion.div>
 
-        {/* Texto principal */}
         <motion.div variants={itemVariants}>
           <Typography
             variant="body1"
@@ -100,7 +98,6 @@ const PhilosophyBanner = () => {
           </Typography>
         </motion.div>
 
-        {/* Botão do LinkedIn */}
         <motion.div
           variants={itemVariants}
           whileHover={{ scale: 1.01 }}
@@ -127,7 +124,6 @@ const PhilosophyBanner = () => {
         </motion.div>
       </motion.div>
 
-      {/* Container Direito - Imagem */}
       <motion.div
         variants={imageVariants}
         initial="hidden"

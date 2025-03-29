@@ -15,11 +15,11 @@ const GithubBanner = () => {
       ref={ref}
       sx={{
         maxWidth: "100%",
-        height: "45vh", 
+        height: "45vh",
         padding: { xl: "40px 24px", md: "60px 48px" },
         backgroundColor: "white",
         display: "flex",
-        flexDirection: { xl: "row", md: "column" },
+        flexDirection: { xl: "row", md: "row", sm: "column" },
         alignItems: "center",
         gap: { xl: 3, md: 6 },
       }}
@@ -30,7 +30,7 @@ const GithubBanner = () => {
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6 }}
         style={{
-          width: "100%",
+          width: "50%",
           padding: "0 32px",
         }}
       >
@@ -53,7 +53,7 @@ const GithubBanner = () => {
             fontSize: "1.1rem",
             mb: 4,
             color: "black",
-            maxWidth: "90%",
+            maxWidth: "100%",
             lineHeight: 1.6,
           }}
         >
@@ -62,10 +62,7 @@ const GithubBanner = () => {
           grande parte dos meus códigos.
         </Typography>
 
-        <motion.div
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-        >
+        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
           <Button
             href="https://github.com/scriblet"
             target="_blank"
@@ -81,10 +78,10 @@ const GithubBanner = () => {
               fontSize: "1rem",
               color: "black",
               borderColor: "black",
-              '&:hover': {
+              "&:hover": {
                 borderColor: "#333",
-                backgroundColor: "rgba(0, 0, 0, 0.04)"
-              }
+                backgroundColor: "rgba(0, 0, 0, 0.04)",
+              },
             }}
           >
             Siga-me no Github
@@ -92,13 +89,13 @@ const GithubBanner = () => {
         </motion.div>
       </motion.div>
 
-      {/* Seção da Imagem */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
         style={{
-          width:  "100%",
+          width: "40%",
+          height: "100%",
           display: "flex",
           justifyContent: "center",
         }}
@@ -108,8 +105,8 @@ const GithubBanner = () => {
           image={ImgGithub}
           alt="Logo do GitHub"
           sx={{
-            width: "100%",
-            maxWidth: "400px",
+            maxWidth: "100%",
+            maxHeight: "100%",
             objectFit: "contain",
           }}
         />
