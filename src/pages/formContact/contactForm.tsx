@@ -32,7 +32,8 @@ const ContactForm = () => {
     try {
       // Formatar a mensagem para o Discord
       const discordMessage = {
-        content: "📬 <@197222374133727232> **Nova mensagem do formulário de contato!**",
+        content:
+          "📬 <@197222374133727232> **Nova mensagem do formulário de contato!**",
         embeds: [
           {
             title: "Detalhes do Contato",
@@ -76,6 +77,7 @@ const ContactForm = () => {
 
   return (
     <Box
+      id="contact"
       component={motion.div}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -155,9 +157,6 @@ const ContactForm = () => {
                 "& fieldset": {
                   borderColor: "#333",
                 },
-                "&:hover fieldset": {
-                  borderColor: "#555",
-                },
               },
             }}
           />
@@ -182,9 +181,6 @@ const ContactForm = () => {
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
                   borderColor: "#333",
-                },
-                "&:hover fieldset": {
-                  borderColor: "#555",
                 },
               },
             }}
@@ -211,9 +207,6 @@ const ContactForm = () => {
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
                   borderColor: "#333",
-                },
-                "&:hover fieldset": {
-                  borderColor: "#555",
                 },
               },
             }}
