@@ -6,7 +6,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 export default function Header() {
   const theme = useTheme();
@@ -19,7 +19,7 @@ export default function Header() {
       position="fixed"
       elevation={0}
       sx={{
-        backgroundColor: "rgba(11, 6, 19, 0.4)", // Fundo semi-transparente
+        backgroundColor: "rgba(11, 6, 19, 0.4)",
         boxShadow: "none",
         backdropFilter: "blur(10px)",
         WebkitBackdropFilter: "blur(10px)",
@@ -29,8 +29,11 @@ export default function Header() {
       <Toolbar variant="dense">
         <Typography
           variant="h4"
-          component={Link}
-          to="/"
+          component={ScrollLink} // Alterado para ScrollLink
+          to="home" // ID da seção inicial
+          smooth={true}
+          duration={500}
+          offset={-80} // Ajuste conforme sua necessidade
           sx={{
             flexGrow: 1,
             textDecoration: "none",
@@ -41,65 +44,90 @@ export default function Header() {
         >
           Lucas N.
         </Typography>
-        <Button
-          color="inherit"
-          sx={{
-            mx: 0.5,
-            px: 2.5,
-            minHeight: "6vh",
-            fontSize: "1.1vw",
-            letterSpacing: 0.15,
-          }}
-        >
-          Experiência
-        </Button>
-        <Button
-          color="inherit"
-          sx={{
-            mx: 0.5,
-            px: 2.5,
-            minHeight: "6vh",
-            fontSize: "1.1vw",
-            letterSpacing: 0.15,
-          }}
-        >
-          Habilidades
-        </Button>
-        {/* <Button
-          color="inherit"
-          sx={{ mr: 3, ml: 0.5, px: 2.5, minHeight: "6vh" }}
-        >
-          Portfólio
-        </Button> */}
 
-        {/* Botão "Contato" alinhado à direita */}
-        <Button
-          variant="contained"
-          sx={{
-            marginLeft: "auto",
-            boxShadow: "none",
-            fontWeight: "bold",
-            fontSize: "1.1vw",
-            letterSpacing: 0.15,
-            minHeight: onlySmallScreen
-              ? "20vh"
-              : onlyMediumScreen
-              ? "20vh"
-              : onlyLargeScreen
-              ? "10vh"
-              : "8vh",
-            borderRadius: 0,
-            minWidth: onlySmallScreen
-              ? "10vw"
-              : onlyMediumScreen
-              ? "10vw"
-              : onlyLargeScreen
-              ? "10vw"
-              : "8vw",
-          }}
+        {/* Botão Experiência */}
+        <ScrollLink
+          to="experience" // ID da seção de experiência
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+          activeClass="active"
         >
-          Contato
-        </Button>
+          <Button
+            color="inherit"
+            sx={{
+              mx: 0.5,
+              px: 2.5,
+              minHeight: "6vh",
+              fontSize: "1.1vw",
+              letterSpacing: 0.15,
+            }}
+          >
+            Experiência
+          </Button>
+        </ScrollLink>
+
+        {/* Botão Habilidades */}
+        <ScrollLink
+          to="skills" // ID da seção de habilidades
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+          activeClass="active"
+        >
+          <Button
+            color="inherit"
+            sx={{
+              mx: 0.5,
+              px: 2.5,
+              minHeight: "6vh",
+              fontSize: "1.1vw",
+              letterSpacing: 0.15,
+            }}
+          >
+            Habilidades
+          </Button>
+        </ScrollLink>
+
+        {/* Botão Contato */}
+        <ScrollLink
+          to="contact" // ID da seção de contato
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+          activeClass="active"
+        >
+          <Button
+            variant="contained"
+            sx={{
+              marginLeft: "auto",
+              boxShadow: "none",
+              fontWeight: "bold",
+              fontSize: "1.1vw",
+              letterSpacing: 0.15,
+              minHeight: onlySmallScreen
+                ? "20vh"
+                : onlyMediumScreen
+                ? "20vh"
+                : onlyLargeScreen
+                ? "10vh"
+                : "8vh",
+              borderRadius: 0,
+              minWidth: onlySmallScreen
+                ? "10vw"
+                : onlyMediumScreen
+                ? "10vw"
+                : onlyLargeScreen
+                ? "10vw"
+                : "8vw",
+            }}
+          >
+            Contato
+          </Button>
+        </ScrollLink>
       </Toolbar>
     </AppBar>
   );
