@@ -9,7 +9,14 @@ import SkillsSection from "./pages/skills/skills";
 
 export default function App() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        scrollBehavior: "smooth",
+      }}
+    >
       <Header />
       <div
         style={{

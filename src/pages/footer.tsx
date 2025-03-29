@@ -1,8 +1,19 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Link as MuiLink, Typography } from "@mui/material";
 import { GitHub } from "@mui/icons-material";
 import { LinkedIn } from "@mui/icons-material";
+import { scroller } from "react-scroll";
 
 const Footer = () => {
+  const handleSmoothScroll = (targetId: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    scroller.scrollTo(targetId, {
+      duration: 800, // Duração da animação 
+      delay: 0, // Atraso de x segundos
+      smooth: "easeInOutQuart", // Curva de animação suave
+      offset: -80, // Ajuste de compensação
+    });
+  };
+
   return (
     <Box
       component="footer"
@@ -60,34 +71,38 @@ const Footer = () => {
           gap: "1rem",
         }}
       >
-        <Link
+        <MuiLink
           href="#home"
+          onClick={handleSmoothScroll("home")}
           color="inherit"
           sx={{ fontWeight: 400, fontSize: "1rem", textDecoration: "none" }}
         >
           Home
-        </Link>
-        <Link
-          href="#"
+        </MuiLink>
+        <MuiLink
+          href="#experience"
+          onClick={handleSmoothScroll("experience")}
           color="inherit"
           sx={{ fontWeight: 400, fontSize: "1rem", textDecoration: "none" }}
         >
           Experiência
-        </Link>
-        <Link
-          href="#"
+        </MuiLink>
+        <MuiLink
+          href="#skills"
+          onClick={handleSmoothScroll("skills")}
           color="inherit"
           sx={{ fontWeight: 400, fontSize: "1rem", textDecoration: "none" }}
         >
           Habilidades
-        </Link>
-        {/* <Link
-          href="#"
-          color="inherit"
-          sx={{ fontWeight: 400, fontSize: "1rem", textDecoration: "none" }}
-        >
-          Portfólio
-        </Link> */}
+        </MuiLink>
+        {/* <MuiLink
+        href="#portfolio"
+        onClick={handleSmoothScroll('portfolio')}
+        color="inherit"
+        sx={{ fontWeight: 400, fontSize: "1rem", textDecoration: "none" }}
+      >
+        Portfólio
+      </MuiLink> */}
       </Box>
     </Box>
   );
