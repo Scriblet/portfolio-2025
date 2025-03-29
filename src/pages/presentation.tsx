@@ -10,6 +10,7 @@ function Presentation() {
   const onlyLargeScreen = useMediaQuery(theme.breakpoints.down("xl"));
   return (
     <motion.div
+      id="home"
       initial={{ opacity: 0 }} // Começa menor e transparente
       animate={{ opacity: 1 }} // Cresce para tamanho normal e aparece
       transition={{

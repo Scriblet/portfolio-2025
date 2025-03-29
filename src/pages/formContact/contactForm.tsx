@@ -204,13 +204,9 @@ const ContactForm = () => {
             variant="contained"
             disabled={isSubmitting}
             sx={{
-              backgroundColor: "#333",
               color: "#fff",
               padding: "10px 20px",
               fontWeight: "bold",
-              "&:hover": {
-                backgroundColor: "#555",
-              },
             }}
             component={motion.button}
             whileHover={{ scale: 1.02 }}

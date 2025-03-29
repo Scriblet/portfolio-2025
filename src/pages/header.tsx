@@ -46,10 +46,11 @@ export default function Header() {
 
         {/* Botão "Contato" alinhado à direita */}
         <Button
-          color="secondary"
           variant="contained"
           sx={{
             marginLeft: "auto",
+            boxShadow: "none",
+            fontWeight: "bold",
             minHeight: onlySmallScreen
               ? "20vh"
               : onlyMediumScreen
