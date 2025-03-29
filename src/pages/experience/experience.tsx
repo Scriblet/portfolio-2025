@@ -6,8 +6,6 @@ import styles from "./Experience.module.scss";
 
 const Experience = () => {
   const theme = useTheme();
-  const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const onlyMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const onlyLargeScreen = useMediaQuery(theme.breakpoints.down("xl"));
 
   const [ref, inView] = useInView({

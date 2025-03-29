@@ -1,10 +1,8 @@
-import { Box, Icon, Link, Typography, useTheme } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import { GitHub } from "@mui/icons-material";
 import { LinkedIn } from "@mui/icons-material";
 
 const Footer = () => {
-  const theme = useTheme();
-
   return (
     <Box
       component="footer"
