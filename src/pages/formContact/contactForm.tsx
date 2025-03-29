@@ -26,32 +26,51 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Dados no formato SIMPLES que o IFTTT entende
-    const payload = {
-      value1: nome, // Nome
-      value2: email, // Email
-      value3: message, // Mensagem
-    };
+    setIsSubmitting(true);
+    setStatus(null);
 
     try {
-      const response = await fetch(
-        "https://maker.ifttt.com/trigger/discord_form/with/key/SUA_CHAVE_AQUI",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        },
-      );
+      // Formatar a mensagem para o Discord
+      const discordMessage = {
+        content: "📬 <@197222374133727232> **Nova mensagem do formulário de contato!**",
+        embeds: [
+          {
+            title: "Detalhes do Contato",
+            fields: [
+              { name: "👤 Nome", value: nome || "Não informado" },
+              { name: "✉️ Email", value: email || "Não informado" },
+              { name: "💬 Mensagem", value: message || "Não informada" },
+            ],
+            color: 5814783, // Cor roxa (opcional)
+          },
+        ],
+      };
+
+      const response = await fetch(DISCORD_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(discordMessage),
+      });
 
       if (response.ok) {
-        alert("✅ Mensagem enviada!");
+        setStatus({
+          type: "success",
+          message: "✅ Mensagem enviada com sucesso!",
+        });
         setNome("");
         setEmail("");
         setMessage("");
+      } else {
+        throw new Error("Falha ao enviar mensagem");
       }
     } catch (error) {
-      alert("❌ Erro ao enviar!");
+      setStatus({
+        type: "error",
+        message: "❌ Erro ao enviar mensagem. Tente novamente mais tarde.",
+      });
+      console.error("Erro ao enviar para Discord:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -154,6 +173,7 @@ const ContactForm = () => {
           <TextField
             variant="outlined"
             fullWidth
+            type="email"
             value={email}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setEmail(e.target.value)
