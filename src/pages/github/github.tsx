@@ -15,10 +15,11 @@ const GithubBanner = () => {
       ref={ref}
       sx={{
         maxWidth: "100%",
+        height: "45vh", 
         padding: { xl: "40px 24px", md: "60px 48px" },
         backgroundColor: "white",
         display: "flex",
-        flexDirection: { xl: "column", md: "row" },
+        flexDirection: { xl: "row", md: "column" },
         alignItems: "center",
         gap: { xl: 3, md: 6 },
       }}
