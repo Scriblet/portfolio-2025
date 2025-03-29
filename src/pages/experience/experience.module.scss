@@ -1,14 +1,9 @@
-// Definindo as 4 cores diferentes
 @use "sass:list";
 
 $experience-colors: (
   #3c84c7,
-  // Porto Seguro
   #0fa36b,
-  // Thoughtworks
-  // Arco Educação
   #800080,
-  // Finger Consultoria
   #e95d90
 );
 
@@ -19,13 +14,11 @@ $experience-colors: (
   margin: 0;
 }
 
-// Estilo base para os títulos das experiências
 .experience-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 1rem 0;
 
-  // Método preferido agora - usando @each
   @each $color in $experience-colors {
     $i: list.index($experience-colors, $color);
     
