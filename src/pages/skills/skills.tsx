@@ -77,7 +77,11 @@ const SkillsSection = () => {
   ];
 
   return (
-    <Box component="section" sx={{ py: 8, px: { xs: 2, md: 4 } }}>
+    <Box
+      id="skills"
+      component="section"
+      sx={{ py: 8, px: { xs: 2, md: 4 } }}
+    >
       <Typography
         variant="h2"
         sx={{

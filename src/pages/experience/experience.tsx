@@ -52,6 +52,7 @@ const Experience = () => {
   return (
     <Box
       component="div"
+      id="experience"
       sx={{
         display: "flex",
         flexDirection: "column",
