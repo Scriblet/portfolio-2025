@@ -37,12 +37,12 @@ export default function Header() {
         <Button color="inherit" sx={{ mx: 0.5, px: 2.5, minHeight: "6vh" }}>
           Habilidades
         </Button>
-        <Button
+        {/* <Button
           color="inherit"
           sx={{ mr: 3, ml: 0.5, px: 2.5, minHeight: "6vh" }}
         >
           Portfólio
-        </Button>
+        </Button> */}
 
         {/* Botão "Contato" alinhado à direita */}
         <Button
