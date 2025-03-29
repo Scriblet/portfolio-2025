@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Box from "@mui/material/Box";
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
-import styles from "./Experience.module.scss";
+import styles from "./experience.module.scss";
 
 const Experience = () => {
   const theme = useTheme();
