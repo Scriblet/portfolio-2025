@@ -117,8 +117,7 @@ const ContactForm = () => {
             fontWeight: 400,
           }}
         >
-          Agora que você sabe muito sobre mim, deixe-me saber se você tem
-          interesse em trabalhar comigo.
+          Se identificou? Minha caixa de entrada está aberta para oportunidades.
         </Typography>
       </Box>
 
