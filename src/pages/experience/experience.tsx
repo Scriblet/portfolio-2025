@@ -55,6 +55,8 @@ const Experience = () => {
       component="div"
       id="experience"
       sx={{
+        paddingTop: isMobile ? "2rem" : "4rem",
+        paddingBottom: isMobile ? "2rem" : "4rem", 
         display: "flex",
         flexDirection: "column",
         borderRadius: "16px",
@@ -79,7 +81,6 @@ const Experience = () => {
           textAlign: isMobile ? "center" : "left",
         }}
       >
-        EXPERIÊNCIA
       </motion.h4>
 
       <motion.h1
@@ -119,7 +120,8 @@ const Experience = () => {
               height: "100%",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
             }}
           >
             <motion.h1
@@ -133,6 +135,7 @@ const Experience = () => {
               className={styles.bigNumbers}
               style={{
                 fontSize: isMobile ? "3rem" : isTablet ? "4rem" : "5rem",
+                marginBottom: "1rem",
               }}
             >
               {exp.number}
@@ -151,6 +154,7 @@ const Experience = () => {
               }`}
               style={{
                 fontSize: isMobile ? "1.2rem" : isTablet ? "1.4rem" : "1.6rem",
+                marginBottom: "0.5rem",
               }}
             >
               {exp.company}
@@ -166,7 +170,7 @@ const Experience = () => {
               }}
               style={{
                 fontSize: isMobile ? "1rem" : isTablet ? "1.1rem" : "1.2rem",
-                marginTop: "0.5rem",
+                marginBottom: "1rem",
               }}
             >
               {exp.position}
@@ -183,7 +187,8 @@ const Experience = () => {
               className={styles.experienceText}
               style={{
                 fontSize: isMobile ? "0.9rem" : "1rem",
-                marginTop: "1rem",
+                lineHeight: "1.6",
+                flex: 1,
               }}
             >
               {exp.description}

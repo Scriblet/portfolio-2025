@@ -125,7 +125,7 @@ const GithubBanner = () => {
             maxWidth: "100%",
             maxHeight: "100%",
             objectFit: "contain",
-            width: isMobile ? "80%" : "100%",
+            width: isMobile ? "70%" : "80%",
           }}
         />
       </motion.div>
