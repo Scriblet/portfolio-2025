@@ -325,7 +325,6 @@ function Presentation() {
                     0 25px 50px rgba(0, 0, 0, 0.4),
                     0 0 80px rgba(0, 255, 255, 0.3)
                   `,
-                  filter: "contrast(1.2) saturate(1.2) brightness(1.05)"
                 }
               }}
             />
