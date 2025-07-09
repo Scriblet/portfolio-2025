@@ -86,13 +86,14 @@ const ContactForm = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       sx={{
+        "padding-top": { xs: "2rem", md: "4rem" },
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",
         margin: {
           xs: "0 1rem 2rem",
-          sm: "0 2rem 2rem", 
-          md: "0 48px 0 56px"
+          sm: "0 2rem 2rem",
+          md: "0 48px 0 56px",
         },
         alignItems: { xs: "stretch", md: "center" },
         gap: { xs: 3, md: 0 },
@@ -135,10 +136,10 @@ const ContactForm = () => {
 
       <Box
         component={motion.div}
-        sx={{ 
-          width: { xs: "100%", md: "55%" }, 
-          maxWidth: { xs: "100%", md: "600px" }, 
-          margin: { xs: "0", md: "0 0 32px" }
+        sx={{
+          width: { xs: "100%", md: "55%" },
+          maxWidth: { xs: "100%", md: "600px" },
+          margin: { xs: "0", md: "0 0 32px" },
         }}
       >
         <Box
