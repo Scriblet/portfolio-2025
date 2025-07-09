@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Box, Typography, Grid, Chip, useTheme, alpha } from "@mui/material";
+import { Box, Typography, useTheme, alpha } from "@mui/material";
 import {
   Code,
   DesignServices,
@@ -80,100 +80,135 @@ const SkillsSection = () => {
     <Box
       id="skills"
       component="section"
-      sx={{ py: 8, px: { xs: 2, md: 4 } }}
+      sx={{ 
+        py: { xs: 3, sm: 4, md: 6, lg: 8 }, 
+        px: { xs: 1, sm: 2, md: 3, lg: 4 },
+      }}
     >
       <Typography
         variant="h2"
         sx={{
           fontWeight: 800,
-          mb: 6,
+          mb: { xs: 3, sm: 4, md: 5, lg: 6 },
           textAlign: "center",
-          fontSize: { xs: "2rem", md: "2.5rem" },
+          fontSize: {
+            xs: "1.5rem",
+            sm: "1.8rem", 
+            md: "2.2rem",
+            lg: "2.5rem"
+          },
           color: theme.palette.text.primary,
+          wordWrap: "break-word",
+          overflowWrap: "break-word",
         }}
       >
         Habilidades Técnicas
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center">
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(4, 1fr)",
+          },
+          gap: { xs: 1.5, sm: 2, md: 3, lg: 4 },
+          maxWidth: "1400px",
+          margin: "0 auto",
+        }}
+      >
         {skills.map((skill, index) => (
-          <Grid key={skill.title}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: index * 0.1 }}
+          <motion.div
+            key={skill.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <Box
+              sx={{
+                p: { xs: 1.5, sm: 2, md: 2.5, lg: 3 },
+                height: "100%",
+                borderRadius: 4,
+                border: `1px solid ${theme.palette.divider}`,
+                backgroundColor: theme.palette.background.paper,
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: `0 6px 16px ${alpha(
+                    theme.palette.primary.light,
+                    0.1,
+                  )}`,
+                },
+              }}
             >
               <Box
                 sx={{
-                  p: 3,
-                  height: "100%",
-                  borderRadius: 4,
-                  border: `1px solid ${theme.palette.divider}`,
-                  backgroundColor: theme.palette.background.paper,
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: `0 6px 16px ${alpha(
-                      theme.palette.primary.light,
-                      0.1,
-                    )}`,
-                  },
+                  color: theme.palette.primary.main,
+                  mb: { xs: 1, sm: 1.5, md: 2 },
                 }}
               >
-                <Box
-                  sx={{
-                    color: theme.palette.primary.main,
-                    mb: 2,
-                  }}
-                >
-                  {skill.icon}
-                </Box>
-
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 700,
-                    mb: 1,
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  {skill.title}
-                </Typography>
-
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 2,
-                    color: theme.palette.text.secondary,
-                    minHeight: "3.5em",
-                  }}
-                >
-                  {skill.description}
-                </Typography>
-
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                  {skill.tags.map((tag) => (
-                    <Chip
-                      key={tag}
-                      label={tag}
-                      size="small"
-                      sx={{
-                        borderRadius: 2,
-                        backgroundColor: alpha(
-                          theme.palette.primary.light,
-                          0.1,
-                        ),
-                        color: theme.palette.text.primary,
-                      }}
-                    />
-                  ))}
-                </Box>
+                {skill.icon}
               </Box>
-            </motion.div>
-          </Grid>
+
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 700,
+                  mb: 1,
+                  color: theme.palette.text.primary,
+                  fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+                  wordWrap: "break-word",
+                  overflowWrap: "break-word",
+                }}
+              >
+                {skill.title}
+              </Typography>
+
+              <Typography
+                variant="body2"
+                sx={{
+                  mb: { xs: 1, sm: 1.5, md: 2 },
+                  color: theme.palette.text.secondary,
+                  minHeight: { xs: "2em", sm: "2.5em", md: "3.5em" },
+                  fontSize: { xs: "0.8rem", sm: "0.875rem", md: "1rem" },
+                  lineHeight: 1.4,
+                  wordWrap: "break-word",
+                  overflowWrap: "break-word",
+                }}
+              >
+                {skill.description}
+              </Typography>
+
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                {skill.tags.map((tag) => (
+                  <Box
+                    key={tag}
+                    sx={{
+                      px: { xs: 0.75, sm: 1 },
+                      py: 0.5,
+                      borderRadius: 2,
+                      backgroundColor: alpha(
+                        theme.palette.primary.light,
+                        0.1,
+                      ),
+                      color: theme.palette.text.primary,
+                      fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.875rem" },
+                      margin: "0.25rem",
+                      wordWrap: "break-word",
+                      overflowWrap: "break-word",
+                    }}
+                  >
+                    {tag}
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          </motion.div>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 };

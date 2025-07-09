@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
-import { Typography, Button, CardMedia, Box } from "@mui/material";
+import { Typography, Button, CardMedia, Box, useMediaQuery, useTheme } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 import ImgGithub from "../../img/github-logo.svg";
 import { GitHub } from "@mui/icons-material";
 
 const GithubBanner = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -15,13 +19,17 @@ const GithubBanner = () => {
       ref={ref}
       sx={{
         maxWidth: "100%",
-        height: "45vh",
-        padding: { xl: "40px 24px", md: "60px 48px" },
+        height: isMobile ? "auto" : "45vh",
+        padding: isMobile 
+          ? "2rem 1rem" 
+          : isTablet 
+            ? "3rem 2rem" 
+            : "40px 24px",
         backgroundColor: "white",
         display: "flex",
-        flexDirection: { xl: "row", md: "row", sm: "column" },
+        flexDirection: isMobile ? "column" : "row",
         alignItems: "center",
-        gap: { xl: 3, md: 6 },
+        gap: isMobile ? "2rem" : isTablet ? "4rem" : "3rem",
       }}
     >
       {/* Seção de Texto */}
@@ -30,16 +38,17 @@ const GithubBanner = () => {
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6 }}
         style={{
-          width: "50%",
-          padding: "0 32px",
+          width: isMobile ? "100%" : "50%",
+          padding: isMobile ? "0" : "0 32px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         <Typography
           variant="h1"
           sx={{
             fontWeight: 800,
-            mb: 3,
-            fontSize: { lg: "2rem", md: "2.5rem" },
+            mb: isMobile ? 2 : 3,
+            fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
             color: "black",
           }}
         >
@@ -50,8 +59,8 @@ const GithubBanner = () => {
           variant="body1"
           sx={{
             fontWeight: 400,
-            fontSize: "1.1rem",
-            mb: 4,
+            fontSize: isMobile ? "1rem" : "1.1rem",
+            mb: isMobile ? 3 : 4,
             color: "black",
             maxWidth: "100%",
             lineHeight: 1.6,
@@ -62,7 +71,14 @@ const GithubBanner = () => {
           grande parte dos meus códigos.
         </Typography>
 
-        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+        <motion.div 
+          whileHover={{ scale: 1.03 }} 
+          whileTap={{ scale: 0.98 }}
+          style={{
+            display: "flex",
+            justifyContent: isMobile ? "center" : "flex-start",
+          }}
+        >
           <Button
             href="https://github.com/scriblet"
             target="_blank"
@@ -70,12 +86,12 @@ const GithubBanner = () => {
             variant="outlined"
             startIcon={<GitHub />}
             sx={{
-              px: 4,
-              py: 1.5,
+              px: isMobile ? 3 : 4,
+              py: isMobile ? 1 : 1.5,
               borderRadius: "8px",
               fontWeight: 500,
               textTransform: "none",
-              fontSize: "1rem",
+              fontSize: isMobile ? "0.9rem" : "1rem",
               color: "black",
               borderColor: "black",
               "&:hover": {
@@ -94,10 +110,11 @@ const GithubBanner = () => {
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
         style={{
-          width: "40%",
-          height: "100%",
+          width: isMobile ? "100%" : "40%",
+          height: isMobile ? "200px" : "100%",
           display: "flex",
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <CardMedia
@@ -108,6 +125,7 @@ const GithubBanner = () => {
             maxWidth: "100%",
             maxHeight: "100%",
             objectFit: "contain",
+            width: isMobile ? "80%" : "100%",
           }}
         />
       </motion.div>

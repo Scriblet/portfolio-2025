@@ -9,23 +9,9 @@ import SkillsSection from "./pages/skills/skills";
 
 export default function App() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh",
-        scrollBehavior: "smooth",
-      }}
-    >
+    <div className="app-container">
       <Header />
-      <div
-        style={{
-          marginTop: "10vh",
-          display: "flex",
-          gap: "64px",
-          flexDirection: "column",
-        }}
-      >
+      <main className="main-content">
         <Presentation />
         <Experience />
         <PhilosophyBanner />
@@ -33,7 +19,7 @@ export default function App() {
         <GithubBanner />
         <ContactForm />
         <Footer />
-      </div>
+      </main>
     </div>
   );
 }

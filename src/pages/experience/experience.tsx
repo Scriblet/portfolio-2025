@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Box from "@mui/material/Box";
-import { Grid, useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import styles from "./experience.module.scss";
 
 const Experience = () => {
   const theme = useTheme();
-  const onlyLargeScreen = useMediaQuery(theme.breakpoints.down("xl"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -57,96 +58,139 @@ const Experience = () => {
         display: "flex",
         flexDirection: "column",
         borderRadius: "16px",
-        margin: "0 64px 64px",
+        margin: isMobile 
+          ? "0 1rem 2rem" 
+          : isTablet 
+            ? "0 2rem 3rem" 
+            : "0 64px 64px",
       }}
       ref={ref}
     >
       <motion.h4
-        initial={{ opacity: 0, x: -60 }} // Começa invisível e 100px à esquerda
+        initial={{ opacity: 0, x: -60 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{
           duration: 0.6,
-          ease: "easeOut", // Curva de animação suave
+          ease: "easeOut",
         }}
-        style={{ fontWeight: "300", fontSize: "0.75rem " }}
+        style={{ 
+          fontWeight: "300", 
+          fontSize: isMobile ? "0.7rem" : "0.75rem",
+          textAlign: isMobile ? "center" : "left",
+        }}
       >
         EXPERIÊNCIA
       </motion.h4>
 
       <motion.h1
-        initial={{ opacity: 0, x: -60 }} // Começa invisível e 100px à esquerda
+        initial={{ opacity: 0, x: -60 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{
           duration: 0.6,
-          ease: "easeOut", // Curva de animação suave
+          ease: "easeOut",
           delay: 0.2,
         }}
-        style={{ maxWidth: "40%" }}
+        style={{ 
+          maxWidth: isMobile ? "100%" : "40%",
+          fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
+          textAlign: isMobile ? "center" : "left",
+        }}
       >
         Empresas onde trabalhei e Aprendizados que conquistei
       </motion.h1>
 
-      <Grid container spacing={3}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(4, 1fr)",
+          },
+          gap: isMobile ? 2 : 3,
+        }}
+      >
         {experiences.map((exp, index) => (
-          <Grid size={onlyLargeScreen ? 6 : 3} key={exp.id}>
-            <Box component="div">
-              <motion.h1
-                initial={{ opacity: 0, x: -60 }} // Começa invisível e 100px à esquerda
-                animate={inView ? { opacity: 1, x: 0 } : {}} // Termina visível na posição normal
-                transition={{
-                  duration: 0.6, // Duração de 0.7 segundos
-                  delay: 0.2, // Adicione esta linha
+          <Box 
+            key={exp.id}
+            sx={{
+              padding: isMobile ? "1rem" : "1.5rem",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <motion.h1
+              initial={{ opacity: 0, x: -60 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{
+                duration: 0.6,
+                delay: 0.2,
+                ease: "easeOut",
+              }}
+              className={styles.bigNumbers}
+              style={{
+                fontSize: isMobile ? "3rem" : isTablet ? "4rem" : "5rem",
+              }}
+            >
+              {exp.number}
+            </motion.h1>
 
-                  ease: "easeOut", // Curva de animação suave
-                }}
-                className={styles.bigNumbers}
-              >
-                {exp.number}
-              </motion.h1>
+            <motion.h2
+              initial={{ opacity: 0, x: -60 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: "easeOut",
+              }}
+              className={`${styles["experience-title"]} ${
+                styles[`experience-title--color-${index + 1}`]
+              }`}
+              style={{
+                fontSize: isMobile ? "1.2rem" : isTablet ? "1.4rem" : "1.6rem",
+              }}
+            >
+              {exp.company}
+            </motion.h2>
 
-              <motion.h2
-                initial={{ opacity: 0, x: -60 }} // Começa invisível e 100px à esquerda
-                animate={inView ? { opacity: 1, x: 0 } : {}} // Termina visível na posição normal
-                transition={{
-                  duration: 0.8, // Duração de 0.7 segundos
-                  delay: 0.2, // Adicione esta linha
-                  ease: "easeOut", // Curva de animação suave
-                }}
-                className={`${styles["experience-title"]} ${
-                  styles[`experience-title--color-${index + 1}`]
-                }`}
-              >
-                {exp.company}
-              </motion.h2>
+            <motion.h3
+              initial={{ opacity: 0, x: -60 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{
+                duration: 1,
+                delay: 0.2,
+                ease: "easeOut",
+              }}
+              style={{
+                fontSize: isMobile ? "1rem" : isTablet ? "1.1rem" : "1.2rem",
+                marginTop: "0.5rem",
+              }}
+            >
+              {exp.position}
+            </motion.h3>
 
-              <motion.h3
-                initial={{ opacity: 0, x: -60 }} // Começa invisível e 100px à esquerda
-                animate={inView ? { opacity: 1, x: 0 } : {}} // Termina visível na posição normal
-                transition={{
-                  duration: 1, // Duração de 0.7 segundos
-                  delay: 0.2, // Adicione esta linha
-                  ease: "easeOut", // Curva de animação suave
-                }}
-              >
-                {exp.position}
-              </motion.h3>
-
-              <motion.p
-                initial={{ opacity: 0, x: -60 }} // Começa invisível e 100px à esquerda
-                animate={inView ? { opacity: 1, x: 0 } : {}} // Termina visível na posição normal
-                transition={{
-                  duration: 1.2, // Duração de 0.7 segundos
-                  delay: 0.2, // Adicione esta linha
-                  ease: "easeOut", // Curva de animação suave
-                }}
-                className={styles.experienceText}
-              >
-                {exp.description}
-              </motion.p>
-            </Box>
-          </Grid>
+            <motion.p
+              initial={{ opacity: 0, x: -60 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{
+                duration: 1.2,
+                delay: 0.2,
+                ease: "easeOut",
+              }}
+              className={styles.experienceText}
+              style={{
+                fontSize: isMobile ? "0.9rem" : "1rem",
+                marginTop: "1rem",
+              }}
+            >
+              {exp.description}
+            </motion.p>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 };

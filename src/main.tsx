@@ -6,6 +6,7 @@ import theme from "./theme";
 import "@fontsource/poppins";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import "./styles/responsive-utils.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

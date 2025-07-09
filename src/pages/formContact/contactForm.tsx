@@ -4,8 +4,9 @@ import {
   TextField,
   Button,
   Typography,
-  Divider,
   Alert,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -15,6 +16,9 @@ type FormStatus = {
 };
 
 const ContactForm = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [email, setEmail] = useState<string>("");
   const [nome, setNome] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -83,9 +87,15 @@ const ContactForm = () => {
       animate={{ opacity: 1 }}
       sx={{
         display: "flex",
+        flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",
-        margin: "0 48px 0 56px",
-        alignItems: "center",
+        margin: {
+          xs: "0 1rem 2rem",
+          sm: "0 2rem 2rem", 
+          md: "0 48px 0 56px"
+        },
+        alignItems: { xs: "stretch", md: "center" },
+        gap: { xs: 3, md: 0 },
       }}
     >
       <Box
@@ -93,16 +103,17 @@ const ContactForm = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
+          alignItems: { xs: "center", md: "flex-start" },
+          width: { xs: "100%", md: "40%" },
         }}
       >
         <Typography
           variant="h1"
           sx={{
-            fontSize: "24px",
+            fontSize: { xs: "1.5rem", sm: "1.8rem", md: "24px" },
             fontWeight: "bold",
-            textAlign: "center",
-            marginBottom: "20px",
+            textAlign: { xs: "center", md: "left" },
+            marginBottom: { xs: "16px", md: "20px" },
           }}
         >
           Vamos lá
@@ -110,21 +121,25 @@ const ContactForm = () => {
 
         <Typography
           sx={{
-            fontSize: "16px",
-            marginBottom: "48px",
-            width: "60%",
+            fontSize: { xs: "14px", sm: "15px", md: "16px" },
+            marginBottom: { xs: "32px", md: "48px" },
+            width: { xs: "100%", md: "60%" },
             color: "rgb(132, 145, 160)",
             fontWeight: 400,
+            textAlign: { xs: "center", md: "left" },
           }}
         >
           Se identificou? Minha caixa de entrada está aberta para oportunidades.
         </Typography>
       </Box>
 
-      <Divider sx={{ marginBottom: "30px" }} />
       <Box
         component={motion.div}
-        sx={{ width: "100%", maxWidth: "600px", margin: "0 0 32px" }}
+        sx={{ 
+          width: { xs: "100%", md: "55%" }, 
+          maxWidth: { xs: "100%", md: "600px" }, 
+          margin: { xs: "0", md: "0 0 32px" }
+        }}
       >
         <Box
           component="form"
@@ -132,13 +147,13 @@ const ContactForm = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "20px",
+            gap: { xs: "16px", md: "20px" },
           }}
         >
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: "16px",
+              fontSize: { xs: "14px", md: "16px" },
             }}
           >
             Nome
@@ -156,13 +171,14 @@ const ContactForm = () => {
                 "& fieldset": {
                   borderColor: "#333",
                 },
+                fontSize: { xs: "14px", md: "16px" },
               },
             }}
           />
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: "16px",
+              fontSize: { xs: "14px", md: "16px" },
             }}
           >
             Email
@@ -181,13 +197,14 @@ const ContactForm = () => {
                 "& fieldset": {
                   borderColor: "#333",
                 },
+                fontSize: { xs: "14px", md: "16px" },
               },
             }}
           />
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: "16px",
+              fontSize: { xs: "14px", md: "16px" },
             }}
           >
             Mensagem
@@ -196,7 +213,7 @@ const ContactForm = () => {
           <TextField
             variant="outlined"
             multiline
-            rows={4}
+            rows={isMobile ? 3 : 4}
             fullWidth
             value={message}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -207,6 +224,7 @@ const ContactForm = () => {
                 "& fieldset": {
                   borderColor: "#333",
                 },
+                fontSize: { xs: "14px", md: "16px" },
               },
             }}
           />
@@ -217,8 +235,9 @@ const ContactForm = () => {
             disabled={isSubmitting}
             sx={{
               color: "#fff",
-              padding: "10px 20px",
+              padding: { xs: "8px 16px", md: "10px 20px" },
               fontWeight: "bold",
+              fontSize: { xs: "14px", md: "16px" },
             }}
             component={motion.button}
             whileHover={{ scale: 1.02 }}
@@ -234,8 +253,6 @@ const ContactForm = () => {
           )}
         </Box>
       </Box>
-
-      <Divider sx={{ margin: "30px 0" }} />
     </Box>
   );
 };

@@ -1,0 +1,222 @@
+/* Utilitários responsivos para aplicação */
+
+/* Container responsivo padrão */
+.responsive-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .responsive-container {
+    padding: 0 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-container {
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .responsive-container {
+    padding: 0 0.25rem;
+  }
+}
+
+/* Grids responsivos */
+.grid-1 { grid-template-columns: 1fr; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(3, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* Texto responsivo */
+.text-xs { font-size: clamp(0.7rem, 1vw, 0.75rem); }
+.text-sm { font-size: clamp(0.75rem, 1.2vw, 0.875rem); }
+.text-base { font-size: clamp(0.875rem, 1.5vw, 1rem); }
+.text-lg { font-size: clamp(1rem, 2vw, 1.125rem); }
+.text-xl { font-size: clamp(1.1rem, 2.5vw, 1.25rem); }
+.text-2xl { font-size: clamp(1.3rem, 3vw, 1.5rem); }
+.text-3xl { font-size: clamp(1.5rem, 3.5vw, 1.875rem); }
+.text-4xl { font-size: clamp(1.8rem, 4vw, 2.25rem); }
+.text-5xl { font-size: clamp(2rem, 5vw, 3rem); }
+
+/* Espaçamentos responsivos */
+.space-xs { gap: 0.5rem; }
+.space-sm { gap: 0.75rem; }
+.space-md { gap: 1rem; }
+.space-lg { gap: 1.5rem; }
+.space-xl { gap: 2rem; }
+.space-2xl { gap: 3rem; }
+
+@media (max-width: 768px) {
+  .space-xl { gap: 1.5rem; }
+  .space-2xl { gap: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .space-lg { gap: 1rem; }
+  .space-xl { gap: 1.25rem; }
+  .space-2xl { gap: 1.5rem; }
+}
+
+/* Padding responsivo */
+.p-responsive-sm { 
+  padding: 1rem; 
+}
+
+.p-responsive-md { 
+  padding: 2rem; 
+}
+
+.p-responsive-lg { 
+  padding: 3rem; 
+}
+
+@media (max-width: 768px) {
+  .p-responsive-sm { padding: 0.75rem; }
+  .p-responsive-md { padding: 1.5rem; }
+  .p-responsive-lg { padding: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .p-responsive-sm { padding: 0.5rem; }
+  .p-responsive-md { padding: 1rem; }
+  .p-responsive-lg { padding: 1.5rem; }
+}
+
+/* Flex utilities responsivos */
+.flex-col-mobile {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .flex-col-mobile {
+    flex-direction: column;
+  }
+}
+
+.flex-row-desktop {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 769px) {
+  .flex-row-desktop {
+    flex-direction: row;
+  }
+}
+
+/* Visibilidade responsiva */
+.hidden-xs, .hidden-sm, .hidden-md, .hidden-lg, .hidden-xl { display: block; }
+
+@media (max-width: 359px) {
+  .hidden-xs { display: none !important; }
+  .visible-xs { display: block !important; }
+}
+
+@media (max-width: 599px) {
+  .hidden-sm { display: none !important; }
+  .visible-sm { display: block !important; }
+}
+
+@media (max-width: 899px) {
+  .hidden-md { display: none !important; }
+  .visible-md { display: block !important; }
+}
+
+@media (max-width: 1199px) {
+  .hidden-lg { display: none !important; }
+  .visible-lg { display: block !important; }
+}
+
+@media (min-width: 1200px) {
+  .hidden-xl { display: none !important; }
+  .visible-xl { display: block !important; }
+}
+
+/* Altura de viewport responsiva */
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height para mobile */
+}
+
+.h-screen-safe {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Orientação responsiva */
+@media (orientation: landscape) and (max-height: 500px) {
+  .landscape-compact {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Touch-friendly sizing */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@media (max-width: 768px) {
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Responsive margins */
+.margin-responsive {
+  margin: 2rem;
+}
+
+@media (max-width: 768px) {
+  .margin-responsive {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .margin-responsive {
+    margin: 0.5rem;
+  }
+}
+
+/* Aspect ratios responsivos */
+.aspect-square { aspect-ratio: 1/1; }
+.aspect-video { aspect-ratio: 16/9; }
+.aspect-photo { aspect-ratio: 4/3; }
+
+/* Scroll responsivo */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll */
+.no-scroll-x {
+  overflow-x: hidden;
+}
+
+/* Word break para textos longos */
+.break-words {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}

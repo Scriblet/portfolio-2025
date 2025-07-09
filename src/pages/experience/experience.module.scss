@@ -7,16 +7,22 @@ $experience-colors: (
 );
 
 .bigNumbers {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 400;
   color: #8491a0;
   margin: 0;
+  
+  @media (max-width: 480px) {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
 }
 
 .experience-title {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   font-weight: 700;
   margin: 1rem 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   @each $color in $experience-colors {
     $i: list.index($experience-colors, $color);
@@ -25,11 +31,26 @@ $experience-colors: (
       color: $color;
     }
   }
+  
+  @media (max-width: 480px) {
+    margin: 0.75rem 0;
+  }
 }
 
 .experienceText {
-  font-size: 0.9rem;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
   font-weight: 400;
   color: #8491a0;
-  max-width: 80%;
+  max-width: 100%;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  
+  @media (min-width: 768px) {
+    max-width: 90%;
+  }
+  
+  @media (min-width: 1024px) {
+    max-width: 80%;
+  }
 }
