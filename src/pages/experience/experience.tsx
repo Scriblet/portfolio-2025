@@ -56,15 +56,15 @@ const Experience = () => {
       id="experience"
       sx={{
         paddingTop: isMobile ? "2rem" : "4rem",
-        paddingBottom: isMobile ? "2rem" : "4rem", 
+        paddingBottom: isMobile ? "2rem" : "4rem",
         display: "flex",
         flexDirection: "column",
         borderRadius: "16px",
-        margin: isMobile 
-          ? "0 1rem 2rem" 
-          : isTablet 
-            ? "0 2rem 3rem" 
-            : "0 64px 64px",
+        margin: isMobile
+          ? "0 1rem 2rem"
+          : isTablet
+          ? "0 2rem 3rem"
+          : "0 64px 64px",
       }}
       ref={ref}
     >
@@ -75,13 +75,12 @@ const Experience = () => {
           duration: 0.6,
           ease: "easeOut",
         }}
-        style={{ 
-          fontWeight: "300", 
+        style={{
+          fontWeight: "300",
           fontSize: isMobile ? "0.7rem" : "0.75rem",
           textAlign: isMobile ? "center" : "left",
         }}
-      >
-      </motion.h4>
+      ></motion.h4>
 
       <motion.h1
         initial={{ opacity: 0, x: -60 }}
@@ -91,7 +90,7 @@ const Experience = () => {
           ease: "easeOut",
           delay: 0.2,
         }}
-        style={{ 
+        style={{
           maxWidth: isMobile ? "100%" : "40%",
           fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
           textAlign: isMobile ? "center" : "left",
@@ -113,11 +112,11 @@ const Experience = () => {
         }}
       >
         {experiences.map((exp, index) => (
-          <Box 
+          <Box
             key={exp.id}
             sx={{
               padding: isMobile ? "1rem" : "1.5rem",
-              paddingLeft: index === 0 ? "0" : "1.5rem",
+              paddingLeft: index === 0 ? "0" : isMobile ? "1rem" : "1.5rem",
               height: "100%",
               display: "flex",
               flexDirection: "column",
