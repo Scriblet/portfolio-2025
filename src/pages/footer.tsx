@@ -2,6 +2,8 @@ import { Box, Link as MuiLink, Typography, useMediaQuery, useTheme } from "@mui/
 import { GitHub } from "@mui/icons-material";
 import { LinkedIn } from "@mui/icons-material";
 import { scroller } from "react-scroll";
+import { trackPortfolioEvents } from "../services/analytics";
+import { SOCIAL_LINKS } from "../config/analytics.config";
 
 const Footer = () => {
   const theme = useTheme();
@@ -10,12 +12,18 @@ const Footer = () => {
 
   const handleSmoothScroll = (targetId: string) => (e: React.MouseEvent) => {
     e.preventDefault();
+    trackPortfolioEvents.footerLinkClick(targetId);
     scroller.scrollTo(targetId, {
       duration: 800,
       delay: 0,
       smooth: "easeInOutQuart",
       offset: -80,
     });
+  };
+
+  const handleSocialClick = (platform: string, url: string) => {
+    trackPortfolioEvents.socialLinkClick(platform);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -50,6 +58,7 @@ const Footer = () => {
         </Typography>
         <Box sx={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", gap: 2 }}>
           <GitHub
+            onClick={() => handleSocialClick('github', SOCIAL_LINKS.GITHUB)}
             sx={{
               fontSize: isMobile ? "1.4rem" : "1.6rem",
               cursor: "pointer",
@@ -59,6 +68,7 @@ const Footer = () => {
             }}
           />
           <LinkedIn
+            onClick={() => handleSocialClick('linkedin', SOCIAL_LINKS.LINKEDIN)}
             sx={{
               fontSize: isMobile ? "1.4rem" : "1.6rem",
               cursor: "pointer",
