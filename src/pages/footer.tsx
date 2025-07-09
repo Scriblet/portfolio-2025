@@ -46,7 +46,7 @@ const Footer = () => {
             mb: 2 
           }}
         >
-          Lucas N.
+          Lucas Nonato
         </Typography>
         <Box sx={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", gap: 2 }}>
           <GitHub

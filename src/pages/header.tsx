@@ -88,7 +88,7 @@ export default function Header() {
             }
           }}
         >
-          Lucas N.
+          Lucas Nonato
         </Typography>
 
         {isMobile ? (
