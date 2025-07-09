@@ -117,6 +117,7 @@ const Experience = () => {
             key={exp.id}
             sx={{
               padding: isMobile ? "1rem" : "1.5rem",
+              paddingLeft: index === 0 ? "0" : "1.5rem",
               height: "100%",
               display: "flex",
               flexDirection: "column",
