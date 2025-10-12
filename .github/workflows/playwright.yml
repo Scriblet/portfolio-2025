@@ -108,16 +108,13 @@ jobs:
       - name: 🚀 Executar testes E2E (Shard ${{ matrix.shard }}/2)
         run: npx playwright test --shard=${{ matrix.shard }}/2
 
-      - name: 📊 Upload dos resultados (Shard ${{ matrix.shard }})
+      - name: 📊 Upload blob report (Shard ${{ matrix.shard }})
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-results-${{ matrix.shard }}
-          path: |
-            playwright-report/
-            test-results/
-          retention-days: 30
-          compression-level: 6
+          name: blob-report-${{ matrix.shard }}
+          path: blob-report/
+          retention-days: 1
 
   # ========================================
   # Merge dos Relatórios
@@ -147,22 +144,17 @@ jobs:
             ${{ runner.os }}-node-modules-
           fail-on-cache-miss: true
 
-      - name: 📥 Download dos relatórios (Shard 1)
+      - name: 📥 Download dos blob reports
         uses: actions/download-artifact@v4
         with:
-          name: playwright-results-1
-          path: all-reports/shard-1
-
-      - name: 📥 Download dos relatórios (Shard 2)
-        uses: actions/download-artifact@v4
-        with:
-          name: playwright-results-2
-          path: all-reports/shard-2
+          path: all-blob-reports
+          pattern: blob-report-*
+          merge-multiple: true
 
       - name: 🔗 Merge dos relatórios HTML
-        run: npx playwright merge-reports --reporter html ./all-reports
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
 
-      - name: 📤 Upload relatório consolidado
+      - name: 📤 Upload relatório HTML consolidado
         uses: actions/upload-artifact@v4
         with:
           name: 📊-playwright-report-final
