@@ -29,7 +29,7 @@ interface PresentationStyles {
 	roleTypography: SxProps<Theme>;
 	specialtyTypography: SxProps<Theme>;
 	secondaryRoleTypography: SxProps<Theme>;
-		contentLayer: CSSProperties;
+	contentLayer: CSSProperties;
 }
 
 export const getPresentationStyles = (
@@ -363,8 +363,8 @@ export const getPresentationStyles = (
 			borderRadius: "50%",
 			border: "1px solid rgba(0, 255, 255, 0.2)",
 			zIndex: 1
-			},
-			contentLayer: {
+		},
+		contentLayer: {
 				position: "relative",
 				zIndex: 2
 		}
@@ -422,31 +422,6 @@ export const textVariants: Variants = {
 		transition: {
 			duration: 0.6,
 			ease: [0.25, 0.46, 0.45, 0.94]
-		}
-	}
-};
-
-export const floatingVariants: Variants = {
-	animate: {
-		y: [-10, 10, -10],
-		rotate: [0, 2, -2, 0],
-		transition: {
-			duration: 6,
-			repeat: Infinity,
-			ease: "easeInOut"
-		}
-	}
-};
-
-export const floatingCircleBottomLeftVariants: Variants = {
-	animate: {
-		y: [15, -15, 15],
-		rotate: [0, -3, 3, 0],
-		transition: {
-			duration: 8,
-			repeat: Infinity,
-			ease: "easeInOut",
-			delay: 2
 		}
 	}
 };
