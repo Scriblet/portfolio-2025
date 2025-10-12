@@ -29,7 +29,8 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@types/ga-gtag": "^1.2.0",
-    "@types/node": "^24.0.12",
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.7.2",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@types/react-scroll": "^1.8.10",
