@@ -79,6 +79,7 @@ function Presentation() {
   return (
     <motion.div
       id="home"
+      data-testid="presentation-section"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -290,6 +291,7 @@ function Presentation() {
               component="img"
               image={ImgPresentation}
               alt="Lucas Nonato. Jovem com cabelo cacheado volumoso e bigode sorri amplamente para a câmera. Ele usa uma camisa preta e uma alça transversal é visível em seu ombro. O fundo tem uma parede decorada com grafites coloridos em tons de roxo, verde e vermelho, com letras estilizadas."
+              data-testid="presentation-image"
               sx={{
                 height: {
                   xs: isVerySmall ? "240px" : "280px",
@@ -462,6 +464,7 @@ function Presentation() {
               <Typography 
                 variant={isMobile ? "h2" : "h1"} 
                 className="presentation-title"
+                data-testid="presentation-name"
                 sx={{
                   fontSize: {
                     xs: isVerySmall ? "1.6rem" : "2rem",
@@ -502,6 +505,7 @@ function Presentation() {
               <Typography 
                 variant={isMobile ? "h2" : "h1"} 
                 className="presentation-title"
+                data-testid="presentation-role"
                 sx={{
                   fontSize: {
                     xs: isVerySmall ? "1.6rem" : "2rem",
@@ -523,6 +527,7 @@ function Presentation() {
                 {/* Full-Stack simples */}
                 <Typography
                   variant="inherit"
+                  data-testid="presentation-specialty"
                   sx={{
                   display: "block",
                   fontSize: isMobile ? "0.8em" : "0.85em",
@@ -544,6 +549,7 @@ function Presentation() {
               <Typography 
                 variant={isMobile ? "h2" : "h1"} 
                 className="presentation-title"
+                data-testid="presentation-secondary-role"
                 sx={{
                   fontSize: {
                     xs: isVerySmall ? "1.6rem" : "2rem",
