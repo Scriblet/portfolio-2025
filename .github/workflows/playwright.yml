@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: 🎭 Testes E2E
 
 on:
   push:
@@ -15,34 +15,144 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  # ========================================
+  # Setup e Preparação do Ambiente
+  # ========================================
+  setup:
+    name: 📦 Setup
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-    env:
-      CI: "true"
+    timeout-minutes: 10
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout do repositório
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
 
-      - name: Install dependencies
+      - name: 📚 Instalar dependências
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      - name: 💾 Cache de node_modules
+        uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
 
-      - name: Run Playwright tests
-        run: npx playwright test
+  # ========================================
+  # Testes E2E com Playwright
+  # ========================================
+  test-e2e:
+    name: 🧪 Testes E2E
+    runs-on: ubuntu-latest
+    needs: setup
+    timeout-minutes: 60
+    env:
+      CI: "true"
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
 
-      - name: Upload Playwright report
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📚 Restaurar dependências do cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: 🎭 Instalar navegadores Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: 🚀 Executar testes E2E (Shard ${{ matrix.shard }}/2)
+        run: npx playwright test --shard=${{ matrix.shard }}/2
+
+      - name: 📊 Upload dos resultados (Shard ${{ matrix.shard }})
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-results-${{ matrix.shard }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 30
+
+  # ========================================
+  # Merge dos Relatórios
+  # ========================================
+  merge-reports:
+    name: 📋 Consolidar Relatórios
+    runs-on: ubuntu-latest
+    needs: test-e2e
+    if: ${{ !cancelled() }}
+    
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📚 Restaurar dependências
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: 📥 Download dos relatórios (Shard 1)
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-results-1
+          path: all-reports/shard-1
+
+      - name: 📥 Download dos relatórios (Shard 2)
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-results-2
+          path: all-reports/shard-2
+
+      - name: 🔗 Merge dos relatórios HTML
+        run: npx playwright merge-reports --reporter html ./all-reports
+
+      - name: 📤 Upload relatório consolidado
+        uses: actions/upload-artifact@v4
+        with:
+          name: 📊-playwright-report-final
           path: playwright-report/
           retention-days: 30
+
+  # ========================================
+  # Status Check Final
+  # ========================================
+  test-status:
+    name: ✅ Status dos Testes
+    runs-on: ubuntu-latest
+    needs: [test-e2e, merge-reports]
+    if: always()
+    
+    steps:
+      - name: 📊 Verificar resultado dos testes
+        run: |
+          if [ "${{ needs.test-e2e.result }}" == "success" ]; then
+            echo "✅ Todos os testes passaram com sucesso!"
+            exit 0
+          else
+            echo "❌ Alguns testes falharam. Verifique os relatórios."
+            exit 1
+          fi
