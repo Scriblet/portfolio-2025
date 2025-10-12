@@ -1,4 +1,5 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
+test.describe.configure({ mode: 'serial' });
 
 const getComputedTransform = async (locator: Locator) => {
   return locator.evaluate((element) => getComputedStyle(element).transform);
