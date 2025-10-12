@@ -52,8 +52,9 @@ const Experience = () => {
 
   return (
     <Box
-      component="div"
+      component="section"
       id="experience"
+      data-testid="experience-section"
       sx={{
         paddingTop: isMobile ? "2rem" : "4rem",
         paddingBottom: isMobile ? "2rem" : "4rem",
@@ -95,11 +96,13 @@ const Experience = () => {
           fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
           textAlign: isMobile ? "center" : "left",
         }}
+        data-testid="experience-heading"
       >
         Empresas onde trabalhei e Aprendizados que conquistei
       </motion.h1>
 
       <Box
+        data-testid="experience-grid"
         sx={{
           display: "grid",
           gridTemplateColumns: {
@@ -114,6 +117,7 @@ const Experience = () => {
         {experiences.map((exp, index) => (
           <Box
             key={exp.id}
+            data-testid={`experience-card-${exp.id}`}
             sx={{
               padding: isMobile ? "1rem" : "1.5rem",
               paddingLeft: index === 0 ? "0" : isMobile ? "1rem" : "1.5rem",
@@ -137,6 +141,7 @@ const Experience = () => {
                 fontSize: isMobile ? "3rem" : isTablet ? "4rem" : "5rem",
                 marginBottom: "1rem",
               }}
+              data-testid={`experience-number-${exp.id}`}
             >
               {exp.number}
             </motion.h1>
@@ -156,6 +161,7 @@ const Experience = () => {
                 fontSize: isMobile ? "1.2rem" : isTablet ? "1.4rem" : "1.6rem",
                 marginBottom: "0.5rem",
               }}
+              data-testid={`experience-company-${exp.id}`}
             >
               {exp.company}
             </motion.h2>
@@ -172,6 +178,7 @@ const Experience = () => {
                 fontSize: isMobile ? "1rem" : isTablet ? "1.1rem" : "1.2rem",
                 marginBottom: "1rem",
               }}
+              data-testid={`experience-position-${exp.id}`}
             >
               {exp.position}
             </motion.h3>
@@ -190,6 +197,7 @@ const Experience = () => {
                 lineHeight: "1.6",
                 flex: 1,
               }}
+              data-testid={`experience-description-${exp.id}`}
             >
               {exp.description}
             </motion.p>
