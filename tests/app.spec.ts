@@ -4,7 +4,7 @@ test.describe.configure({ mode: 'serial' });
 
 test.describe('Portfolio - Página Completa', () => {
   test.beforeEach(async ({ page }: { page: Page }) => {
-    await page.goto('http://localhost:5173', { waitUntil: 'networkidle' });
+    await page.goto('/', { waitUntil: 'networkidle' });
     // Aguarda a página estar totalmente carregada e animações iniciais
     await page.waitForTimeout(1000);
   });
@@ -377,7 +377,7 @@ test.describe('Portfolio - Página Completa', () => {
   test.describe('Performance e Carregamento', () => {
     test('deve carregar a página em tempo razoável', async ({ page }: { page: Page }) => {
       const startTime = Date.now();
-      await page.goto('http://localhost:5173');
+      await page.goto('/');
       await page.waitForLoadState('domcontentloaded');
       const loadTime = Date.now() - startTime;
 

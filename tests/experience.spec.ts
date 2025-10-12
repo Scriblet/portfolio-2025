@@ -38,7 +38,7 @@ const experiences = [
 
 test.describe('Experience Section', () => {
 	test.beforeEach(async ({ page }: { page: Page }) => {
-		await page.goto('http://localhost:5173');
+		await page.goto('/');
 		const section = page.getByTestId('experience-section');
 		await section.scrollIntoViewIfNeeded();
 		await expect(section).toBeVisible();

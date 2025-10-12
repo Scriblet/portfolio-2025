@@ -3,7 +3,7 @@ import { test, expect, type Page } from '@playwright/test';
 test.describe('Header Component', () => {
   test.beforeEach(async ({ page }: { page: Page }) => {
     // Navega para a página inicial
-    await page.goto('http://localhost:5173');
+    await page.goto('/');
   });
 
   test.describe('Desktop View', () => {

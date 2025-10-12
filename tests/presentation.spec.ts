@@ -12,7 +12,7 @@ const getComputedOpacity = async (locator: Locator) => {
 test.describe('Presentation Page', () => {
   test.beforeEach(async ({ page }: { page: Page }) => {
     // Navega para a página inicial
-    await page.goto('http://localhost:5173');
+    await page.goto('/');
   });
 
   test('deve exibir o nome "Lucas Nonato"', async ({ page }: { page: Page }) => {
