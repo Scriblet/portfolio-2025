@@ -22,6 +22,9 @@ jobs:
     name: 📦 Setup
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      node-modules-cache-hit: ${{ steps.cache-node-modules.outputs.cache-hit }}
+      playwright-cache-hit: ${{ steps.cache-playwright.outputs.cache-hit }}
     steps:
       - name: 📥 Checkout do repositório
         uses: actions/checkout@v4
@@ -32,15 +35,31 @@ jobs:
           node-version: lts/*
           cache: npm
 
-      - name: 📚 Instalar dependências
-        run: npm ci
-
-      - name: 💾 Cache de node_modules
-        uses: actions/cache@v3
+      - name: � Cache de node_modules
         id: cache-node-modules
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: � Instalar dependências
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: 🎭 Cache dos navegadores Playwright
+        id: cache-playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: 🌐 Instalar navegadores Playwright
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
 
   # ========================================
   # Testes E2E com Playwright
@@ -68,14 +87,23 @@ jobs:
           node-version: lts/*
           cache: npm
 
-      - name: 📚 Restaurar dependências do cache
-        uses: actions/cache@v3
+      - name: � Restaurar cache de node_modules
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+          fail-on-cache-miss: true
 
-      - name: 🎭 Instalar navegadores Playwright
-        run: npx playwright install --with-deps chromium
+      - name: 🎭 Restaurar cache dos navegadores Playwright
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+          fail-on-cache-miss: true
 
       - name: 🚀 Executar testes E2E (Shard ${{ matrix.shard }}/2)
         run: npx playwright test --shard=${{ matrix.shard }}/2
@@ -89,6 +117,7 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 30
+          compression-level: 6
 
   # ========================================
   # Merge dos Relatórios
@@ -109,11 +138,14 @@ jobs:
           node-version: lts/*
           cache: npm
 
-      - name: 📚 Restaurar dependências
-        uses: actions/cache@v3
+      - name: � Restaurar cache de node_modules
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+          fail-on-cache-miss: true
 
       - name: 📥 Download dos relatórios (Shard 1)
         uses: actions/download-artifact@v4
@@ -136,6 +168,7 @@ jobs:
           name: 📊-playwright-report-final
           path: playwright-report/
           retention-days: 30
+          compression-level: 9
 
   # ========================================
   # Status Check Final
