@@ -1,4 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
+import { ExperiencePage } from './pages/ExperiencePage';
+
 test.describe.configure({ mode: 'serial' });
 
 const experiences = [
@@ -37,43 +39,40 @@ const experiences = [
 ];
 
 test.describe('Experience Section', () => {
+	let experiencePage: ExperiencePage;
+
 	test.beforeEach(async ({ page }: { page: Page }) => {
-		await page.goto('/');
-		const section = page.getByTestId('experience-section');
-		await section.scrollIntoViewIfNeeded();
-		await expect(section).toBeVisible();
+		experiencePage = new ExperiencePage(page);
+		await experiencePage.goto();
+		await experiencePage.scrollToSection();
+		await expect(experiencePage.section).toBeVisible();
 	});
 
-	test('deve exibir o título principal da seção', async ({ page }: { page: Page }) => {
-		const heading = page.getByTestId('experience-heading');
-		await expect(heading).toBeVisible();
-		await expect(heading).toHaveText('Empresas onde trabalhei e Aprendizados que conquistei');
+	test('deve exibir o título principal da seção', async () => {
+		await expect(experiencePage.heading).toBeVisible();
+		await expect(experiencePage.heading).toHaveText('Empresas onde trabalhei e Aprendizados que conquistei');
 	});
 
-	test('deve renderizar todos os cards de experiência', async ({ page }: { page: Page }) => {
-		const cards = page.locator('[data-testid^="experience-card-"]');
+	test('deve renderizar todos os cards de experiência', async () => {
+		const cards = experiencePage.getAllCards();
 		await expect(cards).toHaveCount(experiences.length);
 	});
 
-	test('deve exibir os dados corretos de cada experiência', async ({ page }: { page: Page }) => {
+	test('deve exibir os dados corretos de cada experiência', async () => {
 		for (const experience of experiences) {
-			const card = page.getByTestId(`experience-card-${experience.id}`);
-			await expect(card).toBeVisible();
-
-			await expect(page.getByTestId(`experience-number-${experience.id}`)).toHaveText(experience.number);
-			await expect(page.getByTestId(`experience-company-${experience.id}`)).toHaveText(experience.company);
-			await expect(page.getByTestId(`experience-position-${experience.id}`)).toHaveText(experience.position);
-			await expect(page.getByTestId(`experience-description-${experience.id}`)).toHaveText(experience.description);
+			await expect(experiencePage.getCard(experience.id)).toBeVisible();
+			await expect(experiencePage.getNumber(experience.id)).toHaveText(experience.number);
+			await expect(experiencePage.getCompany(experience.id)).toHaveText(experience.company);
+			await expect(experiencePage.getPosition(experience.id)).toHaveText(experience.position);
+			await expect(experiencePage.getDescription(experience.id)).toHaveText(experience.description);
 		}
 	});
 
-	test('o grid da seção deve estar presente e visível', async ({ page }: { page: Page }) => {
-		const grid = page.getByTestId('experience-grid');
-		await expect(grid).toBeVisible();
+	test('o grid da seção deve estar presente e visível', async () => {
+		await expect(experiencePage.grid).toBeVisible();
 	});
 
-	test('a âncora da seção deve ser #experience', async ({ page }: { page: Page }) => {
-		const section = page.getByTestId('experience-section');
-		await expect(section).toHaveAttribute('id', 'experience');
+	test('a âncora da seção deve ser #experience', async () => {
+		await expect(experiencePage.section).toHaveAttribute('id', 'experience');
 	});
 });
