@@ -1,183 +1,157 @@
-name: 🎭 Testes E2E
+name:  Testes E2E
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [main, master]
   pull_request:
-    branches:
-      - main
-      - master
+    branches: [main, master]
 
 concurrency:
   group: playwright-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  NODE_VERSION: lts/*
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
 jobs:
-  # ========================================
-  # Setup e Preparação do Ambiente
-  # ========================================
-  setup:
-    name: 📦 Setup
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    outputs:
-      node-modules-cache-hit: ${{ steps.cache-node-modules.outputs.cache-hit }}
-      playwright-cache-hit: ${{ steps.cache-playwright.outputs.cache-hit }}
-    steps:
-      - name: 📥 Checkout do repositório
-        uses: actions/checkout@v4
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-
-      - name: � Cache de node_modules
-        id: cache-node-modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
-      - name: � Instalar dependências
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-
-      - name: 🎭 Cache dos navegadores Playwright
-        id: cache-playwright
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-
-      - name: 🌐 Instalar navegadores Playwright
-        if: steps.cache-playwright.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps chromium
-
-  # ========================================
-  # Testes E2E com Playwright
-  # ========================================
   test-e2e:
-    name: 🧪 Testes E2E
+    name:  E2E (Shard ${{ matrix.shard }}/3)
     runs-on: ubuntu-latest
-    needs: setup
-    timeout-minutes: 60
-    env:
-      CI: "true"
+    timeout-minutes: 15
     
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2]
+        shard: [1, 2, 3]
     
     steps:
-      - name: 📥 Checkout do repositório
+      - name:  Checkout
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name:  Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
-      - name: � Restaurar cache de node_modules
-        uses: actions/cache/restore@v4
+      - name:  Cache node_modules
+        id: cache-npm
+        uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-          fail-on-cache-miss: true
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
 
-      - name: 🎭 Restaurar cache dos navegadores Playwright
-        uses: actions/cache/restore@v4
+      - name:  Instalar depend�ncias
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit --no-fund
+
+      - name:  Cache Playwright
+        id: cache-playwright
+        uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-          fail-on-cache-miss: true
+          key: ${{ runner.os }}-pw-${{ hashFiles('package-lock.json') }}
 
-      - name: 🚀 Executar testes E2E (Shard ${{ matrix.shard }}/2)
-        run: npx playwright test --shard=${{ matrix.shard }}/2
+      - name:  Instalar Chromium
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
 
-      - name: 📊 Upload blob report (Shard ${{ matrix.shard }})
+      - name:  Instalar deps do Chromium
+        if: steps.cache-playwright.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - name:  Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name:  Executar testes
+        run: npx playwright test --shard=${{ matrix.shard }}/3 --reporter=blob
+        env:
+          CI: true
+
+      - name:  Upload blob report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: blob-report-${{ matrix.shard }}
           path: blob-report/
           retention-days: 1
+          compression-level: 9
 
-  # ========================================
-  # Merge dos Relatórios
-  # ========================================
   merge-reports:
-    name: 📋 Consolidar Relatórios
+    name:  Relat�rio
     runs-on: ubuntu-latest
     needs: test-e2e
     if: ${{ !cancelled() }}
+    timeout-minutes: 5
     
     steps:
-      - name: 📥 Checkout do repositório
+      - name:  Checkout
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name:  Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
-      - name: � Restaurar cache de node_modules
-        uses: actions/cache/restore@v4
+      - name:  Cache node_modules
+        id: cache-npm
+        uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-          fail-on-cache-miss: true
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
 
-      - name: 📥 Download dos blob reports
+      - name:  Instalar depend�ncias
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit --no-fund
+
+      - name:  Download reports
         uses: actions/download-artifact@v4
         with:
           path: all-blob-reports
           pattern: blob-report-*
           merge-multiple: true
 
-      - name: 🔗 Merge dos relatórios HTML
+      - name:  Merge reports
         run: npx playwright merge-reports --reporter html ./all-blob-reports
 
-      - name: 📤 Upload relatório HTML consolidado
+      - name:  Upload relat�rio
         uses: actions/upload-artifact@v4
         with:
-          name: 📊-playwright-report-final
+          name: -playwright-report
           path: playwright-report/
           retention-days: 30
           compression-level: 9
 
-  # ========================================
-  # Status Check Final
-  # ========================================
-  test-status:
-    name: ✅ Status dos Testes
+      - name: 💬 Comentar no PR
+        if: github.event_name == 'pull_request' && always()
+        uses: daun/playwright-report-comment@v3
+        with:
+          report-file: playwright-report/index.html
+        continue-on-error: true
+
+  status:
+    name:  Status
     runs-on: ubuntu-latest
     needs: [test-e2e, merge-reports]
     if: always()
+    timeout-minutes: 1
     
     steps:
-      - name: 📊 Verificar resultado dos testes
+      - name:  Verificar resultado
         run: |
-          if [ "${{ needs.test-e2e.result }}" == "success" ]; then
-            echo "✅ Todos os testes passaram com sucesso!"
+          if [ "${{ needs.test-e2e.result }}" = "success" ]; then
+            echo " Todos os testes passaram!"
+            echo "::notice::E2E executados com sucesso"
+            exit 0
+          elif [ "${{ needs.test-e2e.result }}" = "skipped" ]; then
+            echo " Testes pulados"
             exit 0
           else
-            echo "❌ Alguns testes falharam. Verifique os relatórios."
+            echo " Alguns testes falharam"
+            echo "::error::Verifique o relat�rio nos artifacts"
             exit 1
           fi
