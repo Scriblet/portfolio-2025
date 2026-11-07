@@ -11,19 +11,47 @@ import {
   ListItem,
   ListItemText,
   Box,
+  alpha,
 } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
-import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useState, type FocusEvent } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { SITE_CONFIG } from "../data";
+import useScrollDirection from "../hooks/useScrollDirection";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { hidden: scrollHidden } = useScrollDirection();
+  const [focusWithin, setFocusWithin] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const isDev = import.meta.env.DEV;
+
+  // Nunca esconde o header enquanto houver foco de teclado dentro dele.
+  const hidden = scrollHidden && !focusWithin;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleFocus = (event: FocusEvent<HTMLElement>) => {
+    const target = event.target as HTMLElement | null;
+    // Só o foco por teclado (ou programático) prende o header visível;
+    // um clique de mouse num link não deve impedir o header de se esconder.
+    if (!target?.matches || target.matches(":focus-visible")) {
+      setFocusWithin(true);
+    }
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLElement>) => {
+    const next = event.relatedTarget as Node | null;
+    if (!next || !event.currentTarget.contains(next)) {
+      setFocusWithin(false);
+    }
   };
 
   const menuItems = [
@@ -37,46 +65,72 @@ export default function Header() {
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} component={ScrollLink} to={item.to} smooth={true} duration={500} offset={-80}>
-            <ListItemText 
-              primary={item.text} 
-              sx={{ 
+            <ListItemText
+              primary={item.text}
+              sx={{
                 textAlign: "center",
                 color: theme.palette.text.primary,
                 "&:hover": {
                   color: theme.palette.primary.main,
                 },
-              }} 
+              }}
             />
           </ListItem>
         ))}
       </List>
+      {isDev && (
+        <Box sx={{ px: 2, pb: 2 }}>
+          <Button
+            component={RouterLink}
+            to="/roadmap"
+            fullWidth
+            variant="outlined"
+            size="small"
+          >
+            Roadmap (dev)
+          </Button>
+        </Box>
+      )}
     </Box>
   );
 
   return (
     <AppBar
+      component={motion.header}
       position="fixed"
       elevation={0}
+      animate={{ y: hidden ? "-100%" : 0 }}
+      transition={{
+        duration: prefersReducedMotion ? 0 : 0.25,
+        ease: "easeOut",
+      }}
+      {...(hidden ? { inert: true } : {})}
+      aria-hidden={hidden ? "true" : undefined}
+      onFocusCapture={handleFocus}
+      onBlurCapture={handleBlur}
       sx={{
-        backgroundColor: "rgba(11, 6, 19, 0.4)",
+        backgroundColor: alpha(
+          theme.palette.background.default,
+          theme.palette.mode === "dark" ? 0.4 : 0.75,
+        ),
         boxShadow: "none",
         backdropFilter: "blur(10px)",
         WebkitBackdropFilter: "blur(10px)",
         zIndex: 1000,
       }}
     >
-      <Toolbar variant="dense" sx={{ 
+      <Toolbar variant="dense" sx={{
         justifyContent: "space-between",
         minHeight: { xs: "48px", sm: "56px" },
         px: { xs: 1, sm: 2 }
       }}>
         <Typography
           variant={isMobile ? "h5" : "h4"}
-          component={ScrollLink} 
+          component={ScrollLink}
           to="home"
           smooth={true}
           duration={500}
-          offset={-80} 
+          offset={-80}
           sx={{
             textDecoration: "none",
             color: "inherit",
@@ -94,15 +148,18 @@ export default function Header() {
 
         {isMobile ? (
           <>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+              <ThemeToggle />
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
             <Drawer
               variant="temporary"
               anchor="right"
@@ -112,11 +169,12 @@ export default function Header() {
                 keepMounted: true,
               }}                sx={{
                   display: { xs: "block", sm: "none" },
-                  "& .MuiDrawer-paper": { 
-                    boxSizing: "border-box", 
+                  "& .MuiDrawer-paper": {
+                    boxSizing: "border-box",
                     width: { xs: 280, sm: 240 },
-                    backgroundColor: "rgba(11, 6, 19, 0.95)",
+                    backgroundColor: alpha(theme.palette.background.default, 0.95),
                     backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
                   },
                 }}
             >
@@ -124,7 +182,7 @@ export default function Header() {
             </Drawer>
           </>
         ) : (
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
             {menuItems.map((item) => (
               <ScrollLink
                 key={item.text}
@@ -144,7 +202,7 @@ export default function Header() {
                     fontSize: "1rem",
                     letterSpacing: 0.15,
                     "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      backgroundColor: alpha(theme.palette.text.primary, 0.1),
                     },
                   }}
                 >
@@ -152,6 +210,25 @@ export default function Header() {
                 </Button>
               </ScrollLink>
             ))}
+            {isDev && (
+              <Button
+                component={RouterLink}
+                to="/roadmap"
+                color="inherit"
+                sx={{
+                  mx: 0.5,
+                  px: 2,
+                  minHeight: "6vh",
+                  fontSize: "0.9rem",
+                  "&:hover": {
+                    backgroundColor: alpha(theme.palette.text.primary, 0.1),
+                  },
+                }}
+              >
+                Roadmap
+              </Button>
+            )}
+            <ThemeToggle />
           </Box>
         )}
       </Toolbar>
