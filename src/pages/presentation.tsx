@@ -138,6 +138,9 @@ function Presentation() {
               image={ImgPresentation}
               alt="Lucas Nonato. Jovem com cabelo cacheado volumoso e bigode sorri amplamente para a câmera. Ele usa uma camisa preta e uma alça transversal é visível em seu ombro. O fundo tem uma parede decorada com grafites coloridos em tons de roxo, verde e vermelho, com letras estilizadas."
               data-testid="presentation-image"
+              // Imagem do herói (LCP): prioridade alta, mas sem bloquear o parse.
+              fetchPriority="high"
+              decoding="async"
               sx={styles.cardMedia}
             />
           </motion.div>

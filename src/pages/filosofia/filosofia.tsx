@@ -214,6 +214,8 @@ const PhilosophyBanner = () => {
           component="img"
           image={ImgPhilosophy}
           alt="Duas mãos fechadas se tocam em um cumprimento de punhos (fist bump). A mão à esquerda tem pele clara, enquanto a da direita tem pele escura. O fundo é branco, destacando o gesto de cumplicidade e respeito entre as duas pessoas."
+          loading="lazy"
+          decoding="async"
           sx={{
             objectFit: "cover",
             borderRadius: {

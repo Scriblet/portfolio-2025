@@ -155,8 +155,8 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "Chunks por seção, skeleton com altura reservada e bundle inicial menor.",
         category: "Técnico",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["dados-centralizados"],
       },
@@ -166,7 +166,7 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "axe no CI e screenshots por viewport para travar regressões.",
         category: "Técnico",
-        status: "pending",
+        status: "in-progress",
         issuesDone: 0,
         issuesTotal: 4,
         dependsOn: ["code-splitting-lazy"],

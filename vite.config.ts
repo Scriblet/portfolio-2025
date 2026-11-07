@@ -13,6 +13,25 @@ export default defineConfig({
       ignored: ["**/*.pdf", "**/screenshots/**"],
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Separa o vendor do código do app: o bundle inicial fica só com o
+        // necessário para a dobra (Presentation + Header) e as seções viram
+        // chunks próprios via React.lazy.
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+          mui: [
+            "@mui/material",
+            "@mui/icons-material",
+            "@emotion/react",
+            "@emotion/styled",
+          ],
+          motion: ["framer-motion"],
+        },
+      },
+    },
+  },
   css: {
     modules: {
       localsConvention: 'camelCase'

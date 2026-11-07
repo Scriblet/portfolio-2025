@@ -134,6 +134,8 @@ const GithubBanner = () => {
           component="img"
           image={ImgGithub}
           alt="Logo do GitHub"
+          loading="lazy"
+          decoding="async"
           sx={{
             maxWidth: "100%",
             maxHeight: "100%",
