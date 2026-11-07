@@ -4,3 +4,14 @@
 
 [build.environment]
   NODE_VERSION = "20.10"
+
+# Netlify Functions (endpoint POST /api/contact)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# SPA fallback — deve vir depois das rotas de função para não sombrear /api/*
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

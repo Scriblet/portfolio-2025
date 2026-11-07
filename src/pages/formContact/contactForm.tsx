@@ -11,9 +11,17 @@ import {
 import { motion } from "framer-motion";
 
 type FormStatus = {
-  type: "success" | "error" | "info";
+  type: "success" | "error" | "info" | "warning";
   message: string;
 };
+
+type FieldErrors = {
+  nome?: string;
+  email?: string;
+  message?: string;
+};
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const ContactForm = () => {
   const theme = useTheme();
@@ -22,58 +30,109 @@ const ContactForm = () => {
   const [email, setEmail] = useState<string>("");
   const [nome, setNome] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [website, setWebsite] = useState<string>(""); // honeypot
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<FormStatus | null>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
 
-  const DISCORD_WEBHOOK: string =
-    "https://discord.com/api/webhooks/1355261652236239302/bigEjdL2y0_Bd2EsZMMa6JljmiY70NsHwmkUKS2OKpxLTym9RmKSsIQD8pf29xt8aR9J";
+  const validate = (): FieldErrors => {
+    const next: FieldErrors = {};
+
+    const cleanName = nome.trim();
+    if (!cleanName) {
+      next.nome = "Informe seu nome.";
+    } else if (cleanName.length > 100) {
+      next.nome = "O nome deve ter no máximo 100 caracteres.";
+    }
+
+    const cleanEmail = email.trim();
+    if (!cleanEmail) {
+      next.email = "Informe seu email.";
+    } else if (cleanEmail.length > 254 || !EMAIL_RE.test(cleanEmail)) {
+      next.email = "Informe um email válido.";
+    }
+
+    const cleanMessage = message.trim();
+    if (!cleanMessage) {
+      next.message = "Escreva sua mensagem.";
+    } else if (cleanMessage.length > 2000) {
+      next.message = "A mensagem deve ter no máximo 2000 caracteres.";
+    }
+
+    return next;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    if (isSubmitting) return;
+
     setStatus(null);
 
-    try {
-      // Formatar a mensagem para o Discord
-      const discordMessage = {
-        content:
-          "📬 <@197222374133727232> **Nova mensagem do formulário de contato!**",
-        embeds: [
-          {
-            title: "Detalhes do Contato",
-            fields: [
-              { name: "👤 Nome", value: nome || "Não informado" },
-              { name: "✉️ Email", value: email || "Não informado" },
-              { name: "💬 Mensagem", value: message || "Não informada" },
-            ],
-            color: 5814783, // Cor roxa (opcional)
-          },
-        ],
-      };
+    const nextErrors = validate();
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
 
-      const response = await fetch(DISCORD_WEBHOOK, {
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(discordMessage),
+        body: JSON.stringify({
+          name: nome.trim(),
+          email: email.trim(),
+          message: message.trim(),
+          website,
+        }),
       });
 
       if (response.ok) {
-        setStatus({
-          type: "success",
-          message: "✅ Mensagem enviada com sucesso!",
-        });
-        setNome("");
-        setEmail("");
-        setMessage("");
-      } else {
-        throw new Error("Falha ao enviar mensagem");
+        // Confere o contrato JSON: se a function não estiver publicada, o
+        // fallback da SPA pode devolver index.html com status 200.
+        let data: unknown = null;
+        try {
+          data = await response.json();
+        } catch {
+          data = null;
+        }
+
+        const accepted =
+          typeof data === "object" &&
+          data !== null &&
+          (data as { ok?: unknown }).ok === true;
+
+        if (accepted) {
+          setStatus({
+            type: "success",
+            message: "✅ Mensagem enviada com sucesso!",
+          });
+          setNome("");
+          setEmail("");
+          setMessage("");
+          setErrors({});
+          return;
+        }
       }
-    } catch (error) {
+
+      if (response.status === 429) {
+        setStatus({
+          type: "warning",
+          message:
+            "Muitas tentativas. Aguarde um minuto e tente novamente.",
+        });
+        return;
+      }
+
       setStatus({
         type: "error",
-        message: "❌ Erro ao enviar mensagem. Tente novamente mais tarde.",
+        message: "❌ Não foi possível enviar. Tente novamente.",
       });
-      console.error("Erro ao enviar para Discord:", error);
+    } catch {
+      // Falha de rede: mantém os campos preenchidos para permitir retry.
+      setStatus({
+        type: "error",
+        message: "❌ Não foi possível enviar. Tente novamente.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -145,28 +204,56 @@ const ContactForm = () => {
         <Box
           component="form"
           onSubmit={handleSubmit}
+          noValidate
+          aria-busy={isSubmitting}
           sx={{
             display: "flex",
             flexDirection: "column",
             gap: { xs: "16px", md: "20px" },
+            position: "relative",
           }}
         >
-          <Typography
+          {/* Honeypot: invisível para humanos, isca para bots. */}
+          <Box
+            aria-hidden="true"
             sx={{
-              fontWeight: "bold",
-              fontSize: { xs: "14px", md: "16px" },
+              position: "absolute",
+              left: "-9999px",
+              top: 0,
+              width: "1px",
+              height: "1px",
+              overflow: "hidden",
             }}
           >
-            Nome
-          </Typography>
+            <label htmlFor="contact-website">Website</label>
+            <input
+              id="contact-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </Box>
 
           <TextField
             variant="outlined"
             fullWidth
+            label="Nome"
+            name="name"
+            autoComplete="name"
+            required
             value={nome}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setNome(e.target.value)
-            }
+            error={Boolean(errors.nome)}
+            helperText={errors.nome}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setNome(e.target.value);
+              if (errors.nome) {
+                setErrors((prev) => ({ ...prev, nome: undefined }));
+              }
+            }}
+            inputProps={{ maxLength: 100 }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
@@ -176,23 +263,25 @@ const ContactForm = () => {
               },
             }}
           />
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              fontSize: { xs: "14px", md: "16px" },
-            }}
-          >
-            Email
-          </Typography>
 
           <TextField
             variant="outlined"
             fullWidth
             type="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            required
             value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
+            error={Boolean(errors.email)}
+            helperText={errors.email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setEmail(e.target.value);
+              if (errors.email) {
+                setErrors((prev) => ({ ...prev, email: undefined }));
+              }
+            }}
+            inputProps={{ maxLength: 254 }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
@@ -202,24 +291,25 @@ const ContactForm = () => {
               },
             }}
           />
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              fontSize: { xs: "14px", md: "16px" },
-            }}
-          >
-            Mensagem
-          </Typography>
 
           <TextField
             variant="outlined"
             multiline
             rows={isMobile ? 3 : 4}
             fullWidth
+            label="Mensagem"
+            name="message"
+            required
             value={message}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setMessage(e.target.value)
-            }
+            error={Boolean(errors.message)}
+            helperText={errors.message}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setMessage(e.target.value);
+              if (errors.message) {
+                setErrors((prev) => ({ ...prev, message: undefined }));
+              }
+            }}
+            inputProps={{ maxLength: 2000 }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
@@ -234,6 +324,7 @@ const ContactForm = () => {
             type="submit"
             variant="contained"
             disabled={isSubmitting}
+            aria-disabled={isSubmitting}
             sx={{
               color: "#fff",
               padding: { xs: "8px 16px", md: "10px 20px" },
