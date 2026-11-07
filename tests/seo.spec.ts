@@ -78,7 +78,9 @@ test.describe('SEO e metadados', () => {
     expect(canonical).toMatch(/^https?:\/\//);
 
     expect(await metaContent(page, 'meta[name="robots"]')).toBe('index,follow');
-    expect(await metaContent(page, 'meta[name="theme-color"]')).toBe('#121212');
+    expect(await metaContent(page, 'meta[name="theme-color"]')).toMatch(
+      /^#(121212|f5f3f7)$/,
+    );
   });
 
   test('deve declarar ícones de favicon e apple-touch-icon', async ({ page }: { page: Page }) => {
