@@ -146,8 +146,8 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 2,
     title: "Performance",
-    goal: "Primeira dobra mais rápida e uma rede de segurança de acessibilidade e regressão visual.",
-    status: "pending",
+    goal: "Primeira dobra mais rápida, com chunks separados e skeleton de altura reservada.",
+    status: "done",
     items: [
       {
         slug: "code-splitting-lazy",
@@ -159,17 +159,6 @@ export const roadmapWaves: RoadmapWave[] = [
         issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["dados-centralizados"],
-      },
-      {
-        slug: "testes-a11y-visual",
-        title: "Testes de a11y e visual",
-        summary:
-          "axe no CI e screenshots por viewport para travar regressões.",
-        category: "Técnico",
-        status: "in-progress",
-        issuesDone: 0,
-        issuesTotal: 4,
-        dependsOn: ["code-splitting-lazy"],
       },
     ],
   },
@@ -236,6 +225,83 @@ export const roadmapWaves: RoadmapWave[] = [
         issuesDone: 0,
         issuesTotal: 4,
         dependsOn: ["seo-metadados", "code-splitting-lazy"],
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "Refactor imersivo",
+    goal: "Uma experiência editorial imersiva: portal cinematográfico, vidro arquitetônico, tipografia Syne e deck físico de releases — sem perder acessibilidade nem performance.",
+    status: "in-progress",
+    items: [
+      {
+        slug: "design-system-immersive",
+        title: "Design system imersivo",
+        summary:
+          "Tokens, tipografia Syne/Inter/Sora, vidro, grão e primitivas com foco e contraste AA.",
+        category: "UX",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 4,
+      },
+      {
+        slug: "portal-hero",
+        title: "Portal hero cinematográfico",
+        summary:
+          "Hero dirigido por scroll: painéis, foto duotônica e wordmark dividido, reversível e com movimento reduzido.",
+        category: "UX",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 4,
+        dependsOn: ["design-system-immersive"],
+      },
+      {
+        slug: "editorial-narrative",
+        title: "Narrativa editorial",
+        summary:
+          "Declaração, faixa clara, roster, trajetória e fechamento com wordmark cortado.",
+        category: "Seção",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 4,
+        dependsOn: ["design-system-immersive"],
+      },
+      {
+        slug: "release-deck",
+        title: "Deck físico de releases",
+        summary:
+          "Capas empilhadas com arrasto, arremesso, teclado, indicadores e conteúdo provisório marcado.",
+        category: "Feature",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 4,
+        dependsOn: ["design-system-immersive"],
+      },
+      {
+        slug: "immersive-preview-page",
+        title: "Página /immersive",
+        summary:
+          "Laboratório navegável com a direção completa, conteúdo real e capas provisórias sinalizadas.",
+        category: "Seção",
+        status: "done",
+        issuesDone: 4,
+        issuesTotal: 4,
+        note: "Entregue em /immersive; link disponível no painel do roadmap e no header em desenvolvimento.",
+      },
+      {
+        slug: "motion-a11y-performance",
+        title: "Movimento, a11y e performance",
+        summary:
+          "Tokens de motion, contrato de movimento reduzido, auditoria axe e orçamento de performance.",
+        category: "Técnico",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 4,
+        dependsOn: [
+          "portal-hero",
+          "editorial-narrative",
+          "release-deck",
+        ],
       },
     ],
   },
