@@ -1,4 +1,4 @@
-import { Box, Link as MuiLink, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, IconButton, Link as MuiLink, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { GitHub } from "@mui/icons-material";
 import { LinkedIn } from "@mui/icons-material";
 import { scroller } from "react-scroll";
@@ -21,9 +21,8 @@ const Footer = () => {
     });
   };
 
-  const handleSocialClick = (platform: string, url: string) => {
+  const handleSocialClick = (platform: string) => {
     trackPortfolioEvents.socialLinkClick(platform);
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -41,7 +40,8 @@ const Footer = () => {
         alignItems: isMobile ? "center" : "flex-start",
         gap: isMobile ? "2rem" : "0",
         lineHeight: 1.6,
-        backgroundColor: "#181823",
+        backgroundColor: theme.palette.background.paper,
+        borderTop: `1px solid ${theme.palette.divider}`,
         textAlign: isMobile ? "center" : "left",
       }}
     >
@@ -57,26 +57,38 @@ const Footer = () => {
           {SITE_CONFIG.AUTHOR}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", gap: 2 }}>
-          <GitHub
-            onClick={() => handleSocialClick('github', SOCIAL_LINKS.GITHUB)}
+          <IconButton
+            component="a"
+            href={SOCIAL_LINKS.GITHUB}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            onClick={() => handleSocialClick('github')}
             sx={{
-              fontSize: isMobile ? "1.4rem" : "1.6rem",
-              cursor: "pointer",
+              color: theme.palette.text.primary,
               "&:hover": {
                 color: theme.palette.primary.main,
               },
             }}
-          />
-          <LinkedIn
-            onClick={() => handleSocialClick('linkedin', SOCIAL_LINKS.LINKEDIN)}
+          >
+            <GitHub sx={{ fontSize: isMobile ? "1.4rem" : "1.6rem" }} />
+          </IconButton>
+          <IconButton
+            component="a"
+            href={SOCIAL_LINKS.LINKEDIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            onClick={() => handleSocialClick('linkedin')}
             sx={{
-              fontSize: isMobile ? "1.4rem" : "1.6rem",
-              cursor: "pointer",
+              color: theme.palette.text.primary,
               "&:hover": {
                 color: theme.palette.primary.main,
               },
             }}
-          />
+          >
+            <LinkedIn sx={{ fontSize: isMobile ? "1.4rem" : "1.6rem" }} />
+          </IconButton>
         </Box>
         <Typography
           color="text.secondary"

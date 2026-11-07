@@ -1,5 +1,13 @@
-import { motion } from "framer-motion";
-import { Typography, Button, CardMedia, Box, useMediaQuery, useTheme } from "@mui/material";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  Typography,
+  Button,
+  CardMedia,
+  Box,
+  alpha,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useInView } from "react-intersection-observer";
 import ImgGithub from "../../img/github-logo.svg";
 import { GitHub } from "@mui/icons-material";
@@ -9,6 +17,7 @@ const GithubBanner = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const shouldReduceMotion = useReducedMotion();
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -26,7 +35,7 @@ const GithubBanner = () => {
           : isTablet 
             ? "3rem 2rem" 
             : "40px 24px",
-        backgroundColor: "white",
+        backgroundColor: theme.palette.background.paper,
         display: "flex",
         flexDirection: isMobile ? "column" : "row",
         alignItems: "center",
@@ -50,7 +59,7 @@ const GithubBanner = () => {
             fontWeight: 800,
             mb: isMobile ? 2 : 3,
             fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
-            color: "black",
+            color: theme.palette.text.primary,
           }}
         >
           Github
@@ -62,7 +71,7 @@ const GithubBanner = () => {
             fontWeight: 400,
             fontSize: isMobile ? "1rem" : "1.1rem",
             mb: isMobile ? 3 : 4,
-            color: "black",
+            color: theme.palette.text.primary,
             maxWidth: "100%",
             lineHeight: 1.6,
           }}
@@ -73,8 +82,8 @@ const GithubBanner = () => {
         </Typography>
 
         <motion.div 
-          whileHover={{ scale: 1.03 }} 
-          whileTap={{ scale: 0.98 }}
+          whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }} 
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           style={{
             display: "flex",
             justifyContent: isMobile ? "center" : "flex-start",
@@ -93,11 +102,14 @@ const GithubBanner = () => {
               fontWeight: 500,
               textTransform: "none",
               fontSize: isMobile ? "0.9rem" : "1rem",
-              color: "black",
-              borderColor: "black",
+              color: theme.palette.text.primary,
+              borderColor: alpha(theme.palette.text.primary, 0.35),
               "&:hover": {
-                borderColor: "#333",
-                backgroundColor: "rgba(0, 0, 0, 0.04)",
+                borderColor: theme.palette.primary.main,
+                backgroundColor: alpha(theme.palette.primary.main, 0.08),
+              },
+              "&:active": {
+                backgroundColor: alpha(theme.palette.primary.main, 0.14),
               },
             }}
           >
