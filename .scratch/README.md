@@ -46,9 +46,8 @@
 
 | # | Slug | Título | Status |
 |---|------|--------|--------|
-| 14 | `secao-projetos` | Seção Projetos (substitui/amplia GitHub) | ready-for-agent |
-| 15 | `secao-toolbox` | Seção Stack/Toolbox visual | ready-for-agent |
-| 16 | `secao-timeline` | Seção Jornada/Carreira (timeline) | ready-for-agent |
+| 14 | `secao-toolbox` | Seção Stack/Toolbox visual | ready-for-agent |
+| 15 | `secao-timeline` | Seção Jornada/Carreira (timeline) | ready-for-agent |
 
 ## 05 — Refactor imersivo (onda 6)
 
@@ -64,7 +63,7 @@
 ## Roadmap sugerido
 
 1. **Quick wins (concluído):** `seo-metadados`, `hierarquia-tipografica`, `dados-centralizados`, `seguranca-contato`, `header-scroll-inteligente`, `progresso-leitura`, `microinteracoes-foco`, `download-cv`, `tema-claro-escuro`, `snackbar-contato`
-2. **Médio prazo:** `code-splitting-lazy` (concluído), `secao-projetos`
+2. **Médio prazo:** `code-splitting-lazy` (concluído)
 3. **Alto impacto:** `pwa-offline`, `secao-toolbox`, `secao-timeline`
 4. **Onda 6 (em andamento):** `immersive-preview-page` entregue; `design-system-immersive`, `portal-hero`, `editorial-narrative`, `release-deck` e `motion-a11y-performance` a implementar. A prévia está em `/immersive`.
 

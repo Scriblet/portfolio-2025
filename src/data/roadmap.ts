@@ -163,25 +163,6 @@ export const roadmapWaves: RoadmapWave[] = [
     ],
   },
   {
-    id: 3,
-    title: "Features",
-    goal: "Conteúdo e prova técnica que aumentam a conversão do portfólio.",
-    status: "pending",
-    items: [
-      {
-        slug: "secao-projetos",
-        title: "Seção de projetos",
-        summary:
-          "Grid curado de 3–6 projetos com stack, links e estado vazio amigável.",
-        category: "Seção",
-        status: "pending",
-        issuesDone: 0,
-        issuesTotal: 4,
-        note: "Não depende da API pública do GitHub.",
-      },
-    ],
-  },
-  {
     id: 4,
     title: "Seções novas",
     goal: "Prova social e narrativa de carreira para completar a história do portfólio.",
