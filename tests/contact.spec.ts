@@ -41,7 +41,7 @@ test.describe("Formulário de contato — POST /api/contact", () => {
     await page.getByRole("button", { name: "Enviar" }).click();
 
     await expect(
-      page.getByText("✅ Mensagem enviada com sucesso!"),
+      page.getByText("Obrigado! Vou responder em breve."),
     ).toBeVisible();
 
     expect(payload).toMatchObject({
@@ -121,7 +121,7 @@ test.describe("Formulário de contato — POST /api/contact", () => {
     await page.getByRole("button", { name: "Enviar" }).click();
 
     await expect(
-      page.getByText("❌ Não foi possível enviar. Tente novamente."),
+      page.getByText("Não foi possível enviar. Tente novamente."),
     ).toBeVisible();
 
     // Retry amigável: conteúdo continua preenchido.
@@ -170,7 +170,7 @@ test.describe("Formulário de contato — POST /api/contact", () => {
     await page.getByRole("button", { name: "Enviar" }).click();
 
     await expect(
-      page.getByText("❌ Não foi possível enviar. Tente novamente."),
+      page.getByText("Não foi possível enviar. Tente novamente."),
     ).toBeVisible();
   });
 
@@ -184,7 +184,7 @@ test.describe("Formulário de contato — POST /api/contact", () => {
     await page.getByRole("button", { name: "Enviar" }).click();
 
     await expect(
-      page.getByText("❌ Não foi possível enviar. Tente novamente."),
+      page.getByText("Não foi possível enviar. Tente novamente."),
     ).toBeVisible();
   });
 });

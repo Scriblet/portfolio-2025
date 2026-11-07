@@ -103,6 +103,11 @@ export const trackPortfolioEvents = {
     trackEvent('focus', 'contact_form', `field_${field}`);
   },
 
+  // Feedback global (snackbar/toast)
+  notificationShown: (severity: string, context: string) => {
+    trackEvent('notification_shown', 'feedback', `${context}_${severity}`);
+  },
+
   // Scroll e Engajamento
   scrollDepth: (percentage: number) => {
     trackEvent('scroll', 'engagement', `depth_${percentage}%`, percentage);

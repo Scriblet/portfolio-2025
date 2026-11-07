@@ -4,16 +4,12 @@ import {
   TextField,
   Button,
   Typography,
-  Alert,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
-
-type FormStatus = {
-  type: "success" | "error" | "info" | "warning";
-  message: string;
-};
+import DownloadCvButton from "../../components/DownloadCvButton";
+import { useSnackbar } from "../../components/feedback/SnackbarProvider";
 
 type FieldErrors = {
   nome?: string;
@@ -26,13 +22,13 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const ContactForm = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { notify } = useSnackbar();
 
   const [email, setEmail] = useState<string>("");
   const [nome, setNome] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [website, setWebsite] = useState<string>(""); // honeypot
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [status, setStatus] = useState<FormStatus | null>(null);
   const [errors, setErrors] = useState<FieldErrors>({});
 
   const validate = (): FieldErrors => {
@@ -65,8 +61,6 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
-
-    setStatus(null);
 
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -102,9 +96,11 @@ const ContactForm = () => {
           (data as { ok?: unknown }).ok === true;
 
         if (accepted) {
-          setStatus({
-            type: "success",
-            message: "✅ Mensagem enviada com sucesso!",
+          notify({
+            severity: "success",
+            title: "Mensagem enviada",
+            message: "Obrigado! Vou responder em breve.",
+            context: "contact",
           });
           setNome("");
           setEmail("");
@@ -115,23 +111,25 @@ const ContactForm = () => {
       }
 
       if (response.status === 429) {
-        setStatus({
-          type: "warning",
-          message:
-            "Muitas tentativas. Aguarde um minuto e tente novamente.",
+        notify({
+          severity: "warning",
+          message: "Muitas tentativas. Aguarde um minuto e tente novamente.",
+          context: "contact",
         });
         return;
       }
 
-      setStatus({
-        type: "error",
-        message: "❌ Não foi possível enviar. Tente novamente.",
+      notify({
+        severity: "error",
+        message: "Não foi possível enviar. Tente novamente.",
+        context: "contact",
       });
     } catch {
       // Falha de rede: mantém os campos preenchidos para permitir retry.
-      setStatus({
-        type: "error",
-        message: "❌ Não foi possível enviar. Tente novamente.",
+      notify({
+        severity: "error",
+        message: "Não foi possível enviar. Tente novamente.",
+        context: "contact",
       });
     } finally {
       setIsSubmitting(false);
@@ -184,13 +182,18 @@ const ContactForm = () => {
             fontSize: { xs: "14px", sm: "15px", md: "16px" },
             marginBottom: { xs: "32px", md: "48px" },
             width: { xs: "100%", md: "60%" },
-            color: "rgb(132, 145, 160)",
+            color: theme.palette.text.secondary,
             fontWeight: 400,
             textAlign: { xs: "center", md: "left" },
           }}
         >
           Se identificou? Minha caixa de entrada está aberta para oportunidades.
         </Typography>
+
+        <DownloadCvButton
+          location="contact"
+          align={isMobile ? "center" : "left"}
+        />
       </Box>
 
       <Box
@@ -257,7 +260,7 @@ const ContactForm = () => {
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
-                  borderColor: "#333",
+                  borderColor: theme.palette.divider,
                 },
                 fontSize: { xs: "14px", md: "16px" },
               },
@@ -285,7 +288,7 @@ const ContactForm = () => {
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
-                  borderColor: "#333",
+                  borderColor: theme.palette.divider,
                 },
                 fontSize: { xs: "14px", md: "16px" },
               },
@@ -313,7 +316,7 @@ const ContactForm = () => {
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
-                  borderColor: "#333",
+                  borderColor: theme.palette.divider,
                 },
                 fontSize: { xs: "14px", md: "16px" },
               },
@@ -337,12 +340,6 @@ const ContactForm = () => {
           >
             {isSubmitting ? "Enviando..." : "Enviar"}
           </Button>
-
-          {status && (
-            <Alert severity={status.type} sx={{ mt: 2 }} component={motion.div}>
-              {status.message}
-            </Alert>
-          )}
         </Box>
       </Box>
     </Box>
