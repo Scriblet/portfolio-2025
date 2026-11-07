@@ -40,6 +40,23 @@ const baseTheme = createTheme({
       fontWeight: 500,
       lineHeight: 1.5,
     },
+    h6: {
+      fontSize: "clamp(0.95rem, 1.8vw, 1.125rem)", // 18px
+      fontWeight: 600,
+      lineHeight: 1.5,
+    },
+    subtitle1: {
+      fontSize: "clamp(0.875rem, 1.5vw, 1rem)", // 16px
+      fontWeight: 500,
+      lineHeight: 1.6,
+      letterSpacing: "0.01em",
+    },
+    subtitle2: {
+      fontSize: "clamp(0.8rem, 1.2vw, 0.875rem)", // 14px
+      fontWeight: 500,
+      lineHeight: 1.6,
+      letterSpacing: "0.01em",
+    },
     body1: {
       fontSize: "clamp(0.875rem, 1.5vw, 1rem)", // 16px (base)
       fontWeight: 400,
@@ -57,6 +74,13 @@ const baseTheme = createTheme({
     caption: {
       fontSize: "clamp(0.7rem, 1vw, 0.75rem)", // 12px
       lineHeight: 1.6,
+    },
+    overline: {
+      fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)", // 12px
+      fontWeight: 600,
+      lineHeight: 1.6,
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
     },
   },
   palette: {
@@ -76,7 +100,7 @@ const baseTheme = createTheme({
     },
     text: {
       primary: "#ffffff",
-      secondary: "#b3b3b3",
+      secondary: "#c2c2c2", // contraste AA sobre #121212 e #1e1e1e
     },
   },
   components: {
