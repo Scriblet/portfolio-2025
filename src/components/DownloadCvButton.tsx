@@ -1,0 +1,111 @@
+import { useEffect, useRef, useState } from "react";
+import { Button, Typography, useTheme } from "@mui/material";
+import DownloadIcon from "@mui/icons-material/Download";
+import { motion } from "framer-motion";
+import { trackPortfolioEvents } from "../services/analytics";
+
+const CV_PATH = `${import.meta.env.BASE_URL}cv/lucas-nonato-cv.pdf`;
+const CV_FILENAME = "Lucas-Nonato-CV.pdf";
+
+type DownloadCvButtonProps = {
+  location: "presentation" | "contact";
+  align?: "left" | "center";
+};
+
+/**
+ * Static CV download. The `download` attribute triggers a direct download when
+ * supported; `target="_blank"` is the fallback for browsers that block it.
+ */
+const DownloadCvButton = ({
+  location,
+  align = "left",
+}: DownloadCvButtonProps) => {
+  const [started, setStarted] = useState(false);
+  const timeoutRef = useRef<number | null>(null);
+  const theme = useTheme();
+
+  useEffect(
+    () => () => {
+      if (timeoutRef.current !== null) {
+        window.clearTimeout(timeoutRef.current);
+      }
+    },
+    [],
+  );
+
+  const handleClick = () => {
+    trackPortfolioEvents.resumeDownload();
+    setStarted(true);
+
+    if (timeoutRef.current !== null) {
+      window.clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => setStarted(false), 2500);
+  };
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: align === "center" ? "center" : "flex-start",
+      }}
+    >
+      <Button
+        component="a"
+        href={CV_PATH}
+        download={CV_FILENAME}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="contained"
+        startIcon={<DownloadIcon />}
+        onClick={handleClick}
+        aria-label="Baixar currículo de Lucas Nonato em PDF"
+        data-testid={`download-cv-button-${location}`}
+        sx={{
+          minHeight: 44,
+          px: { xs: 2.5, md: 3 },
+          py: 1.25,
+          borderRadius: "10px",
+          fontWeight: 600,
+          fontSize: { xs: "0.85rem", md: "0.95rem" },
+          textTransform: "none",
+          color: "#ffffff",
+          backgroundColor: theme.palette.primary.main,
+          transition: "background-color 0.2s ease, box-shadow 0.2s ease",
+          "&:hover": {
+            backgroundColor: theme.palette.primary.dark,
+          },
+          "&:focus-visible": {
+            outline: `3px solid ${
+              theme.palette.mode === "dark" ? "#22d3ee" : "#00695c"
+            }`,
+            outlineOffset: "3px",
+          },
+        }}
+      >
+        Baixar CV
+      </Button>
+
+      <Typography
+        component="span"
+        role="status"
+        aria-live="polite"
+        data-testid={`download-cv-feedback-${location}`}
+        sx={{
+          minHeight: "1.25rem",
+          mt: 0.75,
+          fontSize: "0.75rem",
+          color: "text.secondary",
+        }}
+      >
+        {started ? "Download iniciado" : ""}
+      </Typography>
+    </motion.div>
+  );
+};
+
+export default DownloadCvButton;

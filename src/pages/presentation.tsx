@@ -2,6 +2,7 @@ import ImgPresentation from "../img/presetation.jpg";
 import { CardMedia, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
 import { motion, MotionConfig, useAnimationFrame } from "framer-motion";
 import { useRef, CSSProperties } from "react";
+import DownloadCvButton from "../components/DownloadCvButton";
 import {
   containerVariants,
   imageVariants,
@@ -199,6 +200,20 @@ function Presentation() {
               >
                 UX Designer
               </Typography>
+            </motion.div>
+
+            <motion.div variants={textVariants} style={styles.contentLayer}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: isMobile ? "center" : "flex-start",
+                }}
+              >
+                <DownloadCvButton
+                  location="presentation"
+                  align={isMobile ? "center" : "left"}
+                />
+              </Box>
             </motion.div>
 
             <motion.div
