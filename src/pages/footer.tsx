@@ -3,7 +3,7 @@ import { GitHub } from "@mui/icons-material";
 import { LinkedIn } from "@mui/icons-material";
 import { scroller } from "react-scroll";
 import { trackPortfolioEvents } from "../services/analytics";
-import { SOCIAL_LINKS } from "../config/analytics.config";
+import { SOCIAL_LINKS, SITE_CONFIG } from "../data";
 
 const Footer = () => {
   const theme = useTheme();
@@ -54,7 +54,7 @@ const Footer = () => {
             mb: 2 
           }}
         >
-          Lucas Nonato
+          {SITE_CONFIG.AUTHOR}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", gap: 2 }}>
           <GitHub
@@ -97,7 +97,7 @@ const Footer = () => {
             fontSize: isMobile ? "0.9rem" : "1rem" 
           }}
         >
-          Not Copyright 2025 – Lucas Nonato
+          Not Copyright 2025 – {SITE_CONFIG.AUTHOR}
         </Typography>
       </Box>
 

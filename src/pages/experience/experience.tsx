@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { useMediaQuery, useTheme } from "@mui/material";
+import { experiences } from "../../data";
 import styles from "./experience.module.scss";
 
 const Experience = () => {
@@ -13,42 +15,6 @@ const Experience = () => {
     triggerOnce: true,
     threshold: 0.35,
   });
-
-  // Dados das experiências em um array para mapeamento
-  const experiences = [
-    {
-      id: 1,
-      number: "01",
-      company: "Porto Seguro",
-      position: "Desenv. de Software Full-Stack",
-      description:
-        "Desenvolvo um portal de gestão de sinistros usando TypeScript, RxJS e Angular Material. Foco em performance com lazy loading e pré-carregamento inteligente.",
-    },
-    {
-      id: 2,
-      number: "02",
-      company: "Thoughtworks",
-      position: "Consultant Developer",
-      description:
-        "Atuei como Consultant Developer com React, TypeScript, TDD e NodeJS. Participei de projeto para tornar aplicativo 100% acessível seguindo WCAG",
-    },
-    {
-      id: 3,
-      number: "03",
-      company: "Arco Educação",
-      position: "Desenv. de Software",
-      description:
-        "Desenvolvi sistemas web com AngularJS, C# e ASP.NET MVC. Trabalhei em front-end responsivo e back-end robusto com NHibernate e Dapper.",
-    },
-    {
-      id: 4,
-      number: "04",
-      company: "Finger Consultoria",
-      position: "UX Designer",
-      description:
-        "Fundei a Finger Consultoria para fornecer serviços de consultoria de carreira para estudantes.",
-    },
-  ];
 
   return (
     <Box
@@ -69,21 +35,9 @@ const Experience = () => {
       }}
       ref={ref}
     >
-      <motion.h4
-        initial={{ opacity: 0, x: -60 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{
-          duration: 0.6,
-          ease: "easeOut",
-        }}
-        style={{
-          fontWeight: "300",
-          fontSize: isMobile ? "0.7rem" : "0.75rem",
-          textAlign: isMobile ? "center" : "left",
-        }}
-      ></motion.h4>
-
-      <motion.h1
+      <Typography
+        component={motion.h2}
+        variant="h2"
         initial={{ opacity: 0, x: -60 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{
@@ -91,15 +45,15 @@ const Experience = () => {
           ease: "easeOut",
           delay: 0.2,
         }}
-        style={{
+        sx={{
           maxWidth: isMobile ? "100%" : "40%",
-          fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
           textAlign: isMobile ? "center" : "left",
+          mb: { xs: 3, sm: 4 },
         }}
         data-testid="experience-heading"
       >
         Empresas onde trabalhei e Aprendizados que conquistei
-      </motion.h1>
+      </Typography>
 
       <Box
         data-testid="experience-grid"
@@ -128,7 +82,9 @@ const Experience = () => {
               alignItems: "flex-start",
             }}
           >
-            <motion.h1
+            <Typography
+              component={motion.span}
+              aria-hidden="true"
               initial={{ opacity: 0, x: -60 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{
@@ -137,16 +93,24 @@ const Experience = () => {
                 ease: "easeOut",
               }}
               className={styles.bigNumbers}
-              style={{
-                fontSize: isMobile ? "3rem" : isTablet ? "4rem" : "5rem",
+              sx={{
+                display: "block",
+                fontSize: {
+                  xs: "3rem",
+                  md: "4rem",
+                  lg: "5rem",
+                },
+                lineHeight: 1.1,
                 marginBottom: "1rem",
               }}
               data-testid={`experience-number-${exp.id}`}
             >
               {exp.number}
-            </motion.h1>
+            </Typography>
 
-            <motion.h2
+            <Typography
+              component={motion.h3}
+              variant="h3"
               initial={{ opacity: 0, x: -60 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{
@@ -157,16 +121,19 @@ const Experience = () => {
               className={`${styles["experience-title"]} ${
                 styles[`experience-title--color-${index + 1}`]
               }`}
-              style={{
-                fontSize: isMobile ? "1.2rem" : isTablet ? "1.4rem" : "1.6rem",
+              sx={{
+                marginTop: "1rem",
                 marginBottom: "0.5rem",
+                fontWeight: 700,
               }}
               data-testid={`experience-company-${exp.id}`}
             >
               {exp.company}
-            </motion.h2>
+            </Typography>
 
-            <motion.h3
+            <Typography
+              component={motion.h4}
+              variant="h4"
               initial={{ opacity: 0, x: -60 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{
@@ -174,14 +141,11 @@ const Experience = () => {
                 delay: 0.2,
                 ease: "easeOut",
               }}
-              style={{
-                fontSize: isMobile ? "1rem" : isTablet ? "1.1rem" : "1.2rem",
-                marginBottom: "1rem",
-              }}
+              sx={{ marginBottom: "1rem" }}
               data-testid={`experience-position-${exp.id}`}
             >
               {exp.position}
-            </motion.h3>
+            </Typography>
 
             <motion.p
               initial={{ opacity: 0, x: -60 }}

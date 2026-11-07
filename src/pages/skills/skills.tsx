@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { Box, Typography, useTheme, alpha } from "@mui/material";
 import {
   Code,
@@ -9,72 +10,22 @@ import {
   Cloud,
   Accessibility,
 } from "@mui/icons-material";
+import { skills } from "../../data";
+import type { SkillIconKey } from "../../data";
+
+// Mapa entre a chave de ícone dos dados e o ícone MUI correspondente.
+const skillIcons: Record<SkillIconKey, ReactNode> = {
+  code: <Code fontSize="large" />,
+  design: <DesignServices fontSize="large" />,
+  api: <Api fontSize="large" />,
+  accessibility: <Accessibility fontSize="large" />,
+  storage: <Storage fontSize="large" />,
+  build: <Build fontSize="large" />,
+  cloud: <Cloud fontSize="large" />,
+};
 
 const SkillsSection = () => {
   const theme = useTheme();
-
-  const skills = [
-    {
-      icon: <Code fontSize="large" />,
-      title: "React/Next.js",
-      description: "Desenvolvimento de aplicações modernas e performáticas",
-      tags: ["Componentes", "SSR", "Gerenciamento de Estado", "Hooks"],
-    },
-    {
-      icon: <DesignServices fontSize="large" />,
-      title: "UX Engineering",
-      description: "Ponte entre design e desenvolvimento",
-      tags: ["Figma", "Design Systems", "Prototipação"],
-    },
-    {
-      icon: <Api fontSize="large" />,
-      title: "APIs REST/GraphQL",
-      description: "Integração com back-end e serviços externos",
-      tags: ["Fetch API", "Axios", "Autenticação"],
-    },
-    {
-      icon: <Accessibility fontSize="large" />,
-      title: "Acessibilidade Digital",
-      description: "Desenvolvimento inclusivo seguindo WCAG 2.2 AA",
-      tags: ["Navegação", "Leitores de Tela", "Contraste"],
-    },
-    {
-      icon: <Storage fontSize="large" />,
-      title: "Bancos de Dados",
-      description: "Modelagem e consulta eficiente",
-      tags: ["PostgreSQL", "MongoDB", "SQL"],
-    },
-    {
-      icon: <Build fontSize="large" />,
-      title: "Testes Automatizados",
-      description: "Garantia de qualidade e acessibilidade",
-      tags: ["Testes E2E", "Jest", "Cypress"],
-    },
-    {
-      icon: <Cloud fontSize="large" />,
-      title: "Cloud & DevOps",
-      description: "Deploy e monitoramento de aplicações",
-      tags: ["AWS", "GitHub Actions", "Docker"],
-    },
-    {
-      icon: <Code fontSize="large" />,
-      title: "TypeScript",
-      description: "Tipagem para código mais seguro",
-      tags: ["Interfaces", "Tipos Básicos", "Props"],
-    },
-    {
-      icon: <DesignServices fontSize="large" />,
-      title: "UI Development",
-      description: "Implementação pixel-perfect",
-      tags: ["Material UI", "Responsividade", "Microinterações"],
-    },
-    {
-      icon: <Build fontSize="large" />,
-      title: "Metodologias Ágeis",
-      description: "Trabalho em equipe eficiente",
-      tags: ["Scrum", "Sprints", "Kanban", "Pair Programming", "Scrumban"],
-    },
-  ];
 
   return (
     <Box
@@ -91,12 +42,6 @@ const SkillsSection = () => {
           fontWeight: 800,
           mb: { xs: 3, sm: 4, md: 5, lg: 6 },
           textAlign: "center",
-          fontSize: {
-            xs: "1.5rem",
-            sm: "1.8rem", 
-            md: "2.2rem",
-            lg: "2.5rem"
-          },
           color: theme.palette.text.primary,
           wordWrap: "break-word",
           overflowWrap: "break-word",
@@ -150,7 +95,7 @@ const SkillsSection = () => {
                   mb: { xs: 1, sm: 1.5, md: 2 },
                 }}
               >
-                {skill.icon}
+                {skillIcons[skill.icon]}
               </Box>
 
               <Typography

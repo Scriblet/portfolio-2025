@@ -15,6 +15,7 @@ import {
 import { Link as ScrollLink } from "react-scroll";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
+import { SITE_CONFIG } from "../data";
 
 export default function Header() {
   const theme = useTheme();
@@ -88,7 +89,7 @@ export default function Header() {
             }
           }}
         >
-          Lucas Nonato
+          {SITE_CONFIG.AUTHOR}
         </Typography>
 
         {isMobile ? (

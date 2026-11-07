@@ -20,19 +20,7 @@ export const isGAConfigured = () => {
          GA_CONFIG.ENABLED;
 };
 
-// Configurações do site para SEO e metadados
-export const SITE_CONFIG = {
-  NAME: import.meta.env.VITE_SITE_NAME || 'Lucas Nonato - Portfolio',
-  DESCRIPTION: import.meta.env.VITE_SITE_DESCRIPTION || 'Portfólio de Lucas Nonato - Desenvolvedor Full-Stack',
-  BASE_URL: import.meta.env.VITE_BASE_URL || 'http://localhost:3000',
-  AUTHOR: import.meta.env.VITE_AUTHOR || 'Lucas Nonato',
-  KEYWORDS: import.meta.env.VITE_SEO_KEYWORDS?.split(',') || ['portfolio', 'desenvolvedor', 'full-stack'],
-};
-
-// Links sociais
-export const SOCIAL_LINKS = {
-  GITHUB: import.meta.env.VITE_GITHUB_URL || 'https://github.com/LucasNonato',
-  LINKEDIN: import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/lucasnonato/',
-  INSTAGRAM: import.meta.env.VITE_INSTAGRAM_URL || '',
-  TWITTER: import.meta.env.VITE_TWITTER_URL || '',
-};
+// Configurações do site e links sociais: fonte única em src/data/.
+// Re-exportados aqui para manter compatibilidade com imports existentes.
+export { SITE_CONFIG } from '../data/site';
+export { SOCIAL_LINKS } from '../data/social';

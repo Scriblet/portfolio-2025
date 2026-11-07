@@ -3,6 +3,7 @@ import { Typography, Button, CardMedia, Box, useMediaQuery, useTheme } from "@mu
 import { useInView } from "react-intersection-observer";
 import ImgGithub from "../../img/github-logo.svg";
 import { GitHub } from "@mui/icons-material";
+import { SOCIAL_LINKS } from "../../data";
 
 const GithubBanner = () => {
   const theme = useTheme();
@@ -44,7 +45,7 @@ const GithubBanner = () => {
         }}
       >
         <Typography
-          variant="h1"
+          variant="h2"
           sx={{
             fontWeight: 800,
             mb: isMobile ? 2 : 3,
@@ -80,7 +81,7 @@ const GithubBanner = () => {
           }}
         >
           <Button
-            href="https://github.com/scriblet"
+            href={SOCIAL_LINKS.GITHUB}
             target="_blank"
             rel="noopener noreferrer"
             variant="outlined"
