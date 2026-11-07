@@ -1,0 +1,38 @@
+# PRD — Blog Técnico
+
+Status: ready-for-agent
+Feature slug: `blog-tecnico`
+
+## Problem Statement
+O portfólio atual apresenta trajetórias e habilidades, mas não demonstra profundidade técnica, capacidade de comunicação escrita e pensamento arquitetural. Visitantes que querem avaliar candidatos para vagas técnicas não encontram conteúdo publicado para julgar clareza, atualidade e domínio de stack. A ausência de artigos também desperdiça uma oportunidade de SEO e de posicionamento contínuo, e força o autor a provar competência apenas por links externos genéricos. Precisamos de um modo leve de publicação técnica que caiba em uma SPA estática, sem backend, sem banco e sem fricção de manutenção.
+
+## Solution
+Criar uma seção de Blog Técnico com lista de artigos e leitura individual, alimentada por arquivos Markdown estáticos carregados em build time via import.meta.glob. Cada post declara metadados no frontmatter, é renderizado com suporte a Markdown, e a leitura acontece sem recriar a experiência do portfólio. O design segue o tema escuro e roxo existente, mantém Header, Presentation, Experience, Philosophy, Skills, GithubBanner, ContactForm e Footer como vizinhos, e registra eventos de analytics para leitura e cliques relacionados. Modos de listagem e detalhe funcionam com navegação client-side e links profundos acessíveis por compartilhamento.
+
+## User Stories
+1. Como um(a) recrutador(a) técnico(a), quero navegar pela lista de artigos do blog, para avaliar rapidamente a profundidade e a clareza de escrita do autor antes de convidá-lo para uma entrevista.
+2. Como um(a) visitante que acessa o portfólio pela primeira vez, quero ver a seção de blog integrada ao fluxo da página, para descobrir artigos técnicos sem sair da experiência principal.
+3. Como um(a) leitor(a) interessado(a) em um tema específico, quero abrir um artigo a partir do título na lista, para ler o conteúdo completo na mesma janela e no mesmo tema visual.
+4. Como um(a) usuário(a) que recebe um link compartilhado de um artigo, quero que o endereço do post abra direto o detalhe do artigo, para não perder o contexto do compartilhamento.
+5. Como um(a) autor(a) que publica sem backend, quero escrever artigos em Markdown estático no repositório, para manter o blog leve, versionável e sem custo de hospedagem.
+6. Como um(a) autor(a) que publica com frequência, quero declarar título, data, descrição, tags e tempo de leitura no frontmatter de cada post, para controlar ordem, exibição e SEO sem tocar em código de componente.
+7. Como um(a) leitor(a) em dispositivos móveis, quero que as listas e o artigo tenham tipografia, espaçamento e alvos de toque adequados, para ler confortavelmente em telas pequenas.
+8. Como um(a) visitante curioso(a), quero ver tags, data de publicação e tempo estimado de leitura em cada card do blog, para decidir em segundos o que vale ler agora.
+9. Como um(a) leitor(a) que gostou de um artigo, quero ver sugestões de próximos artigos ou projetos relacionados ao final do post, para continuar explorando o portfólio sem voltar manualmente à lista.
+10. Como um(a) usuário(a) que prefere teclado ou leitor de tela, quero navegação semântica, âncoras acessíveis e heading hierarchy correta no blog, para ler e mover-se pelo conteúdo com autonomia.
+11. Como um(a) pessoa responsável por análise de tráfego, quero eventos de visualização de lista, abertura de artigo e cliques em links relacionados no blog, para medir quais temas geram mais interesse.
+12. Como um(a) autor(a) que atualiza o blog, quero que novos posts apareçam automaticamente após o build a partir dos arquivos Markdown, para não precisar registrar cada post manualmente em um índice de componentes.
+13. Como um(a) visitante sem JavaScript completo ou com falha de carregamento, quero que a lista do blog seja resiliente e exiba um estado vazio amigável, para entender a ausência de conteúdo em vez de uma tela quebrada.
+14. Como um(a) leitor(a) que termina um artigo, quero um caminho claro de volta à lista e ao restante do portfólio, para retomar a navegação sem perder o ponto anterior.
+
+## Implementation Decisions
+Módulo de conteúdo do blog como único seam de dados, consumindo Markdown estático importado em build time via import.meta.glob e expondo um contrato de metadados por post. O contrato deve definir título, slug derivado do filename, data canônica, descrição curta, tags, tempo de leitura calculado, capa opcional e corpo Markdown. A listagem ordena por data decrescente e pode filtrar por tag sem nova rota, priorizando renderização estática e lazy loading dos corpos para manter o bundle inicial pequeno. O detalhe do artigo é uma vista client-side com renderização de Markdown suportando títulos, parágrafos, código inline e blocos, listas, links, citações, tabelas e imagens responsivas, com tipografia alinhada ao sistema de design do tema escuro e ao motion já usados nas demais seções. Navegação e links profundos devem ser compatíveis com o modelo SPA atual em App, sem introducir um router novo apenas por esta feature, mantendo Header e Footer persistentes e registrando rota visitada para analytics. Utilizar o padrão de dados centralizados quando relevante, para que posts, projetos e contatos compartilhem a mesma convenção de módulo de dados, e expor data-testid para os principais pontos de teste. Imagens e assets referenciados a partir dos posts devem seguir a mesma política de assets estáticos do restante do projeto, sem otimização remota ou CDN obrigatória.
+
+## Testing Decisions
+Bom teste é aquele que valida comportamento observável de lista, detalhe e navegação sem acoplar a estrutura interna de componentes ou à ordenação exata de snapshots de Markdown. O essencial é cobrir lista com pelo menos dois posts mockados, abertura do detalhe a partir do card, retorno à lista, profundidade de link compartilhado, estado vazio do blog, metadados exibidos, ordenação por data e navegação por teclado. Prior art é o suite Playwright existente em testes de aplicação, especialmente os cenários de Contact e GitHub que exercitam âncoras entre seções, data-testid e analytics, e devem ser replicados para Blog com novos data-testid como lista de posts, cards de post, corpo do artigo e link voltar. A camada de componente deve validar o parser de frontmatter, a ordenação, o cálculo de tempo de leitura e o renderizador de Markdown com fixtures controladas, enquanto a camada E2E valida a jornada completa de leitura, o tema visual e o evento de analytics de abertura de artigo. Testes devem usar fixtures estáticas mockadas de import.meta.glob em vez de arquivos reais no repositório, para isolar a lógica de Apresentação da escrita de posts e evitar flakiness em datas reais.
+
+## Out of Scope
+CMS ou painel administrativo, banco de dados ou API remota, autenticação e comentários, sistema de busca full-text com índice, newsletter integrada, paginação infinita, múltiplos autores e perfis de autor, editor visual de Markdown, code highlighting custom complexo, view count público, moderação de conteúdo, e categorização hierárquica aninhada.
+
+## Further Notes
+Dependência futura é a centralização de dados no módulo de dados, que deve ser respeitada sem duplicar mocks ou tipos; se outro PRD introduzir o contrato central primeiro, este PRD apenas consome. O blog deve herdar cores, tipografia e motion do tema e das ferramentas de animação já presentes, sem criar variante visual separada. SEO aqui é apenas título, descrição e metadados por post, sem projeto completo de sitemap ou feed RSS. A decisão de import.meta.glob já garante build estático e deploy simples, e qualquer busca avançada pode ser um PRD posterior sobre o mesmo contrato de posts.

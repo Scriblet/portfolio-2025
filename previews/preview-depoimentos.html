@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - Depoimentos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 3rem 1.5rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h2 { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
+    .subtitle { color: #b3b3b3; text-align: center; margin-bottom: 2.5rem; }
+    .testimonial {
+      background: #1e1e1e;
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .quote {
+      font-size: 1.35rem;
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      color: #f8f9fa;
+    }
+    .quote::before {
+      content: '"';
+      font-size: 4rem;
+      color: #673ab7;
+      line-height: 1;
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      opacity: 0.4;
+    }
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #673ab7, #00bcd4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .info h4 { font-size: 1rem; font-weight: 600; }
+    .info p { color: #b3b3b3; font-size: 0.85rem; }
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+    }
+    .dot.active { background: #673ab7; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>O que dizem sobre mim</h2>
+    <p class="subtitle">Depoimentos de colegas e líderes</p>
+    <div class="testimonial">
+      <p class="quote">O Lucas tem uma rara combinação de excelência técnica e sensibilidade de UX. Entrega código limpo e ainda pensa na jornada do usuário.</p>
+      <div class="author">
+        <div class="avatar">ML</div>
+        <div class="info">
+          <h4>Maria Lima</h4>
+          <p>Tech Lead · Thoughtworks</p>
+        </div>
+      </div>
+    </div>
+    <div class="dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+</body>
+</html>

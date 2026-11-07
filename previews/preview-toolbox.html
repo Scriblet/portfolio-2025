@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - Toolbox Visual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 3rem 1.5rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h2 { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
+    .subtitle { color: #b3b3b3; text-align: center; margin-bottom: 2.5rem; }
+    .category { margin-bottom: 2rem; }
+    .category h3 {
+      font-size: 1rem;
+      color: #00bcd4;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .tool {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #1e1e1e;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+    .tool:hover { transform: translateY(-2px); background: rgba(103,58,183,0.12); }
+    .icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Toolbox</h2>
+    <p class="subtitle">Tecnologias e ferramentas que uso no dia a dia</p>
+    <div class="category">
+      <h3>Frontend</h3>
+      <div class="tools">
+        <div class="tool"><div class="icon" style="background:#61dafb;color:#000;">R</div>React</div>
+        <div class="tool"><div class="icon" style="background:#3178c6;">TS</div>TypeScript</div>
+        <div class="tool"><div class="icon" style="background:#646cff;">V</div>Vite</div>
+        <div class="tool"><div class="icon" style="background:#007fff;">M</div>MUI</div>
+      </div>
+    </div>
+    <div class="category">
+      <h3>Backend & Dados</h3>
+      <div class="tools">
+        <div class="tool"><div class="icon" style="background:#68a063;">N</div>Node.js</div>
+        <div class="tool"><div class="icon" style="background:#512bd4;">C</div>C#</div>
+        <div class="tool"><div class="icon" style="background:#336791;">P</div>PostgreSQL</div>
+      </div>
+    </div>
+    <div class="category">
+      <h3>Design & DevOps</h3>
+      <div class="tools">
+        <div class="tool"><div class="icon" style="background:#f24e1e;">F</div>Figma</div>
+        <div class="tool"><div class="icon" style="background:#ff9900;">A</div>AWS</div>
+        <div class="tool"><div class="icon" style="background:#2496ed;">D</div>Docker</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

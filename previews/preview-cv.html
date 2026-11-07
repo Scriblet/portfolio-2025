@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - Download CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 3rem 1.5rem;
+    }
+    .container { max-width: 800px; margin: 0 auto; text-align: center; }
+    h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+    p { color: #b3b3b3; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #fff;
+      color: #121212;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .btn-cv:hover { transform: translateY(-2px); }
+    .cv-preview {
+      margin-top: 3rem;
+      background: #f8f9fa;
+      color: #121212;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: left;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .cv-preview h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .cv-preview p { color: #555; font-size: 0.85rem; margin-bottom: 0.5rem; }
+    .cv-line { height: 8px; background: #e0e0e0; border-radius: 4px; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Baixe meu currículo</h2>
+    <p>Quer uma versão resumida em PDF para compartilhar com seu time de recrutamento?</p>
+    <a href="#" class="btn-cv">
+      <span>↓</span>
+      <span>Download CV (PDF)</span>
+    </a>
+    <div class="cv-preview">
+      <h3>Lucas Nonato</h3>
+      <p>Desenvolvedor Full-Stack · UX Designer</p>
+      <div class="cv-line" style="width: 90%;"></div>
+      <div class="cv-line" style="width: 70%;"></div>
+      <div class="cv-line" style="width: 80%;"></div>
+    </div>
+  </div>
+</body>
+</html>

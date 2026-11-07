@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - Link Preview / SEO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 3rem 1.5rem;
+    }
+    .container { max-width: 700px; margin: 0 auto; }
+    h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+    .comparison { display: flex; flex-direction: column; gap: 2rem; }
+    .card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .card.before { background: #1e1e1e; }
+    .card.after { background: #f8f9fa; color: #121212; }
+    .label {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .before .label { background: rgba(233,93,144,0.15); color: #e95d90; }
+    .after .label { background: rgba(15,163,107,0.15); color: #0fa36b; }
+    .preview-content { padding: 1rem; }
+    .after .preview-content {
+      display: flex;
+      gap: 1rem;
+    }
+    .thumb {
+      width: 120px;
+      height: 90px;
+      background: linear-gradient(135deg, #673ab7, #00bcd4);
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.3);
+      font-weight: 700;
+    }
+    .preview-text h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .preview-text p { font-size: 0.85rem; opacity: 0.7; line-height: 1.4; }
+    .preview-text .url { font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Link Preview no WhatsApp/LinkedIn</h2>
+    <div class="comparison">
+      <div class="card before">
+        <div class="label">Antes</div>
+        <div class="preview-content">
+          <div class="preview-text">
+            <h3>Lucas Nonato</h3>
+            <p>Sem descrição, sem imagem e título genérico.</p>
+            <p class="url">lucasnonato.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="card after">
+        <div class="label">Depois</div>
+        <div class="preview-content">
+          <div class="thumb">LN</div>
+          <div class="preview-text">
+            <h3>Lucas Nonato · Desenvolvedor Full-Stack & UX Designer</h3>
+            <p>Portfólio com projetos, experiências e artigos sobre desenvolvimento web, acessibilidade e design systems.</p>
+            <p class="url">lucasnonato.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

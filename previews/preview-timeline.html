@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - Timeline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 3rem 1.5rem;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    h2 { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
+    .subtitle { color: #b3b3b3; text-align: center; margin-bottom: 3rem; }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #673ab7, #00bcd4);
+    }
+    .item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+    .item::before {
+      content: '';
+      position: absolute;
+      left: -1.4rem;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #673ab7;
+      border: 3px solid #121212;
+    }
+    .year {
+      font-size: 0.8rem;
+      color: #00bcd4;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .item h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .item p { color: #b3b3b3; font-size: 0.9rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Minha Jornada</h2>
+    <p class="subtitle">Trajetória profissional e conquistas</p>
+    <div class="timeline">
+      <div class="item">
+        <div class="year">2024 - Atual</div>
+        <h3>Desenvolvedor Full-Stack · Porto Seguro</h3>
+        <p>Portal de gestão de sinistros com Angular, TypeScript e RxJS.</p>
+      </div>
+      <div class="item">
+        <div class="year">2022 - 2024</div>
+        <h3>Consultant Developer · Thoughtworks</h3>
+        <p>React, TypeScript, TDD e projeto de acessibilidade WCAG.</p>
+      </div>
+      <div class="item">
+        <div class="year">2020 - 2022</div>
+        <h3>Desenvolvedor de Software · Arco Educação</h3>
+        <p>AngularJS, C#, ASP.NET MVC, NHibernate e Dapper.</p>
+      </div>
+      <div class="item">
+        <div class="year">2019</div>
+        <h3>Certificação AWS Cloud Practitioner</h3>
+        <p>Primeira certificação em cloud computing.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

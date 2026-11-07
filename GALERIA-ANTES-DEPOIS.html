@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria Antes/Depois — Portfolio 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #121212;
+      --paper: #1e1e1e;
+      --primary: #673ab7;
+      --primary-light: #9575cd;
+      --secondary: #00bcd4;
+      --text: #f8f9fa;
+      --muted: #b3b3b3;
+      --success: #0fa36b;
+      --danger: #e95d90;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(103,58,183,0.22), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0,188,212,0.14), transparent 40%);
+    }
+    header h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; }
+    header p { color: var(--muted); max-width: 700px; margin: 0 auto; }
+    main { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+    .item { margin-bottom: 4rem; }
+    .item-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .item-header h2 { font-size: 1.4rem; font-weight: 700; }
+    .item-header p { color: var(--muted); font-size: 0.95rem; }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-tecnico { background: rgba(0,188,212,0.14); color: var(--secondary); }
+    .badge-ux { background: rgba(255,179,0,0.14); color: #ffb300; }
+    .badge-feature { background: rgba(103,58,183,0.22); color: var(--primary-light); }
+    .badge-secao { background: rgba(15,163,107,0.16); color: var(--success); }
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 900px) {
+      .comparison { grid-template-columns: 1fr 1fr; }
+    }
+    .box {
+      background: var(--paper);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .box .label {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .antes .label { background: rgba(233,93,144,0.15); color: var(--danger); }
+    .depois .label { background: rgba(15,163,107,0.15); color: var(--success); }
+    .box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .single .box img {
+      max-height: 500px;
+      object-fit: contain;
+      object-position: top;
+      background: var(--paper);
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galeria Antes/Depois</h1>
+    <p>Prints do portfólio atual e simulações visuais das principais propostas do plano de incrementos.</p>
+  </header>
+
+  <main>
+    <!-- Header -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-ux">UX</span>
+        <div>
+          <h2>Header fixo atual</h2>
+          <p>Header sempre visível, sem feedback de progresso.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box antes">
+          <div class="label">Antes</div>
+          <img src="screenshots/antes/header-atual.png" alt="Header atual">
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-ux">UX</span>
+        <div>
+          <h2>Header scroll inteligente + barra de progresso</h2>
+          <p>Esconde ao rolar para baixo, mostra ao rolar para cima e indica progresso de leitura.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/header-scroll-progresso.png" alt="Header scroll inteligente">
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-ux">UX</span>
+        <div>
+          <h2>Seção Experience atual</h2>
+          <p>Conteúdo bom, mas com elemento h4 vazio e sem eyebrow/label de seção.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box antes">
+          <div class="label">Antes</div>
+          <img src="screenshots/antes/experience-atual.png" alt="Experience atual">
+        </div>
+      </div>
+    </div>
+
+    <!-- Projetos -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-secao">Nova Seção</span>
+        <div>
+          <h2>Seção Projetos em Destaque</h2>
+          <p>Substitui/amplia o banner genérico do GitHub por cards reais com demo, código e stack.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/projetos-destaque.png" alt="Projetos em destaque">
+        </div>
+      </div>
+    </div>
+
+    <!-- Depoimentos -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-secao">Nova Seção</span>
+        <div>
+          <h2>Depoimentos / Recomendações</h2>
+          <p>Carrossel de prova social com foto, nome, cargo e citação.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/depoimentos.png" alt="Depoimentos">
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-secao">Nova Seção</span>
+        <div>
+          <h2>Timeline de Carreira</h2>
+          <p>Narrativa visual da trajetória profissional, formação e conquistas.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/timeline-carreira.png" alt="Timeline de carreira">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tema -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-feature">Feature</span>
+        <div>
+          <h2>Toggle Tema Claro/Escuro</h2>
+          <p>Respeita preferência do sistema e persiste escolha no localStorage.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/tema-claro-escuro.png" alt="Tema claro e escuro">
+        </div>
+      </div>
+    </div>
+
+    <!-- Toolbox -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-secao">Nova Seção</span>
+        <div>
+          <h2>Toolbox Visual</h2>
+          <p>Tecnologias agrupadas por categoria com ícones oficiais.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/toolbox-visual.png" alt="Toolbox visual">
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-tecnico">Técnico</span>
+        <div>
+          <h2>SEO / Link Preview</h2>
+          <p>Comparação de como o link aparece no WhatsApp/LinkedIn antes e depois das metatags.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Antes vs Depois</div>
+          <img src="screenshots/depois/link-preview-seo.png" alt="Link preview SEO">
+        </div>
+      </div>
+    </div>
+
+    <!-- Snackbar -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-feature">Feature</span>
+        <div>
+          <h2>Snackbar Global no Contato</h2>
+          <p>Feedback de sucesso/erro via snackbar fixo, em vez de alert dentro do formulário.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/snackbar-contato.png" alt="Snackbar de contato">
+        </div>
+      </div>
+    </div>
+
+    <!-- Download CV -->
+    <div class="item">
+      <div class="item-header">
+        <span class="badge badge-feature">Feature</span>
+        <div>
+          <h2>Download de CV</h2>
+          <p>Botão de download de currículo em PDF com rastreamento de analytics.</p>
+        </div>
+      </div>
+      <div class="comparison single">
+        <div class="box depois">
+          <div class="label">Depois</div>
+          <img src="screenshots/depois/download-cv.png" alt="Download CV">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Galeria gerada automaticamente a partir do plano de incrementos do portfolio-2025.
+  </footer>
+</body>
+</html>

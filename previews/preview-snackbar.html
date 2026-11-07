@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - Snackbar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 3rem 1.5rem;
+      min-height: 100vh;
+    }
+    .container { max-width: 700px; margin: 0 auto; }
+    h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+    .form {
+      background: #1e1e1e;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .field {
+      margin-bottom: 1rem;
+    }
+    .field label { display: block; font-size: 0.85rem; margin-bottom: 0.35rem; color: #b3b3b3; }
+    .field input, .field textarea {
+      width: 100%;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 0.75rem;
+      color: #fff;
+      font-family: inherit;
+    }
+    .field textarea { min-height: 100px; }
+    button {
+      background: #673ab7;
+      color: #fff;
+      border: none;
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .snackbar {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0fa36b;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      font-weight: 500;
+    }
+    .snackbar.error { background: #e95d90; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Feedback Global no Envio</h2>
+    <div class="form">
+      <div class="field">
+        <label>Nome</label>
+        <input type="text" placeholder="Seu nome">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="seu@email.com">
+      </div>
+      <div class="field">
+        <label>Mensagem</label>
+        <textarea placeholder="Sua mensagem"></textarea>
+      </div>
+      <button>Enviar</button>
+    </div>
+  </div>
+  <div class="snackbar">
+    <span>✓</span>
+    <span>Mensagem enviada com sucesso!</span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - Header Scroll + Progresso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      min-height: 200vh;
+    }
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 60%;
+      background: linear-gradient(90deg, #673ab7, #00bcd4);
+      z-index: 2000;
+    }
+    header {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: rgba(11,6,19,0.85);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1500;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .logo { font-weight: 700; font-size: 1.25rem; }
+    nav { display: flex; gap: 1.5rem; }
+    nav a { color: #b3b3b3; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .content {
+      padding-top: 120px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .content p { color: #b3b3b3; line-height: 1.8; margin-bottom: 1rem; }
+    .scroll-indicator {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e1e1e;
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #b3b3b3;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar"></div>
+  <header>
+    <div class="logo">Lucas Nonato</div>
+    <nav>
+      <a href="#">Experiência</a>
+      <a href="#">Projetos</a>
+      <a href="#">Habilidades</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+  <div class="content">
+    <h1>Desenvolvedor Full-Stack</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <p style="margin-top: 4rem; color: #00bcd4; font-weight: 500;">Simulação: usuário rolou 60% da página. Header continua visível e barra de progresso indica leitura.</p>
+  </div>
+  <div class="scroll-indicator">↓ Scroll simulado</div>
+</body>
+</html>
