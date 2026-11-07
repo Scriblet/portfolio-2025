@@ -56,7 +56,9 @@ export default function Header() {
 
   const menuItems = [
     { text: "Experiência", to: "experience" },
+    { text: "Jornada", to: "jornada" },
     { text: "Habilidades", to: "skills" },
+    { text: "Toolbox", to: "toolbox" },
     { text: "Contato", to: "contact" },
   ];
 
@@ -119,6 +121,7 @@ export default function Header() {
       onFocusCapture={handleFocus}
       onBlurCapture={handleBlur}
       sx={{
+        color: theme.palette.text.primary,
         backgroundColor: alpha(
           theme.palette.background.default,
           theme.palette.mode === "dark" ? 0.4 : 0.75,
@@ -210,10 +213,10 @@ export default function Header() {
                 <Button
                   color="inherit"
                   sx={{
-                    mx: 0.5,
-                    px: 2.5,
+                    mx: 0.25,
+                    px: { sm: 1.5, lg: 2.5 },
                     minHeight: "6vh",
-                    fontSize: "1rem",
+                    fontSize: { sm: "0.9rem", lg: "1rem" },
                     letterSpacing: 0.15,
                     "&:hover": {
                       backgroundColor: alpha(theme.palette.text.primary, 0.1),
@@ -234,6 +237,7 @@ export default function Header() {
                   px: 2,
                   minHeight: "6vh",
                   fontSize: "0.9rem",
+                  display: { xs: "none", md: "inline-flex" },
                   "&:hover": {
                     backgroundColor: alpha(theme.palette.text.primary, 0.1),
                   },
@@ -252,6 +256,7 @@ export default function Header() {
                   px: 2,
                   minHeight: "6vh",
                   fontSize: "0.9rem",
+                  display: { xs: "none", md: "inline-flex" },
                   "&:hover": {
                     backgroundColor: alpha(theme.palette.text.primary, 0.1),
                   },

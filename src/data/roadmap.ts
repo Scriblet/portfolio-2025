@@ -165,8 +165,8 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 4,
     title: "Seções novas",
-    goal: "Prova social e narrativa de carreira para completar a história do portfólio.",
-    status: "pending",
+    goal: "Stack visual e narrativa de carreira para completar a história do portfólio.",
+    status: "done",
     items: [
       {
         slug: "secao-toolbox",
@@ -174,8 +174,8 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "Stack agrupada por categoria, com nome textual e logos oficiais.",
         category: "Seção",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
       },
       {
@@ -184,8 +184,8 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "Marcos de formação, certificação e trabalho em ordem cronológica.",
         category: "Seção",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 3,
         issuesTotal: 3,
       },
     ],

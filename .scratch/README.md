@@ -46,8 +46,8 @@
 
 | # | Slug | Título | Status |
 |---|------|--------|--------|
-| 14 | `secao-toolbox` | Seção Stack/Toolbox visual | ready-for-agent |
-| 15 | `secao-timeline` | Seção Jornada/Carreira (timeline) | ready-for-agent |
+| 14 | `secao-toolbox` | Seção Stack/Toolbox visual | done |
+| 15 | `secao-timeline` | Seção Jornada/Carreira (timeline) | done |
 
 ## 05 — Refactor imersivo (onda 6)
 

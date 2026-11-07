@@ -1,6 +1,6 @@
 # PRD — Seção Stack/Toolbox
 
-Status: ready-for-agent
+Status: done
 Feature slug: `secao-toolbox`
 
 ## Problem Statement

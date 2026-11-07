@@ -1,6 +1,6 @@
 # PRD — Seção Jornada/Carreira
 
-Status: ready-for-agent
+Status: done
 Feature slug: `secao-timeline`
 
 ## Problem Statement

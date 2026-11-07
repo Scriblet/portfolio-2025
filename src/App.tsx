@@ -13,8 +13,10 @@ const Immersive = lazy(() => import("./pages/immersive/immersive"));
 // Dobra inicial (Header + Presentation) continua eager; todo o resto vira
 // chunk próprio, baixado logo após o primeiro commit.
 const Experience = lazy(() => import("./pages/experience/experience"));
+const Timeline = lazy(() => import("./pages/timeline/timeline"));
 const PhilosophyBanner = lazy(() => import("./pages/filosofia/filosofia"));
 const SkillsSection = lazy(() => import("./pages/skills/skills"));
+const Toolbox = lazy(() => import("./pages/toolbox/toolbox"));
 const GithubBanner = lazy(() => import("./pages/github/github"));
 const ContactForm = lazy(() => import("./pages/formContact/contactForm"));
 const Footer = lazy(() => import("./pages/footer"));
@@ -43,11 +45,17 @@ const Portfolio = () => (
       <LazySection variant="experience" anchorId="experience">
         <Experience />
       </LazySection>
+      <LazySection variant="timeline" anchorId="jornada">
+        <Timeline />
+      </LazySection>
       <LazySection variant="philosophy">
         <PhilosophyBanner />
       </LazySection>
       <LazySection variant="skills" anchorId="skills">
         <SkillsSection />
+      </LazySection>
+      <LazySection variant="toolbox" anchorId="toolbox">
+        <Toolbox />
       </LazySection>
       <LazySection variant="github">
         <GithubBanner />

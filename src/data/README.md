@@ -13,6 +13,8 @@ estes módulos; nenhum texto de conteúdo deve ficar hardcoded em JSX.
 | GitHub, LinkedIn, Instagram, Twitter | `social.ts` | `SOCIAL_LINKS: SocialLinks` |
 | Projetos (feature futura) | `projects.ts` | `projects: Project[]` |
 | Depoimentos (feature futura) | `testimonials.ts` | `testimonials: Testimonial[]` |
+| Categorias e tecnologias da seção Toolbox | `toolbox.ts` | `toolboxCategories`, `technologies` |
+| Marcos da seção Jornada | `timeline.ts` | `milestones`, `sortedMilestones` |
 | Shape de todos os tipos | `types.ts` | interfaces e unions |
 
 `index.ts` é o barrel: prefira `import { experiences, SITE_CONFIG } from "../data";`.
@@ -26,6 +28,11 @@ estes módulos; nenhum texto de conteúdo deve ficar hardcoded em JSX.
   `cloud`); o mapa de ícones MUI fica em `src/pages/skills/skills.tsx`.
 - **Projeto / depoimento:** preencha os arrays em `projects.ts` /
   `testimonials.ts` quando as seções correspondentes forem implementadas.
+- **Tecnologia do Toolbox:** acrescente um objeto em `technologies` com
+  `categoryId` existente e `icon` válido de `ToolboxIconKey`; o mapa de logos
+  fica em `src/pages/toolbox/toolbox.tsx`.
+- **Marco da Jornada:** acrescente um objeto em `milestones` com `date`
+  ordenável (ex.: `"2024-01"`). A timeline reordena sozinha.
 
 ## Validação
 
