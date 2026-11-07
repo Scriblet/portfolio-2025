@@ -55,10 +55,10 @@ const Portfolio = () => (
       <LazySection variant="contact" anchorId="contact">
         <ContactForm />
       </LazySection>
-      <LazySection variant="footer">
-        <Footer />
-      </LazySection>
     </main>
+    <LazySection variant="footer">
+      <Footer />
+    </LazySection>
   </div>
 );
 

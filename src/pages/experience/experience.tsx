@@ -6,10 +6,29 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { experiences } from "../../data";
 import styles from "./experience.module.scss";
 
+/**
+ * Variantes acessíveis das cores de destaque por modo.
+ *
+ * O SCSS usa as cores da identidade, que não passam no contraste AA em ambos
+ * os fundos: sobre `#f5f3f7` verde/rosa ficavam em ~2.9:1 e sobre `#121212`
+ * o roxo ficava em ~2:1. Estas variantes mantêm a matiz e garantem ≥ 4.5:1
+ * (o título pode renderizar em 13px no mobile, então o alvo é o de texto
+ * normal, não o de texto grande).
+ */
+const TITLE_COLOR_OVERRIDES: Record<"light" | "dark", Array<string | undefined>> = {
+  light: ["#2f6ea8", "#0b7a50", "#800080", "#b02a5b"],
+  dark: [undefined, undefined, "#ba68c8", undefined],
+};
+
 const Experience = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const isLightMode = theme.palette.mode === "light";
+  // Textos auxiliares do SCSS (#8491a0) só passam no fundo escuro.
+  const secondaryTextColor = isLightMode
+    ? theme.palette.text.secondary
+    : undefined;
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -93,6 +112,7 @@ const Experience = () => {
                 ease: "easeOut",
               }}
               className={styles.bigNumbers}
+              style={{ color: secondaryTextColor }}
               sx={{
                 display: "block",
                 fontSize: {
@@ -121,6 +141,11 @@ const Experience = () => {
               className={`${styles["experience-title"]} ${
                 styles[`experience-title--color-${index + 1}`]
               }`}
+              style={{
+                color: TITLE_COLOR_OVERRIDES[
+                  isLightMode ? "light" : "dark"
+                ][index],
+              }}
               sx={{
                 marginTop: "1rem",
                 marginBottom: "0.5rem",
@@ -160,6 +185,7 @@ const Experience = () => {
                 fontSize: isMobile ? "0.9rem" : "1rem",
                 lineHeight: "1.6",
                 flex: 1,
+                color: secondaryTextColor,
               }}
               data-testid={`experience-description-${exp.id}`}
             >

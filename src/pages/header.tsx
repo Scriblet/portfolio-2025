@@ -89,6 +89,16 @@ export default function Header() {
           >
             Roadmap (dev)
           </Button>
+          <Button
+            component={RouterLink}
+            to="/immersive"
+            fullWidth
+            variant="outlined"
+            size="small"
+            sx={{ mt: 1 }}
+          >
+            Prévia imersiva (dev)
+          </Button>
         </Box>
       )}
     </Box>
@@ -135,6 +145,10 @@ export default function Header() {
             textDecoration: "none",
             color: "inherit",
             cursor: "pointer",
+            // Alvo de toque de 44px de altura no nome/atalho para o topo.
+            display: "inline-flex",
+            alignItems: "center",
+            minHeight: "44px",
             fontWeight: 700,
             fontSize: {
               xs: "1.2rem",
@@ -226,6 +240,24 @@ export default function Header() {
                 }}
               >
                 Roadmap
+              </Button>
+            )}
+            {isDev && (
+              <Button
+                component={RouterLink}
+                to="/immersive"
+                color="inherit"
+                sx={{
+                  mx: 0.5,
+                  px: 2,
+                  minHeight: "6vh",
+                  fontSize: "0.9rem",
+                  "&:hover": {
+                    backgroundColor: alpha(theme.palette.text.primary, 0.1),
+                  },
+                }}
+              >
+                Imersivo
               </Button>
             )}
             <ThemeToggle />

@@ -168,7 +168,7 @@ export const SnackbarProvider = ({ children }: { children: ReactNode }) => {
           current ? AUTO_HIDE_DURATION[current.severity] : undefined
         }
         onClose={handleClose}
-        onExited={handleExited}
+        slotProps={{ transition: { onExited: handleExited } }}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: isMobile ? "center" : "right",

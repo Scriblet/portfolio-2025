@@ -197,7 +197,8 @@ export const createAppTheme = (mode: ColorMode): Theme => {
             },
             "&:focus-visible, &.Mui-focusVisible": focus,
             "@media (max-width: 600px)": {
-              minHeight: "40px",
+              // Alvo de toque mínimo (WCAG 2.5.5 / PRD): 44×44 no mobile.
+              minHeight: "44px",
               fontSize: "0.875rem",
             },
             "@media (prefers-reduced-motion: reduce)": reducedMotion,
@@ -225,6 +226,10 @@ export const createAppTheme = (mode: ColorMode): Theme => {
       MuiIconButton: {
         styleOverrides: {
           root: ({ theme }) => ({
+            // Ícones (tema, menu, redes sociais) também precisam de 44×44
+            // de área clicável no mobile.
+            minWidth: "44px",
+            minHeight: "44px",
             transition,
             "&:hover": {
               backgroundColor: alpha(theme.palette.primary.main, 0.12),

@@ -100,6 +100,9 @@ const SkillsSection = () => {
 
               <Typography
                 variant="h6"
+                // O card é visualmente um h6, mas semanticamente é nível 3,
+                // logo abaixo do h2 da seção — evita o salto h2 → h6.
+                aria-level={3}
                 sx={{
                   fontWeight: 700,
                   mb: 1,

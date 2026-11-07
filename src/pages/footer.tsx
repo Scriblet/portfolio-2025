@@ -25,6 +25,20 @@ const Footer = () => {
     trackPortfolioEvents.socialLinkClick(platform);
   };
 
+  // Links de navegação com área de toque de 44×44 (WCAG 2.5.5).
+  const footerLinkSx = {
+    display: "inline-flex",
+    alignItems: "center",
+    minHeight: "44px",
+    minWidth: "44px",
+    fontWeight: 400,
+    fontSize: isMobile ? "0.9rem" : "1rem",
+    textDecoration: "none",
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
+  };
+
   return (
     <Box
       component="footer"
@@ -115,6 +129,7 @@ const Footer = () => {
 
       <Box
         component="nav"
+        aria-label="Navegação do rodapé"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -126,14 +141,7 @@ const Footer = () => {
           href="#home"
           onClick={handleSmoothScroll("home")}
           color="inherit"
-          sx={{ 
-            fontWeight: 400, 
-            fontSize: isMobile ? "0.9rem" : "1rem", 
-            textDecoration: "none",
-            "&:hover": {
-              color: theme.palette.primary.main,
-            },
-          }}
+          sx={footerLinkSx}
         >
           Home
         </MuiLink>
@@ -141,14 +149,7 @@ const Footer = () => {
           href="#experience"
           onClick={handleSmoothScroll("experience")}
           color="inherit"
-          sx={{ 
-            fontWeight: 400, 
-            fontSize: isMobile ? "0.9rem" : "1rem", 
-            textDecoration: "none",
-            "&:hover": {
-              color: theme.palette.primary.main,
-            },
-          }}
+          sx={footerLinkSx}
         >
           Experiência
         </MuiLink>
@@ -156,14 +157,7 @@ const Footer = () => {
           href="#skills"
           onClick={handleSmoothScroll("skills")}
           color="inherit"
-          sx={{ 
-            fontWeight: 400, 
-            fontSize: isMobile ? "0.9rem" : "1rem", 
-            textDecoration: "none",
-            "&:hover": {
-              color: theme.palette.primary.main,
-            },
-          }}
+          sx={footerLinkSx}
         >
           Habilidades
         </MuiLink>

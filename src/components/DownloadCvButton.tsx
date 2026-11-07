@@ -63,7 +63,7 @@ const DownloadCvButton = ({
         variant="contained"
         startIcon={<DownloadIcon />}
         onClick={handleClick}
-        aria-label="Baixar currículo de Lucas Nonato em PDF"
+        aria-label="Baixar CV de Lucas Nonato em PDF"
         data-testid={`download-cv-button-${location}`}
         sx={{
           minHeight: 44,
