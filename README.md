@@ -347,12 +347,12 @@ Fonte única de verdade:
 
 | Token | Dark | Light |
 |---|---|---|
-| `--void` | `#090b0d` | `#f4f4f5` |
-| `--void-2` | `#101317` | `#ffffff` |
-| `--paper` | `#f1eee8` | `#18181b` |
-| `--paper-2` | `#a8afb2` | `#52525b` |
-| `--emerald` | `#34d399` | `#047857` |
-| `--amber` | `#e8913c` | `#b45309` |
+| `--void` | `#080411` | `#f8f6fa` |
+| `--void-2` | `#110822` | `#ffffff` |
+| `--paper` | `#f4eefa` | `#140d20` |
+| `--paper-2` | `#b3a6c9` | `#584d6b` |
+| `--neon-violet` | `#a324ff` | `#7e18d6` |
+| `--magenta-glow` | `#dd3df5` | `#bc1ecf` |
 
 O `ColorModeProvider` aplica `data-mui-color-scheme` no `<html>`; o bloco
 `[data-mui-color-scheme="light"]` troca os tokens sem duplicar CSS.
