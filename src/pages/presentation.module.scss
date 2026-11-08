@@ -473,3 +473,70 @@
     transition: none;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Tema claro — o hero acompanha o restante do site                    */
+/* ------------------------------------------------------------------ */
+
+/*
+ * O `.hero` fixa tokens escuros localmente (linhas 2–17), então no light
+ * mode ele não herda os valores claros de `[data-mui-color-scheme="light"]
+ * .app-container`. Aqui invertemos tokens e elementos de cor fixa (foto,
+ * tinta, vinheta e cortinas) para o hero ficar branco como o site.
+ */
+:global([data-mui-color-scheme="light"]) .hero {
+  --void: #f7f5fa;
+  --void-2: #ffffff;
+  --paper: #181023;
+  --paper-2: #5a526e;
+  --muted: #5a526e;
+  --magenta: #a21caf;
+  --magenta-soft: rgba(162, 28, 175, 0.12);
+  --violet: #6d28d9;
+  --hairline: rgba(24, 16, 35, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(24, 24, 27, 0.08);
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+
+  background: var(--void);
+
+  .heroImage {
+    filter: saturate(0.8) contrast(1.05) brightness(0.8);
+  }
+
+  .heroTint {
+    background: linear-gradient(
+      115deg,
+      rgba(9, 11, 13, 0.42) 0%,
+      rgba(9, 11, 13, 0.3) 55%,
+      rgba(9, 11, 13, 0.14) 100%
+    );
+    mix-blend-mode: normal;
+  }
+
+  .heroVignette {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(247, 245, 250, 0.9) 0%,
+        rgba(247, 245, 250, 0.5) 48%,
+        transparent 74%
+      ),
+      linear-gradient(
+        0deg,
+        rgba(247, 245, 250, 0.85) 0%,
+        transparent 46%
+      ),
+      radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        transparent 42%,
+        rgba(247, 245, 250, 0.7) 100%
+      );
+  }
+
+  .panel {
+    background: rgba(247, 245, 250, 0.94);
+  }
+}
