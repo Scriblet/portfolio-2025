@@ -153,13 +153,13 @@ export const createAppTheme = (mode: ColorMode): Theme => {
           },
           a: {
             color: isDark
-              ? designTokens.colors.emerald
-              : designTokens.colors.deepTeal,
+              ? designTokens.colors.neonViolet
+              : designTokens.colors.violetAccent,
           },
           "::selection": {
             backgroundColor: isDark
-              ? "rgba(52, 211, 153, 0.28)"
-              : "rgba(46, 107, 114, 0.22)",
+              ? "rgba(163, 36, 255, 0.28)"
+              : "rgba(126, 24, 214, 0.22)",
           },
           html: {
             fontSize: "16px", // Base para cálculo do rem
@@ -206,12 +206,12 @@ export const createAppTheme = (mode: ColorMode): Theme => {
           root: {
             backgroundImage: "none",
             backgroundColor: isDark
-              ? "rgba(9, 11, 13, 0.62)"
-              : "rgba(244, 244, 245, 0.82)",
+              ? "rgba(8, 4, 17, 0.62)"
+              : "rgba(248, 246, 250, 0.82)",
             backdropFilter: "blur(48px) saturate(190%)",
             WebkitBackdropFilter: "blur(48px) saturate(190%)",
             borderBottom: `1px solid ${
-              isDark ? "rgba(255, 255, 255, 0.14)" : "rgba(24, 24, 27, 0.1)"
+              isDark ? "rgba(255, 255, 255, 0.14)" : "rgba(20, 13, 32, 0.1)"
             }`,
             boxShadow: "none",
           },
@@ -222,7 +222,7 @@ export const createAppTheme = (mode: ColorMode): Theme => {
           root: {
             backgroundImage: "none",
             backgroundColor: isDark
-              ? "rgba(16, 19, 23, 0.92)"
+              ? "rgba(17, 8, 34, 0.92)"
               : "rgba(255, 255, 255, 0.92)",
             backdropFilter: "blur(24px) saturate(150%)",
             WebkitBackdropFilter: "blur(24px) saturate(150%)",
@@ -233,8 +233,8 @@ export const createAppTheme = (mode: ColorMode): Theme => {
         styleOverrides: {
           paper: {
             backgroundColor: isDark
-              ? "rgba(9, 11, 13, 0.96)"
-              : "rgba(244, 244, 245, 0.96)",
+              ? "rgba(8, 4, 17, 0.96)"
+              : "rgba(248, 246, 250, 0.96)",
             backdropFilter: "blur(24px) saturate(150%)",
             WebkitBackdropFilter: "blur(24px) saturate(150%)",
           },
@@ -244,8 +244,8 @@ export const createAppTheme = (mode: ColorMode): Theme => {
         styleOverrides: {
           root: {
             borderColor: isDark
-              ? "rgba(241, 238, 232, 0.13)"
-              : "rgba(24, 24, 27, 0.12)",
+              ? "rgba(244, 238, 250, 0.13)"
+              : "rgba(20, 13, 32, 0.12)",
           },
         },
       },
@@ -350,9 +350,9 @@ export const createAppTheme = (mode: ColorMode): Theme => {
             textTransform: "uppercase",
             backgroundColor: isDark
               ? "rgba(255, 255, 255, 0.08)"
-              : "rgba(24, 24, 27, 0.05)",
+              : "rgba(20, 13, 32, 0.05)",
             border: `1px solid ${
-              isDark ? "rgba(255, 255, 255, 0.16)" : "rgba(24, 24, 27, 0.12)"
+              isDark ? "rgba(255, 255, 255, 0.16)" : "rgba(20, 13, 32, 0.12)"
             }`,
           },
         },
@@ -362,22 +362,22 @@ export const createAppTheme = (mode: ColorMode): Theme => {
           root: {
             backgroundColor: isDark
               ? "rgba(255, 255, 255, 0.04)"
-              : "rgba(24, 24, 27, 0.03)",
+              : "rgba(20, 13, 32, 0.03)",
             borderRadius: "14px",
             "& .MuiOutlinedInput-notchedOutline": {
               borderColor: isDark
                 ? "rgba(255, 255, 255, 0.14)"
-                : "rgba(24, 24, 27, 0.14)",
+                : "rgba(20, 13, 32, 0.14)",
             },
             "&:hover .MuiOutlinedInput-notchedOutline": {
               borderColor: isDark
                 ? "rgba(255, 255, 255, 0.24)"
-                : "rgba(24, 24, 27, 0.24)",
+                : "rgba(20, 13, 32, 0.24)",
             },
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               borderColor: isDark
-                ? designTokens.colors.amber
-                : designTokens.colors.deepTeal,
+                ? designTokens.colors.magentaGlow
+                : designTokens.colors.magentaAccent,
               borderWidth: "1px",
             },
           },
@@ -413,7 +413,7 @@ export const createAppTheme = (mode: ColorMode): Theme => {
             borderRadius: "24px",
             backgroundImage: "none",
             border: `1px solid ${
-              isDark ? "rgba(255, 255, 255, 0.2)" : "rgba(24, 24, 27, 0.1)"
+              isDark ? "rgba(255, 255, 255, 0.2)" : "rgba(20, 13, 32, 0.1)"
             }`,
             backdropFilter: "blur(48px) saturate(190%)",
             WebkitBackdropFilter: "blur(48px) saturate(190%)",

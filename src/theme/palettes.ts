@@ -18,8 +18,8 @@ export const THEME_COLOR_META: Record<ColorMode, string> = {
  * quanto sobre superfícies elevadas (cards/papers).
  */
 export const FOCUS_RING_COLOR: Record<ColorMode, string> = {
-  dark: designTokens.colors.emerald,
-  light: designTokens.colors.deepTeal,
+  dark: designTokens.colors.neonViolet,
+  light: designTokens.colors.violetAccent,
 };
 
 /**
@@ -44,15 +44,15 @@ export const isColorMode = (value: unknown): value is ColorMode =>
 export const darkPalette: PaletteOptions = {
   mode: "dark",
   primary: {
-    main: designTokens.colors.emerald,
+    main: designTokens.colors.neonViolet,
     contrastText: designTokens.colors.void,
   },
   secondary: {
-    main: designTokens.colors.amber,
+    main: designTokens.colors.magentaGlow,
     contrastText: designTokens.colors.void,
   },
   warning: {
-    main: designTokens.colors.amber,
+    main: designTokens.colors.magentaGlow,
   },
   background: {
     default: designTokens.colors.void,
@@ -62,25 +62,25 @@ export const darkPalette: PaletteOptions = {
     primary: designTokens.colors.paper,
     secondary: designTokens.colors.paper2,
   },
-  divider: "rgba(241, 238, 232, 0.13)",
+  divider: "rgba(244, 238, 250, 0.13)",
 };
 
 /**
- * Paleta clara: mesma linguagem imersiva sobre papel. O teal profundo garante
- * contraste AA para links e botões; o âmbar permanece como destaque editorial.
+ * Paleta clara: mesma linguagem imersiva sobre papel. O violeta garante
+ * contraste AA para links e botões; o magenta permanece como destaque editorial.
  */
 export const lightPalette: PaletteOptions = {
   mode: "light",
   primary: {
-    main: designTokens.colors.deepTeal,
+    main: designTokens.colors.violetAccent,
     contrastText: designTokens.colors.lightSurface,
   },
   secondary: {
-    main: "#b45309",
+    main: designTokens.colors.magentaAccent,
     contrastText: designTokens.colors.lightSurface,
   },
   warning: {
-    main: "#b45309",
+    main: designTokens.colors.magentaAccent,
   },
   background: {
     default: designTokens.colors.lightBg,
@@ -90,7 +90,7 @@ export const lightPalette: PaletteOptions = {
     primary: designTokens.colors.lightText,
     secondary: designTokens.colors.lightText2,
   },
-  divider: "rgba(24, 24, 27, 0.12)",
+  divider: "rgba(20, 13, 32, 0.12)",
 };
 
 export const getPalette = (mode: ColorMode): PaletteOptions =>

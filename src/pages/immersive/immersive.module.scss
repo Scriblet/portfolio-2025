@@ -15,7 +15,7 @@
 }
 
 .page :focus-visible {
-  outline: 2px solid var(--emerald);
+  outline: 2px solid var(--neon-violet);
   outline-offset: 3px;
 }
 
@@ -32,7 +32,7 @@
 
 .skipLink {
   position: absolute;
-  top: -80px;
+  top: 20px;
   left: 24px;
   z-index: 1000;
   padding: 10px 16px;
@@ -43,10 +43,15 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: 8px;
-  transition: top 0.2s var(--ease-out);
+  opacity: 0;
+  transform: translateY(-150%);
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
 
   &:focus {
-    top: 20px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 }
 
@@ -97,7 +102,7 @@
 }
 
 .navPeriod {
-  color: var(--amber);
+  color: var(--magenta-glow);
 }
 
 .navLinks {
@@ -120,7 +125,7 @@
 
   &:hover,
   &:focus {
-    color: var(--amber);
+    color: var(--magenta-glow);
   }
 }
 
@@ -271,7 +276,7 @@
 .dotAmber {
   top: clamp(110px, 16vh, 170px);
   left: clamp(18px, 4vw, 56px);
-  background: var(--amber);
+  background: var(--magenta-glow);
   transform: translate(
     calc(-6vw * var(--p)),
     calc(-4vh * var(--p))
@@ -281,7 +286,7 @@
 .dotEmerald {
   bottom: clamp(80px, 14vh, 150px);
   right: clamp(18px, 4vw, 56px);
-  background: var(--emerald);
+  background: var(--neon-violet);
   transform: translate(
     calc(6vw * var(--p)),
     calc(4vh * var(--p))
@@ -450,7 +455,7 @@
   right: 12px;
   width: 6px;
   height: 6px;
-  background: var(--emerald);
+  background: var(--neon-violet);
   border-radius: 50%;
 }
 
@@ -667,7 +672,7 @@
 
 .aboutHighlight {
   font-style: normal;
-  color: var(--amber);
+  color: var(--magenta-glow);
 }
 
 .aboutRule {
@@ -883,7 +888,7 @@
   width: 10px;
   height: 10px;
   background: var(--void-2);
-  border: 2px solid var(--emerald);
+  border: 2px solid var(--neon-violet);
   border-radius: 50%;
 }
 
@@ -893,7 +898,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--emerald);
+  color: var(--neon-violet);
   white-space: nowrap;
 }
 
@@ -1048,7 +1053,7 @@
     transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
 
     &:focus {
-      border-color: var(--amber);
+      border-color: var(--magenta-glow);
       background: rgba(255, 255, 255, 0.07);
       box-shadow: 0 0 0 4px rgba(232, 145, 60, 0.12);
     }
@@ -1088,7 +1093,7 @@
 }
 
 .formSuccess {
-  color: var(--emerald);
+  color: var(--neon-violet);
 }
 
 .formSubmit {
@@ -1367,5 +1372,220 @@
     --p: 0.78;
 
     position: relative;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero clean — paleta fixa, imune ao tema claro                      */
+/* ------------------------------------------------------------------ */
+
+.heroClean {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  background: #080411;
+  color: #f4eefa;
+  overflow: hidden;
+}
+
+.heroCleanStage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.heroCleanPhoto {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroCleanImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.65) contrast(1.08) brightness(0.68);
+}
+
+.heroCleanTint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    rgba(46, 107, 114, 0.26) 0%,
+    rgba(9, 11, 13, 0.55) 55%,
+    rgba(232, 145, 60, 0.16) 100%
+  );
+  mix-blend-mode: overlay;
+}
+
+.heroCleanVignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 45%,
+    rgba(9, 11, 13, 0.9) 100%
+  );
+}
+
+.heroCleanWordmark {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 16px);
+  max-width: min(96vw, 1100px);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 5.6rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: #f4eefa;
+  text-align: center;
+}
+
+.heroCleanWordFirst,
+.heroCleanWordSecond {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.heroCleanMetaTopLeft,
+.heroCleanMetaTopRight,
+.heroCleanMetaBottomLeft,
+.heroCleanMetaBottomRight {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 150px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(48px) saturate(190%);
+  -webkit-backdrop-filter: blur(48px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.heroCleanMetaTopLeft {
+  top: clamp(96px, 13vh, 150px);
+  left: clamp(18px, 4vw, 56px);
+}
+
+.heroCleanMetaTopRight {
+  top: clamp(96px, 13vh, 150px);
+  right: clamp(18px, 4vw, 56px);
+  text-align: right;
+}
+
+.heroCleanMetaBottomLeft {
+  bottom: clamp(80px, 12vh, 130px);
+  left: clamp(18px, 4vw, 56px);
+}
+
+.heroCleanMetaBottomRight {
+  bottom: clamp(80px, 12vh, 130px);
+  right: clamp(18px, 4vw, 56px);
+  text-align: right;
+}
+
+.heroCleanMetaDot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 6px;
+  height: 6px;
+  background: #a324ff;
+  border-radius: 50%;
+}
+
+.heroCleanMetaLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b3a6c9;
+}
+
+.heroCleanMetaValue {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #f4eefa;
+  letter-spacing: -0.01em;
+}
+
+.heroCleanScrollCue {
+  position: absolute;
+  right: clamp(18px, 4vw, 56px);
+  bottom: clamp(22px, 4vh, 48px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heroCleanScrollCueLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, #f4eefa, transparent);
+  opacity: 0.5;
+}
+
+.heroCleanScrollCueLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b3a6c9;
+}
+
+@media (max-width: 760px) {
+  .heroCleanWordmark {
+    font-size: clamp(2.6rem, 11.5vw, 6rem);
+    gap: 2.5vw;
+  }
+
+  .heroCleanMetaTopRight,
+  .heroCleanMetaBottomRight {
+    display: none;
+  }
+
+  .heroCleanMetaTopLeft {
+    top: 84px;
+  }
+
+  .heroCleanMetaLabel {
+    font-size: 8px;
+  }
+
+  .heroCleanMetaValue {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .heroCleanMetaBottomLeft,
+  .heroCleanScrollCueLine {
+    display: none;
+  }
+
+  .heroCleanScrollCue {
+    right: auto;
+    left: clamp(18px, 4vw, 56px);
+    bottom: 30px;
+  }
+
+  .heroCleanWordmark {
+    font-size: clamp(2.6rem, 10.5vw, 5rem);
   }
 }

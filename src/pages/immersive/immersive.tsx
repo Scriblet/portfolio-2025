@@ -10,7 +10,7 @@ import '@fontsource/syne/latin-800.css';
 import { useEffect, useRef } from 'react';
 import { useRevealOnScroll } from './hooks';
 import ImmersiveNav from './ImmersiveNav';
-import PortalHero from './PortalHero';
+import CleanHero from './CleanHero';
 import { About, Contact, Experience, Skills } from './sections';
 import { GrainOverlay } from './ui';
 import styles from './immersive.module.scss';
@@ -54,7 +54,7 @@ const Immersive = () => {
       <ImmersiveNav />
 
       <main id="immersive-main" tabIndex={-1}>
-        <PortalHero />
+        <CleanHero />
         <About />
         <Skills />
         <Experience />

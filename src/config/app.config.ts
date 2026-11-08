@@ -29,8 +29,8 @@ export const DEV_CONFIG = {
 export const PWA_CONFIG = {
   NAME: import.meta.env.VITE_PWA_NAME || 'Lucas Nonato Portfolio',
   SHORT_NAME: import.meta.env.VITE_PWA_SHORT_NAME || 'LN Portfolio',
-  THEME_COLOR: import.meta.env.VITE_PWA_THEME_COLOR || '#090b0d',
-  BACKGROUND_COLOR: import.meta.env.VITE_PWA_BACKGROUND_COLOR || '#090b0d',
+  THEME_COLOR: import.meta.env.VITE_PWA_THEME_COLOR || '#080411',
+  BACKGROUND_COLOR: import.meta.env.VITE_PWA_BACKGROUND_COLOR || '#080411',
 };
 
 // Configurações de API
@@ -42,8 +42,8 @@ export const API_CONFIG = {
 
 // Configurações de tema
 export const THEME_CONFIG = {
-  PRIMARY_COLOR: import.meta.env.VITE_PRIMARY_COLOR || '#34d399',
-  SECONDARY_COLOR: import.meta.env.VITE_SECONDARY_COLOR || '#e8913c',
+  PRIMARY_COLOR: import.meta.env.VITE_PRIMARY_COLOR || '#a324ff',
+  SECONDARY_COLOR: import.meta.env.VITE_SECONDARY_COLOR || '#dd3df5',
 };
 
 // Verificar qual serviço de email está configurado

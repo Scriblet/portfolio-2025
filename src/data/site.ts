@@ -23,6 +23,6 @@ export const SITE_CONFIG: SiteConfig = {
     import.meta.env.VITE_SITE_TAGLINE ||
     'Construo produtos digitais de ponta a ponta, com foco em acessibilidade, arquitetura e resultados reais',
   LOCALE: import.meta.env.VITE_SITE_LOCALE || 'pt-BR',
-  THEME_COLOR: import.meta.env.VITE_THEME_COLOR || '#090b0d',
+  THEME_COLOR: import.meta.env.VITE_THEME_COLOR || '#080411',
   OG_IMAGE: import.meta.env.VITE_OG_IMAGE || '/og-cover.png',
 };
