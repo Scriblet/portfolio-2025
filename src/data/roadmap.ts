@@ -371,6 +371,56 @@ export const roadmapWaves: RoadmapWave[] = [
       },
     ],
   },
+  {
+    id: 8,
+    title: "Identidade como Engenheiro de IA",
+    goal: "Reposicionar o portfÃ³lio para refletir a atuaÃ§Ã£o atual de Lucas como engenheiro de IA: prova social, maturidade tÃ©cnica, princÃ­pios e contato orientado a valor.",
+    status: "in-progress",
+    items: [
+      {
+        slug: "mapa-maturidade-ia",
+        title: "Mapa de Maturidade em IA",
+        summary:
+          "Nova seÃ§Ã£o que comunica as camadas de competÃªncia em IA, de uso produtivo a governanÃ§a.",
+        category: "SeÃ§Ã£o",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 3,
+      },
+      {
+        slug: "manifesto-tecnico",
+        title: "Manifesto TÃ©cnico",
+        summary:
+          "SeÃ§Ã£o de princÃ­pios tÃ©cnicos que comunica como Lucas pensa e trabalha.",
+        category: "SeÃ§Ã£o",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 3,
+      },
+      {
+        slug: "selected-work",
+        title: "Selected Work narrativo",
+        summary:
+          "Substitui as seÃ§Ãµes Experience e Jornada por uma narrativa contÃ­nua de cases reais.",
+        category: "SeÃ§Ã£o",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 4,
+        dependsOn: ["mapa-maturidade-ia", "manifesto-tecnico"],
+      },
+      {
+        slug: "contato-proposta-valor",
+        title: "Contato com Proposta de Valor",
+        summary:
+          "Reformula o contato com cartÃµes de proposta antes do formulÃ¡rio.",
+        category: "SeÃ§Ã£o",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 3,
+        dependsOn: ["selected-work"],
+      },
+    ],
+  },
 ];
 
 export const roadmapStats = () => {

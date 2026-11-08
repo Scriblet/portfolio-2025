@@ -48,6 +48,10 @@
 |---|------|--------|--------|
 | 14 | `secao-toolbox` | Seção Stack/Toolbox visual | done |
 | 15 | `secao-timeline` | Seção Jornada/Carreira (timeline) | done |
+| 16 | `mapa-maturidade-ia` | Mapa de Maturidade em IA | draft |
+| 17 | `manifesto-tecnico` | Manifesto Técnico | draft |
+| 18 | `selected-work` | Selected Work narrativo | draft |
+| 19 | `contato-proposta-valor` | Contato com Proposta de Valor | draft |
 
 ## 05 — Refactor imersivo (onda 6)
 
