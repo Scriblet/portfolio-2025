@@ -87,7 +87,7 @@ const DownloadCvButton = ({
           },
           "&:focus-visible": {
             outline: `3px solid ${
-              theme.palette.mode === "dark" || onDark ? "#a324ff" : "#7e18d6"
+              theme.palette.mode === "dark" || onDark ? "#7c3aed" : "#6d28d9"
             }`,
             outlineOffset: "3px",
           },

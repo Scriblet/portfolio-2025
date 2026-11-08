@@ -7,38 +7,38 @@
  */
 
 :root {
-  /* Dark palette (identidade principal — imersiva neon) */
-  --void: #080411;
-  --void-2: #110822;
-  --surface: #1a1033;
-  --paper: #f4eefa;
-  --paper-2: #b3a6c9;
-  --muted: #7d6d96;
+  /* Dark palette (identidade principal — púrpura tecnológico) */
+  --void: #0a0814;
+  --void-2: #120e22;
+  --surface: #1e1830;
+  --paper: #f2eefb;
+  --paper-2: #a9a0c4;
+  --muted: #6b6285;
 
   /* Light palette (seções claras) */
-  --light-bg: #f8f6fa;
+  --light-bg: #f7f5fa;
   --light-surface: #ffffff;
-  --light-text: #140d20;
-  --light-text-2: #584d6b;
-  --light-border: #e6dfed;
+  --light-text: #181023;
+  --light-text-2: #5a526e;
+  --light-border: #ddd7ec;
 
   /* Accents */
-  --neon-violet: #a324ff;
-  --magenta-glow: #dd3df5;
-  --magenta-glow-soft: rgba(221, 61, 245, 0.12);
-  --deep-purple: #462085;
+  --violet: #7c3aed;
+  --magenta: #c026d3;
+  --magenta-soft: rgba(192, 38, 211, 0.12);
+  --deep-purple: #4c1d95;
   --danger: #f43f5e;
 
   /* Aliases legados — mantêm as seções antigas funcionando durante a
-     migração para a paleta neon. */
-  --emerald: var(--neon-violet);
-  --amber: var(--magenta-glow);
-  --amber-soft: var(--magenta-glow-soft);
+     migração para a paleta púrpura. */
+  --emerald: var(--violet);
+  --amber: var(--magenta);
+  --amber-soft: var(--magenta-soft);
   --deep-teal: var(--deep-purple);
 
   /* Hairlines */
-  --hairline: rgba(244, 238, 250, 0.13);
-  --hairline-light: rgba(20, 13, 32, 0.1);
+  --hairline: rgba(242, 238, 251, 0.13);
+  --hairline-light: rgba(24, 16, 35, 0.1);
 
   /* Superfícies auxiliares */
   --surface-soft: rgba(255, 255, 255, 0.02);
@@ -106,36 +106,36 @@
  * rodapé acompanhem a preferência sem duplicar CSS.
  */
 [data-mui-color-scheme="light"] .app-container {
-  --void: #f8f6fa;
+  --void: #f7f5fa;
   --void-2: #ffffff;
   --surface: #ffffff;
-  --paper: #140d20;
-  --paper-2: #584d6b;
-  --muted: #584d6b;
+  --paper: #181023;
+  --paper-2: #5a526e;
+  --muted: #5a526e;
 
-  --neon-violet: #7e18d6;
-  --magenta-glow: #bc1ecf;
-  --magenta-glow-soft: rgba(188, 30, 207, 0.12);
-  --deep-purple: #462085;
+  --violet: #6d28d9;
+  --magenta: #a21caf;
+  --magenta-soft: rgba(162, 28, 175, 0.12);
+  --deep-purple: #4c1d95;
   --danger: #be123c;
 
-  --emerald: var(--neon-violet);
-  --amber: var(--magenta-glow);
-  --amber-soft: var(--magenta-glow-soft);
+  --emerald: var(--violet);
+  --amber: var(--magenta);
+  --amber-soft: var(--magenta-soft);
   --deep-teal: var(--deep-purple);
 
-  --hairline: rgba(20, 13, 32, 0.1);
-  --surface-soft: rgba(20, 13, 32, 0.02);
-  --card-highlight: rgba(20, 13, 32, 0.035);
-  --card-bg-hover: rgba(20, 13, 32, 0.055);
-  --card-border-hover: rgba(20, 13, 32, 0.2);
+  --hairline: rgba(24, 16, 35, 0.1);
+  --surface-soft: rgba(24, 16, 35, 0.02);
+  --card-highlight: rgba(24, 16, 35, 0.035);
+  --card-bg-hover: rgba(24, 16, 35, 0.055);
+  --card-border-hover: rgba(24, 16, 35, 0.2);
   --card-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  --ghost-bg-hover: rgba(20, 13, 32, 0.04);
-  --ghost-border-hover: rgba(20, 13, 32, 0.2);
-  --input-bg: rgba(20, 13, 32, 0.03);
-  --input-border: rgba(20, 13, 32, 0.14);
-  --input-bg-focus: rgba(20, 13, 32, 0.05);
+  --ghost-bg-hover: rgba(24, 16, 35, 0.04);
+  --ghost-border-hover: rgba(24, 16, 35, 0.2);
+  --input-bg: rgba(24, 16, 35, 0.03);
+  --input-border: rgba(24, 16, 35, 0.14);
+  --input-bg-focus: rgba(24, 16, 35, 0.05);
 
   --glass-bg: rgba(255, 255, 255, 0.82);
   --glass-border: rgba(24, 24, 27, 0.08);
@@ -156,7 +156,7 @@ body {
 
 /* Foco visível consistente em todo o site. */
 :focus-visible {
-  outline: 2px solid var(--neon-violet);
+  outline: 2px solid var(--violet);
   outline-offset: 3px;
 }
 

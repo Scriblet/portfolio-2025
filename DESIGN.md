@@ -19,22 +19,22 @@ Tokens em `src/styles/design-system.css` (CSS) e
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--void` | `#080411` | Fundo principal |
-| `--void-2` | `#110822` | Superfície de seções alternadas |
-| `--surface` | `#1a1033` | Cards e superfícies secundárias |
-| `--paper` | `#f4eefa` | Texto primário |
-| `--paper-2` | `#b3a6c9` | Texto secundário |
-| `--muted` | `#7d6d96` | Metadados e subtítulos |
-| `--light-bg` | `#f8f6fa` | Fundo de seção clara |
+| `--void` | `#0a0814` | Fundo principal |
+| `--void-2` | `#120e22` | Superfície de seções alternadas |
+| `--surface` | `#1e1830` | Cards e superfícies secundárias |
+| `--paper` | `#f2eefb` | Texto primário |
+| `--paper-2` | `#a9a0c4` | Texto secundário |
+| `--muted` | `#6b6285` | Metadados e subtítulos |
+| `--light-bg` | `#f7f5fa` | Fundo de seção clara |
 | `--light-surface` | `#ffffff` | Vidro sobre claro |
-| `--light-text` | `#140d20` | Texto sobre claro |
-| `--neon-violet` | `#a324ff` | Estados, indicadores, links (escuro) |
-| `--magenta-glow` | `#dd3df5` | Ênfase editorial (escuro) |
-| `--deep-purple` | `#462085` | Duotone e contraste |
-| `--violet-accent` | `#7e18d6` | Estados, indicadores, links (claro) |
-| `--magenta-accent` | `#bc1ecf` | Ênfase editorial (claro) |
+| `--light-text` | `#181023` | Texto sobre claro |
+| `--violet` | `#7c3aed` | Estados, indicadores, links (escuro) |
+| `--magenta` | `#c026d3` | Ênfase editorial (escuro) |
+| `--deep-purple` | `#4c1d95` | Duotone e contraste |
+| `--violet-accent` | `#6d28d9` | Estados, indicadores, links (claro) |
+| `--magenta-accent` | `#a21caf` | Ênfase editorial (claro) |
 
-**Regra de acentos**: violeta neon e magenta nunca aparecem como grandes
+**Regra de acentos**: violeta e magenta nunca aparecem como grandes
 superfícies sólidas. São usados em detalhes, bordas finas, indicadores e
 palavras destacadas.
 

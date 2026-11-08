@@ -14,10 +14,10 @@ const TYPE_ORDER: MilestoneType[] = [
 ];
 
 const typeMeta: Record<MilestoneType, { label: string; color: string }> = {
-  formacao: { label: "Formação", color: "var(--neon-violet)" },
-  certificacao: { label: "Certificação", color: "var(--magenta-glow)" },
-  profissional: { label: "Profissional", color: "var(--neon-violet)" },
-  conquista: { label: "Conquista", color: "var(--magenta-glow)" },
+  formacao: { label: "Formação", color: "var(--violet)" },
+  certificacao: { label: "Certificação", color: "var(--magenta)" },
+  profissional: { label: "Profissional", color: "var(--violet)" },
+  conquista: { label: "Conquista", color: "var(--magenta)" },
 };
 
 const presentTypes = TYPE_ORDER.filter((type) =>

@@ -15,7 +15,7 @@
 }
 
 .page :focus-visible {
-  outline: 2px solid var(--neon-violet);
+  outline: 2px solid var(--violet);
   outline-offset: 3px;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .navPeriod {
-  color: var(--magenta-glow);
+  color: var(--magenta);
 }
 
 .navLinks {
@@ -125,7 +125,7 @@
 
   &:hover,
   &:focus {
-    color: var(--magenta-glow);
+    color: var(--magenta);
   }
 }
 
@@ -276,7 +276,7 @@
 .dotAmber {
   top: clamp(110px, 16vh, 170px);
   left: clamp(18px, 4vw, 56px);
-  background: var(--magenta-glow);
+  background: var(--magenta);
   transform: translate(
     calc(-6vw * var(--p)),
     calc(-4vh * var(--p))
@@ -286,7 +286,7 @@
 .dotEmerald {
   bottom: clamp(80px, 14vh, 150px);
   right: clamp(18px, 4vw, 56px);
-  background: var(--neon-violet);
+  background: var(--violet);
   transform: translate(
     calc(6vw * var(--p)),
     calc(4vh * var(--p))
@@ -455,7 +455,7 @@
   right: 12px;
   width: 6px;
   height: 6px;
-  background: var(--neon-violet);
+  background: var(--violet);
   border-radius: 50%;
 }
 
@@ -672,7 +672,7 @@
 
 .aboutHighlight {
   font-style: normal;
-  color: var(--magenta-glow);
+  color: var(--magenta);
 }
 
 .aboutRule {
@@ -888,7 +888,7 @@
   width: 10px;
   height: 10px;
   background: var(--void-2);
-  border: 2px solid var(--neon-violet);
+  border: 2px solid var(--violet);
   border-radius: 50%;
 }
 
@@ -898,7 +898,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--neon-violet);
+  color: var(--violet);
   white-space: nowrap;
 }
 
@@ -1053,7 +1053,7 @@
     transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
 
     &:focus {
-      border-color: var(--magenta-glow);
+      border-color: var(--magenta);
       background: rgba(255, 255, 255, 0.07);
       box-shadow: 0 0 0 4px rgba(232, 145, 60, 0.12);
     }
@@ -1093,7 +1093,7 @@
 }
 
 .formSuccess {
-  color: var(--neon-violet);
+  color: var(--violet);
 }
 
 .formSubmit {
@@ -1383,8 +1383,8 @@
   position: relative;
   height: 100svh;
   min-height: 600px;
-  background: #080411;
-  color: #f4eefa;
+  background: #0a0814;
+  color: #f2eefb;
   overflow: hidden;
 }
 
@@ -1447,7 +1447,7 @@
   font-weight: 800;
   line-height: 0.82;
   letter-spacing: -0.03em;
-  color: #f4eefa;
+  color: #f2eefb;
   text-align: center;
 }
 
@@ -1504,7 +1504,7 @@
   right: 12px;
   width: 6px;
   height: 6px;
-  background: #a324ff;
+  background: #7c3aed;
   border-radius: 50%;
 }
 
@@ -1514,13 +1514,13 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #b3a6c9;
+  color: #a9a0c4;
 }
 
 .heroCleanMetaValue {
   font-size: 13.5px;
   font-weight: 500;
-  color: #f4eefa;
+  color: #f2eefb;
   letter-spacing: -0.01em;
 }
 
@@ -1536,7 +1536,7 @@
 .heroCleanScrollCueLine {
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, #f4eefa, transparent);
+  background: linear-gradient(to bottom, #f2eefb, transparent);
   opacity: 0.5;
 }
 
@@ -1546,7 +1546,7 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #b3a6c9;
+  color: #a9a0c4;
 }
 
 @media (max-width: 760px) {

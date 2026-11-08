@@ -94,7 +94,7 @@
   width: 44px;
   height: 44px;
   margin-bottom: 18px;
-  color: var(--neon-violet);
+  color: var(--violet);
 }
 
 .skillIndex {
@@ -193,7 +193,7 @@
   width: 10px;
   height: 10px;
   background: var(--void);
-  border: 2px solid var(--neon-violet);
+  border: 2px solid var(--violet);
   border-radius: 50%;
 }
 
@@ -204,7 +204,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--neon-violet);
+  color: var(--violet);
   white-space: nowrap;
 }
 
@@ -227,7 +227,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--magenta-glow);
+  color: var(--magenta);
 }
 
 .timelineTypeDot {
@@ -269,7 +269,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--neon-violet);
+  color: var(--violet);
 
   &:hover,
   &:focus {
@@ -314,7 +314,7 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--neon-violet);
+  color: var(--violet);
 }
 
 .experiencePeriod {
@@ -379,7 +379,7 @@
 
 .philosophyHighlight {
   font-style: normal;
-  color: var(--magenta-glow);
+  color: var(--magenta);
 }
 
 .philosophyRule {
@@ -555,9 +555,9 @@
       background 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
 
     &:focus {
-      border-color: var(--magenta-glow);
+      border-color: var(--magenta);
       background: var(--input-bg-focus);
-      box-shadow: 0 0 0 4px var(--magenta-glow-soft);
+      box-shadow: 0 0 0 4px var(--magenta-soft);
     }
 
     &[aria-invalid="true"] {
@@ -595,7 +595,7 @@
 }
 
 .formSuccess {
-  color: var(--neon-violet);
+  color: var(--violet);
 }
 
 .srOnly {
@@ -664,7 +664,7 @@
 
     &:hover,
     &:focus {
-      color: var(--magenta-glow);
+      color: var(--magenta);
       text-decoration: underline;
     }
   }
@@ -718,7 +718,7 @@
 }
 
 .footerWordmarkPeriod {
-  color: var(--magenta-glow);
+  color: var(--magenta);
 }
 
 .footerTagline {
@@ -773,7 +773,7 @@
 
   &:hover,
   &:focus {
-    color: var(--magenta-glow);
+    color: var(--magenta);
   }
 }
 

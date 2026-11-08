@@ -1,14 +1,14 @@
 .hero {
   /* O hero é sempre escuro: o portal usa a mesma atmosfera da rota /immersive. */
-  --void: #080411;
-  --void-2: #110822;
-  --paper: #f4eefa;
-  --paper-2: #b3a6c9;
+  --void: #0a0814;
+  --void-2: #120e22;
+  --paper: #f2eefb;
+  --paper-2: #a9a0c4;
   --muted: #8a9196;
-  --magenta-glow: #dd3df5;
-  --magenta-glow-soft: rgba(221, 61, 245, 0.12);
-  --neon-violet: #a324ff;
-  --hairline: rgba(244, 238, 250, 0.13);
+  --magenta: #c026d3;
+  --magenta-soft: rgba(192, 38, 211, 0.12);
+  --violet: #7c3aed;
+  --hairline: rgba(242, 238, 251, 0.13);
   --glass-bg: rgba(255, 255, 255, 0.12);
   --glass-border: rgba(255, 255, 255, 0.16);
   --glass-blur: blur(24px) saturate(160%);
@@ -225,7 +225,7 @@
 .heroTitleAccent {
   display: block;
   margin-top: 0.06em;
-  color: var(--magenta-glow);
+  color: var(--magenta);
 }
 
 .heroRole {
@@ -273,7 +273,7 @@
   right: 12px;
   width: 6px;
   height: 6px;
-  background: var(--neon-violet);
+  background: var(--violet);
   border-radius: 50%;
 }
 
