@@ -24,8 +24,8 @@ Transformar a seção "Trajectory" em uma **timeline vertical de Experiência** 
 ## Especificações de design/UX
 
 - **Fundo**: `#101317` sólido para dar leve separação de Skills e Contato.
-- **Layout**: grid `110px 1fr` desktop com `padding-inline` respeitando o container; empilhado em mobile (`period` acima do conteúdo).
-- **Linha da timeline**: 1px vertical degradê (esmeralda → âmbar), marcadores em esmeralda.
+- **Layout**: grid `120px 1fr` desktop; a timeline é envolvida por uma borda fina `var(--hairline)` e `border-radius: 32px`, com padding consistente (`--timeline-pad-x` / `--timeline-pad-y`). Empilhado em mobile (`period` acima do conteúdo).
+- **Linha da timeline**: 1px vertical degradê (esmeralda → âmbar), alinhada ao padding interno; marcadores em esmeralda.
 - **Período**: Sora 11px, uppercase, `font-variant-numeric: tabular-nums`, cor `#34D399`.
 - **Empresa**: Syne 600, `clamp(1.35rem, 2.4vw, 2.2rem)`, cor `#EDE7DC`.
 - **Cargo**: Inter 500, 13px, uppercase tracking 0.12em, cor `#9EA5A8`.
