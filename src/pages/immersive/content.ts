@@ -1,9 +1,9 @@
 import { experiences, skills } from '../../data';
 import { SOCIAL_LINKS } from '../../data/social';
+import portraitHero from '../../img/retrato-hero.jpg';
 
-// Placeholder visual — substituir por fotografia real de Lucas Nonato quando disponível.
-export const portraitImage =
-  'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=1920&q=80';
+// Retrato oficial de Lucas Nonato usado no portal e na seção Sobre.
+export const portraitImage = portraitHero;
 
 // Dados reais exibidos no HUD do hero e da seção Sobre.
 // Fonte: currículo de Lucas Nonato (public/cv/lucas-nonato-cv.pdf).

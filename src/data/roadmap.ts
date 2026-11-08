@@ -165,19 +165,9 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 4,
     title: "SeÃ§Ãµes novas",
-    goal: "Stack visual e narrativa de carreira para completar a histÃ³ria do portfÃ³lio.",
+    goal: "Narrativa de carreira para completar a histÃ³ria do portfÃ³lio.",
     status: "done",
     items: [
-      {
-        slug: "secao-toolbox",
-        title: "Toolbox visual",
-        summary:
-          "Stack agrupada por categoria, com nome textual e logos oficiais.",
-        category: "SeÃ§Ã£o",
-        status: "done",
-        issuesDone: 4,
-        issuesTotal: 4,
-      },
       {
         slug: "secao-timeline",
         title: "Timeline de carreira",
@@ -344,16 +334,6 @@ export const roadmapWaves: RoadmapWave[] = [
         title: "Habilidades",
         summary:
           "Cards de vidro com Ã­cone, tÃ­tulo, descriÃ§Ã£o e tags a partir de skills.ts.",
-        category: "SeÃ§Ã£o",
-        status: "done",
-        issuesDone: 1,
-        issuesTotal: 1,
-      },
-      {
-        slug: "toolbox-section",
-        title: "Stack e ferramentas",
-        summary:
-          "CatÃ¡logo filtrÃ¡vel com chips e cards de vidro, core e complementar.",
         category: "SeÃ§Ã£o",
         status: "done",
         issuesDone: 1,

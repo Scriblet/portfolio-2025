@@ -14,10 +14,10 @@ const TYPE_ORDER: MilestoneType[] = [
 ];
 
 const typeMeta: Record<MilestoneType, { label: string; color: string }> = {
-  formacao: { label: "Formação", color: "var(--emerald)" },
-  certificacao: { label: "Certificação", color: "var(--amber)" },
-  profissional: { label: "Profissional", color: "var(--emerald)" },
-  conquista: { label: "Conquista", color: "var(--amber)" },
+  formacao: { label: "Formação", color: "var(--neon-violet)" },
+  certificacao: { label: "Certificação", color: "var(--magenta-glow)" },
+  profissional: { label: "Profissional", color: "var(--neon-violet)" },
+  conquista: { label: "Conquista", color: "var(--magenta-glow)" },
 };
 
 const presentTypes = TYPE_ORDER.filter((type) =>
@@ -29,7 +29,7 @@ const sectionContent = {
   index: "03",
   heading: "Minha Jornada",
   description:
-    "Trajetória profissional e certificações, do marco mais recente ao mais antigo.",
+    "Trajetória profissional, do marco mais recente ao mais antigo.",
 };
 
 const Timeline = () => (

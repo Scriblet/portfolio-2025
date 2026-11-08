@@ -2,48 +2,59 @@ import type { Milestone } from './types';
 
 // Fonte única da seção #jornada.
 //
-// Os períodos abaixo vieram do preview aprovado do portfólio. Se algum período
-// não estiver exato, ajuste apenas este arquivo: a timeline reordena sozinha
-// pelo campo `date` (mais recente primeiro).
+// Os marcos abaixo espelham as experiências reais de `src/data/experiences.ts`
+// (currículo de Lucas Nonato). Se algum período mudar, ajuste apenas este
+// arquivo: a timeline reordena sozinha pelo campo `date`.
 export const milestones: Milestone[] = [
+  {
+    id: 'vivo',
+    type: 'profissional',
+    title: 'Consultor de IA / AI Software Engineer',
+    institution: 'Vivo (Telefônica Brasil)',
+    period: 'mar/2026 – atual',
+    date: '2026-03',
+    description:
+      'Atuo na evolução da plataforma Aura, integrando LLMs, agentes de IA e APIs em arquiteturas escaláveis com TypeScript, Node.js e práticas de MLOps.',
+  },
   {
     id: 'porto-seguro',
     type: 'profissional',
-    title: 'Desenvolvedor Full-Stack',
+    title: 'Desenvolvedor de Software Pleno',
     institution: 'Porto Seguro',
-    period: '2024 — Atual',
+    period: 'jan/2024 – mar/2026',
     date: '2024-01',
     description:
-      'Portal de gestão de sinistros com TypeScript, RxJS e Angular Material, com foco em performance via lazy loading e pré-carregamento inteligente.',
+      'Desenvolvi aplicações web e serviços com React, TypeScript, Node.js e APIs REST, focando em performance, manutenibilidade e integração entre sistemas.',
   },
   {
     id: 'thoughtworks',
     type: 'profissional',
     title: 'Consultant Developer',
     institution: 'Thoughtworks',
-    period: '2022 — 2024',
-    date: '2022-01',
+    period: 'abr/2022 – ago/2023',
+    date: '2022-04',
     description:
-      'Consultoria em React, TypeScript, TDD e Node.js, incluindo um projeto para tornar um aplicativo 100% acessível seguindo WCAG.',
+      'Atuei com React, TypeScript, TDD e Node.js em times de consultoria, participando de iniciativas para tornar produtos 100% acessíveis segundo WCAG.',
   },
   {
-    id: 'arco-educacao',
+    id: 'arcotech',
     type: 'profissional',
-    title: 'Desenvolvedor de Software',
-    institution: 'Arco Educação',
-    period: '2020 — 2022',
-    date: '2020-01',
+    title: 'Full Stack Developer',
+    institution: 'ArcoTech (Escola em Movimento)',
+    period: 'jun/2021 – mar/2022',
+    date: '2021-06',
     description:
-      'Sistemas web com AngularJS, C# e ASP.NET MVC, front-end responsivo e back-end com NHibernate e Dapper.',
+      'Desenvolvi sistemas web com AngularJS, C#, ASP.NET MVC, NHibernate e Dapper, entregando front-end responsivo e back-end robusto.',
   },
   {
-    id: 'aws-cloud-practitioner',
-    type: 'certificacao',
-    title: 'AWS Cloud Practitioner',
-    institution: 'Amazon Web Services',
-    period: '2019',
-    date: '2019-01',
-    description: 'Primeira certificação em cloud computing.',
+    id: 'finger-consultoria',
+    type: 'profissional',
+    title: 'Founder & UX Designer',
+    institution: 'Finger Consultoria',
+    period: 'ago/2019 – jun/2021',
+    date: '2019-08',
+    description:
+      'Fundei a Finger Consultoria para serviços de consultoria de carreira. Cuidei de UX research, prototipação e design de interfaces com Figma, Sketch e testes com usuários.',
   },
 ];
 

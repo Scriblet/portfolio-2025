@@ -10,7 +10,6 @@ const footerNav = [
   { label: "Experiência", to: "experience" },
   { label: "Jornada", to: "jornada" },
   { label: "Habilidades", to: "skills" },
-  { label: "Toolbox", to: "toolbox" },
   { label: "Contato", to: "contact" },
 ];
 

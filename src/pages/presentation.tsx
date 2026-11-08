@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import ImgPresentation from "../img/presetation.jpg";
+import ImgPresentation from "../img/retrato-hero.jpg";
 import { SITE_CONFIG } from "../data";
 import { GlassPanel, PillButton } from "../components/design-system";
 import DownloadCvButton from "../components/DownloadCvButton";
@@ -82,7 +82,7 @@ function Presentation() {
             <PillButton href="#contact" testId="presentation-cta-contact">
               Vamos conversar
             </PillButton>
-            <DownloadCvButton location="presentation" align="left" onDark />
+            <DownloadCvButton location="presentation" align="center" onDark />
           </div>
         </div>
 

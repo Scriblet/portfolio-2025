@@ -94,7 +94,7 @@
   width: 44px;
   height: 44px;
   margin-bottom: 18px;
-  color: var(--emerald);
+  color: var(--neon-violet);
 }
 
 .skillIndex {
@@ -176,9 +176,13 @@
 .timelineItem {
   position: relative;
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
+  grid-template-columns: 144px minmax(0, 1fr);
   gap: clamp(24px, 3.5vw, 48px);
   align-items: start;
+}
+
+.timelineItem + .timelineItem {
+  margin-top: clamp(32px, 3.5vw, 48px);
 }
 
 .timelineItem::before {
@@ -189,17 +193,18 @@
   width: 10px;
   height: 10px;
   background: var(--void);
-  border: 2px solid var(--emerald);
+  border: 2px solid var(--neon-violet);
   border-radius: 50%;
 }
 
 .timelinePeriod {
+  padding-left: 18px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--emerald);
+  color: var(--neon-violet);
   white-space: nowrap;
 }
 
@@ -222,7 +227,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--magenta-glow);
 }
 
 .timelineTypeDot {
@@ -264,7 +269,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--emerald);
+  color: var(--neon-violet);
 
   &:hover,
   &:focus {
@@ -309,7 +314,7 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--emerald);
+  color: var(--neon-violet);
 }
 
 .experiencePeriod {
@@ -374,7 +379,7 @@
 
 .philosophyHighlight {
   font-style: normal;
-  color: var(--amber);
+  color: var(--magenta-glow);
 }
 
 .philosophyRule {
@@ -415,128 +420,6 @@
     rgba(9, 11, 13, 0.7) 100%
   );
   pointer-events: none;
-}
-
-/* Toolbox */
-.toolboxFilters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: clamp(40px, 6vw, 64px);
-}
-
-.toolboxFilter {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 16px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--paper-2);
-  background: transparent;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background var(--duration-hover) var(--ease-out),
-    border-color var(--duration-hover) var(--ease-out),
-    color var(--duration-hover) var(--ease-out);
-
-  &:hover,
-  &:focus {
-    background: var(--ghost-bg-hover);
-    border-color: var(--ghost-border-hover);
-  }
-
-  &[aria-pressed="true"] {
-    color: var(--void);
-    background: var(--emerald);
-    border-color: var(--emerald);
-  }
-}
-
-.toolboxGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: clamp(16px, 2vw, 24px);
-}
-
-.toolboxCard {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: clamp(18px, 2vw, 24px);
-  text-decoration: none;
-  background-image: linear-gradient(
-    180deg,
-    var(--card-highlight) 0%,
-    transparent 42%
-  );
-  transition: transform var(--duration-hover) var(--ease-out),
-    border-color var(--duration-hover) var(--ease-out),
-    box-shadow var(--duration-hover) var(--ease-out);
-
-  &:hover,
-  &:focus {
-    transform: translateY(-4px);
-    border-color: rgba(52, 211, 153, 0.5);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
-  }
-}
-
-.toolboxCardCore {
-  border-color: rgba(52, 211, 153, 0.35);
-}
-
-.toolboxIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  color: var(--paper);
-}
-
-.toolboxInitials {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--paper);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-}
-
-.toolboxName {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--paper);
-}
-
-.toolboxLevel {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.toolboxLevelCore {
-  color: var(--emerald);
 }
 
 /* GitHub */
@@ -672,9 +555,9 @@
       background 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
 
     &:focus {
-      border-color: var(--amber);
+      border-color: var(--magenta-glow);
       background: var(--input-bg-focus);
-      box-shadow: 0 0 0 4px var(--amber-soft);
+      box-shadow: 0 0 0 4px var(--magenta-glow-soft);
     }
 
     &[aria-invalid="true"] {
@@ -712,7 +595,7 @@
 }
 
 .formSuccess {
-  color: var(--emerald);
+  color: var(--neon-violet);
 }
 
 .srOnly {
@@ -781,7 +664,7 @@
 
     &:hover,
     &:focus {
-      color: var(--amber);
+      color: var(--magenta-glow);
       text-decoration: underline;
     }
   }
@@ -835,7 +718,7 @@
 }
 
 .footerWordmarkPeriod {
-  color: var(--amber);
+  color: var(--magenta-glow);
 }
 
 .footerTagline {
@@ -890,7 +773,7 @@
 
   &:hover,
   &:focus {
-    color: var(--amber);
+    color: var(--magenta-glow);
   }
 }
 
@@ -972,10 +855,6 @@
     grid-template-columns: 1fr;
   }
 
-  .toolboxGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .bigWordmark {
     font-size: clamp(4rem, 21vw, 10rem);
   }
@@ -986,8 +865,6 @@
   .skillCard:focus-within,
   .experienceCard:hover,
   .experienceCard:focus-within,
-  .toolboxCard:hover,
-  .toolboxCard:focus,
   .formSubmit:hover:not(:disabled),
   .formSubmit:focus:not(:disabled) {
     transform: none;

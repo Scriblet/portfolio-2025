@@ -12,7 +12,7 @@ Aplicar a fotografia pessoal full-bleed com tratamento duotônico teal→âmbar,
 
 ## Acceptance criteria
 
-- [x] Asset `src/img/presetation.jpg` usado como foto do hero.
+- [x] Asset `src/img/retrato-hero.jpg` usado como foto do hero.
 - [x] Foto preenche o palco com `object-fit: cover` e `object-position` adequado.
 - [x] Camada duotônica usa `mix-blend-mode: color` com teal `#2E6B72` e âmbar `#E8913C`.
 - [x] Vinheta radial + gradiente inferior garantem contraste dos meta-cantos.

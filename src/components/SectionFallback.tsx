@@ -4,7 +4,6 @@ export type SectionFallbackVariant =
   | "experience"
   | "timeline"
   | "skills"
-  | "toolbox"
   | "philosophy"
   | "github"
   | "contact"
@@ -27,7 +26,6 @@ const MIN_HEIGHT: Record<SectionFallbackVariant, { xs: string; md: string }> = {
   experience: { xs: "40vh", md: "45vh" },
   timeline: { xs: "40vh", md: "45vh" },
   skills: { xs: "40vh", md: "45vh" },
-  toolbox: { xs: "40vh", md: "45vh" },
   philosophy: { xs: "30vh", md: "32vh" },
   github: { xs: "30vh", md: "32vh" },
   contact: { xs: "30vh", md: "32vh" },

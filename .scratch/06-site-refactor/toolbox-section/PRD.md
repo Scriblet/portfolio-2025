@@ -1,6 +1,6 @@
 ﻿---
 title: SeÃ§Ã£o de Stack e Ferramentas imersiva
-status: done
+status: removed
 wave: 7
 scope: site
 owner: agent

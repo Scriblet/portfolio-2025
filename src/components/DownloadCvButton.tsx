@@ -52,6 +52,7 @@ const DownloadCvButton = ({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       style={{
+        position: "relative",
         display: "flex",
         flexDirection: "column",
         alignItems: align === "center" ? "center" : "flex-start",
@@ -69,13 +70,15 @@ const DownloadCvButton = ({
         aria-label="Baixar CV de Lucas Nonato em PDF"
         data-testid={`download-cv-button-${location}`}
         sx={{
-          minHeight: 44,
+          minHeight: 52,
           px: { xs: 2.5, md: 3 },
-          py: 1.25,
-          borderRadius: "10px",
+          py: 0,
+          borderRadius: "999px",
+          fontFamily: "var(--font-mono)",
           fontWeight: 600,
-          fontSize: { xs: "0.85rem", md: "0.95rem" },
-          textTransform: "none",
+          fontSize: "11px",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
           color: "#ffffff",
           backgroundColor: theme.palette.primary.main,
           transition: "background-color 0.2s ease, box-shadow 0.2s ease",
@@ -84,7 +87,7 @@ const DownloadCvButton = ({
           },
           "&:focus-visible": {
             outline: `3px solid ${
-              theme.palette.mode === "dark" || onDark ? "#34d399" : "#00695c"
+              theme.palette.mode === "dark" || onDark ? "#a324ff" : "#7e18d6"
             }`,
             outlineOffset: "3px",
           },
@@ -99,8 +102,13 @@ const DownloadCvButton = ({
         aria-live="polite"
         data-testid={`download-cv-feedback-${location}`}
         sx={{
-          minHeight: "1.25rem",
+          position: "absolute",
+          top: "100%",
+          left: align === "center" ? "50%" : 0,
+          transform: align === "center" ? "translateX(-50%)" : "none",
           mt: 0.75,
+          minHeight: "1.25rem",
+          whiteSpace: "nowrap",
           fontSize: "0.75rem",
           color: onDark ? "rgba(241, 238, 232, 0.8)" : "text.secondary",
         }}

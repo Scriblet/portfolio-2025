@@ -15,7 +15,6 @@ const menuItems = [
   { text: "Experiência", to: "experience" },
   { text: "Jornada", to: "jornada" },
   { text: "Habilidades", to: "skills" },
-  { text: "Toolbox", to: "toolbox" },
   { text: "Contato", to: "contact" },
 ];
 

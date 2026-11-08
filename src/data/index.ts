@@ -6,5 +6,4 @@ export * from './experiences';
 export * from './skills';
 export * from './projects';
 export * from './testimonials';
-export * from './toolbox';
 export * from './timeline';

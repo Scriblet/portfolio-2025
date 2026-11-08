@@ -28,7 +28,7 @@ const PortalHero = () => {
           <img
             className={styles.heroImage}
             src={portraitImage}
-            alt="Visual de abertura da prévia imersiva do portfólio."
+            alt="Retrato de Lucas Nonato com fundo roxo."
             data-testid="immersive-hero-image"
           />
           <div className={styles.heroTint} aria-hidden="true" />

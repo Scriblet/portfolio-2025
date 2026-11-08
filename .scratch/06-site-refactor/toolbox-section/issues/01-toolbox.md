@@ -1,6 +1,6 @@
 ﻿# Issue â€” Refatorar Toolbox
 
-Status: done
+Status: removed
 
 ## Parent
 

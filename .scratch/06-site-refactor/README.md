@@ -24,7 +24,7 @@ refactor: é a referência de tokens, vidro, tipografia, movimento e composiçã
 | 3 | `timeline-section` | Jornada / marcos | done |
 | 4 | `philosophy-section` | Filosofia e valores | done |
 | 5 | `skills-section` | Habilidades técnicas | done |
-| 6 | `toolbox-section` | Stack e ferramentas | done |
+| 6 | `toolbox-section` | Stack e ferramentas (removida) | removed |
 | 7 | `github-section` | Banner GitHub | done |
 | 8 | `contact-section` | Contato e formulário | done |
 | 9 | `footer-section` | Rodapé | done |

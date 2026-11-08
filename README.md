@@ -220,7 +220,7 @@ portfolio-2025/
 │   ├── hooks/             # Hooks (reveal, movimento reduzido, scroll)
 │   ├── img/               # Imagens
 │   │   ├── multiracial-hands-coming-together.jpg
-│   │   └── presetation.jpg
+│   │   └── retrato-hero.jpg
 │   ├── pages/             # Componentes de página
 │   │   ├── experience/    # Seção de experiências
 │   │   │   └── experience.tsx
@@ -234,8 +234,6 @@ portfolio-2025/
 │   │   │   └── skills.tsx
 │   │   ├── timeline/      # Linha do tempo da carreira
 │   │   │   └── timeline.tsx
-│   │   ├── toolbox/       # Stack e ferramentas
-│   │   │   └── toolbox.tsx
 │   │   ├── footer.tsx     # Rodapé
 │   │   ├── header.tsx     # Cabeçalho
 │   │   ├── header.module.scss

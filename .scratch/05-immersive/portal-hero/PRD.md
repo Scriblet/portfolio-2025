@@ -47,7 +47,7 @@ Criar o momento assinatura da rota `/immersive`: um hero scroll-driven onde dois
 - [x] Painéis e wordmark deslocam mais de 100px entre `scrollY=0` e `scrollY=700`.
 - [x] Ao voltar ao topo, painéis e wordmark retornam à posição inicial.
 - [x] Meta-cantos exibem dados reais de `src/pages/immersive/content.ts` (nome, cargo, localização, experiência, stack).
-- [x] Fotografia é asset real `src/img/presetation.jpg` com `alt` descritivo.
+- [x] Fotografia é asset real `src/img/retrato-hero.jpg` com `alt` descritivo.
 - [x] Com `prefers-reduced-motion`, hero tem 100svh, `--p` estático e conteúdo visível.
 - [x] Sem `setTimeout`/`setInterval` no fluxo do portal.
 - [x] `scrollWidth === innerWidth` em 390px; wordmark e meta-cantos não causam overflow.
@@ -63,4 +63,4 @@ Criar o momento assinatura da rota `/immersive`: um hero scroll-driven onde dois
 - `src/pages/immersive/hooks.ts` — `useStickyProgress` e `usePrefersReducedMotion`.
 - `src/pages/immersive/immersive.module.scss` — estilos do portal, painéis, wordmark, meta-cantos.
 - `src/pages/immersive/content.ts` — `PERSON`, `heroMeta`, `wordmark`.
-- `src/img/presetation.jpg` — asset de retrato.
+- `src/img/retrato-hero.jpg` — asset de retrato.

@@ -76,7 +76,7 @@ box-shadow:
   inset 0 1px 0 rgba(255, 255, 255, 0.55);
 ```
 
-Usado em: header, hero, HUD, cards de experiência, timeline, skills, toolbox,
+Usado em: header, hero, HUD, cards de experiência, timeline, skills,
 GitHub, formulário de contato e rodapé.
 
 ## 5. Layout & grid
@@ -95,10 +95,9 @@ Ritmo vertical: `padding-block: clamp(120px, 18vh, 200px)`.
 3. **Jornada** — timeline vertical com trilho em degradê e marcadores.
 4. **Filosofia** — seção editorial escura com foto e CTA.
 5. **Habilidades** — grid de cards de vidro de `skills.ts`.
-6. **Stack e ferramentas** — catálogo filtrável com chips e cards de vidro.
-7. **GitHub** — painel de vidro com CTA e logo.
-8. **Contato** — fechamento com headline oversized, card de vidro e formulário.
-9. **Rodapé** — wordmark, links mono, sociais e hairline.
+6. **GitHub** — painel de vidro com CTA e logo.
+7. **Contato** — fechamento com headline oversized, card de vidro e formulário.
+8. **Rodapé** — wordmark, links mono, sociais e hairline.
 
 ## 6. Componentes
 
@@ -121,7 +120,6 @@ Em `src/components/design-system/`:
 - `src/pages/timeline/timeline.tsx`
 - `src/pages/filosofia/filosofia.tsx`
 - `src/pages/skills/skills.tsx`
-- `src/pages/toolbox/toolbox.tsx`
 - `src/pages/github/github.tsx`
 - `src/pages/formContact/contactForm.tsx`
 - `src/pages/footer.tsx`
