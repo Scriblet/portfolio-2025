@@ -3,6 +3,7 @@ import {
   GlassPanel,
   SectionLabel,
 } from "../../components/design-system";
+import { CompanyMark } from "../../components/company-marks";
 import styles from "../pages.module.scss";
 
 const sectionContent = {
@@ -49,7 +50,10 @@ const Experience = () => (
           data-testid={`experience-card-${exp.id}`}
           data-reveal
         >
-          <span className={styles.experienceIndex}>{exp.number}</span>
+          <div className={styles.experienceCardTop}>
+            <span className={styles.experienceIndex}>{exp.number}</span>
+            <CompanyMark mark={exp.mark} className={styles.experienceMark} />
+          </div>
           <span className={styles.experiencePeriod}>{exp.period}</span>
           <h3
             className={styles.experienceCompany}

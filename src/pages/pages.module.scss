@@ -307,14 +307,35 @@
   }
 }
 
+.experienceCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
 .experienceIndex {
   display: block;
-  margin-bottom: 14px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
   color: var(--violet);
+}
+
+.experienceMark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--violet);
+
+  svg {
+    display: block;
+    width: auto;
+    height: 24px;
+    max-width: 72px;
+  }
 }
 
 .experiencePeriod {

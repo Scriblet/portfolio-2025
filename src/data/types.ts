@@ -10,6 +10,19 @@ export type SkillIconKey =
   | 'build'
   | 'cloud';
 
+/** Chaves dos assets de logo oficiais usados nos cards de experiência. */
+export type CompanyMarkKey =
+  | 'vivo'
+  | 'porto-seguro'
+  | 'thoughtworks'
+  | 'arcotech'
+  | 'finger';
+
+export type CompanyMark = {
+  /** Chave da logo oficial (ou fallback) usada no card. */
+  key: CompanyMarkKey;
+};
+
 export interface Experience {
   id: number;
   number: string;
@@ -18,6 +31,8 @@ export interface Experience {
   description: string;
   /** Período legível da experiência (ex.: "2024 – 2026" ou "mar/2026 – atual"). */
   period: string;
+  /** Marca visual da empresa exibida no card. */
+  mark: CompanyMark;
 }
 
 export interface Skill {

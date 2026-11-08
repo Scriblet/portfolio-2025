@@ -11,6 +11,7 @@ export const experiences: Experience[] = [
     period: 'mar/2026 – atual',
     description:
       'Atuo na evolução da plataforma Aura, integrando LLMs, agentes de IA e APIs em arquiteturas escaláveis com TypeScript, Node.js e práticas de MLOps.',
+    mark: { key: 'vivo' },
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const experiences: Experience[] = [
     period: 'jan/2024 – mar/2026',
     description:
       'Desenvolvi aplicações web e serviços com React, TypeScript, Node.js e APIs REST, focando em performance, manutenibilidade e integração entre sistemas.',
+    mark: { key: 'porto-seguro' },
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export const experiences: Experience[] = [
     period: 'abr/2022 – ago/2023',
     description:
       'Atuei com React, TypeScript, TDD e Node.js em times de consultoria, participando de iniciativas para tornar produtos 100% acessíveis segundo WCAG.',
+    mark: { key: 'thoughtworks' },
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ export const experiences: Experience[] = [
     period: 'jun/2021 – mar/2022',
     description:
       'Desenvolvi sistemas web com AngularJS, C#, ASP.NET MVC, NHibernate e Dapper, entregando front-end responsivo e back-end robusto.',
+    mark: { key: 'arcotech' },
   },
   {
     id: 5,
@@ -47,5 +51,6 @@ export const experiences: Experience[] = [
     period: 'ago/2019 – jun/2021',
     description:
       'Fundei a Finger Consultoria para serviços de consultoria de carreira. Cuidei de UX research, prototipação e design de interfaces com Figma, Sketch e testes com usuários.',
+    mark: { key: 'finger' },
   },
 ];
