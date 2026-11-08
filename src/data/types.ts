@@ -16,6 +16,8 @@ export interface Experience {
   company: string;
   position: string;
   description: string;
+  /** Período legível da experiência (ex.: "2024 – 2026" ou "mar/2026 – atual"). */
+  period: string;
 }
 
 export interface Skill {

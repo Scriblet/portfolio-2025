@@ -1,38 +1,51 @@
 import type { Experience } from './types';
 
 // Fonte única das experiências exibidas na seção #experience.
-// A ordem do array é a ordem renderizada nos cards.
+// Ordem: mais recente primeiro. Períodos extraídos do currículo de Lucas Nonato.
 export const experiences: Experience[] = [
   {
     id: 1,
     number: '01',
-    company: 'Porto Seguro',
-    position: 'Desenv. de Software Full-Stack',
+    company: 'Vivo (Telefônica Brasil)',
+    position: 'Consultor de IA / AI Software Engineer',
+    period: 'mar/2026 – atual',
     description:
-      'Desenvolvo um portal de gestão de sinistros usando TypeScript, RxJS e Angular Material. Foco em performance com lazy loading e pré-carregamento inteligente.',
+      'Atuo na evolução da plataforma Aura, integrando LLMs, agentes de IA e APIs em arquiteturas escaláveis com TypeScript, Node.js e práticas de MLOps.',
   },
   {
     id: 2,
     number: '02',
-    company: 'Thoughtworks',
-    position: 'Consultant Developer',
+    company: 'Porto Seguro',
+    position: 'Desenvolvedor de Software Pleno',
+    period: 'jan/2024 – mar/2026',
     description:
-      'Atuei como Consultant Developer com React, TypeScript, TDD e NodeJS. Participei de projeto para tornar aplicativo 100% acessível seguindo WCAG',
+      'Desenvolvi aplicações web e serviços com React, TypeScript, Node.js e APIs REST, focando em performance, manutenibilidade e integração entre sistemas.',
   },
   {
     id: 3,
     number: '03',
-    company: 'Arco Educação',
-    position: 'Desenv. de Software',
+    company: 'Thoughtworks',
+    position: 'Consultant Developer',
+    period: 'abr/2022 – ago/2023',
     description:
-      'Desenvolvi sistemas web com AngularJS, C# e ASP.NET MVC. Trabalhei em front-end responsivo e back-end robusto com NHibernate e Dapper.',
+      'Atuei com React, TypeScript, TDD e Node.js em times de consultoria, participando de iniciativas para tornar produtos 100% acessíveis segundo WCAG.',
   },
   {
     id: 4,
     number: '04',
-    company: 'Finger Consultoria',
-    position: 'UX Designer',
+    company: 'ArcoTech (Escola em Movimento)',
+    position: 'Full Stack Developer',
+    period: 'jun/2021 – mar/2022',
     description:
-      'Fundei a Finger Consultoria para fornecer serviços de consultoria de carreira para estudantes.',
+      'Desenvolvi sistemas web com AngularJS, C#, ASP.NET MVC, NHibernate e Dapper, entregando front-end responsivo e back-end robusto.',
+  },
+  {
+    id: 5,
+    number: '05',
+    company: 'Finger Consultoria',
+    position: 'Founder & UX Designer',
+    period: 'ago/2019 – jun/2021',
+    description:
+      'Fundei a Finger Consultoria para serviços de consultoria de carreira. Cuidei de UX research, prototipação e design de interfaces com Figma, Sketch e testes com usuários.',
   },
 ];
