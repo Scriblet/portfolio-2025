@@ -40,9 +40,6 @@ const LazySection = ({ variant, anchorId, children }: LazySectionProps) => (
 
 const Portfolio = () => (
   <div className="app-container">
-    <a href="#home" className="skip-link">
-      Pular para o conteúdo
-    </a>
     <ReadingProgress />
     <Header />
     <RevealRoot>

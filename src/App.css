@@ -9,28 +9,6 @@
   overflow-x: clip;
 }
 
-.skip-link {
-  position: absolute;
-  top: -80px;
-  left: clamp(14px, 3.5vw, 56px);
-  z-index: 10000;
-  padding: 10px 16px;
-  background: var(--paper);
-  color: var(--void);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: top 0.2s var(--ease-out);
-}
-
-.skip-link:focus-visible {
-  top: 20px;
-}
-
 .main-content {
   display: flex;
   flex-direction: column;

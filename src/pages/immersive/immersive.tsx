@@ -46,10 +46,6 @@ const Immersive = () => {
       className={styles.page}
       data-testid="immersive-page"
     >
-      <a className={styles.skipLink} href="#immersive-main">
-        Pular para o conteúdo
-      </a>
-
       <GrainOverlay />
       <ImmersiveNav />
 
