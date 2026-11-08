@@ -66,6 +66,17 @@ const ContactForm = () => {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
+    // Offline: não promete um envio que não vai acontecer.
+    if (typeof navigator !== "undefined" && navigator.onLine === false) {
+      notify({
+        severity: "warning",
+        message:
+          "Você está offline. Verifique a conexão e tente novamente.",
+        context: "contact",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -126,9 +137,14 @@ const ContactForm = () => {
       });
     } catch {
       // Falha de rede: mantém os campos preenchidos para permitir retry.
+      const offline =
+        typeof navigator !== "undefined" && navigator.onLine === false;
+
       notify({
         severity: "error",
-        message: "Não foi possível enviar. Tente novamente.",
+        message: offline
+          ? "Você está offline. Verifique a conexão e tente novamente."
+          : "Não foi possível enviar. Tente novamente.",
         context: "contact",
       });
     } finally {

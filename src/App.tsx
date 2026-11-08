@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./pages/header";
 import Presentation from "./pages/presentation";
 import ReadingProgress from "./components/ReadingProgress";
+import OfflineNotice from "./components/pwa/OfflineNotice";
 import SectionFallback, {
   type SectionFallbackVariant,
 } from "./components/SectionFallback";
@@ -67,6 +68,7 @@ const Portfolio = () => (
     <LazySection variant="footer">
       <Footer />
     </LazySection>
+    <OfflineNotice />
   </div>
 );
 

@@ -1,6 +1,6 @@
 # PRD — PWA e Offline Básico
 
-Status: ready-for-agent
+Status: done
 Feature slug: `pwa-offline`
 
 ## Problem Statement

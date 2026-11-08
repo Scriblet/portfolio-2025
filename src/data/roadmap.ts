@@ -194,7 +194,7 @@ export const roadmapWaves: RoadmapWave[] = [
     id: 5,
     title: "PWA",
     goal: "Instalação e leitura offline, depois que o restante estiver estável.",
-    status: "pending",
+    status: "done",
     items: [
       {
         slug: "pwa-offline",
@@ -202,8 +202,8 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "Manifest, service worker versionado e fallback offline acessível.",
         category: "Técnico",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["seo-metadados", "code-splitting-lazy"],
       },

@@ -21,6 +21,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SITE_CONFIG } from "../data";
 import useScrollDirection from "../hooks/useScrollDirection";
 import ThemeToggle from "../components/ThemeToggle";
+import InstallButton from "../components/pwa/InstallButton";
 
 export default function Header() {
   const theme = useTheme();
@@ -166,6 +167,7 @@ export default function Header() {
         {isMobile ? (
           <>
             <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+              <InstallButton />
               <ThemeToggle />
               <IconButton
                 color="inherit"
@@ -265,6 +267,7 @@ export default function Header() {
                 Imersivo
               </Button>
             )}
+            <InstallButton />
             <ThemeToggle />
           </Box>
         )}

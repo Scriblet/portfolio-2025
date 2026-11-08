@@ -23,7 +23,7 @@
 | 2 | `code-splitting-lazy` | Code-splitting e lazy loading | ready-for-agent |
 | 3 | `dados-centralizados` | Configuração centralizada de dados | done |
 | 4 | `seguranca-contato` | Segurança do formulário de contato | done |
-| 6 | `pwa-offline` | PWA e offline básico | ready-for-agent |
+| 6 | `pwa-offline` | PWA e offline básico | done |
 
 ## 02 — UX
 
@@ -53,19 +53,21 @@
 
 | # | Slug | Título | Status |
 |---|------|--------|--------|
-| 17 | `design-system-immersive` | Design system imersivo (tokens, tipografia, vidro, grão) | ready-for-agent |
-| 18 | `portal-hero` | Portal hero cinematográfico dirigido por scroll | ready-for-agent |
-| 19 | `editorial-narrative` | Declaração, roster, trajetória e fechamento editorial | ready-for-agent |
-| 20 | `release-deck` | Deck físico de releases com arrasto e teclado | ready-for-agent |
-| 21 | `immersive-preview-page` | Página `/immersive` (laboratório de direção visual) | done |
-| 22 | `motion-a11y-performance` | Movimento, acessibilidade e performance | ready-for-agent |
+| 17 | `design-system-immersive` | Design system imersivo (tokens, tipografia, vidro, grão) | draft |
+| 18 | `portal-hero` | Portal hero scroll-driven com wordmark dividido e HUD real | draft |
+| 19 | `editorial-about` | Seção Sobre com layout editorial + HUD pessoal | draft |
+| 20 | `skills-glass-cards` | Grid de cards de glass para as skills | draft |
+| 21 | `experience-timeline` | Timeline vertical de experiências com datas reais | draft |
+| 22 | `contact-closing` | Fechamento escuro com card de glass de contato | draft |
+| 23 | `motion-a11y-performance` | Movimento, acessibilidade e performance | draft |
+| — | `immersive-preview-page` | Página `/immersive` (preview experimental) | done |
 
 ## Roadmap sugerido
 
 1. **Quick wins (concluído):** `seo-metadados`, `hierarquia-tipografica`, `dados-centralizados`, `seguranca-contato`, `header-scroll-inteligente`, `progresso-leitura`, `microinteracoes-foco`, `download-cv`, `tema-claro-escuro`, `snackbar-contato`
 2. **Médio prazo:** `code-splitting-lazy` (concluído)
-3. **Alto impacto:** `pwa-offline`, `secao-toolbox`, `secao-timeline`
-4. **Onda 6 (em andamento):** `immersive-preview-page` entregue; `design-system-immersive`, `portal-hero`, `editorial-narrative`, `release-deck` e `motion-a11y-performance` a implementar. A prévia está em `/immersive`.
+3. **Alto impacto:** `secao-toolbox` (concluído), `secao-timeline` (concluído)
+4. **Onda 6 (em andamento):** `immersive-preview-page` entregue; `design-system-immersive`, `portal-hero`, `editorial-about`, `skills-glass-cards`, `experience-timeline`, `contact-closing` e `motion-a11y-performance` a implementar. A prévia está em `/immersive`.
 
 ## Como funciona
 
