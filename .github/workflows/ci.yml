@@ -33,3 +33,37 @@ jobs:
 
       - name: Build and type-check
         run: npm run build
+
+      - name: Type-check E2E specs
+        run: npx tsc -p cypress/tsconfig.json --noEmit
+
+  e2e:
+    runs-on: ubuntu-latest
+    # A suíte completa de navegador roda apenas em CI (ver docs/agents/testing.md).
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          # Em CI a suíte roda contra o build de produção (preview): sem o
+          # otimizador de deps do dev server e com o service worker ativo.
+          build: npm run build
+          start: npm run preview:test
+          wait-on: 'http://localhost:4173'
+          wait-on-timeout: 180
+          browser: chrome
+          config: baseUrl=http://localhost:4173
+          install-command: npm ci
+
+      - name: Upload Cypress artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
+          if-no-files-found: ignore
+          retention-days: 7
