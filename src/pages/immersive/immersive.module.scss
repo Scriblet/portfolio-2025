@@ -1387,7 +1387,7 @@
 }
 
 .heroCleanLight .heroCleanImage {
-  filter: saturate(0.85) contrast(1.04) brightness(0.92);
+  filter: saturate(0.9) contrast(1.02) brightness(1.02);
 }
 
 .heroCleanTint {
@@ -1433,6 +1433,37 @@
   );
 }
 
+/*
+ * Superfície e tipografia claras. No /immersive os tokens escuros não trocam
+ * de valor via `[data-mui-color-scheme="light"]` (a página não é filha de
+ * `.app-container`), então a variante clara precisa fixar os valores claros
+ * diretamente — o mesmo branco do site (light-bg / light-text).
+ */
+.heroCleanLight {
+  background: var(--light-bg);
+  color: var(--light-text);
+}
+
+.heroCleanLight .heroCleanWordmark {
+  color: var(--light-text);
+}
+
+.heroCleanLight .heroCleanMetaLabel {
+  color: var(--light-text-2);
+}
+
+.heroCleanLight .heroCleanMetaValue {
+  color: var(--light-text);
+}
+
+.heroCleanLight .heroCleanScrollCueLine {
+  background: linear-gradient(to bottom, var(--light-text), transparent);
+}
+
+.heroCleanLight .heroCleanScrollCueLabel {
+  color: var(--light-text-2);
+}
+
 .heroCleanWordmark {
   position: relative;
   display: flex;
@@ -1469,12 +1500,12 @@
 }
 
 .heroCleanMetaTopLeft {
-  top: clamp(96px, 13vh, 150px);
+  top: clamp(132px, 17vh, 190px);
   left: clamp(18px, 4vw, 56px);
 }
 
 .heroCleanMetaTopRight {
-  top: clamp(96px, 13vh, 150px);
+  top: clamp(132px, 17vh, 190px);
   right: clamp(18px, 4vw, 56px);
   text-align: right;
 }
@@ -1553,7 +1584,7 @@
   }
 
   .heroCleanMetaTopLeft {
-    top: 84px;
+    top: 104px;
   }
 
   .heroCleanMetaLabel {
