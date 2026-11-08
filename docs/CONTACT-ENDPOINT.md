@@ -185,11 +185,15 @@ O token antigo deixa de funcionar assim que o webhook é deletado/regenerado.
 
 ## 7. Testes
 
-- E2E com mock de rota: `tests/contact.spec.ts`
-  (`page.route('**/api/contact', ...)`) — cobre sucesso, erro, rate limit,
-  validação client-side e payload enviado, sem depender do Discord.
+- E2E com mock de rota: specs em `cypress/e2e/form-contato-*.cy.ts`
+  (`cy.interceptContact(...)`) — cobrem sucesso, erro, rate limit, validação
+  client-side e payload enviado, sem depender do Discord.
 - Teste manual do endpoint real: `netlify dev` + `curl` (seção 4).
 
 ```bash
-npx playwright test tests/contact.spec.ts
+# terminal 1
+npm run dev:test
+
+# terminal 2 — um spec por vez (ver docs/agents/testing.md)
+npm run test:e2e:spec -- cypress/e2e/form-contato-envio.cy.ts
 ```

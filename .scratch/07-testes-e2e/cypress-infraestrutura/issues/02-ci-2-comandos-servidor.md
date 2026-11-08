@@ -1,6 +1,6 @@
 # Issue — Comandos de suporte, servidor de teste e regras de estabilidade
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-infraestrutura/PRD.md`

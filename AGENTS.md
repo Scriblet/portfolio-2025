@@ -18,4 +18,4 @@ Single-context — one `CONTEXT.md` + `docs/adr/` at repo root. See `docs/agents
 
 ### Testing
 
-Default loop is **Vitest**: `npm run test:unit` (jsdom, ~2s). **Do not run Playwright/E2E during normal development** — it is CPU-heavy and has frozen the user's machine. Playwright is opt-in only: run it when the user explicitly asks, or when a visual check truly cannot be done another way, and then run a single spec with `--workers=1`. Prefer the chrome-devtools MCP for screenshots and visual inspection. See `docs/agents/testing.md`.
+Default loop is **Vitest**: `npm run test:unit` (jsdom, ~2s). **Do not run the Cypress/E2E suite during normal development** — it is CPU-heavy and has frozen the user's machine before. E2E is opt-in only: run it when the user explicitly asks, or when a visual check truly cannot be done another way, and then run a single spec (`npm run dev:test` + `npm run test:e2e:spec -- cypress/e2e/<spec>.cy.ts`). Prefer the chrome-devtools MCP for screenshots and visual inspection. See `docs/agents/testing.md`.

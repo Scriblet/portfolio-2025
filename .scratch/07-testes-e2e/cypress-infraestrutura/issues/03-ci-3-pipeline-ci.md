@@ -1,6 +1,6 @@
 # Issue — Pipeline de CI com a suíte E2E e artefatos de falha
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-infraestrutura/PRD.md`

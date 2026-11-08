@@ -1,6 +1,6 @@
 # PRD — Infraestrutura de testes E2E com Cypress
 
-Status: draft
+Status: done
 Feature slug: `cypress-infraestrutura`
 Onda: `07-testes-e2e`
 

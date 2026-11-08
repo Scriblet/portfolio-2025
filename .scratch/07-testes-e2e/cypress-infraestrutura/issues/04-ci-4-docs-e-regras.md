@@ -1,6 +1,6 @@
 # Issue — Documentação das regras de E2E e limpeza dos resíduos da suíte antiga
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-infraestrutura/PRD.md`

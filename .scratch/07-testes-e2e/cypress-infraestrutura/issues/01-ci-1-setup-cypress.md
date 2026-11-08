@@ -1,6 +1,6 @@
 # Issue — Setup do Cypress: config, estrutura e scripts
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-infraestrutura/PRD.md`

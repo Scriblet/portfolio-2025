@@ -74,7 +74,7 @@ Análise do site e das interações: `.scratch/07-testes-e2e/ANALISE.md`.
 
 | # | Slug | Título | Status |
 |---|------|--------|--------|
-| 24 | `cypress-infraestrutura` | Infraestrutura de testes E2E com Cypress | draft |
+| 24 | `cypress-infraestrutura` | Infraestrutura de testes E2E com Cypress | done |
 | 25 | `cypress-smoke-navegacao` | Smoke e navegação: home, rotas, header, drawer e tema | draft |
 | 26 | `cypress-secoes-conteudo` | Conteúdo das seções: experiência, jornada, skills, GitHub e footer | draft |
 | 27 | `cypress-formularios-contato` | Formulários de contato: validação, envio e feedback | draft |
