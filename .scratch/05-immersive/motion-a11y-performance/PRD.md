@@ -2,7 +2,7 @@
 title: Motion A11y Performance
 status: done
 wave: 6
-scope: /immersive
+scope: site
 owner: agent
 ---
 

@@ -2,7 +2,7 @@
 title: Portal Hero
 status: done
 wave: 6
-scope: /immersive
+scope: site
 owner: agent
 ---
 

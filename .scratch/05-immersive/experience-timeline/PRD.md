@@ -2,7 +2,7 @@
 title: Experience Timeline
 status: done
 wave: 6
-scope: /immersive
+scope: site
 owner: agent
 ---
 

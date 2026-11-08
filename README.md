@@ -214,14 +214,16 @@ portfolio-2025/
 ├── src/                    # Código fonte
 │   ├── assets/            # Assets da aplicação
 │   │   └── react.svg
+│   ├── components/
+│   │   ├── design-system/ # Primitivas do design system
+│   │   └── ...            # Componentes compartilhados
+│   ├── hooks/             # Hooks (reveal, movimento reduzido, scroll)
 │   ├── img/               # Imagens
-│   │   ├── github-logo.svg
 │   │   ├── multiracial-hands-coming-together.jpg
 │   │   └── presetation.jpg
 │   ├── pages/             # Componentes de página
 │   │   ├── experience/    # Seção de experiências
-│   │   │   ├── experience.tsx
-│   │   │   └── experience.module.scss
+│   │   │   └── experience.tsx
 │   │   ├── filosofia/     # Seção de filosofia
 │   │   │   └── filosofia.tsx
 │   │   ├── formContact/   # Formulário de contato
@@ -230,11 +232,23 @@ portfolio-2025/
 │   │   │   └── github.tsx
 │   │   ├── skills/        # Seção de habilidades
 │   │   │   └── skills.tsx
+│   │   ├── timeline/      # Linha do tempo da carreira
+│   │   │   └── timeline.tsx
+│   │   ├── toolbox/       # Stack e ferramentas
+│   │   │   └── toolbox.tsx
 │   │   ├── footer.tsx     # Rodapé
 │   │   ├── header.tsx     # Cabeçalho
-│   │   └── presentation.tsx # Apresentação
+│   │   ├── header.module.scss
+│   │   ├── pages.module.scss # Layout compartilhado das seções
+│   │   ├── presentation.tsx # Apresentação
+│   │   └── presentation.module.scss
 │   ├── styles/            # Estilos globais
+│   │   ├── design-system.css # Tokens, vidro, grão e foco
 │   │   └── responsive-utils.css
+│   ├── theme/
+│   │   ├── designTokens.ts # Tokens do DS em TypeScript
+│   │   ├── palettes.ts     # Paletas MUI por modo
+│   │   └── ColorModeProvider.tsx
 │   ├── App.css           # Estilos do componente principal
 │   ├── App.tsx           # Componente principal
 │   ├── index.css         # Estilos globais
@@ -258,107 +272,114 @@ portfolio-2025/
 - **Localização**: `src/pages/header.tsx`
 - **Função**: Navegação principal da aplicação
 - **Características**:
-  - Header fixo com background translúcido
-  - Logo clicável que leva ao topo
-  - Menu responsivo com drawer para mobile
-  - Navegação suave entre seções
+  - Header glass pill fixo, alinhado ao design imersivo
+  - Wordmark Syne, links mono uppercase e CTA pill
+  - Toggle de tema claro/escuro e instalação PWA
+  - Drawer mobile com foco inicial, fechamento por Escape e restauração de foco
 
 ### 🏠 Presentation
 - **Localização**: `src/pages/presentation.tsx`
-- **Função**: Seção de apresentação pessoal
+- **Função**: Hero editorial de apresentação
 - **Características**:
-  - Layout flexível (row/column)
-  - Imagem circular responsiva
-  - Textos animados com Framer Motion
-  - Quebra de linha automática para textos
+  - Headline Syne com função em âmbar
+  - Foto com overlay duotônico e painéis de vidro
+  - CTAs pill (contato e download do CV)
+  - Metadados reais vindos de `src/data/site.ts`
 
 ### 💼 Experience
 - **Localização**: `src/pages/experience/experience.tsx`
 - **Função**: Apresentação das experiências profissionais
 - **Características**:
-  - Grid responsivo de 1-4 colunas
-  - Numeração visual grande
-  - Sistema de cores por empresa
-  - Animações de entrada escalonadas
+  - Grid de 3 colunas no desktop (2 no tablet, 1 no mobile)
+  - Cards de vidro com numeração, período, empresa e cargo
+  - Dados reais de `src/data/experiences.ts`
+  - Hover com elevação respeitando `prefers-reduced-motion`
 
 ### 🔧 Skills
 - **Localização**: `src/pages/skills/skills.tsx`
 - **Função**: Showcase das habilidades técnicas
 - **Características**:
-  - 10 cards com habilidades principais
-  - Ícones do Material-UI
-  - Tags com tecnologias
-  - Efeitos hover e animações
+  - Cards de vidro com índice, ícone, título, descrição e tags
+  - Ícones do Material-UI por `SkillIconKey`
+  - Conteúdo de `src/data/skills.ts`
+  - Grid responsivo 4/3/2/1
 
 ### 🎯 Philosophy
 - **Localização**: `src/pages/filosofia/filosofia.tsx`
 - **Função**: Apresentação de valores pessoais
 - **Características**:
-  - Banner com imagem e texto
-  - Background colorido contrastante
-  - Link para LinkedIn
-  - Layout responsivo lado a lado
+  - Seção editorial escura com declaração em Syne
+  - Destaque em âmbar e régua hairline
+  - Foto com tratamento duotônico e vinheta
+  - CTA para LinkedIn em pill
 
 ### 📁 GitHub
 - **Localização**: `src/pages/github/github.tsx`
 - **Função**: Promoção do perfil GitHub
 - **Características**:
-  - Background branco contrastante
-  - Logo SVG responsivo
-  - Call-to-action destacado
-  - Layout similar ao Philosophy
+  - Painel de vidro com texto e CTA pill
+  - Logo monocromático via Simple Icons
+  - Link externo com `rel="noopener noreferrer"`
 
 ### 📬 ContactForm
 - **Localização**: `src/pages/formContact/contactForm.tsx`
 - **Função**: Formulário de contato
 - **Características**:
-  - Campos: nome, email, mensagem
-  - Validação básica de email
-  - Integração com Discord webhook
-  - Feedback visual de status
+  - Card de vidro com inputs nativos estilizados
+  - Validação de nome, e-mail e mensagem
+  - Honeypot, tratamento de 429 e estado offline
+  - Feedback via snackbar (`aria-live`)
 
 ### 🦶 Footer
 - **Localização**: `src/pages/footer.tsx`
 - **Função**: Rodapé com links e informações
 - **Características**:
-  - Links de navegação
-  - Ícones de redes sociais
-  - Informações de copyright
-  - Layout responsivo
+  - Wordmark, links mono e ícones sociais ghost
+  - Hairline, wordmark grande e fine print
+  - Scroll suave e analytics preservados
 
 ## 📐 Sistema de Design
 
-### 🎨 Paleta de Cores
-```typescript
-primary: "#673ab7"      // Roxo principal
-secondary: "#800080"    // Roxo secundário
-background: "#121212"   // Fundo escuro
-paper: "#1e1e1e"       // Fundo de componentes
-text.primary: "#ffffff" // Texto principal
-text.secondary: "#b3b3b3" // Texto secundário
-```
+### 🎨 Tokens e paleta
+Fonte única de verdade:
+- `src/styles/design-system.css` — CSS custom properties e classes `ds-*`.
+- `src/theme/designTokens.ts` — os mesmos valores em TypeScript.
+- `src/theme/palettes.ts` — paletas MUI por modo.
+
+| Token | Dark | Light |
+|---|---|---|
+| `--void` | `#090b0d` | `#f4f4f5` |
+| `--void-2` | `#101317` | `#ffffff` |
+| `--paper` | `#f1eee8` | `#18181b` |
+| `--paper-2` | `#a8afb2` | `#52525b` |
+| `--emerald` | `#34d399` | `#047857` |
+| `--amber` | `#e8913c` | `#b45309` |
+
+O `ColorModeProvider` aplica `data-mui-color-scheme` no `<html>`; o bloco
+`[data-mui-color-scheme="light"]` troca os tokens sem duplicar CSS.
 
 ### 📝 Tipografia
-- **Família**: 'Poppins', sans-serif
-- **Escala**: Modular 1.333 (terceira maioria)
-- **Pesos**: 300, 400, 500, 600, 700, 800
-- **Responsividade**: clamp() para fluidez
+- **Display**: `Syne` 600–800.
+- **Corpo**: `Inter` 300–500.
+- **Labels / mono**: `Sora` 400–600.
+- **Escala**: `clamp()` fluida, carregada via `@fontsource`.
 
-### 📏 Espaçamentos
-```css
-xs: 0.5rem    // 8px
-sm: 0.75rem   // 12px
-md: 1rem      // 16px
-lg: 1.5rem    // 24px
-xl: 2rem      // 32px
-2xl: 3rem     // 48px
-```
+### 🧊 Vidro, grão e foco
+- Vidro escuro: `--glass-bg`, `--glass-border`, `--glass-shadow`.
+- Vidro claro: `--glass-light-bg`, `--glass-light-border`.
+- Grão SVG fixo em `GrainOverlay` (~7,5% de opacidade).
+- Foco visível global de 2px com offset 3px.
+- `prefers-reduced-motion` remove animações e deslocamentos.
 
-### 🔲 Bordas
-- **Raio padrão**: 8px
-- **Raio grande**: 16px
-- **Raio cards**: 4px
-- **Raio botões**: 8px
+### 🧩 Primitivas
+Em `src/components/design-system/`:
+`GlassPanel`, `Hairline`, `GrainOverlay`, `IndexNumeral`, `PillButton`,
+`PillIcon` e `SectionLabel`.
+
+### 📏 Espaçamentos e raios
+- Espaçamento: `--space-1` (4px) a `--space-9` (96px).
+- Raios: `--radius-sm` (12px), `--radius-md` (16px), `--radius-lg` (24px),
+  `--radius-pill` (999px).
 
 ## 🔧 Configurações
 

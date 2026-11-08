@@ -1,10 +1,10 @@
-export type RoadmapStatus = "done" | "in-progress" | "pending";
+﻿export type RoadmapStatus = "done" | "in-progress" | "pending";
 
 export type RoadmapCategory =
-  | "Técnico"
+  | "TÃ©cnico"
   | "UX"
   | "Feature"
-  | "Seção";
+  | "SeÃ§Ã£o";
 
 export type RoadmapItem = {
   slug: string;
@@ -29,35 +29,35 @@ export type RoadmapWave = {
 export const roadmapWaves: RoadmapWave[] = [
   {
     id: 0,
-    title: "Fundação",
-    goal: "Base técnica que destrava todo o resto: dados tipados, contato seguro, tipografia e SEO.",
+    title: "FundaÃ§Ã£o",
+    goal: "Base tÃ©cnica que destrava todo o resto: dados tipados, contato seguro, tipografia e SEO.",
     status: "done",
     items: [
       {
         slug: "dados-centralizados",
         title: "Dados centralizados",
         summary:
-          "Camada src/data tipada para experiências, skills, site e links sociais.",
-        category: "Técnico",
+          "Camada src/data tipada para experiÃªncias, skills, site e links sociais.",
+        category: "TÃ©cnico",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
       },
       {
         slug: "seguranca-contato",
-        title: "Segurança do contato",
+        title: "SeguranÃ§a do contato",
         summary:
-          "Webhook fora do bundle, endpoint /api/contact com validação e rate limit.",
-        category: "Técnico",
+          "Webhook fora do bundle, endpoint /api/contact com validaÃ§Ã£o e rate limit.",
+        category: "TÃ©cnico",
         status: "done",
         issuesDone: 3,
         issuesTotal: 3,
       },
       {
         slug: "hierarquia-tipografica",
-        title: "Hierarquia tipográfica",
+        title: "Hierarquia tipogrÃ¡fica",
         summary:
-          "Escala central no tema, contraste dos textos secundários e remoção do título vazio.",
+          "Escala central no tema, contraste dos textos secundÃ¡rios e remoÃ§Ã£o do tÃ­tulo vazio.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -67,8 +67,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "seo-metadados",
         title: "SEO e metadados",
         summary:
-          "Open Graph, Twitter Cards, JSON-LD, canonical, favicon e imagem 1200×630.",
-        category: "Técnico",
+          "Open Graph, Twitter Cards, JSON-LD, canonical, favicon e imagem 1200Ã—630.",
+        category: "TÃ©cnico",
         status: "done",
         issuesDone: 3,
         issuesTotal: 3,
@@ -78,7 +78,7 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 1,
     title: "Quick wins",
-    goal: "Ganhos visíveis de navegação, feedback e identidade sem esperar as ondas maiores.",
+    goal: "Ganhos visÃ­veis de navegaÃ§Ã£o, feedback e identidade sem esperar as ondas maiores.",
     status: "done",
     items: [
       {
@@ -95,7 +95,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "progresso-leitura",
         title: "Progresso de leitura",
         summary:
-          "Barra fina de 0–100% no topo, acessível e sem bloquear a navegação.",
+          "Barra fina de 0â€“100% no topo, acessÃ­vel e sem bloquear a navegaÃ§Ã£o.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -103,9 +103,9 @@ export const roadmapWaves: RoadmapWave[] = [
       },
       {
         slug: "microinteracoes-foco",
-        title: "Microinterações e foco",
+        title: "MicrointeraÃ§Ãµes e foco",
         summary:
-          "Hover, focus-visible e active padronizados no tema para toda a superfície interativa.",
+          "Hover, focus-visible e active padronizados no tema para toda a superfÃ­cie interativa.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -115,7 +115,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "snackbar-contato",
         title: "Snackbar de contato",
         summary:
-          "Feedback global de sucesso/erro no formulário, com fila, live region e analytics.",
+          "Feedback global de sucesso/erro no formulÃ¡rio, com fila, live region e analytics.",
         category: "Feature",
         status: "done",
         issuesDone: 3,
@@ -125,7 +125,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "download-cv",
         title: "Download de CV",
         summary:
-          "Botão de PDF na apresentação e no contato, com fallback e evento de download.",
+          "BotÃ£o de PDF na apresentaÃ§Ã£o e no contato, com fallback e evento de download.",
         category: "Feature",
         status: "done",
         issuesDone: 3,
@@ -135,7 +135,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "tema-claro-escuro",
         title: "Tema claro/escuro",
         summary:
-          "Toggle no header, preferência persistida e paleta clara derivada da identidade.",
+          "Toggle no header, preferÃªncia persistida e paleta clara derivada da identidade.",
         category: "Feature",
         status: "done",
         issuesDone: 3,
@@ -146,15 +146,15 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 2,
     title: "Performance",
-    goal: "Primeira dobra mais rápida, com chunks separados e skeleton de altura reservada.",
+    goal: "Primeira dobra mais rÃ¡pida, com chunks separados e skeleton de altura reservada.",
     status: "done",
     items: [
       {
         slug: "code-splitting-lazy",
         title: "Code-splitting e lazy loading",
         summary:
-          "Chunks por seção, skeleton com altura reservada e bundle inicial menor.",
-        category: "Técnico",
+          "Chunks por seÃ§Ã£o, skeleton com altura reservada e bundle inicial menor.",
+        category: "TÃ©cnico",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
@@ -164,8 +164,8 @@ export const roadmapWaves: RoadmapWave[] = [
   },
   {
     id: 4,
-    title: "Seções novas",
-    goal: "Stack visual e narrativa de carreira para completar a história do portfólio.",
+    title: "SeÃ§Ãµes novas",
+    goal: "Stack visual e narrativa de carreira para completar a histÃ³ria do portfÃ³lio.",
     status: "done",
     items: [
       {
@@ -173,7 +173,7 @@ export const roadmapWaves: RoadmapWave[] = [
         title: "Toolbox visual",
         summary:
           "Stack agrupada por categoria, com nome textual e logos oficiais.",
-        category: "Seção",
+        category: "SeÃ§Ã£o",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
@@ -182,8 +182,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "secao-timeline",
         title: "Timeline de carreira",
         summary:
-          "Marcos de formação, certificação e trabalho em ordem cronológica.",
-        category: "Seção",
+          "Marcos de formaÃ§Ã£o, certificaÃ§Ã£o e trabalho em ordem cronolÃ³gica.",
+        category: "SeÃ§Ã£o",
         status: "done",
         issuesDone: 3,
         issuesTotal: 3,
@@ -193,15 +193,15 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 5,
     title: "PWA",
-    goal: "Instalação e leitura offline, depois que o restante estiver estável.",
+    goal: "InstalaÃ§Ã£o e leitura offline, depois que o restante estiver estÃ¡vel.",
     status: "done",
     items: [
       {
         slug: "pwa-offline",
         title: "PWA offline",
         summary:
-          "Manifest, service worker versionado e fallback offline acessível.",
-        category: "Técnico",
+          "Manifest, service worker versionado e fallback offline acessÃ­vel.",
+        category: "TÃ©cnico",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
@@ -212,27 +212,27 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 6,
     title: "Refactor imersivo",
-    goal: "Uma experiência editorial imersiva: portal cinematográfico, vidro arquitetônico, tipografia Syne e deck físico de releases — sem perder acessibilidade nem performance.",
-    status: "in-progress",
+    goal: "Uma experiÃªncia editorial imersiva aplicada ao portfÃ³lio inteiro: vidro arquitetÃ´nico, tipografia Syne, narrativa por seÃ§Ãµes e movimento contido â€” sem perder acessibilidade nem performance.",
+    status: "done",
     items: [
       {
         slug: "design-system-immersive",
         title: "Design system imersivo",
         summary:
-          "Tokens, tipografia Syne/Inter/Sora, vidro, grão e primitivas com foco e contraste AA.",
+          "Tokens, tipografia Syne/Inter/Sora, vidro, grÃ£o e primitivas com foco e contraste AA â€” agora globais.",
         category: "UX",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
       },
       {
         slug: "portal-hero",
-        title: "Portal hero cinematográfico",
+        title: "Portal hero cinematogrÃ¡fico",
         summary:
-          "Hero dirigido por scroll: painéis, foto duotônica e wordmark dividido, reversível e com movimento reduzido.",
+          "Hero dirigido por scroll: painÃ©is, foto duotÃ´nica e wordmark dividido, reversÃ­vel e com movimento reduzido.",
         category: "UX",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["design-system-immersive"],
       },
@@ -240,49 +240,154 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "editorial-narrative",
         title: "Narrativa editorial",
         summary:
-          "Declaração, faixa clara, roster, trajetória e fechamento com wordmark cortado.",
-        category: "Seção",
-        status: "pending",
-        issuesDone: 0,
+          "Sobre, Skills, ExperiÃªncia e Contato com a linguagem editorial da referÃªncia imersiva.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["design-system-immersive"],
       },
       {
         slug: "release-deck",
-        title: "Deck físico de releases",
+        title: "Deck fÃ­sico de releases",
         summary:
-          "Capas empilhadas com arrasto, arremesso, teclado, indicadores e conteúdo provisório marcado.",
+          "Explorado no preview e removido na consolidaÃ§Ã£o; a pÃ¡gina seguiu com Skills em cards de vidro.",
         category: "Feature",
-        status: "pending",
-        issuesDone: 0,
-        issuesTotal: 4,
-        dependsOn: ["design-system-immersive"],
-      },
-      {
-        slug: "immersive-preview-page",
-        title: "Página /immersive",
-        summary:
-          "Laboratório navegável com a direção completa, conteúdo real e capas provisórias sinalizadas.",
-        category: "Seção",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
-        note: "Entregue em /immersive; link disponível no painel do roadmap e no header em desenvolvimento.",
+        dependsOn: ["design-system-immersive"],
+        note: "Removido na consolidaÃ§Ã£o do preview.",
+      },
+      {
+        slug: "immersive-preview-page",
+        title: "PÃ¡gina /immersive",
+        summary:
+          "LaboratÃ³rio navegÃ¡vel com a direÃ§Ã£o completa e conteÃºdo real, mantido como referÃªncia visual.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 4,
+        issuesTotal: 4,
+        note: "ReferÃªncia visual do refactor do site.",
       },
       {
         slug: "motion-a11y-performance",
         title: "Movimento, a11y e performance",
         summary:
-          "Tokens de motion, contrato de movimento reduzido, auditoria axe e orçamento de performance.",
-        category: "Técnico",
-        status: "pending",
-        issuesDone: 0,
+          "Tokens de motion, contrato de movimento reduzido, foco, contraste e orÃ§amento de performance.",
+        category: "TÃ©cnico",
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
-        dependsOn: [
-          "portal-hero",
-          "editorial-narrative",
-          "release-deck",
-        ],
+        dependsOn: ["portal-hero", "editorial-narrative"],
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: "Refactor do site",
+    goal: "Aplicar a linguagem da referÃªncia /immersive a cada seÃ§Ã£o real do portfÃ³lio, com PRDs por seÃ§Ã£o e validaÃ§Ã£o de acessibilidade.",
+    status: "done",
+    items: [
+      {
+        slug: "global-shell",
+        title: "Shell global",
+        summary:
+          "GrÃ£o, container, ritmo vertical e contrato de reveal aplicados ao site inteiro.",
+        category: "TÃ©cnico",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "header-hero",
+        title: "Header e Hero",
+        summary:
+          "Header glass pill e hero editorial com foto, metadados reais e CTA pill.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "experience-section",
+        title: "ExperiÃªncia",
+        summary:
+          "Cards de vidro e numeraÃ§Ã£o para as empresas reais de experiences.ts.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "timeline-section",
+        title: "Jornada",
+        summary:
+          "Timeline com trilho em degradÃª, marcadores e cards de vidro.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "philosophy-section",
+        title: "Filosofia",
+        summary:
+          "SeÃ§Ã£o editorial escura com foto, texto e CTA, sem o marrom hardcoded.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "skills-section",
+        title: "Habilidades",
+        summary:
+          "Cards de vidro com Ã­cone, tÃ­tulo, descriÃ§Ã£o e tags a partir de skills.ts.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "toolbox-section",
+        title: "Stack e ferramentas",
+        summary:
+          "CatÃ¡logo filtrÃ¡vel com chips e cards de vidro, core e complementar.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "github-section",
+        title: "Banner GitHub",
+        summary:
+          "Painel de vidro com CTA pill e o logo como elemento grÃ¡fico.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "contact-section",
+        title: "Contato",
+        summary:
+          "Fechamento editorial com card de vidro e formulÃ¡rio preservado.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
+      },
+      {
+        slug: "footer-section",
+        title: "RodapÃ©",
+        summary:
+          "Wordmark, links mono, Ã­cones sociais e hairline no fecho do site.",
+        category: "SeÃ§Ã£o",
+        status: "done",
+        issuesDone: 1,
+        issuesTotal: 1,
       },
     ],
   },
