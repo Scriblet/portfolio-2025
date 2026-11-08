@@ -52,9 +52,8 @@ $RECYCLE.BIN/
 # Temporary files
 *.tmp
 *.temp
-# Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+# Cypress (E2E — opt-in, ver docs/agents/testing.md)
+/cypress/videos/
+/cypress/screenshots/
+/cypress/downloads/
+/cypress/.cache/

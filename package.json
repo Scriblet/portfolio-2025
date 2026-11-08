@@ -11,6 +11,12 @@
     "test": "vitest run",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
+    "dev:test": "vite --port 5174 --strictPort",
+    "preview:test": "vite preview --port 4173 --strictPort",
+    "test:e2e": "start-server-and-test dev:test http://localhost:5174 \"cypress run\"",
+    "test:e2e:open": "start-server-and-test dev:test http://localhost:5174 \"cypress open\"",
+    "test:e2e:preview": "npm run build && start-server-and-test preview:test http://localhost:4173 \"cypress run --config baseUrl=http://localhost:4173\"",
+    "test:e2e:spec": "cypress run --spec",
     "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
@@ -44,6 +50,7 @@
     "@types/react-dom": "^19.0.4",
     "@types/react-scroll": "^1.8.10",
     "@vitejs/plugin-react": "^4.3.4",
+    "cypress": "^16.2.1",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -51,6 +58,7 @@
     "install": "^0.13.0",
     "jsdom": "^31.0.0",
     "postcss": "^8.5.3",
+    "start-server-and-test": "^3.0.13",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
