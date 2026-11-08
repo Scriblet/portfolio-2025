@@ -51,19 +51,14 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          # Em CI a suíte roda contra o build de produção (preview): sem o
-          # otimizador de deps do dev server e com o service worker ativo.
-          build: npm run build
-          start: npm run preview:test
-          # 127.0.0.1 (e não localhost) evita resolução IPv6 no runner.
-          wait-on: 'http://127.0.0.1:4173'
-          wait-on-timeout: 180
-          browser: chrome
-          config: baseUrl=http://127.0.0.1:4173
-          install-command: npm ci
+        # Em CI a suíte roda contra o build de produção (preview): sem o
+        # otimizador de deps do dev server e com o service worker ativo.
+        # O mesmo script usado localmente (build + preview + cypress).
+        run: npm run test:e2e:preview
 
       - name: Upload Cypress artifacts on failure
         if: failure()
