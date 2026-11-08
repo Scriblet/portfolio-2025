@@ -32,8 +32,8 @@
 
 .skipLink {
   position: absolute;
-  top: 20px;
-  left: 24px;
+  top: -9999px;
+  left: -9999px;
   z-index: 1000;
   padding: 10px 16px;
   background: var(--paper);
@@ -44,14 +44,13 @@
   text-transform: uppercase;
   border-radius: 8px;
   opacity: 0;
-  transform: translateY(-150%);
-  pointer-events: none;
-  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  transition: opacity 0.2s var(--ease-out);
 
-  &:focus {
+  &:focus,
+  &:focus-visible {
+    top: 20px;
+    left: 24px;
     opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
   }
 }
 
@@ -1376,15 +1375,15 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Hero clean — paleta fixa, imune ao tema claro                      */
+/* Hero clean — respeita o tema ativo (dark / light)                  */
 /* ------------------------------------------------------------------ */
 
 .heroClean {
   position: relative;
   height: 100svh;
   min-height: 600px;
-  background: #0a0814;
-  color: #f2eefb;
+  background: var(--void);
+  color: var(--paper);
   overflow: hidden;
 }
 
@@ -1411,6 +1410,10 @@
   filter: saturate(0.65) contrast(1.08) brightness(0.68);
 }
 
+.heroCleanLight .heroCleanImage {
+  filter: saturate(0.85) contrast(1.04) brightness(0.92);
+}
+
 .heroCleanTint {
   position: absolute;
   inset: 0;
@@ -1423,6 +1426,17 @@
   mix-blend-mode: overlay;
 }
 
+.heroCleanLight .heroCleanTint {
+  background: linear-gradient(
+    115deg,
+    rgba(46, 107, 114, 0.12) 0%,
+    rgba(255, 255, 255, 0.55) 55%,
+    rgba(232, 145, 60, 0.1) 100%
+  );
+  mix-blend-mode: normal;
+  opacity: 0.75;
+}
+
 .heroCleanVignette {
   position: absolute;
   inset: 0;
@@ -1431,6 +1445,15 @@
     transparent 0%,
     transparent 45%,
     rgba(9, 11, 13, 0.9) 100%
+  );
+}
+
+.heroCleanLight .heroCleanVignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(244, 244, 245, 0.85) 100%
   );
 }
 
@@ -1447,7 +1470,7 @@
   font-weight: 800;
   line-height: 0.82;
   letter-spacing: -0.03em;
-  color: #f2eefb;
+  color: var(--paper);
   text-align: center;
 }
 
@@ -1467,13 +1490,6 @@
   gap: 4px;
   min-width: 150px;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(48px) saturate(190%);
-  -webkit-backdrop-filter: blur(48px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .heroCleanMetaTopLeft {
@@ -1504,7 +1520,7 @@
   right: 12px;
   width: 6px;
   height: 6px;
-  background: #7c3aed;
+  background: var(--emerald);
   border-radius: 50%;
 }
 
@@ -1514,13 +1530,13 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #a9a0c4;
+  color: var(--paper-2);
 }
 
 .heroCleanMetaValue {
   font-size: 13.5px;
   font-weight: 500;
-  color: #f2eefb;
+  color: var(--paper);
   letter-spacing: -0.01em;
 }
 
@@ -1536,7 +1552,7 @@
 .heroCleanScrollCueLine {
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, #f2eefb, transparent);
+  background: linear-gradient(to bottom, var(--paper), transparent);
   opacity: 0.5;
 }
 
@@ -1546,7 +1562,7 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #a9a0c4;
+  color: var(--paper-2);
 }
 
 @media (max-width: 760px) {

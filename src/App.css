@@ -27,7 +27,7 @@
   transition: top 0.2s var(--ease-out);
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
   top: 20px;
 }
 

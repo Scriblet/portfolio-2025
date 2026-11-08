@@ -22,9 +22,13 @@
 }
 
 .navBrand {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
+  line-height: 1;
   letter-spacing: -0.03em;
   color: var(--paper);
   text-decoration: none;
