@@ -1,15 +1,18 @@
 import { useState } from "react";
 import {
-  Box,
-  TextField,
-  Button,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { motion } from "framer-motion";
+  LocationOn,
+  Mail,
+} from "@mui/icons-material";
 import DownloadCvButton from "../../components/DownloadCvButton";
 import { useSnackbar } from "../../components/feedback/SnackbarProvider";
+import { SOCIAL_LINKS, SITE_CONFIG } from "../../data";
+import { trackPortfolioEvents } from "../../services/analytics";
+import {
+  GlassPanel,
+  PillButton,
+  SectionLabel,
+} from "../../components/design-system";
+import styles from "../pages.module.scss";
 
 type FieldErrors = {
   nome?: string;
@@ -19,16 +22,21 @@ type FieldErrors = {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+const sectionContent = {
+  label: "Contato",
+  index: "08",
+  headline: "Vamos construir algo juntos?",
+  body: "Seja para uma vaga, um projeto ou só para trocar ideia sobre tecnologia, me mande uma mensagem.",
+};
+
 const ContactForm = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { notify } = useSnackbar();
 
-  const [email, setEmail] = useState<string>("");
-  const [nome, setNome] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [website, setWebsite] = useState<string>(""); // honeypot
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [email, setEmail] = useState("");
+  const [nome, setNome] = useState("");
+  const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
 
   const validate = (): FieldErrors => {
@@ -66,12 +74,10 @@ const ContactForm = () => {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    // Offline: não promete um envio que não vai acontecer.
     if (typeof navigator !== "undefined" && navigator.onLine === false) {
       notify({
         severity: "warning",
-        message:
-          "Você está offline. Verifique a conexão e tente novamente.",
+        message: "Você está offline. Verifique a conexão e tente novamente.",
         context: "contact",
       });
       return;
@@ -91,36 +97,6 @@ const ContactForm = () => {
         }),
       });
 
-      if (response.ok) {
-        // Confere o contrato JSON: se a function não estiver publicada, o
-        // fallback da SPA pode devolver index.html com status 200.
-        let data: unknown = null;
-        try {
-          data = await response.json();
-        } catch {
-          data = null;
-        }
-
-        const accepted =
-          typeof data === "object" &&
-          data !== null &&
-          (data as { ok?: unknown }).ok === true;
-
-        if (accepted) {
-          notify({
-            severity: "success",
-            title: "Mensagem enviada",
-            message: "Obrigado! Vou responder em breve.",
-            context: "contact",
-          });
-          setNome("");
-          setEmail("");
-          setMessage("");
-          setErrors({});
-          return;
-        }
-      }
-
       if (response.status === 429) {
         notify({
           severity: "warning",
@@ -130,16 +106,45 @@ const ContactForm = () => {
         return;
       }
 
+      let data: unknown = null;
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
+      }
+
+      const accepted =
+        response.ok &&
+        typeof data === "object" &&
+        data !== null &&
+        (data as { ok?: unknown }).ok === true;
+
+      if (accepted) {
+        trackPortfolioEvents.contactFormSubmit(true);
+        notify({
+          severity: "success",
+          title: "Mensagem enviada",
+          message: "Obrigado! Vou responder em breve.",
+          context: "contact",
+        });
+        setNome("");
+        setEmail("");
+        setMessage("");
+        setErrors({});
+        return;
+      }
+
+      trackPortfolioEvents.contactFormSubmit(false);
       notify({
         severity: "error",
         message: "Não foi possível enviar. Tente novamente.",
         context: "contact",
       });
     } catch {
-      // Falha de rede: mantém os campos preenchidos para permitir retry.
       const offline =
         typeof navigator !== "undefined" && navigator.onLine === false;
 
+      trackPortfolioEvents.contactFormSubmit(false);
       notify({
         severity: "error",
         message: offline
@@ -153,212 +158,170 @@ const ContactForm = () => {
   };
 
   return (
-    <Box
+    <section
       id="contact"
-      component={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      sx={{
-        "padding-top": { xs: "2rem", md: "4rem" },
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        justifyContent: "space-between",
-        margin: {
-          xs: "0 1rem 2rem",
-          sm: "0 2rem 2rem",
-          md: "0 48px 0 56px",
-        },
-        alignItems: { xs: "stretch", md: "center" },
-        gap: { xs: 3, md: 0 },
-      }}
+      className={`${styles.section} ${styles.void2Section} ${styles.contactSection}`}
+      aria-labelledby="contact-title"
+      data-testid="contact-section"
     >
-      <Box
-        component={motion.div}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: { xs: "center", md: "flex-start" },
-          width: { xs: "100%", md: "40%" },
-        }}
-      >
-        <Typography
-          variant="h1"
-          sx={{
-            fontSize: { xs: "1.5rem", sm: "1.8rem", md: "24px" },
-            fontWeight: "bold",
-            textAlign: { xs: "center", md: "left" },
-            marginBottom: { xs: "16px", md: "20px" },
-          }}
-        >
-          Vamos lá
-        </Typography>
+      <div className={styles.contactGrid}>
+        <div className={styles.contactCopy} data-reveal>
+          <SectionLabel tone="dark">
+            {sectionContent.label} / {sectionContent.index}
+          </SectionLabel>
+          <h2 id="contact-title" className={styles.contactTitle}>
+            {sectionContent.headline}
+          </h2>
+          <p className={styles.contactBody}>{sectionContent.body}</p>
 
-        <Typography
-          sx={{
-            fontSize: { xs: "14px", sm: "15px", md: "16px" },
-            marginBottom: { xs: "32px", md: "48px" },
-            width: { xs: "100%", md: "60%" },
-            color: theme.palette.text.secondary,
-            fontWeight: 400,
-            textAlign: { xs: "center", md: "left" },
-          }}
-        >
-          Se identificou? Minha caixa de entrada está aberta para oportunidades.
-        </Typography>
+          <div className={styles.contactActions}>
+            <PillButton
+              href={`mailto:${SITE_CONFIG.EMAIL}`}
+              testId="contact-email"
+            >
+              Enviar e-mail
+            </PillButton>
+            <PillButton
+              href={SOCIAL_LINKS.LINKEDIN}
+              external
+              variant="ghost-light"
+              testId="contact-linkedin"
+            >
+              LinkedIn
+            </PillButton>
+          </div>
 
-        <DownloadCvButton
-          location="contact"
-          align={isMobile ? "center" : "left"}
-        />
-      </Box>
+          <div style={{ marginTop: 28 }}>
+            <DownloadCvButton location="contact" align="left" />
+          </div>
+        </div>
 
-      <Box
-        component={motion.div}
-        sx={{
-          width: { xs: "100%", md: "55%" },
-          maxWidth: { xs: "100%", md: "600px" },
-          margin: { xs: "0", md: "0 0 32px" },
-        }}
-      >
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          noValidate
-          aria-busy={isSubmitting}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: { xs: "16px", md: "20px" },
-            position: "relative",
-          }}
-        >
-          {/* Honeypot: invisível para humanos, isca para bots. */}
-          <Box
-            aria-hidden="true"
-            sx={{
-              position: "absolute",
-              left: "-9999px",
-              top: 0,
-              width: "1px",
-              height: "1px",
-              overflow: "hidden",
-            }}
+        <GlassPanel tone="dark" className={styles.contactCard} data-reveal>
+          <h3 className={styles.contactCardTitle}>Mande uma mensagem</h3>
+
+          <form
+            className={styles.contactForm}
+            onSubmit={handleSubmit}
+            noValidate
+            aria-busy={isSubmitting}
           >
-            <label htmlFor="contact-website">Website</label>
-            <input
-              id="contact-website"
-              name="website"
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-              value={website}
-              onChange={(e) => setWebsite(e.target.value)}
-            />
-          </Box>
+            <div className={styles.formHoneypot} aria-hidden="true">
+              <label htmlFor="contact-website">Website</label>
+              <input
+                id="contact-website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+              />
+            </div>
 
-          <TextField
-            variant="outlined"
-            fullWidth
-            label="Nome"
-            name="name"
-            autoComplete="name"
-            required
-            value={nome}
-            error={Boolean(errors.nome)}
-            helperText={errors.nome}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setNome(e.target.value);
-              if (errors.nome) {
-                setErrors((prev) => ({ ...prev, nome: undefined }));
-              }
-            }}
-            inputProps={{ maxLength: 100 }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: theme.palette.divider,
-                },
-                fontSize: { xs: "14px", md: "16px" },
-              },
-            }}
-          />
+            <div className={styles.formField}>
+              <label htmlFor="contact-nome">Nome</label>
+              <input
+                id="contact-nome"
+                type="text"
+                name="name"
+                autoComplete="name"
+                maxLength={100}
+                value={nome}
+                aria-invalid={!!errors.nome}
+                aria-describedby={errors.nome ? "contact-nome-error" : undefined}
+                onChange={(e) => {
+                  setNome(e.target.value);
+                  if (errors.nome) setErrors((p) => ({ ...p, nome: undefined }));
+                }}
+                onFocus={() =>
+                  trackPortfolioEvents.contactFormFieldFocus("name")
+                }
+              />
+              {errors.nome && (
+                <span id="contact-nome-error" className={styles.formError}>
+                  {errors.nome}
+                </span>
+              )}
+            </div>
 
-          <TextField
-            variant="outlined"
-            fullWidth
-            type="email"
-            label="Email"
-            name="email"
-            autoComplete="email"
-            required
-            value={email}
-            error={Boolean(errors.email)}
-            helperText={errors.email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setEmail(e.target.value);
-              if (errors.email) {
-                setErrors((prev) => ({ ...prev, email: undefined }));
-              }
-            }}
-            inputProps={{ maxLength: 254 }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: theme.palette.divider,
-                },
-                fontSize: { xs: "14px", md: "16px" },
-              },
-            }}
-          />
+            <div className={styles.formField}>
+              <label htmlFor="contact-email">E-mail</label>
+              <input
+                id="contact-email"
+                type="email"
+                name="email"
+                autoComplete="email"
+                maxLength={254}
+                value={email}
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? "contact-email-error" : undefined}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (errors.email)
+                    setErrors((p) => ({ ...p, email: undefined }));
+                }}
+                onFocus={() =>
+                  trackPortfolioEvents.contactFormFieldFocus("email")
+                }
+              />
+              {errors.email && (
+                <span id="contact-email-error" className={styles.formError}>
+                  {errors.email}
+                </span>
+              )}
+            </div>
 
-          <TextField
-            variant="outlined"
-            multiline
-            rows={isMobile ? 3 : 4}
-            fullWidth
-            label="Mensagem"
-            name="message"
-            required
-            value={message}
-            error={Boolean(errors.message)}
-            helperText={errors.message}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setMessage(e.target.value);
-              if (errors.message) {
-                setErrors((prev) => ({ ...prev, message: undefined }));
-              }
-            }}
-            inputProps={{ maxLength: 2000 }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: theme.palette.divider,
-                },
-                fontSize: { xs: "14px", md: "16px" },
-              },
-            }}
-          />
+            <div className={styles.formField}>
+              <label htmlFor="contact-message">Mensagem</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows={4}
+                maxLength={2000}
+                value={message}
+                aria-invalid={!!errors.message}
+                aria-describedby={
+                  errors.message ? "contact-message-error" : undefined
+                }
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                  if (errors.message)
+                    setErrors((p) => ({ ...p, message: undefined }));
+                }}
+                onFocus={() =>
+                  trackPortfolioEvents.contactFormFieldFocus("message")
+                }
+              />
+              {errors.message && (
+                <span id="contact-message-error" className={styles.formError}>
+                  {errors.message}
+                </span>
+              )}
+            </div>
 
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={isSubmitting}
-            aria-disabled={isSubmitting}
-            sx={{
-              color: "#fff",
-              padding: { xs: "8px 16px", md: "10px 20px" },
-              fontWeight: "bold",
-              fontSize: { xs: "14px", md: "16px" },
-            }}
-            component={motion.button}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {isSubmitting ? "Enviando..." : "Enviar"}
-          </Button>
-        </Box>
-      </Box>
-    </Box>
+            <button
+              type="submit"
+              className={styles.formSubmit}
+              disabled={isSubmitting}
+              aria-disabled={isSubmitting}
+            >
+              {isSubmitting ? "Enviando..." : "Enviar mensagem"}
+            </button>
+          </form>
+        </GlassPanel>
+      </div>
+
+      <div className={styles.contactFinePrint} data-reveal>
+        <p>
+          <LocationOn fontSize="small" sx={{ fontSize: 13, mr: 0.5 }} />
+          {SITE_CONFIG.LOCATION}
+        </p>
+        <p>
+          <Mail fontSize="small" sx={{ fontSize: 13, mr: 0.5 }} />
+          <a href={`mailto:${SITE_CONFIG.EMAIL}`}>{SITE_CONFIG.EMAIL}</a>
+        </p>
+      </div>
+    </section>
   );
 };
 

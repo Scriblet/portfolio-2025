@@ -1,48 +1,69 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  useMediaQuery,
-  useTheme,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Box,
-  alpha,
-} from "@mui/material";
-import { Link as ScrollLink } from "react-scroll";
+import { useEffect, useRef, useState, type FocusEvent } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { scroller } from "react-scroll";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState, type FocusEvent } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import CloseIcon from "@mui/icons-material/Close";
 import { SITE_CONFIG } from "../data";
 import useScrollDirection from "../hooks/useScrollDirection";
+import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import ThemeToggle from "../components/ThemeToggle";
 import InstallButton from "../components/pwa/InstallButton";
+import { trackPortfolioEvents } from "../services/analytics";
+import styles from "./header.module.scss";
+
+const menuItems = [
+  { text: "Experiência", to: "experience" },
+  { text: "Jornada", to: "jornada" },
+  { text: "Habilidades", to: "skills" },
+  { text: "Toolbox", to: "toolbox" },
+  { text: "Contato", to: "contact" },
+];
+
+const scrollTo = (target: string) => {
+  trackPortfolioEvents.navigationClick(target);
+  scroller.scrollTo(target, {
+    duration: 800,
+    delay: 0,
+    smooth: true,
+    offset: -80,
+  });
+};
 
 export default function Header() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { hidden: scrollHidden } = useScrollDirection();
   const [focusWithin, setFocusWithin] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const { hidden: scrollHidden } = useScrollDirection();
+  const reduced = usePrefersReducedMotion();
   const isDev = import.meta.env.DEV;
 
-  // Nunca esconde o header enquanto houver foco de teclado dentro dele.
   const hidden = scrollHidden && !focusWithin;
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+
+    const closeButton = document.querySelector<HTMLButtonElement>(
+      `.${styles.drawerClose}`,
+    );
+    closeButton?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      menuButtonRef.current?.focus();
+    };
+  }, [mobileOpen]);
 
   const handleFocus = (event: FocusEvent<HTMLElement>) => {
     const target = event.target as HTMLElement | null;
-    // Só o foco por teclado (ou programático) prende o header visível;
-    // um clique de mouse num link não deve impedir o header de se esconder.
     if (!target?.matches || target.matches(":focus-visible")) {
       setFocusWithin(true);
     }
@@ -55,223 +76,176 @@ export default function Header() {
     }
   };
 
-  const menuItems = [
-    { text: "Experiência", to: "experience" },
-    { text: "Jornada", to: "jornada" },
-    { text: "Habilidades", to: "skills" },
-    { text: "Toolbox", to: "toolbox" },
-    { text: "Contato", to: "contact" },
-  ];
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <List>
-        {menuItems.map((item) => (
-          <ListItem key={item.text} component={ScrollLink} to={item.to} smooth={true} duration={500} offset={-80}>
-            <ListItemText
-              primary={item.text}
-              sx={{
-                textAlign: "center",
-                color: theme.palette.text.primary,
-                "&:hover": {
-                  color: theme.palette.primary.main,
-                },
-              }}
-            />
-          </ListItem>
-        ))}
-      </List>
-      {isDev && (
-        <Box sx={{ px: 2, pb: 2 }}>
-          <Button
-            component={RouterLink}
-            to="/roadmap"
-            fullWidth
-            variant="outlined"
-            size="small"
-          >
-            Roadmap (dev)
-          </Button>
-          <Button
-            component={RouterLink}
-            to="/immersive"
-            fullWidth
-            variant="outlined"
-            size="small"
-            sx={{ mt: 1 }}
-          >
-            Prévia imersiva (dev)
-          </Button>
-        </Box>
-      )}
-    </Box>
-  );
+  const handleNavClick = (to: string) => {
+    scrollTo(to);
+  };
 
   return (
-    <AppBar
-      component={motion.header}
-      position="fixed"
-      elevation={0}
-      animate={{ y: hidden ? "-100%" : 0 }}
-      transition={{
-        duration: prefersReducedMotion ? 0 : 0.25,
-        ease: "easeOut",
-      }}
-      {...(hidden ? { inert: true } : {})}
-      aria-hidden={hidden ? "true" : undefined}
-      onFocusCapture={handleFocus}
-      onBlurCapture={handleBlur}
-      sx={{
-        color: theme.palette.text.primary,
-        backgroundColor: alpha(
-          theme.palette.background.default,
-          theme.palette.mode === "dark" ? 0.4 : 0.75,
-        ),
-        boxShadow: "none",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
-        zIndex: 1000,
-      }}
-    >
-      <Toolbar variant="dense" sx={{
-        justifyContent: "space-between",
-        minHeight: { xs: "48px", sm: "56px" },
-        px: { xs: 1, sm: 2 }
-      }}>
-        <Typography
-          variant={isMobile ? "h5" : "h4"}
-          component={ScrollLink}
-          to="home"
-          smooth={true}
-          duration={500}
-          offset={-80}
-          sx={{
-            textDecoration: "none",
-            color: "inherit",
-            cursor: "pointer",
-            // Alvo de toque de 44px de altura no nome/atalho para o topo.
-            display: "inline-flex",
-            alignItems: "center",
-            minHeight: "44px",
-            fontWeight: 700,
-            fontSize: {
-              xs: "1.2rem",
-              sm: "1.5rem",
-              md: "1.8rem"
-            }
-          }}
-        >
-          {SITE_CONFIG.AUTHOR}
-        </Typography>
+    <>
+      <header
+        className={styles.navWrap}
+        style={{
+          transform: hidden ? "translateY(-140%)" : "translateY(0)",
+          transition: reduced
+            ? "none"
+            : "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+        {...(hidden ? { inert: true } : {})}
+        aria-hidden={hidden ? "true" : undefined}
+        onFocusCapture={handleFocus}
+        onBlurCapture={handleBlur}
+        data-testid="site-header"
+      >
+        <nav className={styles.nav} aria-label="Navegação principal">
+          <a
+            className={styles.navBrand}
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("home");
+            }}
+          >
+            {SITE_CONFIG.AUTHOR}
+            <span className={styles.navPeriod}>.</span>
+          </a>
 
-        {isMobile ? (
-          <>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-              <InstallButton />
-              <ThemeToggle />
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2 }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Box>
-            <Drawer
-              variant="temporary"
-              anchor="right"
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              ModalProps={{
-                keepMounted: true,
-              }}                sx={{
-                  display: { xs: "block", sm: "none" },
-                  "& .MuiDrawer-paper": {
-                    boxSizing: "border-box",
-                    width: { xs: 280, sm: 240 },
-                    backgroundColor: alpha(theme.palette.background.default, 0.95),
-                    backdropFilter: "blur(10px)",
-                    WebkitBackdropFilter: "blur(10px)",
-                  },
-                }}
-            >
-              {drawer}
-            </Drawer>
-          </>
-        ) : (
-          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+          <ul className={styles.navLinks}>
             {menuItems.map((item) => (
-              <ScrollLink
-                key={item.text}
-                to={item.to}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                spy={true}
-                activeClass="active"
-              >
-                <Button
-                  color="inherit"
-                  sx={{
-                    mx: 0.25,
-                    px: { sm: 1.5, lg: 2.5 },
-                    minHeight: "6vh",
-                    fontSize: { sm: "0.9rem", lg: "1rem" },
-                    letterSpacing: 0.15,
-                    "&:hover": {
-                      backgroundColor: alpha(theme.palette.text.primary, 0.1),
-                    },
+              <li key={item.to}>
+                <a
+                  className={styles.navLink}
+                  href={`#${item.to}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.to);
                   }}
                 >
                   {item.text}
-                </Button>
-              </ScrollLink>
+                </a>
+              </li>
             ))}
             {isDev && (
-              <Button
-                component={RouterLink}
-                to="/roadmap"
-                color="inherit"
-                sx={{
-                  mx: 0.5,
-                  px: 2,
-                  minHeight: "6vh",
-                  fontSize: "0.9rem",
-                  display: { xs: "none", md: "inline-flex" },
-                  "&:hover": {
-                    backgroundColor: alpha(theme.palette.text.primary, 0.1),
-                  },
-                }}
-              >
-                Roadmap
-              </Button>
+              <li>
+                <RouterLink
+                  className={styles.navLink}
+                  to="/roadmap"
+                  onClick={() =>
+                    trackPortfolioEvents.navigationClick("roadmap")
+                  }
+                >
+                  Roadmap
+                </RouterLink>
+              </li>
             )}
             {isDev && (
-              <Button
-                component={RouterLink}
-                to="/immersive"
-                color="inherit"
-                sx={{
-                  mx: 0.5,
-                  px: 2,
-                  minHeight: "6vh",
-                  fontSize: "0.9rem",
-                  display: { xs: "none", md: "inline-flex" },
-                  "&:hover": {
-                    backgroundColor: alpha(theme.palette.text.primary, 0.1),
-                  },
-                }}
-              >
-                Imersivo
-              </Button>
+              <li>
+                <RouterLink
+                  className={styles.navLink}
+                  to="/immersive"
+                  onClick={() =>
+                    trackPortfolioEvents.navigationClick("immersive")
+                  }
+                >
+                  Imersivo
+                </RouterLink>
+              </li>
             )}
+          </ul>
+
+          <div className={styles.navActions}>
             <InstallButton />
             <ThemeToggle />
-          </Box>
-        )}
-      </Toolbar>
-    </AppBar>
+            <a
+              className={styles.navCta}
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick("contact");
+              }}
+              data-testid="header-cta"
+            >
+              <span>Contato</span>
+              <span className={styles.navCtaIcon} aria-hidden="true">
+                ↗
+              </span>
+            </a>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              className={styles.menuButton}
+              aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileOpen(true)}
+              data-testid="mobile-menu-button"
+            >
+              <MenuIcon />
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {mobileOpen && (
+        <>
+          <div
+            className={styles.drawerOverlay}
+            aria-hidden="true"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div
+            id="mobile-menu"
+            className={styles.drawer}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navegação"
+            data-testid="mobile-menu"
+          >
+            <button
+              type="button"
+              className={styles.drawerClose}
+              aria-label="Fechar menu"
+              onClick={() => setMobileOpen(false)}
+            >
+              <CloseIcon />
+            </button>
+            <ul className={styles.drawerList}>
+              {menuItems.map((item) => (
+                <li key={item.to}>
+                  <a
+                    className={styles.drawerLink}
+                    href={`#${item.to}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileOpen(false);
+                      handleNavClick(item.to);
+                    }}
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            {isDev && (
+              <div className={styles.drawerDev}>
+                <RouterLink
+                  className={styles.drawerDevLink}
+                  to="/roadmap"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Roadmap (dev)
+                </RouterLink>
+                <RouterLink
+                  className={styles.drawerDevLink}
+                  to="/immersive"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Prévia imersiva (dev)
+                </RouterLink>
+              </div>
+            )}
+          </div>
+        </>
+      )}
+    </>
   );
 }

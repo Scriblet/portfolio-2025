@@ -24,8 +24,8 @@ export default defineConfig({
         scope: '.',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#121212',
-        theme_color: '#121212',
+        background_color: '#090b0d',
+        theme_color: '#090b0d',
         categories: ['portfolio', 'developer', 'technology'],
         icons: [
           {

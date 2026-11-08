@@ -1,0 +1,17 @@
+# Lucas Nonato — Portfólio
+
+> Portfólio de Lucas Nonato, Consultor de IA e Software Engineer. Experiência em
+> React, TypeScript, Node.js, integração de LLMs e desenvolvimento web moderno.
+
+## Links
+
+- [Portfólio](https://scriblet.github.io/portfolio-2025/)
+- [GitHub](https://github.com/Scriblet)
+- [LinkedIn](https://www.linkedin.com/in/lucas-nonato1/)
+
+## Conteúdo
+
+- Hero com apresentação e stack principal.
+- Experiência profissional, jornada e formação.
+- Filosofia de trabalho, habilidades técnicas e toolbox.
+- Projetos no GitHub e formulário de contato.

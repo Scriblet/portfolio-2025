@@ -32,6 +32,10 @@ export interface SiteConfig {
   DESCRIPTION: string;
   BASE_URL: string;
   AUTHOR: string;
+  EMAIL: string;
+  LOCATION: string;
+  EXPERIENCE_LABEL: string;
+  STACK_LABEL: string;
   KEYWORDS: string[];
   ROLE: string;
   TAGLINE: string;

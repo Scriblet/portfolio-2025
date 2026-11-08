@@ -1,15 +1,27 @@
-import { Box, IconButton, Link as MuiLink, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { GitHub } from "@mui/icons-material";
-import { LinkedIn } from "@mui/icons-material";
+import { GitHub, LinkedIn, Instagram, Twitter } from "@mui/icons-material";
 import { scroller } from "react-scroll";
 import { trackPortfolioEvents } from "../services/analytics";
 import { SOCIAL_LINKS, SITE_CONFIG } from "../data";
+import { Hairline } from "../components/design-system";
+import styles from "./pages.module.scss";
+
+const footerNav = [
+  { label: "Home", to: "home" },
+  { label: "Experiência", to: "experience" },
+  { label: "Jornada", to: "jornada" },
+  { label: "Habilidades", to: "skills" },
+  { label: "Toolbox", to: "toolbox" },
+  { label: "Contato", to: "contact" },
+];
+
+const socials = [
+  { label: "GitHub", href: SOCIAL_LINKS.GITHUB, Icon: GitHub },
+  { label: "LinkedIn", href: SOCIAL_LINKS.LINKEDIN, Icon: LinkedIn },
+  { label: "Instagram", href: SOCIAL_LINKS.INSTAGRAM, Icon: Instagram },
+  { label: "Twitter", href: SOCIAL_LINKS.TWITTER, Icon: Twitter },
+];
 
 const Footer = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-
   const handleSmoothScroll = (targetId: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     trackPortfolioEvents.footerLinkClick(targetId);
@@ -21,148 +33,63 @@ const Footer = () => {
     });
   };
 
-  const handleSocialClick = (platform: string) => {
-    trackPortfolioEvents.socialLinkClick(platform);
-  };
-
-  // Links de navegação com área de toque de 44×44 (WCAG 2.5.5).
-  const footerLinkSx = {
-    display: "inline-flex",
-    alignItems: "center",
-    minHeight: "44px",
-    minWidth: "44px",
-    fontWeight: 400,
-    fontSize: isMobile ? "0.9rem" : "1rem",
-    textDecoration: "none",
-    "&:hover": {
-      color: theme.palette.primary.main,
-    },
-  };
-
   return (
-    <Box
-      component="footer"
-      sx={{
-        padding: isMobile 
-          ? "2rem 1rem" 
-          : isTablet 
-            ? "3rem 4rem" 
-            : "4rem 20rem",
-        display: "flex",
-        flexDirection: isMobile ? "column" : "row",
-        justifyContent: "space-between",
-        alignItems: isMobile ? "center" : "flex-start",
-        gap: isMobile ? "2rem" : "0",
-        lineHeight: 1.6,
-        backgroundColor: theme.palette.background.paper,
-        borderTop: `1px solid ${theme.palette.divider}`,
-        textAlign: isMobile ? "center" : "left",
-      }}
-    >
-      <Box sx={{ width: isMobile ? "100%" : "auto" }}>
-        <Typography
-          component="h2"
-          sx={{ 
-            fontWeight: 700, 
-            fontSize: isMobile ? "1.5rem" : "2rem", 
-            mb: 2 
-          }}
-        >
-          {SITE_CONFIG.AUTHOR}
-        </Typography>
-        <Box sx={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", gap: 2 }}>
-          <IconButton
-            component="a"
-            href={SOCIAL_LINKS.GITHUB}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            onClick={() => handleSocialClick('github')}
-            sx={{
-              color: theme.palette.text.primary,
-              "&:hover": {
-                color: theme.palette.primary.main,
-              },
-            }}
-          >
-            <GitHub sx={{ fontSize: isMobile ? "1.4rem" : "1.6rem" }} />
-          </IconButton>
-          <IconButton
-            component="a"
-            href={SOCIAL_LINKS.LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            onClick={() => handleSocialClick('linkedin')}
-            sx={{
-              color: theme.palette.text.primary,
-              "&:hover": {
-                color: theme.palette.primary.main,
-              },
-            }}
-          >
-            <LinkedIn sx={{ fontSize: isMobile ? "1.4rem" : "1.6rem" }} />
-          </IconButton>
-        </Box>
-        <Typography
-          color="text.secondary"
-          sx={{
-            mt: isMobile ? 4 : 8,
-            fontWeight: 200,
-            fontSize: isMobile ? "0.9rem" : "1rem",
-          }}
-        >
-          Página em constante construção
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ 
-            mt: 0.5, 
-            fontWeight: 200, 
-            fontSize: isMobile ? "0.9rem" : "1rem" 
-          }}
-        >
-          Not Copyright 2025 – {SITE_CONFIG.AUTHOR}
-        </Typography>
-      </Box>
+    <footer className={styles.footer}>
+      <div className={styles.footerGrid}>
+        <div>
+          <p className={styles.footerWordmark}>
+            {SITE_CONFIG.AUTHOR}
+            <span className={styles.footerWordmarkPeriod}>.</span>
+          </p>
+          <p className={styles.footerTagline}>
+            {SITE_CONFIG.TAGLINE}. Portfólio em constante evolução.
+          </p>
+          <div className={styles.footerSocials}>
+            {socials.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                className={styles.footerSocialLink}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                onClick={() => trackPortfolioEvents.socialLinkClick(label.toLowerCase())}
+              >
+                <Icon fontSize="small" />
+              </a>
+            ))}
+          </div>
+        </div>
 
-      <Box
-        component="nav"
-        aria-label="Navegação do rodapé"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          alignItems: isMobile ? "center" : "flex-start",
-        }}
-      >
-        <MuiLink
-          href="#home"
-          onClick={handleSmoothScroll("home")}
-          color="inherit"
-          sx={footerLinkSx}
-        >
-          Home
-        </MuiLink>
-        <MuiLink
-          href="#experience"
-          onClick={handleSmoothScroll("experience")}
-          color="inherit"
-          sx={footerLinkSx}
-        >
-          Experiência
-        </MuiLink>
-        <MuiLink
-          href="#skills"
-          onClick={handleSmoothScroll("skills")}
-          color="inherit"
-          sx={footerLinkSx}
-        >
-          Habilidades
-        </MuiLink>
-      </Box>
-    </Box>
+        <nav aria-label="Navegação do rodapé" className={styles.footerNav}>
+          {footerNav.map(({ label, to }) => (
+            <a
+              key={to}
+              className={styles.footerNavLink}
+              href={`#${to}`}
+              onClick={handleSmoothScroll(to)}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <Hairline tone="dark" className={styles.footerRule} />
+
+      <div className={styles.bigWordmarkWrap} aria-hidden="true">
+        <span className={styles.bigWordmark}>
+          {SITE_CONFIG.AUTHOR.toUpperCase()}.
+        </span>
+      </div>
+
+      <div className={styles.footerFinePrint}>
+        <span>
+          © {new Date().getFullYear()} {SITE_CONFIG.AUTHOR}
+        </span>
+        <span>Feito com React + Vite + TypeScript</span>
+      </div>
+    </footer>
   );
 };
 

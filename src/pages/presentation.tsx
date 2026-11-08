@@ -1,233 +1,83 @@
 import ImgPresentation from "../img/presetation.jpg";
-import { CardMedia, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
-import { motion, MotionConfig, useAnimationFrame } from "framer-motion";
-import { useRef, CSSProperties } from "react";
+import { SITE_CONFIG } from "../data";
+import { GlassPanel, PillButton } from "../components/design-system";
 import DownloadCvButton from "../components/DownloadCvButton";
-import {
-  containerVariants,
-  imageVariants,
-  textVariants,
-  getTextContainerVariants,
-  getPresentationStyles,
-  outerRingAnimation,
-  innerRingAnimation,
-  glowAnimation,
-  imageHoverAnimation,
-  floatingParticleTopAnimation,
-  floatingParticleBottomAnimation,
-  decorativeCircleAnimation
-} from "./presentation.styles";
+import styles from "./presentation.module.scss";
 
-type FloatingCircleProps = {
-  style: CSSProperties;
-  testId: string;
-  amplitudeY: number;
-  amplitudeX?: number;
-  rotationDeg?: number;
-  durationMs: number;
-  phaseOffsetMs?: number;
-};
-
-const FloatingCircle = ({
-  style,
-  testId,
-  amplitudeY,
-  amplitudeX = 0,
-  rotationDeg = 0,
-  durationMs,
-  phaseOffsetMs = 0
-}: FloatingCircleProps) => {
-  const circleRef = useRef<HTMLDivElement | null>(null);
-
-  useAnimationFrame((time) => {
-    const element = circleRef.current;
-    if (!element) {
-      return;
-    }
-
-    const totalDuration = Math.max(durationMs, 16);
-    const elapsed = (time + phaseOffsetMs) % totalDuration;
-    const angle = (elapsed / totalDuration) * Math.PI * 2;
-    const translateX = amplitudeX ? Math.sin(angle) * amplitudeX : 0;
-    const translateY = Math.cos(angle) * amplitudeY;
-    const rotation = rotationDeg ? Math.sin(angle) * rotationDeg : 0;
-
-    element.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) rotate(${rotation}deg)`;
-  });
-
-  return <div ref={circleRef} style={style} data-testid={testId} />;
+const heroMeta = {
+  topRight: { label: "Base", value: SITE_CONFIG.LOCATION },
+  bottomLeft: { label: "Stack principal", value: SITE_CONFIG.STACK_LABEL },
 };
 
 function Presentation() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isVerySmall = useMediaQuery("(max-width:360px)");
-  const isSmallTablet = useMediaQuery("(max-width:768px)");
-
-  const textContainerVariants = getTextContainerVariants(isMobile);
-  const styles = getPresentationStyles({
-    isMobile,
-    isVerySmall,
-    isSmallTablet
-  });
-
   return (
-    <MotionConfig reducedMotion="never">
-      <motion.div
-        id="home"
-        data-testid="presentation-section"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        style={styles.root}
-      >
-        <Box sx={styles.backgroundOverlay} />
+    <section
+      className={styles.hero}
+      aria-labelledby="presentation-title"
+      data-testid="presentation-section"
+    >
+      <div className={styles.heroGrid}>
+        <div className={styles.heroCopy}>
+          <p className={styles.heroLabel} data-reveal>
+            Portfólio / 2026
+          </p>
 
-      <FloatingCircle
-        style={styles.floatingCircleTopRight}
-        testId="presentation-floating-top"
-        amplitudeY={12}
-        amplitudeX={6}
-        rotationDeg={4}
-        durationMs={6000}
-      />
-
-      <FloatingCircle
-        style={styles.floatingCircleBottomLeft}
-        testId="presentation-floating-bottom"
-        amplitudeY={16}
-        amplitudeX={8}
-        rotationDeg={6}
-        durationMs={5500}
-        phaseOffsetMs={1200}
-      />
-
-      <Box
-        component={motion.div}
-        variants={containerVariants}
-        sx={styles.gridContainer}
-      >
-        <motion.div
-          className="container-image"
-          variants={imageVariants}
-          style={styles.imageContainer}
-          data-testid="presentation-image-container"
-        >
-          <motion.div
-            {...outerRingAnimation}
-            style={styles.outerRing}
-          />
-
-          <motion.div
-            {...innerRingAnimation}
-            style={styles.innerRing}
-          />
-
-          <motion.div
-            {...glowAnimation}
-            style={styles.glow}
-          />
-
-          <motion.div
-            {...imageHoverAnimation}
-            style={styles.imageWrapper}
-            data-testid="presentation-image-wrapper"
+          <h1
+            id="presentation-title"
+            className={styles.heroTitle}
+            data-testid="presentation-name"
+            data-reveal
           >
-            <CardMedia
-              component="img"
-              image={ImgPresentation}
+            {SITE_CONFIG.AUTHOR}
+            <span className={styles.heroTitleAccent}>
+              {SITE_CONFIG.ROLE}
+            </span>
+          </h1>
+
+          <p className={styles.heroRole} data-reveal data-testid="presentation-role">
+            {SITE_CONFIG.TAGLINE}.
+          </p>
+
+          <div className={styles.heroActions} data-reveal>
+            <PillButton href="#contact" testId="presentation-cta-contact">
+              Vamos conversar
+            </PillButton>
+            <DownloadCvButton location="presentation" align="left" />
+          </div>
+        </div>
+
+        <div className={styles.heroVisual} data-reveal>
+          <div className={styles.heroImageWrap}>
+            <img
+              src={ImgPresentation}
               alt="Lucas Nonato. Jovem com cabelo cacheado volumoso e bigode sorri amplamente para a câmera. Ele usa uma camisa preta e uma alça transversal é visível em seu ombro. O fundo tem uma parede decorada com grafites coloridos em tons de roxo, verde e vermelho, com letras estilizadas."
-              data-testid="presentation-image"
-              // Imagem do herói (LCP): prioridade alta, mas sem bloquear o parse.
+              className={styles.heroImage}
               fetchPriority="high"
               decoding="async"
-              sx={styles.cardMedia}
+              data-testid="presentation-image"
             />
-          </motion.div>
+            <span className={styles.heroImageOverlay} aria-hidden="true" />
+            <span className={styles.heroImageVignette} aria-hidden="true" />
+          </div>
 
-          {!isMobile && (
-            <>
-              <motion.div
-                {...floatingParticleTopAnimation}
-                style={styles.particleTopRight}
-              />
-              <motion.div
-                {...floatingParticleBottomAnimation}
-                style={styles.particleBottomLeft}
-              />
-            </>
-          )}
-        </motion.div>
+          <GlassPanel className={styles.heroMetaTop}>
+            <span className={styles.metaLabel}>{heroMeta.topRight.label}</span>
+            <span className={styles.metaValue}>{heroMeta.topRight.value}</span>
+          </GlassPanel>
 
-        <motion.div
-          className="container-texts"
-          variants={textContainerVariants}
-          style={styles.textContainer}
-        >
-          <Box sx={styles.textBox}>
-            <motion.div variants={textVariants} style={styles.contentLayer}>
-              <Typography
-                variant={isMobile ? "h2" : "h1"}
-                className="presentation-title"
-                data-testid="presentation-name"
-                sx={styles.nameTypography}
-              >
-                Eu sou Lucas Nonato
-              </Typography>
-            </motion.div>
+          <GlassPanel className={styles.heroMeta}>
+            <span className={styles.metaDot} aria-hidden="true" />
+            <span className={styles.metaLabel}>{heroMeta.bottomLeft.label}</span>
+            <span className={styles.metaValue}>{heroMeta.bottomLeft.value}</span>
+          </GlassPanel>
+        </div>
+      </div>
 
-            <motion.div variants={textVariants} style={styles.contentLayer}>
-              <Typography
-                variant={isMobile ? "h2" : "h1"}
-                className="presentation-title"
-                data-testid="presentation-role"
-                sx={styles.roleTypography}
-              >
-                Desenvolvedor Web
-                <Typography
-                  variant="inherit"
-                  data-testid="presentation-specialty"
-                  sx={styles.specialtyTypography}
-                >
-                  Full-Stack
-                </Typography>
-              </Typography>
-            </motion.div>
-
-            <motion.div variants={textVariants} style={styles.contentLayer}>
-              <Typography
-                variant={isMobile ? "h2" : "h1"}
-                className="presentation-title"
-                data-testid="presentation-secondary-role"
-                sx={styles.secondaryRoleTypography}
-              >
-                UX Designer
-              </Typography>
-            </motion.div>
-
-            <motion.div variants={textVariants} style={styles.contentLayer}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: isMobile ? "center" : "flex-start",
-                }}
-              >
-                <DownloadCvButton
-                  location="presentation"
-                  align={isMobile ? "center" : "left"}
-                />
-              </Box>
-            </motion.div>
-
-            <motion.div
-              {...decorativeCircleAnimation}
-              style={styles.decorativeCircle}
-            />
-          </Box>
-        </motion.div>
-      </Box>
-      </motion.div>
-    </MotionConfig>
+      <div className={styles.scrollCue} aria-hidden="true">
+        <span className={styles.scrollCueLine} />
+        <span className={styles.scrollCueLabel}>Scroll para explorar</span>
+      </div>
+    </section>
   );
 }
 
