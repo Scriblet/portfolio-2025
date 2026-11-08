@@ -6,7 +6,7 @@ import styles from "../pages.module.scss";
 
 const sectionContent = {
   label: "GitHub",
-  index: "07",
+  index: "06",
   heading: "Código aberto e projetos reais",
   description:
     "Se você gosta de analisar código, recomendo dar uma olhada no meu GitHub. É por lá que hospedo grande parte dos meus projetos e experimentos.",

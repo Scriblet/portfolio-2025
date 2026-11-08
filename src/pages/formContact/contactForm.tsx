@@ -24,7 +24,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const sectionContent = {
   label: "Contato",
-  index: "08",
+  index: "07",
   headline: "Vamos construir algo juntos?",
   body: "Seja para uma vaga, um projeto ou só para trocar ideia sobre tecnologia, me mande uma mensagem.",
 };
