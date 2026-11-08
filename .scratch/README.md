@@ -12,6 +12,8 @@
   03-features/    # funcionalidades novas (CV, tema, contato)
   04-secoes/      # seções novas na página (projetos, toolbox, timeline)
   05-immersive/   # refactor visual imersivo (onda 6)
+  06-site-refactor/ # refactor visual das seções da home (índice próprio em 06-site-refactor/README.md)
+  07-testes-e2e/  # testes automatizados E2E com Cypress (onda 7)
   README.md       # este índice
 ```
 
@@ -66,12 +68,30 @@
 | 23 | `motion-a11y-performance` | Movimento, acessibilidade e performance | draft |
 | — | `immersive-preview-page` | Página `/immersive` (preview experimental) | done |
 
+## 07 — Testes E2E com Cypress (onda 7)
+
+Análise do site e das interações: `.scratch/07-testes-e2e/ANALISE.md`.
+
+| # | Slug | Título | Status |
+|---|------|--------|--------|
+| 24 | `cypress-infraestrutura` | Infraestrutura de testes E2E com Cypress | draft |
+| 25 | `cypress-smoke-navegacao` | Smoke e navegação: home, rotas, header, drawer e tema | draft |
+| 26 | `cypress-secoes-conteudo` | Conteúdo das seções: experiência, jornada, skills, GitHub e footer | draft |
+| 27 | `cypress-formularios-contato` | Formulários de contato: validação, envio e feedback | draft |
+| 28 | `cypress-pwa-offline` | PWA e offline: conteúdo em cache, OfflineNotice e instalação | draft |
+| 29 | `cypress-a11y-responsivo` | Acessibilidade e responsivo: axe-core, teclado e viewports | draft |
+
+Ordem de implementação: `cypress-infraestrutura` primeiro (os demais dependem dele);
+depois `cypress-smoke-navegacao` → `cypress-secoes-conteudo` →
+`cypress-formularios-contato` → `cypress-pwa-offline` → `cypress-a11y-responsivo`.
+
 ## Roadmap sugerido
 
 1. **Quick wins (concluído):** `seo-metadados`, `hierarquia-tipografica`, `dados-centralizados`, `seguranca-contato`, `header-scroll-inteligente`, `progresso-leitura`, `microinteracoes-foco`, `download-cv`, `tema-claro-escuro`, `snackbar-contato`
 2. **Médio prazo:** `code-splitting-lazy` (concluído)
 3. **Alto impacto:** `secao-toolbox` (concluído), `secao-timeline` (concluído)
 4. **Onda 6 (em andamento):** `immersive-preview-page` entregue; `design-system-immersive`, `portal-hero`, `editorial-about`, `skills-glass-cards`, `experience-timeline`, `contact-closing` e `motion-a11y-performance` a implementar. A prévia está em `/immersive`.
+5. **Onda 7 (testes E2E com Cypress):** 6 PRDs em `.scratch/07-testes-e2e/`, prontos para implementação — começar pela `cypress-infraestrutura`.
 
 ## Como funciona
 
@@ -79,4 +99,4 @@
 - Triage: `Status:` no topo de cada arquivo (ver `docs/agents/triage-labels.md`)
 - Para implementar: use `to-issues` a partir do PRD desejado
 - Painel vivo do plano: rota `/roadmap` (somente em desenvolvimento)
-- Testes: `npm run test:unit` (Vitest). Playwright foi removido do fluxo de desenvolvimento; ver `docs/agents/testing.md`.
+- Testes: `npm run test:unit` (Vitest) é o loop padrão. E2E com Cypress planejado na onda 7 (`07-testes-e2e/`) — nunca no loop de desenvolvimento; ver `docs/agents/testing.md`.
