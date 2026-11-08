@@ -38,6 +38,7 @@ src/config/keys.ts
 # Build and cache
 .cache
 .parcel-cache
+.vitest/
 .next/
 out/
 build/
