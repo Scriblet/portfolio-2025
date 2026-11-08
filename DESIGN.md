@@ -88,8 +88,9 @@ Ritmo vertical: `padding-block: clamp(120px, 18vh, 200px)`.
 
 ### Seções do site
 
-1. **Header + Hero** — header glass pill fixo; hero editorial com foto,
-   metadados reais e CTA.
+1. **Header + Hero** — header glass pill fixo; hero portal full-bleed com
+   cortinas que abrem no scroll, wordmark de abertura e conteúdo editorial
+   sobre a foto.
 2. **Experiência** — cards de vidro com numeração e dados de `experiences.ts`.
 3. **Jornada** — timeline vertical com trilho em degradê e marcadores.
 4. **Filosofia** — seção editorial escura com foto e CTA.
@@ -132,8 +133,9 @@ Em `src/components/design-system/`:
 
 ## 7. Movimento
 
-- **Portal**: scroll-driven. `--p` varia de 0 a 1; painéis saem, foto escala,
-  wordmark separa, tracking aperta. Reversível.
+- **Portal**: scroll-driven no hero principal e na prévia imersiva. `--p`
+  varia de 0 a 1; painéis saem, foto escala, wordmark separa, tracking aperta.
+  Reversível.
 - **Reveal**: `opacity` + `translateY(20px)` para `0`, `800ms`,
   `cubic-bezier(0.16, 1, 0.3, 1)`. Disparado uma vez por `IntersectionObserver`.
 - **Hover**: `300ms`, scale até 1.05, transições de cor/borda.

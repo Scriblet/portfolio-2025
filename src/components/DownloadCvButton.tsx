@@ -10,6 +10,8 @@ const CV_FILENAME = "Lucas-Nonato-CV.pdf";
 type DownloadCvButtonProps = {
   location: "presentation" | "contact";
   align?: "left" | "center";
+  /** Ajusta contraste do feedback quando o botão fica sobre foto escura. */
+  onDark?: boolean;
 };
 
 /**
@@ -19,6 +21,7 @@ type DownloadCvButtonProps = {
 const DownloadCvButton = ({
   location,
   align = "left",
+  onDark = false,
 }: DownloadCvButtonProps) => {
   const [started, setStarted] = useState(false);
   const timeoutRef = useRef<number | null>(null);
@@ -81,7 +84,7 @@ const DownloadCvButton = ({
           },
           "&:focus-visible": {
             outline: `3px solid ${
-              theme.palette.mode === "dark" ? "#22d3ee" : "#00695c"
+              theme.palette.mode === "dark" || onDark ? "#34d399" : "#00695c"
             }`,
             outlineOffset: "3px",
           },
@@ -99,7 +102,7 @@ const DownloadCvButton = ({
           minHeight: "1.25rem",
           mt: 0.75,
           fontSize: "0.75rem",
-          color: "text.secondary",
+          color: onDark ? "rgba(241, 238, 232, 0.8)" : "text.secondary",
         }}
       >
         {started ? "Download iniciado" : ""}

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { heroMeta, portraitImage, wordmark } from "./content";
-import { useStickyProgress } from "./hooks";
+import { useStickyProgress } from "../../hooks/useStickyProgress";
 import { GlassPanel } from "./ui";
 import styles from "./immersive.module.scss";
 

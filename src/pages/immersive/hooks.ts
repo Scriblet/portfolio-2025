@@ -24,55 +24,6 @@ export const usePrefersReducedMotion = () => {
 };
 
 /**
- * Progresso do portal (0 → 1) escrito como custom property `--p` no palco
- * sticky. Sem estado React: o scroll só atualiza uma variável CSS, e o
- * navegador interpola o resto na camada de composição.
- */
-export const useStickyProgress = (
-  heroRef: RefObject<HTMLElement | null>,
-  stageRef: RefObject<HTMLElement | null>,
-) => {
-  const reduced = usePrefersReducedMotion();
-
-  useEffect(() => {
-    const hero = heroRef.current;
-    const stage = stageRef.current;
-    if (!hero || !stage) return;
-
-    if (reduced) {
-      stage.style.setProperty("--p", "0.64");
-      return;
-    }
-
-    let frame = 0;
-
-    const apply = () => {
-      frame = 0;
-      const distance = hero.offsetHeight - window.innerHeight;
-      const progress =
-        distance <= 0
-          ? 1
-          : clamp(-hero.getBoundingClientRect().top / distance, 0, 1);
-      stage.style.setProperty("--p", progress.toFixed(4));
-    };
-
-    const request = () => {
-      if (!frame) frame = window.requestAnimationFrame(apply);
-    };
-
-    apply();
-    window.addEventListener("scroll", request, { passive: true });
-    window.addEventListener("resize", request);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", request);
-      window.removeEventListener("resize", request);
-    };
-  }, [heroRef, stageRef, reduced]);
-};
-
-/**
  * Progresso de uma seção através da viewport, escrito como `--q`.
  * Usado no elemento circular da declaração (deriva + rotação).
  */

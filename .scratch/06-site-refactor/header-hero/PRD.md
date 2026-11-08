@@ -31,13 +31,15 @@ painÃ©is de vidro e tipografia expansiva.
 - Wordmark em Syne 700 com ponto Ã¢mbar.
 - Links em Sora 11px uppercase, tracking `0.14em`, hover Ã¢mbar.
 - CTA pill "PortfÃ³lio" com Ã­cone circular.
-- Hero: foto full-bleed ou grande Ã  direita, painÃ©is de vidro com metadados,
-  headline Syne 800 com uma palavra em Ã¢mbar, CTA pill.
+- Hero: portal full-bleed com cortinas que abrem no scroll, foto de fundo,
+  wordmark de abertura, painéis de vidro com metadados e headline Syne 800
+  com uma palavra em âmbar.
 
 ## Requisitos funcionais
 
 1. Refatorar `Header` para o visual glass pill, mantendo todas as aÃ§Ãµes.
-2. Refatorar `Presentation` para o hero editorial imersivo.
+2. Refatorar `Presentation` para o hero portal full-bleed (cortinas
+   scroll-driven, wordmark, foto e conteúdo editorial).
 3. Usar `GlassPanel`, `PillButton`, `SectionLabel` e `Hairline` de
    `src/components/design-system/` quando fizer sentido.
 4. Carregar os metadados reais de `src/data` (nome, cargo, localizaÃ§Ã£o,
@@ -50,7 +52,9 @@ painÃ©is de vidro e tipografia expansiva.
 
 - [x] Header usa vidro escuro, raio pill e tipografia do design system.
 - [x] Nenhuma cor hardcoded fora dos tokens (`var(--*)` ou `theme.palette`).
-- [x] Hero tem `h1` Ãºnico e imagem com `fetchPriority="high"`.
+- [x] Hero tem `h1` único e imagem com `fetchPriority="high"`.
+- [x] Hero abre em portal scroll-driven com cortinas, wordmark e metadados.
+- [x] Com movimento reduzido o portal abre direto no conteúdo.
 - [x] Metadados do hero vÃªm de `src/data`, sem dados inventados.
 - [x] Menu mobile, toggle de tema e instalaÃ§Ã£o continuam funcionando.
 - [x] `scrollWidth === innerWidth` em 320/390/768/1440.
@@ -66,6 +70,7 @@ painÃ©is de vidro e tipografia expansiva.
 
 - `src/pages/header.tsx`
 - `src/pages/presentation.tsx`
-- `src/pages/presentation.styles.ts`
+- `src/pages/presentation.module.scss`
+- `src/hooks/useStickyProgress.ts`
 - `src/components/design-system/`
 - `src/styles/design-system.css`

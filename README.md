@@ -279,12 +279,13 @@ portfolio-2025/
 
 ### 🏠 Presentation
 - **Localização**: `src/pages/presentation.tsx`
-- **Função**: Hero editorial de apresentação
+- **Função**: Hero editorial em formato portal
 - **Características**:
-  - Headline Syne com função em âmbar
-  - Foto com overlay duotônico e painéis de vidro
-  - CTAs pill (contato e download do CV)
-  - Metadados reais vindos de `src/data/site.ts`
+  - Cortinas de vidro que abrem no scroll via `useStickyProgress`
+  - Fotografia full-bleed com tint/vignette e wordmark de abertura
+  - Conteúdo (nome, cargo, tagline e CTAs) revelado ao final da abertura
+  - Paleta escura local para preservar a atmosfera imersiva nos dois temas
+  - Movimento reduzido abre o portal direto no conteúdo
 
 ### 💼 Experience
 - **Localização**: `src/pages/experience/experience.tsx`
