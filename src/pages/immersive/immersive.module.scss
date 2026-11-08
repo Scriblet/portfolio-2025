@@ -1,48 +1,4 @@
-:root {
-  /* Dark palette (identidade principal) */
-  --void: #090b0d;
-  --void-2: #101317;
-  --surface: #18181b;
-  --paper: #f1eee8;
-  --paper-2: #a8afb2;
-  --muted: #737a7f;
-
-  /* Light palette (seção Sobre) */
-  --light-bg: #f4f4f5;
-  --light-surface: #ffffff;
-  --light-text: #18181b;
-  --light-text-2: #71717a;
-  --light-border: #e4e4e7;
-
-  /* Accents */
-  --emerald: #34d399;
-  --amber: #e8913c;
-  --deep-teal: #2e6b72;
-
-  /* Hairlines */
-  --hairline: rgba(237, 231, 220, 0.13);
-  --hairline-light: rgba(24, 24, 27, 0.1);
-
-  /* Apple-like glass */
-  --glass-bg: rgba(255, 255, 255, 0.12);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-blur: blur(48px) saturate(190%);
-  --glass-radius: 24px;
-  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  --glass-light-bg: rgba(255, 255, 255, 0.84);
-  --glass-light-border: rgba(255, 255, 255, 0.72);
-  --glass-light-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
-
-  /* Typography */
-  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Sora", ui-monospace, monospace;
-
-  /* Motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-}
+/* Tokens globais definidos em `src/styles/design-system.css`. */
 
 /* ------------------------------------------------------------------ */
 /* Page shell                                                         */
@@ -56,6 +12,22 @@
   font-family: var(--font-body);
   line-height: 1.55;
   overflow-x: clip;
+}
+
+.page :focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 3px;
+}
+
+/* Alvo mínimo de toque no escopo imersivo. */
+.page a.navLink,
+.page a.navBrand,
+.page a.navCta,
+.page a.pill,
+.page a.ghostDark,
+.page a.ghostLight,
+.page button {
+  min-height: 44px;
 }
 
 .skipLink {
@@ -354,13 +326,76 @@
   transition: transform 0.1s linear;
 }
 
-.glass {
-  background: var(--glass-bg);
+/* Receita única de vidro — evita duplicação de tokens entre consumidores. */
+@mixin glassDark {
+  background-color: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--glass-radius);
   box-shadow: var(--glass-shadow);
+}
+
+@mixin glassLight {
+  background-color: var(--glass-light-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-light-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-light-shadow);
+}
+
+.glassPanel,
+.glassPanelDark,
+.glassPanelLight {
+  border-radius: var(--glass-radius);
+}
+
+.glassPanelDark {
+  @include glassDark;
+}
+
+.glassPanelLight {
+  @include glassLight;
+}
+
+.glass {
+  @include glassDark;
+}
+
+/* Hairline decorativa — 1px com cor de token. */
+.hairline {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--hairline);
+}
+
+.hairlineLight {
+  background: var(--hairline-light);
+}
+
+/* Numeral vazado — tipografia base reutilizável; o consumidor define o layout. */
+.indexNumeral {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 22vw, 18rem);
+  font-weight: 800;
+  line-height: 0.72;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--light-border);
+  text-stroke: 1px var(--light-border);
+  opacity: 0.65;
+  user-select: none;
+}
+
+.indexNumeralDark {
+  -webkit-text-stroke-color: var(--hairline);
+  text-stroke-color: var(--hairline);
+  opacity: 0.35;
 }
 
 .metaTopLeft {
@@ -619,16 +654,6 @@
   position: absolute;
   top: clamp(40px, 7vh, 80px);
   right: clamp(-20px, -2vw, -40px);
-  font-family: var(--font-display);
-  font-size: clamp(8rem, 22vw, 18rem);
-  font-weight: 800;
-  line-height: 0.72;
-  letter-spacing: -0.06em;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--light-border);
-  text-stroke: 1px var(--light-border);
-  opacity: 0.65;
-  user-select: none;
 }
 
 .aboutStatement {
@@ -647,9 +672,7 @@
 
 .aboutRule {
   width: 60px;
-  height: 1px;
   margin: clamp(28px, 4vh, 44px) 0;
-  background: var(--light-border);
 }
 
 .aboutFootnote {
@@ -669,13 +692,7 @@
 }
 
 .aboutHudCard {
-  padding: 24px;
-  background: var(--glass-light-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-light-border);
-  border-radius: var(--glass-radius);
-  box-shadow: var(--glass-light-shadow);
+  padding: var(--space-5);
 }
 
 .aboutHudLabel {
@@ -751,17 +768,11 @@
 
 .skillCard {
   padding: clamp(26px, 2.8vw, 38px);
-  background-color: var(--glass-bg);
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.07) 0%,
     transparent 42%
   );
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--glass-radius);
-  box-shadow: var(--glass-shadow);
   transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out),
     background 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
 
@@ -888,17 +899,11 @@
 
 .timelineCard {
   padding: clamp(24px, 2.6vw, 34px);
-  background-color: var(--glass-bg);
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.07) 0%,
     transparent 42%
   );
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--glass-radius);
-  box-shadow: var(--glass-shadow);
 }
 
 .timelineNumber {
@@ -995,17 +1000,11 @@
 
 .contactCard {
   padding: clamp(28px, 3.4vw, 48px);
-  background-color: var(--glass-bg);
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.07) 0%,
     transparent 42%
   );
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--glass-radius);
-  box-shadow: var(--glass-shadow);
 }
 
 .contactCardTitle {
@@ -1143,9 +1142,7 @@
 
 .contactRule {
   @include sectionContainer;
-  height: 1px;
   margin-top: 26px;
-  background: var(--hairline);
 }
 
 .bigWordmarkWrap {

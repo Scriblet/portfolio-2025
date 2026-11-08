@@ -8,7 +8,13 @@ import {
   skillsContent,
 } from "./content";
 import { ImmersiveContactForm } from "./ImmersiveContactForm";
-import { PillButton, SectionLabel } from "./ui";
+import {
+  GlassPanel,
+  Hairline,
+  IndexNumeral,
+  PillButton,
+  SectionLabel,
+} from "./ui";
 import styles from "./immersive.module.scss";
 
 export const About = () => (
@@ -18,9 +24,9 @@ export const About = () => (
     data-testid="immersive-about"
     aria-labelledby="immersive-about-title"
   >
-    <span className={styles.aboutIndex} aria-hidden="true">
+    <IndexNumeral className={styles.aboutIndex}>
       {aboutContent.index}
-    </span>
+    </IndexNumeral>
 
     <div className={styles.aboutGrid}>
       <div className={styles.aboutCopy}>
@@ -44,7 +50,7 @@ export const About = () => (
           )}
         </h2>
 
-        <div className={styles.aboutRule} aria-hidden="true" />
+        <Hairline tone="light" className={styles.aboutRule} />
         <p className={styles.aboutFootnote} data-reveal>
           {aboutContent.footnote}
         </p>
@@ -52,10 +58,14 @@ export const About = () => (
 
       <div className={styles.aboutHud} data-reveal>
         {aboutContent.hud.map((item) => (
-          <div key={item.label} className={styles.aboutHudCard}>
+          <GlassPanel
+            key={item.label}
+            tone="light"
+            className={styles.aboutHudCard}
+          >
             <span className={styles.aboutHudLabel}>{item.label}</span>
             <span className={styles.aboutHudValue}>{item.value}</span>
-          </div>
+          </GlassPanel>
         ))}
       </div>
     </div>
@@ -100,8 +110,10 @@ export const Skills = () => (
 
     <ul className={styles.skillsGrid}>
       {skillCards.map((skill) => (
-        <li
+        <GlassPanel
+          as="li"
           key={skill.id}
+          tone="dark"
           className={styles.skillCard}
           data-reveal
           data-testid="immersive-skill-card"
@@ -116,7 +128,7 @@ export const Skills = () => (
               </span>
             ))}
           </div>
-        </li>
+        </GlassPanel>
       ))}
     </ul>
   </section>
@@ -157,12 +169,12 @@ export const Experience = () => (
           data-testid="immersive-experience-item"
         >
           <span className={styles.timelinePeriod}>{item.period}</span>
-          <div className={styles.timelineCard}>
+          <GlassPanel tone="dark" className={styles.timelineCard}>
             <span className={styles.timelineNumber}>{item.number}</span>
             <h3 className={styles.timelineCompany}>{item.company}</h3>
             <p className={styles.timelineRole}>{item.position}</p>
             <p className={styles.timelineDescription}>{item.description}</p>
-          </div>
+          </GlassPanel>
         </li>
       ))}
     </ol>
@@ -205,13 +217,13 @@ export const Contact = () => (
         </div>
       </div>
 
-      <div className={styles.contactCard} data-reveal>
+      <GlassPanel tone="dark" className={styles.contactCard} data-reveal>
         <h3 className={styles.contactCardTitle}>{contactContent.form.title}</h3>
         <ImmersiveContactForm />
-      </div>
+      </GlassPanel>
     </div>
 
-    <div className={styles.contactRule} aria-hidden="true" />
+    <Hairline className={styles.contactRule} />
 
     <div className={styles.contactFinePrint}>
       <p>{contactContent.footer.email}</p>

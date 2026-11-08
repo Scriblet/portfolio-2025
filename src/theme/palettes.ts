@@ -1,4 +1,5 @@
 import type { PaletteOptions } from "@mui/material/styles";
+import { designTokens } from "./designTokens";
 
 /** Modos de aparência suportados pelo portfólio. */
 export type ColorMode = "light" | "dark";
@@ -8,8 +9,8 @@ export const COLOR_MODE_STORAGE_KEY = "portfolio-color-mode";
 
 /** Cor da barra do navegador (meta[name="theme-color"]) por modo. */
 export const THEME_COLOR_META: Record<ColorMode, string> = {
-  dark: "#121212",
-  light: "#f5f3f7",
+  dark: designTokens.colors.void,
+  light: designTokens.colors.lightBg,
 };
 
 /**
@@ -17,8 +18,8 @@ export const THEME_COLOR_META: Record<ColorMode, string> = {
  * quanto sobre superfícies elevadas (cards/papers).
  */
 export const FOCUS_RING_COLOR: Record<ColorMode, string> = {
-  dark: "#22d3ee",
-  light: "#00695c",
+  dark: designTokens.colors.emerald,
+  light: designTokens.colors.deepTeal,
 };
 
 /**
@@ -39,50 +40,57 @@ export const interactiveTokens = {
 export const isColorMode = (value: unknown): value is ColorMode =>
   value === "light" || value === "dark";
 
-/** Paleta escura: identidade atual do portfólio. */
+/** Paleta escura: identidade imersiva principal. */
 export const darkPalette: PaletteOptions = {
   mode: "dark",
   primary: {
-    main: "#673ab7",
+    main: designTokens.colors.emerald,
+    contrastText: designTokens.colors.void,
   },
   secondary: {
-    main: "#800080",
+    main: designTokens.colors.amber,
+    contrastText: designTokens.colors.void,
   },
   warning: {
-    main: "#ed6c02",
+    main: designTokens.colors.amber,
   },
   background: {
-    default: "#121212",
-    paper: "#1e1e1e",
+    default: designTokens.colors.void,
+    paper: designTokens.colors.void2,
   },
   text: {
-    primary: "#ffffff",
-    secondary: "#c2c2c2", // contraste AA sobre #121212 e #1e1e1e
+    primary: designTokens.colors.paper,
+    secondary: designTokens.colors.paper2,
   },
-  divider: "rgba(255, 255, 255, 0.12)",
+  divider: "rgba(241, 238, 232, 0.13)",
 };
 
 /**
- * Paleta clara: fundo levemente lilás (nunca branco puro), paper branco e
- * textos com contraste AA. Mantém o roxo primário da identidade.
+ * Paleta clara: mesma linguagem imersiva sobre papel. O teal profundo garante
+ * contraste AA para links e botões; o âmbar permanece como destaque editorial.
  */
 export const lightPalette: PaletteOptions = {
   mode: "light",
   primary: {
-    main: "#673ab7",
+    main: designTokens.colors.deepTeal,
+    contrastText: designTokens.colors.lightSurface,
   },
   secondary: {
-    main: "#800080",
+    main: "#b45309",
+    contrastText: designTokens.colors.lightSurface,
+  },
+  warning: {
+    main: "#b45309",
   },
   background: {
-    default: "#f5f3f7",
-    paper: "#ffffff",
+    default: designTokens.colors.lightBg,
+    paper: designTokens.colors.lightSurface,
   },
   text: {
-    primary: "#1a1a1a",
-    secondary: "#4a4a4a",
+    primary: designTokens.colors.lightText,
+    secondary: designTokens.colors.lightText2,
   },
-  divider: "rgba(0, 0, 0, 0.12)",
+  divider: "rgba(24, 24, 27, 0.12)",
 };
 
 export const getPalette = (mode: ColorMode): PaletteOptions =>

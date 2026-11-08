@@ -8,6 +8,8 @@ import SectionFallback, {
   type SectionFallbackVariant,
 } from "./components/SectionFallback";
 import LazySectionErrorBoundary from "./components/LazySectionErrorBoundary";
+import { GrainOverlay } from "./components/design-system";
+import { RevealRoot } from "./hooks/useRevealOnScroll";
 const Roadmap = lazy(() => import("./pages/roadmap/roadmap"));
 const Immersive = lazy(() => import("./pages/immersive/immersive"));
 
@@ -39,36 +41,42 @@ const LazySection = ({ variant, anchorId, children }: LazySectionProps) => (
 
 const Portfolio = () => (
   <div className="app-container">
+    <a href="#home" className="skip-link">
+      Pular para o conteúdo
+    </a>
     <ReadingProgress />
     <Header />
-    <main className="main-content">
-      <Presentation />
-      <LazySection variant="experience" anchorId="experience">
-        <Experience />
+    <RevealRoot>
+      <main className="main-content" id="home">
+        <Presentation />
+        <LazySection variant="experience" anchorId="experience">
+          <Experience />
+        </LazySection>
+        <LazySection variant="timeline" anchorId="jornada">
+          <Timeline />
+        </LazySection>
+        <LazySection variant="philosophy">
+          <PhilosophyBanner />
+        </LazySection>
+        <LazySection variant="skills" anchorId="skills">
+          <SkillsSection />
+        </LazySection>
+        <LazySection variant="toolbox" anchorId="toolbox">
+          <Toolbox />
+        </LazySection>
+        <LazySection variant="github">
+          <GithubBanner />
+        </LazySection>
+        <LazySection variant="contact" anchorId="contact">
+          <ContactForm />
+        </LazySection>
+      </main>
+      <LazySection variant="footer">
+        <Footer />
       </LazySection>
-      <LazySection variant="timeline" anchorId="jornada">
-        <Timeline />
-      </LazySection>
-      <LazySection variant="philosophy">
-        <PhilosophyBanner />
-      </LazySection>
-      <LazySection variant="skills" anchorId="skills">
-        <SkillsSection />
-      </LazySection>
-      <LazySection variant="toolbox" anchorId="toolbox">
-        <Toolbox />
-      </LazySection>
-      <LazySection variant="github">
-        <GithubBanner />
-      </LazySection>
-      <LazySection variant="contact" anchorId="contact">
-        <ContactForm />
-      </LazySection>
-    </main>
-    <LazySection variant="footer">
-      <Footer />
-    </LazySection>
+    </RevealRoot>
     <OfflineNotice />
+    <GrainOverlay />
   </div>
 );
 
@@ -83,7 +91,7 @@ export default function App() {
             fallback={
               <div
                 aria-hidden="true"
-                style={{ minHeight: "100vh", background: "#0A0C0E" }}
+                style={{ minHeight: "100vh", background: "var(--void)" }}
               />
             }
           >

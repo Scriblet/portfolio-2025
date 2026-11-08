@@ -12,6 +12,7 @@ import { useRevealOnScroll } from './hooks';
 import ImmersiveNav from './ImmersiveNav';
 import PortalHero from './PortalHero';
 import { About, Contact, Experience, Skills } from './sections';
+import { GrainOverlay } from './ui';
 import styles from './immersive.module.scss';
 
 /**
@@ -49,7 +50,7 @@ const Immersive = () => {
         Pular para o conteúdo
       </a>
 
-      <div className={styles.grain} aria-hidden="true" />
+      <GrainOverlay />
       <ImmersiveNav />
 
       <main id="immersive-main" tabIndex={-1}>

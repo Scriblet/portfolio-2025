@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { heroMeta, portraitImage, wordmark } from "./content";
 import { useStickyProgress } from "./hooks";
+import { GlassPanel } from "./ui";
 import styles from "./immersive.module.scss";
+
 
 const PortalHero = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -74,29 +76,29 @@ const PortalHero = () => {
           </span>
         </h1>
 
-        <div
-          className={`${styles.glass} ${styles.metaTopLeft}`}
+        <GlassPanel
+          className={styles.metaTopLeft}
           data-testid="immersive-hero-meta"
         >
           <span className={styles.metaDot} aria-hidden="true" />
           <span className={styles.metaLabel}>{heroMeta.topLeft.label}</span>
           <span className={styles.metaValue}>{heroMeta.topLeft.value}</span>
-        </div>
+        </GlassPanel>
 
-        <div className={`${styles.glass} ${styles.metaTopRight}`}>
+        <GlassPanel className={styles.metaTopRight}>
           <span className={styles.metaLabel}>{heroMeta.topRight.label}</span>
           <span className={styles.metaValue}>{heroMeta.topRight.value}</span>
-        </div>
+        </GlassPanel>
 
-        <div className={`${styles.glass} ${styles.metaBottomLeft}`}>
+        <GlassPanel className={styles.metaBottomLeft}>
           <span className={styles.metaLabel}>{heroMeta.bottomLeft.label}</span>
           <span className={styles.metaValue}>{heroMeta.bottomLeft.value}</span>
-        </div>
+        </GlassPanel>
 
-        <div className={`${styles.glass} ${styles.metaBottomRight}`}>
+        <GlassPanel className={styles.metaBottomRight}>
           <span className={styles.metaLabel}>{heroMeta.bottomRight.label}</span>
           <span className={styles.metaValue}>{heroMeta.bottomRight.value}</span>
-        </div>
+        </GlassPanel>
 
         <div className={styles.scrollCue} aria-hidden="true">
           <span className={styles.scrollCueLine} />

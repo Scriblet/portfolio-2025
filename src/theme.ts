@@ -1,5 +1,6 @@
 import { alpha, createTheme, responsiveFontSizes } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
+import { designTokens } from "./theme/designTokens";
 import {
   FOCUS_RING_COLOR,
   getPalette,
@@ -52,39 +53,47 @@ export const createAppTheme = (mode: ColorMode): Theme => {
       },
     },
     typography: {
-      fontFamily: "'Poppins', sans-serif",
+      fontFamily: "'Inter', sans-serif",
       // Escala modular responsiva (1.333 - terceira maioria)
       h1: {
-        fontSize: "clamp(1.8rem, 4vw, 3.052rem)", // ~48.83px (base 16px)
-        fontWeight: 700,
-        lineHeight: 1.2,
-        letterSpacing: "-0.02em",
+        fontFamily: "'Syne', sans-serif",
+        fontSize: "clamp(2.2rem, 6vw, 4.2rem)",
+        fontWeight: 800,
+        lineHeight: 0.98,
+        letterSpacing: "-0.04em",
       },
       h2: {
-        fontSize: "clamp(1.5rem, 3.5vw, 2.441rem)", // ~39.06px
-        fontWeight: 600,
-        lineHeight: 1.3,
-        letterSpacing: "-0.01em",
+        fontFamily: "'Syne', sans-serif",
+        fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)",
+        fontWeight: 700,
+        lineHeight: 1.02,
+        letterSpacing: "-0.035em",
       },
       h3: {
-        fontSize: "clamp(1.3rem, 3vw, 1.953rem)", // ~31.25px
-        fontWeight: 500,
-        lineHeight: 1.4,
+        fontFamily: "'Syne', sans-serif",
+        fontSize: "clamp(1.4rem, 3.2vw, 2.2rem)",
+        fontWeight: 700,
+        lineHeight: 1.15,
+        letterSpacing: "-0.02em",
       },
       h4: {
-        fontSize: "clamp(1.1rem, 2.5vw, 1.563rem)", // ~25px
-        fontWeight: 500,
-        lineHeight: 1.4,
+        fontFamily: "'Syne', sans-serif",
+        fontSize: "clamp(1.15rem, 2.5vw, 1.6rem)",
+        fontWeight: 600,
+        lineHeight: 1.25,
+        letterSpacing: "-0.015em",
       },
       h5: {
-        fontSize: "clamp(1rem, 2vw, 1.25rem)", // 20px
-        fontWeight: 500,
-        lineHeight: 1.5,
+        fontFamily: "'Syne', sans-serif",
+        fontSize: "clamp(1rem, 2vw, 1.25rem)",
+        fontWeight: 600,
+        lineHeight: 1.35,
       },
       h6: {
-        fontSize: "clamp(0.95rem, 1.8vw, 1.125rem)", // 18px
+        fontFamily: "'Syne', sans-serif",
+        fontSize: "clamp(0.95rem, 1.8vw, 1.125rem)",
         fontWeight: 600,
-        lineHeight: 1.5,
+        lineHeight: 1.4,
       },
       subtitle1: {
         fontSize: "clamp(0.875rem, 1.5vw, 1rem)", // 16px
@@ -101,26 +110,31 @@ export const createAppTheme = (mode: ColorMode): Theme => {
       body1: {
         fontSize: "clamp(0.875rem, 1.5vw, 1rem)", // 16px (base)
         fontWeight: 400,
-        lineHeight: 1.6,
+        lineHeight: 1.65,
       },
       body2: {
         fontSize: "clamp(0.75rem, 1.2vw, 0.875rem)", // 14px
-        lineHeight: 1.6,
+        lineHeight: 1.65,
       },
       button: {
-        fontSize: "clamp(0.75rem, 1.2vw, 0.875rem)", // 14px
-        textTransform: "none",
-        fontWeight: 500,
+        fontFamily: "'Sora', sans-serif",
+        fontSize: "clamp(0.7rem, 1.1vw, 0.8rem)",
+        textTransform: "uppercase",
+        fontWeight: 600,
+        letterSpacing: "0.1em",
       },
       caption: {
-        fontSize: "clamp(0.7rem, 1vw, 0.75rem)", // 12px
+        fontFamily: "'Sora', sans-serif",
+        fontSize: "clamp(0.65rem, 0.9vw, 0.72rem)",
         lineHeight: 1.6,
+        letterSpacing: "0.08em",
       },
       overline: {
+        fontFamily: "'Sora', sans-serif",
         fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)", // 12px
         fontWeight: 600,
         lineHeight: 1.6,
-        letterSpacing: "0.08em",
+        letterSpacing: "0.18em",
         textTransform: "uppercase",
       },
     },
@@ -128,6 +142,25 @@ export const createAppTheme = (mode: ColorMode): Theme => {
     components: {
       MuiCssBaseline: {
         styleOverrides: {
+          body: {
+            backgroundColor: isDark
+              ? designTokens.colors.void
+              : designTokens.colors.lightBg,
+            color: isDark
+              ? designTokens.colors.paper
+              : designTokens.colors.lightText,
+            fontFamily: "'Inter', sans-serif",
+          },
+          a: {
+            color: isDark
+              ? designTokens.colors.emerald
+              : designTokens.colors.deepTeal,
+          },
+          "::selection": {
+            backgroundColor: isDark
+              ? "rgba(52, 211, 153, 0.28)"
+              : "rgba(46, 107, 114, 0.22)",
+          },
           html: {
             fontSize: "16px", // Base para cálculo do rem
             "@media (max-width: 1200px)": {
@@ -168,6 +201,54 @@ export const createAppTheme = (mode: ColorMode): Theme => {
           },
         },
       },
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundImage: "none",
+            backgroundColor: isDark
+              ? "rgba(9, 11, 13, 0.62)"
+              : "rgba(244, 244, 245, 0.82)",
+            backdropFilter: "blur(48px) saturate(190%)",
+            WebkitBackdropFilter: "blur(48px) saturate(190%)",
+            borderBottom: `1px solid ${
+              isDark ? "rgba(255, 255, 255, 0.14)" : "rgba(24, 24, 27, 0.1)"
+            }`,
+            boxShadow: "none",
+          },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundImage: "none",
+            backgroundColor: isDark
+              ? "rgba(16, 19, 23, 0.92)"
+              : "rgba(255, 255, 255, 0.92)",
+            backdropFilter: "blur(24px) saturate(150%)",
+            WebkitBackdropFilter: "blur(24px) saturate(150%)",
+          },
+        },
+      },
+      MuiDrawer: {
+        styleOverrides: {
+          paper: {
+            backgroundColor: isDark
+              ? "rgba(9, 11, 13, 0.96)"
+              : "rgba(244, 244, 245, 0.96)",
+            backdropFilter: "blur(24px) saturate(150%)",
+            WebkitBackdropFilter: "blur(24px) saturate(150%)",
+          },
+        },
+      },
+      MuiDivider: {
+        styleOverrides: {
+          root: {
+            borderColor: isDark
+              ? "rgba(241, 238, 232, 0.13)"
+              : "rgba(24, 24, 27, 0.12)",
+          },
+        },
+      },
       MuiContainer: {
         styleOverrides: {
           root: {
@@ -191,6 +272,9 @@ export const createAppTheme = (mode: ColorMode): Theme => {
         styleOverrides: {
           root: {
             minHeight: "44px", // Tamanho mínimo para toque em dispositivos móveis
+            borderRadius: "999px",
+            fontFamily: "'Sora', sans-serif",
+            letterSpacing: "0.1em",
             transition,
             "&:active": {
               transform: "scale(0.98)",
@@ -245,13 +329,58 @@ export const createAppTheme = (mode: ColorMode): Theme => {
       MuiLink: {
         styleOverrides: {
           root: ({ theme }) => ({
+            color: theme.palette.primary.main,
+            textUnderlineOffset: "4px",
             transition,
             "&:hover": {
-              color: theme.palette.primary.main,
+              color: theme.palette.secondary.main,
             },
             "&:focus-visible, &.Mui-focusVisible": focus,
             "@media (prefers-reduced-motion: reduce)": reducedMotion,
           }),
+        },
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            borderRadius: "999px",
+            fontFamily: "'Sora', sans-serif",
+            fontSize: "0.7rem",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            backgroundColor: isDark
+              ? "rgba(255, 255, 255, 0.08)"
+              : "rgba(24, 24, 27, 0.05)",
+            border: `1px solid ${
+              isDark ? "rgba(255, 255, 255, 0.16)" : "rgba(24, 24, 27, 0.12)"
+            }`,
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            backgroundColor: isDark
+              ? "rgba(255, 255, 255, 0.04)"
+              : "rgba(24, 24, 27, 0.03)",
+            borderRadius: "14px",
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: isDark
+                ? "rgba(255, 255, 255, 0.14)"
+                : "rgba(24, 24, 27, 0.14)",
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: isDark
+                ? "rgba(255, 255, 255, 0.24)"
+                : "rgba(24, 24, 27, 0.24)",
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: isDark
+                ? designTokens.colors.amber
+                : designTokens.colors.deepTeal,
+              borderWidth: "1px",
+            },
+          },
         },
       },
       MuiTextField: {
@@ -281,6 +410,13 @@ export const createAppTheme = (mode: ColorMode): Theme => {
       MuiCard: {
         styleOverrides: {
           root: ({ theme }) => ({
+            borderRadius: "24px",
+            backgroundImage: "none",
+            border: `1px solid ${
+              isDark ? "rgba(255, 255, 255, 0.2)" : "rgba(24, 24, 27, 0.1)"
+            }`,
+            backdropFilter: "blur(48px) saturate(190%)",
+            WebkitBackdropFilter: "blur(48px) saturate(190%)",
             transition,
             "&:hover": {
               boxShadow: `0 8px 24px ${alpha(

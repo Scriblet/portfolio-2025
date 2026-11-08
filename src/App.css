@@ -1,61 +1,62 @@
 .app-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   scroll-behavior: smooth;
+  background: var(--void);
+  color: var(--paper);
+  overflow-x: clip;
+}
+
+.skip-link {
+  position: absolute;
+  top: -80px;
+  left: clamp(14px, 3.5vw, 56px);
+  z-index: 10000;
+  padding: 10px 16px;
+  background: var(--paper);
+  color: var(--void);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: top 0.2s var(--ease-out);
+}
+
+.skip-link:focus {
+  top: 20px;
 }
 
 .main-content {
-  margin-top: 10vh;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-  padding: 0 1rem;
+  width: 100%;
 }
 
-/* Media Queries otimizadas */
-@media screen and (max-width: 1440px) {
-  .main-content {
-    gap: 3.5rem;
-    padding: 0 1.5rem;
+/* Contrato de reveal: só entra quando o JS confirma movimento permitido. */
+.ds-reveal-root[data-motion="ready"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y));
+  transition: opacity var(--duration-enter) var(--ease-out),
+    transform var(--duration-enter) var(--ease-out);
+}
+
+.ds-reveal-root[data-motion="ready"] [data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-container {
+    scroll-behavior: auto;
   }
-}
 
-@media screen and (max-width: 1024px) {
-  .main-content {
-    gap: 3rem;
-    padding: 0 1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .main-content {
-    margin-top: 8vh;
-    gap: 2.5rem;
-    padding: 0 0.75rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .main-content {
-    margin-top: 6vh;
-    gap: 2rem;
-    padding: 0 0.5rem;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .main-content {
-    margin-top: 5vh;
-    gap: 1.5rem;
-    padding: 0 0.25rem;
-  }
-}
-
-/* Otimizações adicionais para dispositivos muito pequenos */
-@media screen and (max-width: 320px) {
-  .main-content {
-    margin-top: 4vh;
-    gap: 1.25rem;
+  .ds-reveal-root[data-motion="ready"] [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }

@@ -1,0 +1,322 @@
+/**
+ * Design system imersivo — camada global.
+ *
+ * A linguagem visual nasceu na rota `/immersive` e passa a valer para todo o
+ * portfólio. Este arquivo é a fonte única de verdade em CSS custom properties;
+ * `src/theme/designTokens.ts` carrega os mesmos valores para o tema MUI.
+ */
+
+:root {
+  /* Dark palette (identidade principal) */
+  --void: #090b0d;
+  --void-2: #101317;
+  --surface: #18181b;
+  --paper: #f1eee8;
+  --paper-2: #a8afb2;
+  --muted: #737a7f;
+
+  /* Light palette (seções claras) */
+  --light-bg: #f4f4f5;
+  --light-surface: #ffffff;
+  --light-text: #18181b;
+  --light-text-2: #52525b;
+  --light-border: #e4e4e7;
+
+  /* Accents */
+  --emerald: #34d399;
+  --amber: #e8913c;
+  --amber-soft: rgba(232, 145, 60, 0.12);
+  --deep-teal: #2e6b72;
+  --danger: #f43f5e;
+
+  /* Hairlines */
+  --hairline: rgba(241, 238, 232, 0.13);
+  --hairline-light: rgba(24, 24, 27, 0.1);
+
+  /* Superfícies auxiliares */
+  --surface-soft: rgba(255, 255, 255, 0.02);
+  --card-highlight: rgba(255, 255, 255, 0.07);
+  --card-bg-hover: rgba(255, 255, 255, 0.14);
+  --card-border-hover: rgba(255, 255, 255, 0.26);
+  --card-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  --ghost-bg-hover: rgba(255, 255, 255, 0.06);
+  --ghost-border-hover: rgba(255, 255, 255, 0.22);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-bg-focus: rgba(255, 255, 255, 0.07);
+
+  /* Navegação */
+  --nav-bg: rgba(10, 12, 14, 0.62);
+  --nav-solid-bg: rgba(10, 12, 14, 0.96);
+
+  /* Vidro escuro */
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: blur(48px) saturate(190%);
+  --glass-radius: 24px;
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  /* Vidro claro */
+  --glass-light-bg: rgba(255, 255, 255, 0.84);
+  --glass-light-border: rgba(255, 255, 255, 0.72);
+  --glass-light-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+
+  /* Tipografia */
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Sora", ui-monospace, monospace;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-enter: 800ms;
+  --duration-hover: 300ms;
+  --reveal-y: 20px;
+
+  /* Espaçamento */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Raios */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}
+
+/*
+ * Tema claro: o ColorModeProvider aplica `data-mui-color-scheme` no <html>.
+ * Os mesmos tokens mudam de valor para que todas as seções, o header e o
+ * rodapé acompanhem a preferência sem duplicar CSS.
+ */
+[data-mui-color-scheme="light"] .app-container {
+  --void: #f4f4f5;
+  --void-2: #ffffff;
+  --surface: #ffffff;
+  --paper: #18181b;
+  --paper-2: #52525b;
+  --muted: #52525b;
+
+  --emerald: #047857;
+  --amber: #b45309;
+  --amber-soft: rgba(180, 83, 9, 0.12);
+  --danger: #be123c;
+
+  --hairline: rgba(24, 24, 27, 0.1);
+  --surface-soft: rgba(24, 24, 27, 0.02);
+  --card-highlight: rgba(24, 24, 27, 0.035);
+  --card-bg-hover: rgba(24, 24, 27, 0.055);
+  --card-border-hover: rgba(24, 24, 27, 0.2);
+  --card-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --ghost-bg-hover: rgba(24, 24, 27, 0.04);
+  --ghost-border-hover: rgba(24, 24, 27, 0.2);
+  --input-bg: rgba(24, 24, 27, 0.03);
+  --input-border: rgba(24, 24, 27, 0.14);
+  --input-bg-focus: rgba(24, 24, 27, 0.05);
+
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(24, 24, 27, 0.08);
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --nav-solid-bg: rgba(255, 255, 255, 0.96);
+}
+
+body {
+  background-color: var(--void);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Foco visível consistente em todo o site. */
+:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 3px;
+}
+
+/* Container e seção compartilhados. */
+.ds-container {
+  width: min(1600px, calc(100% - clamp(28px, 6vw, 112px)));
+  margin-inline: auto;
+}
+
+.ds-section {
+  padding-block: clamp(120px, 18vh, 200px);
+}
+
+/* Vidro — receita única. */
+.ds-glass {
+  border-radius: var(--glass-radius);
+}
+
+.ds-glass--dark {
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.ds-glass--light {
+  background-color: var(--glass-light-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-light-border);
+  box-shadow: var(--glass-light-shadow);
+}
+
+/* Hairline decorativa. */
+.ds-hairline {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--hairline);
+}
+
+.ds-hairline--light {
+  background: var(--hairline-light);
+}
+
+/* Numeral vazado. */
+.ds-index-numeral {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 22vw, 18rem);
+  font-weight: 800;
+  line-height: 0.72;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--light-border);
+  text-stroke: 1px var(--light-border);
+  opacity: 0.65;
+  user-select: none;
+}
+
+.ds-index-numeral--dark {
+  -webkit-text-stroke-color: var(--hairline);
+  text-stroke-color: var(--hairline);
+  opacity: 0.35;
+}
+
+/* Grão SVG fixo. */
+.ds-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.075;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Botão-pílula. */
+.ds-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 52px;
+  padding: 0 8px 0 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
+}
+
+.ds-pill--solid {
+  background: var(--paper);
+  color: var(--void);
+}
+
+.ds-pill--solid:hover,
+.ds-pill--solid:focus {
+  transform: scale(1.05);
+}
+
+.ds-pill--ghost-dark {
+  border: 1px solid var(--hairline);
+  color: var(--paper);
+}
+
+.ds-pill--ghost-dark:hover,
+.ds-pill--ghost-dark:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.ds-pill--ghost-light {
+  border: 1px solid var(--hairline-light);
+  color: var(--light-text);
+}
+
+.ds-pill--ghost-light:hover,
+.ds-pill--ghost-light:focus {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.22);
+}
+
+.ds-pill__icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--void);
+  color: var(--paper);
+  font-size: 13px;
+}
+
+.ds-pill--ghost-light .ds-pill__icon {
+  background: var(--light-text);
+  color: var(--light-surface);
+}
+
+/* Label editorial. */
+.ds-label {
+  margin: 0 0 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ds-label--dark {
+  color: var(--muted);
+}
+
+.ds-label--light {
+  color: var(--light-text-2);
+}
+
+/* Reduced motion global. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
