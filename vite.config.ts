@@ -80,9 +80,13 @@ export default defineConfig({
   ],
   server: {
     watch: {
-      // PDFs are static assets that may be locked by a PDF viewer on Windows.
-      // Watching them makes Vite crash with EBUSY.
-      ignored: ["**/*.pdf", "**/screenshots/**"],
+      // PDFs and generated images are static assets that may be locked by
+      // external viewers on Windows. Watching them makes Vite crash with EBUSY.
+      ignored: [
+        "**/*.pdf",
+        "**/screenshots/**",
+        "**/Gemini_Generated_Image_*.jpg",
+      ],
     },
   },
   build: {
