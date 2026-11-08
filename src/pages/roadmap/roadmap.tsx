@@ -12,6 +12,7 @@ import {
   useTheme,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ScienceIcon from "@mui/icons-material/Science";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -203,6 +204,48 @@ const Roadmap = () => {
             Voltar ao portfólio
           </Button>
         </Stack>
+
+        <Card
+          variant="outlined"
+          data-testid="roadmap-immersive-preview"
+          sx={{
+            mt: 3,
+            borderColor: alpha(theme.palette.primary.main, 0.45),
+            backgroundColor: alpha(theme.palette.primary.main, 0.05),
+          }}
+        >
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              alignItems: { xs: "flex-start", sm: "center" },
+              justifyContent: "space-between",
+              gap: 2,
+            }}
+          >
+            <Box>
+              <Typography variant="overline" color="text.secondary">
+                Onda 6 · Refactor imersivo
+              </Typography>
+              <Typography variant="h6" component="p" sx={{ fontWeight: 700 }}>
+                A direção visual nova já está navegável
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Portal cinematográfico, deck físico e seções editoriais em uma
+                rota isolada. Conteúdo real; capas provisórias sinalizadas.
+              </Typography>
+            </Box>
+            <Button
+              component={RouterLink}
+              to="/immersive"
+              variant="contained"
+              endIcon={<ArrowForwardIcon />}
+              sx={{ flexShrink: 0 }}
+            >
+              Abrir prévia
+            </Button>
+          </CardContent>
+        </Card>
 
         <Box
           sx={{
