@@ -19,7 +19,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # jsdom 31 → undici 8 exige Node >= 22.19.
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -44,6 +45,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -51,10 +58,11 @@ jobs:
           # otimizador de deps do dev server e com o service worker ativo.
           build: npm run build
           start: npm run preview:test
-          wait-on: 'http://localhost:4173'
+          # tcp evita o ECONNRESET do wait-on via HTTP antes do preview subir.
+          wait-on: 'tcp:127.0.0.1:4173'
           wait-on-timeout: 180
           browser: chrome
-          config: baseUrl=http://localhost:4173
+          config: baseUrl=http://127.0.0.1:4173
           install-command: npm ci
 
       - name: Upload Cypress artifacts on failure

@@ -12,10 +12,10 @@
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
     "dev:test": "vite --port 5174 --strictPort",
-    "preview:test": "vite preview --port 4173 --strictPort",
+    "preview:test": "vite preview --port 4173 --strictPort --host 127.0.0.1",
     "test:e2e": "start-server-and-test dev:test http://localhost:5174 \"cypress run\"",
     "test:e2e:open": "start-server-and-test dev:test http://localhost:5174 \"cypress open\"",
-    "test:e2e:preview": "npm run build && start-server-and-test preview:test http://localhost:4173 \"cypress run --config baseUrl=http://localhost:4173\"",
+    "test:e2e:preview": "npm run build && start-server-and-test preview:test 4173 \"cypress run --config baseUrl=http://127.0.0.1:4173\"",
     "test:e2e:spec": "cypress run --spec",
     "prepare": "git config core.hooksPath .githooks || true"
   },
