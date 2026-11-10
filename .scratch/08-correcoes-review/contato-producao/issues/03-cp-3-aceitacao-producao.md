@@ -1,6 +1,6 @@
 # Issue: Aceitação de produção do contato e docs operacionais
 
-Status: ready-for-human
+Status: done
 
 ## Parent
 PRD: `.scratch/08-correcoes-review/contato-producao/PRD.md`

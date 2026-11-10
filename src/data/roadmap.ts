@@ -500,7 +500,7 @@ export const roadmapWaves: RoadmapWave[] = [
     id: 10,
     title: "Correções da avaliação",
     goal: "Fechar os pontos que seguraram a nota do site na avaliação de 2026-11: CI em Node 22, contato funcional em produção, imagens otimizadas, README consistente e cobertura E2E crítica.",
-    status: "in-progress",
+    status: "done",
     items: [
       {
         slug: "ci-node-22",
@@ -516,12 +516,12 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "contato-producao",
         title: "Contato funcional em produção",
         summary:
-          "POST /api/contact responde 404 no GitHub Pages; publicar a função em host serverless com CORS restrito e endpoint configurável por env.",
+          "POST /api/contact não existe no GitHub Pages; function publicada no Netlify, com CORS restrito e endpoint configurável por env.",
         category: "Técnico",
-        status: "in-progress",
-        issuesDone: 1,
+        status: "done",
+        issuesDone: 3,
         issuesTotal: 3,
-        note: "Endpoint configurável e CORS prontos; falta publicar a function e validar em produção.",
+        note: "Ativo em https://lucas-nonato.netlify.app/api/contact; Pages aponta para lá via VITE_CONTACT_ENDPOINT.",
       },
       {
         slug: "otimizacao-imagens",

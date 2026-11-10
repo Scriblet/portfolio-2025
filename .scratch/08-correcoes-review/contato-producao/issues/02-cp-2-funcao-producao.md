@@ -1,6 +1,6 @@
 # Issue: Função /api/contact publicada em produção com CORS restrito
 
-Status: ready-for-human
+Status: done
 
 ## Parent
 PRD: `.scratch/08-correcoes-review/contato-producao/PRD.md`
