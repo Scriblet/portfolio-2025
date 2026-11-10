@@ -1,10 +1,10 @@
-﻿export type RoadmapStatus = "done" | "in-progress" | "pending";
+export type RoadmapStatus = "done" | "in-progress" | "pending";
 
 export type RoadmapCategory =
-  | "TÃ©cnico"
+  | "Técnico"
   | "UX"
   | "Feature"
-  | "SeÃ§Ã£o";
+  | "Seção";
 
 export type RoadmapItem = {
   slug: string;
@@ -29,35 +29,35 @@ export type RoadmapWave = {
 export const roadmapWaves: RoadmapWave[] = [
   {
     id: 0,
-    title: "FundaÃ§Ã£o",
-    goal: "Base tÃ©cnica que destrava todo o resto: dados tipados, contato seguro, tipografia e SEO.",
+    title: "Fundação",
+    goal: "Base técnica que destrava todo o resto: dados tipados, contato seguro, tipografia e SEO.",
     status: "done",
     items: [
       {
         slug: "dados-centralizados",
         title: "Dados centralizados",
         summary:
-          "Camada src/data tipada para experiÃªncias, skills, site e links sociais.",
-        category: "TÃ©cnico",
+          "Camada src/data tipada para experiências, skills, site e links sociais.",
+        category: "Técnico",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
       },
       {
         slug: "seguranca-contato",
-        title: "SeguranÃ§a do contato",
+        title: "Segurança do contato",
         summary:
-          "Webhook fora do bundle, endpoint /api/contact com validaÃ§Ã£o e rate limit.",
-        category: "TÃ©cnico",
+          "Webhook fora do bundle, endpoint /api/contact com validação e rate limit.",
+        category: "Técnico",
         status: "done",
         issuesDone: 3,
         issuesTotal: 3,
       },
       {
         slug: "hierarquia-tipografica",
-        title: "Hierarquia tipogrÃ¡fica",
+        title: "Hierarquia tipográfica",
         summary:
-          "Escala central no tema, contraste dos textos secundÃ¡rios e remoÃ§Ã£o do tÃ­tulo vazio.",
+          "Escala central no tema, contraste dos textos secundários e remoção do título vazio.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -67,8 +67,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "seo-metadados",
         title: "SEO e metadados",
         summary:
-          "Open Graph, Twitter Cards, JSON-LD, canonical, favicon e imagem 1200Ã—630.",
-        category: "TÃ©cnico",
+          "Open Graph, Twitter Cards, JSON-LD, canonical, favicon e imagem 1200×630.",
+        category: "Técnico",
         status: "done",
         issuesDone: 3,
         issuesTotal: 3,
@@ -78,7 +78,7 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 1,
     title: "Quick wins",
-    goal: "Ganhos visÃ­veis de navegaÃ§Ã£o, feedback e identidade sem esperar as ondas maiores.",
+    goal: "Ganhos visíveis de navegação, feedback e identidade sem esperar as ondas maiores.",
     status: "done",
     items: [
       {
@@ -95,7 +95,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "progresso-leitura",
         title: "Progresso de leitura",
         summary:
-          "Barra fina de 0â€“100% no topo, acessÃ­vel e sem bloquear a navegaÃ§Ã£o.",
+          "Barra fina de 0–100% no topo, acessível e sem bloquear a navegação.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -103,9 +103,9 @@ export const roadmapWaves: RoadmapWave[] = [
       },
       {
         slug: "microinteracoes-foco",
-        title: "MicrointeraÃ§Ãµes e foco",
+        title: "Microinterações e foco",
         summary:
-          "Hover, focus-visible e active padronizados no tema para toda a superfÃ­cie interativa.",
+          "Hover, focus-visible e active padronizados no tema para toda a superfície interativa.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -115,7 +115,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "snackbar-contato",
         title: "Snackbar de contato",
         summary:
-          "Feedback global de sucesso/erro no formulÃ¡rio, com fila, live region e analytics.",
+          "Feedback global de sucesso/erro no formulário, com fila, live region e analytics.",
         category: "Feature",
         status: "done",
         issuesDone: 3,
@@ -125,7 +125,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "download-cv",
         title: "Download de CV",
         summary:
-          "BotÃ£o de PDF na apresentaÃ§Ã£o e no contato, com fallback e evento de download.",
+          "Botão de PDF na apresentação e no contato, com fallback e evento de download.",
         category: "Feature",
         status: "done",
         issuesDone: 3,
@@ -135,7 +135,7 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "tema-claro-escuro",
         title: "Tema claro/escuro",
         summary:
-          "Toggle no header, preferÃªncia persistida e paleta clara derivada da identidade.",
+          "Toggle no header, preferência persistida e paleta clara derivada da identidade.",
         category: "Feature",
         status: "done",
         issuesDone: 3,
@@ -146,15 +146,15 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 2,
     title: "Performance",
-    goal: "Primeira dobra mais rÃ¡pida, com chunks separados e skeleton de altura reservada.",
+    goal: "Primeira dobra mais rápida, com chunks separados e skeleton de altura reservada.",
     status: "done",
     items: [
       {
         slug: "code-splitting-lazy",
         title: "Code-splitting e lazy loading",
         summary:
-          "Chunks por seÃ§Ã£o, skeleton com altura reservada e bundle inicial menor.",
-        category: "TÃ©cnico",
+          "Chunks por seção, skeleton com altura reservada e bundle inicial menor.",
+        category: "Técnico",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
@@ -164,16 +164,16 @@ export const roadmapWaves: RoadmapWave[] = [
   },
   {
     id: 4,
-    title: "SeÃ§Ãµes novas",
-    goal: "Narrativa de carreira para completar a histÃ³ria do portfÃ³lio.",
+    title: "Seções novas",
+    goal: "Narrativa de carreira para completar a história do portfólio.",
     status: "done",
     items: [
       {
         slug: "secao-timeline",
         title: "Timeline de carreira",
         summary:
-          "Marcos de formaÃ§Ã£o, certificaÃ§Ã£o e trabalho em ordem cronolÃ³gica.",
-        category: "SeÃ§Ã£o",
+          "Marcos de formação, certificação e trabalho em ordem cronológica.",
+        category: "Seção",
         status: "done",
         issuesDone: 3,
         issuesTotal: 3,
@@ -183,15 +183,15 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 5,
     title: "PWA",
-    goal: "InstalaÃ§Ã£o e leitura offline, depois que o restante estiver estÃ¡vel.",
+    goal: "Instalação e leitura offline, depois que o restante estiver estável.",
     status: "done",
     items: [
       {
         slug: "pwa-offline",
         title: "PWA offline",
         summary:
-          "Manifest, service worker versionado e fallback offline acessÃ­vel.",
-        category: "TÃ©cnico",
+          "Manifest, service worker versionado e fallback offline acessível.",
+        category: "Técnico",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
@@ -202,14 +202,14 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 6,
     title: "Refactor imersivo",
-    goal: "Uma experiÃªncia editorial imersiva aplicada ao portfÃ³lio inteiro: vidro arquitetÃ´nico, tipografia Syne, narrativa por seÃ§Ãµes e movimento contido â€” sem perder acessibilidade nem performance.",
+    goal: "Uma experiência editorial imersiva aplicada ao portfólio inteiro: vidro arquitetônico, tipografia Syne, narrativa por seções e movimento contido — sem perder acessibilidade nem performance.",
     status: "done",
     items: [
       {
         slug: "design-system-immersive",
         title: "Design system imersivo",
         summary:
-          "Tokens, tipografia Syne/Inter/Sora, vidro, grÃ£o e primitivas com foco e contraste AA â€” agora globais.",
+          "Tokens, tipografia Syne/Inter/Sora, vidro, grão e primitivas com foco e contraste AA — agora globais.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -217,9 +217,9 @@ export const roadmapWaves: RoadmapWave[] = [
       },
       {
         slug: "portal-hero",
-        title: "Portal hero cinematogrÃ¡fico",
+        title: "Portal hero cinematográfico",
         summary:
-          "Hero dirigido por scroll: painÃ©is, foto duotÃ´nica e wordmark dividido, reversÃ­vel e com movimento reduzido.",
+          "Hero dirigido por scroll: painéis, foto duotônica e wordmark dividido, reversível e com movimento reduzido.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -230,8 +230,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "editorial-narrative",
         title: "Narrativa editorial",
         summary:
-          "Sobre, Skills, ExperiÃªncia e Contato com a linguagem editorial da referÃªncia imersiva.",
-        category: "SeÃ§Ã£o",
+          "Sobre, Skills, Experiência e Contato com a linguagem editorial da referência imersiva.",
+        category: "Seção",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
@@ -239,33 +239,33 @@ export const roadmapWaves: RoadmapWave[] = [
       },
       {
         slug: "release-deck",
-        title: "Deck fÃ­sico de releases",
+        title: "Deck físico de releases",
         summary:
-          "Explorado no preview e removido na consolidaÃ§Ã£o; a pÃ¡gina seguiu com Skills em cards de vidro.",
+          "Explorado no preview e removido na consolidação; a página seguiu com Skills em cards de vidro.",
         category: "Feature",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["design-system-immersive"],
-        note: "Removido na consolidaÃ§Ã£o do preview.",
+        note: "Removido na consolidação do preview.",
       },
       {
         slug: "immersive-preview-page",
-        title: "PÃ¡gina /immersive",
+        title: "Página /immersive",
         summary:
-          "LaboratÃ³rio navegÃ¡vel com a direÃ§Ã£o completa e conteÃºdo real, mantido como referÃªncia visual.",
-        category: "SeÃ§Ã£o",
+          "Laboratório navegável com a direção completa e conteúdo real, mantido como referência visual.",
+        category: "Seção",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
-        note: "ReferÃªncia visual do refactor do site.",
+        note: "Referência visual do refactor do site.",
       },
       {
         slug: "motion-a11y-performance",
         title: "Movimento, a11y e performance",
         summary:
-          "Tokens de motion, contrato de movimento reduzido, foco, contraste e orÃ§amento de performance.",
-        category: "TÃ©cnico",
+          "Tokens de motion, contrato de movimento reduzido, foco, contraste e orçamento de performance.",
+        category: "Técnico",
         status: "done",
         issuesDone: 4,
         issuesTotal: 4,
@@ -276,15 +276,15 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 7,
     title: "Refactor do site",
-    goal: "Aplicar a linguagem da referÃªncia /immersive a cada seÃ§Ã£o real do portfÃ³lio, com PRDs por seÃ§Ã£o e validaÃ§Ã£o de acessibilidade.",
+    goal: "Aplicar a linguagem da referência /immersive a cada seção real do portfólio, com PRDs por seção e validação de acessibilidade.",
     status: "done",
     items: [
       {
         slug: "global-shell",
         title: "Shell global",
         summary:
-          "GrÃ£o, container, ritmo vertical e contrato de reveal aplicados ao site inteiro.",
-        category: "TÃ©cnico",
+          "Grão, container, ritmo vertical e contrato de reveal aplicados ao site inteiro.",
+        category: "Técnico",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
@@ -294,17 +294,17 @@ export const roadmapWaves: RoadmapWave[] = [
         title: "Header e Hero",
         summary:
           "Header glass pill e hero editorial com foto, metadados reais e CTA pill.",
-        category: "SeÃ§Ã£o",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
       },
       {
         slug: "experience-section",
-        title: "ExperiÃªncia",
+        title: "Experiência",
         summary:
-          "Cards de vidro e numeraÃ§Ã£o para as empresas reais de experiences.ts.",
-        category: "SeÃ§Ã£o",
+          "Cards de vidro e numeração para as empresas reais de experiences.ts.",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
@@ -313,8 +313,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "timeline-section",
         title: "Jornada",
         summary:
-          "Timeline com trilho em degradÃª, marcadores e cards de vidro.",
-        category: "SeÃ§Ã£o",
+          "Timeline com trilho em degradê, marcadores e cards de vidro.",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
@@ -323,8 +323,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "philosophy-section",
         title: "Filosofia",
         summary:
-          "SeÃ§Ã£o editorial escura com foto, texto e CTA, sem o marrom hardcoded.",
-        category: "SeÃ§Ã£o",
+          "Seção editorial escura com foto, texto e CTA, sem o marrom hardcoded.",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
@@ -333,8 +333,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "skills-section",
         title: "Habilidades",
         summary:
-          "Cards de vidro com Ã­cone, tÃ­tulo, descriÃ§Ã£o e tags a partir de skills.ts.",
-        category: "SeÃ§Ã£o",
+          "Cards de vidro com ícone, título, descrição e tags a partir de skills.ts.",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
@@ -343,8 +343,8 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "github-section",
         title: "Banner GitHub",
         summary:
-          "Painel de vidro com CTA pill e o logo como elemento grÃ¡fico.",
-        category: "SeÃ§Ã£o",
+          "Painel de vidro com CTA pill e o logo como elemento gráfico.",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
@@ -353,18 +353,18 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "contact-section",
         title: "Contato",
         summary:
-          "Fechamento editorial com card de vidro e formulÃ¡rio preservado.",
-        category: "SeÃ§Ã£o",
+          "Fechamento editorial com card de vidro e formulário preservado.",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
       },
       {
         slug: "footer-section",
-        title: "RodapÃ©",
+        title: "Rodapé",
         summary:
-          "Wordmark, links mono, Ã­cones sociais e hairline no fecho do site.",
-        category: "SeÃ§Ã£o",
+          "Wordmark, links mono, ícones sociais e hairline no fecho do site.",
+        category: "Seção",
         status: "done",
         issuesDone: 1,
         issuesTotal: 1,
@@ -374,37 +374,37 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 8,
     title: "Identidade como Engenheiro de IA",
-    goal: "Reposicionar o portfÃ³lio para refletir a atuaÃ§Ã£o atual de Lucas como engenheiro de IA: prova social, maturidade tÃ©cnica, princÃ­pios e contato orientado a valor.",
-    status: "in-progress",
+    goal: "Reposicionar o portfólio para refletir a atuação atual de Lucas como engenheiro de IA: prova social, maturidade técnica, princípios e contato orientado a valor.",
+    status: "done",
     items: [
       {
         slug: "mapa-maturidade-ia",
         title: "Mapa de Maturidade em IA",
         summary:
-          "Nova seÃ§Ã£o que comunica as camadas de competÃªncia em IA, de uso produtivo a governanÃ§a.",
-        category: "SeÃ§Ã£o",
-        status: "pending",
-        issuesDone: 0,
+          "Nova seção que comunica as camadas de competência em IA, de uso produtivo a governança.",
+        category: "Seção",
+        status: "done",
+        issuesDone: 3,
         issuesTotal: 3,
       },
       {
         slug: "manifesto-tecnico",
-        title: "Manifesto TÃ©cnico",
+        title: "Manifesto Técnico",
         summary:
-          "SeÃ§Ã£o de princÃ­pios tÃ©cnicos que comunica como Lucas pensa e trabalha.",
-        category: "SeÃ§Ã£o",
-        status: "pending",
-        issuesDone: 0,
+          "Seção de princípios técnicos que comunica como Lucas pensa e trabalha.",
+        category: "Seção",
+        status: "done",
+        issuesDone: 3,
         issuesTotal: 3,
       },
       {
         slug: "selected-work",
         title: "Selected Work narrativo",
         summary:
-          "Substitui as seÃ§Ãµes Experience e Jornada por uma narrativa contÃ­nua de cases reais.",
-        category: "SeÃ§Ã£o",
-        status: "pending",
-        issuesDone: 0,
+          "Substitui as seções Experience e Jornada por uma narrativa contínua de cases reais.",
+        category: "Seção",
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["mapa-maturidade-ia", "manifesto-tecnico"],
       },
@@ -412,12 +412,149 @@ export const roadmapWaves: RoadmapWave[] = [
         slug: "contato-proposta-valor",
         title: "Contato com Proposta de Valor",
         summary:
-          "Reformula o contato com cartÃµes de proposta antes do formulÃ¡rio.",
-        category: "SeÃ§Ã£o",
+          "Reformula o contato com cartões de proposta antes do formulário.",
+        category: "Seção",
+        status: "done",
+        issuesDone: 3,
+        issuesTotal: 3,
+        dependsOn: ["selected-work"],
+      },
+    ],
+  },
+  {
+    id: 9,
+    title: "Testes E2E",
+    goal: "Cobertura ponta a ponta das interações críticas do site com Cypress — navegação, conteúdo, contato, PWA e acessibilidade — sempre opt-in, sem voltar a travar a máquina no loop de desenvolvimento.",
+    status: "in-progress",
+    items: [
+      {
+        slug: "cypress-infraestrutura",
+        title: "Infraestrutura E2E",
+        summary:
+          "Cypress, servidor de teste, comandos de apoio e regras de execução opt-in.",
+        category: "Técnico",
+        status: "done",
+        issuesDone: 4,
+        issuesTotal: 4,
+        note: "Análise do site em .scratch/07-testes-e2e/ANALISE.md.",
+      },
+      {
+        slug: "cypress-smoke-navegacao",
+        title: "Smoke e navegação",
+        summary:
+          "Home, rotas, âncoras do header e do footer, drawer mobile, tema e header ao rolar.",
+        category: "Técnico",
+        status: "in-progress",
+        issuesDone: 2,
+        issuesTotal: 4,
+        dependsOn: ["cypress-infraestrutura"],
+        note: "navigation.cy.ts cobre rotas, âncoras, drawer, tema e progresso; faltam auto-hide e meta theme-color.",
+      },
+      {
+        slug: "cypress-secoes-conteudo",
+        title: "Conteúdo das seções",
+        summary:
+          "Experiência, jornada, skills, GitHub e footer renderizados com links íntegros.",
+        category: "Técnico",
+        status: "done",
+        issuesDone: 3,
+        issuesTotal: 3,
+        dependsOn: ["cypress-infraestrutura"],
+      },
+      {
+        slug: "cypress-formularios-contato",
+        title: "Formulários de contato",
+        summary:
+          "Validação, honeypot, envio, estados de erro e feedback nos formulários da home e da /immersive.",
+        category: "Técnico",
+        status: "done",
+        issuesDone: 4,
+        issuesTotal: 4,
+        dependsOn: ["cypress-infraestrutura"],
+      },
+      {
+        slug: "cypress-pwa-offline",
+        title: "PWA e offline",
+        summary:
+          "Service worker em build, conteúdo em cache, fallback de navegação, OfflineNotice e instalação.",
+        category: "Técnico",
         status: "pending",
         issuesDone: 0,
         issuesTotal: 3,
-        dependsOn: ["selected-work"],
+        dependsOn: ["cypress-infraestrutura"],
+      },
+      {
+        slug: "cypress-a11y-responsivo",
+        title: "Acessibilidade e responsivo",
+        summary:
+          "axe-core na home e na /immersive, navegação por teclado e viewports móveis.",
+        category: "Técnico",
+        status: "pending",
+        issuesDone: 0,
+        issuesTotal: 3,
+        dependsOn: ["cypress-infraestrutura"],
+      },
+    ],
+  },
+  {
+    id: 10,
+    title: "Correções da avaliação",
+    goal: "Fechar os pontos que seguraram a nota do site na avaliação de 2026-11: CI em Node 22, contato funcional em produção, imagens otimizadas, README consistente e cobertura E2E crítica.",
+    status: "in-progress",
+    items: [
+      {
+        slug: "ci-node-22",
+        title: "CI consistente em Node 22 e lint limpo",
+        summary:
+          "Node 22 em deploy/netlify/engines/.nvmrc e os 8 warnings do ESLint zerados sem desativar regras.",
+        category: "Técnico",
+        status: "done",
+        issuesDone: 2,
+        issuesTotal: 2,
+      },
+      {
+        slug: "contato-producao",
+        title: "Contato funcional em produção",
+        summary:
+          "POST /api/contact responde 404 no GitHub Pages; publicar a função em host serverless com CORS restrito e endpoint configurável por env.",
+        category: "Técnico",
+        status: "in-progress",
+        issuesDone: 1,
+        issuesTotal: 3,
+        note: "Endpoint configurável e CORS prontos; falta publicar a function e validar em produção.",
+      },
+      {
+        slug: "otimizacao-imagens",
+        title: "Otimização de imagens",
+        summary:
+          "Hero (294 KB) e filosofia (821 KB) em AVIF/WebP com srcset, lazy-load e orçamento de peso anti-regressão.",
+        category: "Técnico",
+        status: "done",
+        issuesDone: 3,
+        issuesTotal: 3,
+        dependsOn: ["ci-node-22"],
+      },
+      {
+        slug: "readme-consistencia",
+        title: "README consistente com o repositório",
+        summary:
+          "Node 22, scripts reais, deploy GitHub Pages, árvore de diretórios atual e contato descrito como server-side.",
+        category: "Técnico",
+        status: "done",
+        issuesDone: 3,
+        issuesTotal: 3,
+        dependsOn: ["ci-node-22"],
+      },
+      {
+        slug: "e2e-cobertura-critica",
+        title: "Cobertura E2E crítica",
+        summary:
+          "Smoke/navegação/tema, conteúdo das seções e formulário de contato cobertos de ponta a ponta no job e2e do CI.",
+        category: "Técnico",
+        status: "done",
+        issuesDone: 3,
+        issuesTotal: 3,
+        note: "Complementa a onda 9 sem duplicar PWA/a11y (que seguem em 07-testes-e2e).",
       },
     ],
   },
@@ -437,5 +574,42 @@ export const roadmapStats = () => {
     wavesTotal: roadmapWaves.length,
     inProgress: items.filter((item) => item.status === "in-progress").length,
     progress: issuesTotal === 0 ? 0 : Math.round((issuesDone / issuesTotal) * 100),
+  };
+};
+
+type WaveTotals = {
+  prds: number;
+  openPrds: number;
+  issuesDone: number;
+  issuesTotal: number;
+};
+
+const totalsOf = (waves: RoadmapWave[]): WaveTotals => {
+  const items = waves.flatMap((wave) => wave.items);
+
+  return {
+    prds: items.length,
+    openPrds: items.filter((item) => item.status !== "done").length,
+    issuesDone: items.reduce((total, item) => total + item.issuesDone, 0),
+    issuesTotal: items.reduce((total, item) => total + item.issuesTotal, 0),
+  };
+};
+
+/**
+ * Separa o roadmap em três faixas de leitura: o que está em execução, o que
+ * vem depois e o que já foi entregue (recolhido na página).
+ */
+export const roadmapGroups = () => {
+  const activeWaves = roadmapWaves.filter((wave) => wave.status === "in-progress");
+  const upcomingWaves = roadmapWaves.filter((wave) => wave.status === "pending");
+  const shippedWaves = roadmapWaves.filter((wave) => wave.status === "done");
+
+  return {
+    activeWaves,
+    upcomingWaves,
+    shippedWaves,
+    active: totalsOf(activeWaves),
+    upcoming: totalsOf(upcomingWaves),
+    shipped: totalsOf(shippedWaves),
   };
 };

@@ -78,10 +78,15 @@ Defined in `cypress/support/commands.ts` (types in `cypress/support/index.d.ts`)
 
 ## CI
 
-`.github/workflows/ci.yml` has an `e2e` job using `cypress-io/github-action`
-(Chrome, dev server started by the action). Screenshots and videos are uploaded
-as artifacts when the job fails. The quality job (`lint` + `test:unit` + `build`)
-stays independent, so a flaky E2E run is visible without hiding unit results.
+`.github/workflows/ci.yml` has two jobs:
+
+- `quality` — `images:check` + `lint` + `test:unit` + `build` and a type-check of
+  the Cypress specs (`npx tsc -p cypress/tsconfig.json --noEmit`).
+- `e2e` — `npm run test:e2e:preview` (build + preview on `:4173` + full suite),
+  so the service worker is active. Screenshots and videos are uploaded as
+  artifacts when the job fails.
+
+The jobs stay independent, so a flaky E2E run is visible without hiding unit results.
 
 ## Why
 
@@ -96,4 +101,13 @@ stays independent, so a flaky E2E run is visible without hiding unit results.
 ## Current state
 
 - `npm run test` and `npm run test:unit` run Vitest.
-- Cypress specs live in `cypress/e2e/*.cy.ts`; the full suite runs in CI only.
+- Cypress specs live in `cypress/e2e/*.cy.ts`:
+
+| Spec | Cobre |
+| --- | --- |
+| `smoke-home.cy.ts` | home responde e o hero aparece |
+| `navigation.cy.ts` | rotas, âncoras, drawer, tema persistido, progresso |
+| `sections.cy.ts` | conteúdo real das seções e links do footer |
+| `contact-form.cy.ts` | validação, honeypot, sucesso, 429/500/offline e `req.body` |
+
+- The full suite runs in CI only.

@@ -9,7 +9,7 @@ export const SOCIAL_LINKS: SocialLinks = {
   GITHUB: import.meta.env.VITE_GITHUB_URL || 'https://github.com/scriblet',
   LINKEDIN:
     import.meta.env.VITE_LINKEDIN_URL ||
-    'https://www.linkedin.com/in/lucasnonato/',
+    'https://www.linkedin.com/in/lucas-nonato1',
   INSTAGRAM: import.meta.env.VITE_INSTAGRAM_URL || '',
   TWITTER: import.meta.env.VITE_TWITTER_URL || '',
 };

@@ -5,7 +5,9 @@ describe('smoke: home', () => {
     cy.get('[data-testid="presentation-section"]').should('be.visible')
     cy.get('[data-testid="presentation-name"]').should('contain.text', 'Lucas Nonato')
 
-    cy.waitForSection('experience-section')
+    cy.waitForSection('ia-maturity-section')
+    cy.waitForSection('manifesto-section')
+    cy.waitForSection('selected-work-section')
     cy.waitForSection('skills-section')
     cy.waitForSection('contact-section')
   })

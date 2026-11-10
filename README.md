@@ -23,16 +23,20 @@ Um portfólio moderno e responsivo desenvolvido com React, TypeScript e Material
 
 Este é um portfólio profissional que apresenta:
 - **Apresentação pessoal** com foto e descrição das áreas de atuação
-- **Experiências profissionais** em empresas como Porto Seguro, Thoughtworks e Arco Educação
+- **Cases profissionais** na seção Trabalho, com contexto, decisão e resultado
 - **Habilidades técnicas** organizadas em cards interativos
-- **Filosofia e valores** pessoais e profissionais
+- **Mapa de maturidade em IA** com cinco camadas de atuação, de produto a governança
+- **Manifesto técnico** com sete princípios e a foto das mãos em faixa full-bleed
 - **Links para GitHub** e projetos
-- **Formulário de contato** integrado com Discord webhook
+- **Formulário de contato** integrado a uma Netlify Function que notifica via Discord
+- **Rota `/immersive`** — refactor visual com portal scroll-driven e deck de releases
+- **Rota `/roadmap`** — roadmap do projeto com o estado de cada onda (montada apenas em desenvolvimento)
 
 ### 🎨 Design
 - Interface moderna e minimalista
 - Animações suaves com Framer Motion
-- Tema escuro profissional
+- Temas claro e escuro (o `/immersive` permanece escuro de referência)
+- Design system com tokens em CSS + TypeScript
 - Tipografia responsiva e legível
 - Componentes acessíveis (WCAG guidelines)
 
@@ -43,11 +47,11 @@ Este é um portfólio profissional que apresenta:
 - Títulos animados apresentando as áreas de atuação
 - Layout responsivo que se adapta a diferentes tamanhos de tela
 
-### 💼 Experiências Profissionais
-- Cards organizados com numeração visual
-- Descrição das empresas e cargos ocupados
-- Sistema de cores diferenciadas para cada experiência
-- Grid responsivo que se adapta ao dispositivo
+### 💼 Trabalho
+- Cinco cases em narrativa contínua, do mais recente ao mais antigo
+- Cada case traz contexto, desafio, decisão, resultado e stack
+- Meta por case com período, empresa e papel, sem cards de vidro
+- Âncoras antigas `#experience` e `#jornada` continuam levando à seção
 
 ### 🔧 Habilidades Técnicas
 - 10 habilidades principais organizadas em cards
@@ -55,17 +59,23 @@ Este é um portfólio profissional que apresenta:
 - Tags com tecnologias específicas
 - Efeitos hover para melhor interação
 
-### 🎯 Filosofia e Valores
-- Banner dedicado aos valores pessoais e profissionais
-- Imagem representativa sobre diversidade e inclusão
-- Link direto para o LinkedIn
+### 🧠 Mapa de Maturidade em IA
+- Rail sticky com numeral e índice 01–05 que acende conforme o scroll
+- Cinco camadas em coluna contínua, sem cards: produto, integração, RAG, agentes e governança
+- Conteúdo de `src/data/aiMaturity.ts`, com evidência explícita por camada
+
+### 🎯 Manifesto Técnico
+- A tese é o próprio `h2`; "Como eu construo" entra como eyebrow
+- Foto das mãos em faixa full-bleed entre a abertura e os princípios
+- Sete princípios de `src/data/principles.ts`, com numeral recortado e impacto em itálico
 
 ### 📁 GitHub
 - Seção dedicada aos projetos no GitHub
 - Call-to-action para seguir no GitHub
-- Design contrastante com fundo branco
+- Painel de vidro integrado ao tema claro/escuro
 
-### 📬 Formulário de Contato
+### 📬 Contato
+- Três propostas de valor com ganho e CTA que preenche o formulário
 - Campos para nome, email e mensagem
 - Validação de formulário
 - Integração com Discord webhook para notificações
@@ -100,7 +110,7 @@ Este é um portfólio profissional que apresenta:
 - **React Scroll 1.9.3** - Scroll suave entre seções
 
 ### Tipografia
-- **Fontsource Poppins 5.2.5** - Fonte Poppins auto-hospedada
+- **Fontsource Syne / Inter / Sora** - Fontes auto-hospedadas do design system
 
 ### Ferramentas de Desenvolvimento
 - **ESLint 9.21.0** - Linter para JavaScript/TypeScript
@@ -149,38 +159,40 @@ body: clamp(0.875rem, 1.5vw, 1rem)
 ## 🚀 Instalação
 
 ### Pré-requisitos
-- Node.js 18+ 
-- npm 8+ ou yarn 1.22+
+- **Node.js 22.19+** (`engines` no `package.json`; Node 20 quebra os testes por
+  causa do `jsdom` 31 → `undici` 8)
+- npm 10+
 
 ### 🔧 Passo a passo
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/seu-usuario/portfolio-2025.git
+git clone https://github.com/Scriblet/portfolio-2025.git
 cd portfolio-2025
 ```
 
 2. **Instale as dependências**
 ```bash
 npm install
-# ou
-yarn install
 ```
+
+O `install` roda o script `prepare`, que aponta os hooks de commit para
+`.githooks/` (Conventional Commits — ver `docs/agents/commits.md`).
 
 3. **Configure as variáveis de ambiente** (opcional)
 ```bash
-# Copie o arquivo de exemplo
-cp .env.example .env.local
-
-# Configure as variáveis necessárias
-VITE_DISCORD_WEBHOOK_URL=sua_webhook_url_aqui
+cp .env.example .env
 ```
+
+- `DISCORD_WEBHOOK_URL` — segredo **server-only** da Netlify Function.
+- `VITE_CONTACT_ENDPOINT` — URL pública da function; vazio usa `/api/contact`
+  (só funciona com `netlify dev`). Detalhes em `docs/CONTACT-ENDPOINT.md`.
 
 4. **Inicie o servidor de desenvolvimento**
 ```bash
 npm run dev
-# ou
-yarn dev
+# ou, para testar a function de contato na mesma origem:
+npx netlify dev
 ```
 
 5. **Acesse a aplicação**
@@ -192,77 +204,56 @@ http://localhost:5173
 
 ```bash
 # Desenvolvimento
-npm run dev          # Inicia servidor de desenvolvimento
+npm run dev                # Vite em http://localhost:5173
 
-# Build
-npm run build        # Gera build de produção
-npm run preview      # Visualiza build de produção
+# Qualidade
+npm run lint               # ESLint (falha em erro e em warning)
+npm run test:unit          # Vitest + jsdom (loop padrão, ~2s)
+npm run test:unit:watch    # Vitest em watch
 
-# Linting
-npm run lint         # Executa ESLint
+# Build (type-check + bundle)
+npm run build              # tsc --noEmit (app e node) + vite build
+npm run preview            # Serve o dist em http://localhost:4173
 
-# Tipo checking
-npm run type-check   # Verifica tipos TypeScript
+# E2E (opt-in — ver docs/agents/testing.md)
+npm run dev:test           # Dev server em :5174 para os specs
+npm run test:e2e:spec -- cypress/e2e/<spec>.cy.ts  # Um spec
+npm run test:e2e:preview   # Build + preview + suíte completa (CI)
+
+# Imagens
+npm run images:optimize    # Gera AVIF/WebP/JPEG em src/img/generated
+npm run images:check       # Valida o orçamento de peso das imagens (CI)
 ```
 
 ## 🏗️ Estrutura do Projeto
 
 ```
 portfolio-2025/
-├── public/                 # Arquivos estáticos
-│   └── vite.svg
-├── src/                    # Código fonte
-│   ├── assets/            # Assets da aplicação
-│   │   └── react.svg
-│   ├── components/
-│   │   ├── design-system/ # Primitivas do design system
-│   │   └── ...            # Componentes compartilhados
-│   ├── hooks/             # Hooks (reveal, movimento reduzido, scroll)
-│   ├── img/               # Imagens
-│   │   ├── multiracial-hands-coming-together.jpg
-│   │   └── retrato-hero.jpg
-│   ├── pages/             # Componentes de página
-│   │   ├── experience/    # Seção de experiências
-│   │   │   └── experience.tsx
-│   │   ├── filosofia/     # Seção de filosofia
-│   │   │   └── filosofia.tsx
-│   │   ├── formContact/   # Formulário de contato
-│   │   │   └── contactForm.tsx
-│   │   ├── github/        # Seção do GitHub
-│   │   │   └── github.tsx
-│   │   ├── skills/        # Seção de habilidades
-│   │   │   └── skills.tsx
-│   │   ├── timeline/      # Linha do tempo da carreira
-│   │   │   └── timeline.tsx
-│   │   ├── footer.tsx     # Rodapé
-│   │   ├── header.tsx     # Cabeçalho
-│   │   ├── header.module.scss
-│   │   ├── pages.module.scss # Layout compartilhado das seções
-│   │   ├── presentation.tsx # Apresentação
-│   │   └── presentation.module.scss
-│   ├── styles/            # Estilos globais
-│   │   ├── design-system.css # Tokens, vidro, grão e foco
-│   │   └── responsive-utils.css
-│   ├── theme/
-│   │   ├── designTokens.ts # Tokens do DS em TypeScript
-│   │   ├── palettes.ts     # Paletas MUI por modo
-│   │   └── ColorModeProvider.tsx
-│   ├── App.css           # Estilos do componente principal
-│   ├── App.tsx           # Componente principal
-│   ├── index.css         # Estilos globais
-│   ├── main.tsx          # Ponto de entrada
-│   ├── theme.ts          # Configuração do tema Material-UI
-│   └── vite-env.d.ts     # Tipos do Vite
-├── eslint.config.js      # Configuração ESLint
-├── index.html            # Template HTML
-├── netlify.toml          # Configuração Netlify
-├── package.json          # Dependências e scripts
-├── tsconfig.json         # Configuração TypeScript
-├── tsconfig.app.json     # Configuração TypeScript (app)
-├── tsconfig.node.json    # Configuração TypeScript (Node)
-├── vite.config.ts        # Configuração Vite
-└── README.md             # Esta documentação
+├── .github/workflows/       # ci.yml (lint+testes+build) e deploy.yml (Pages)
+├── .githooks/               # commit-msg (Conventional Commits)
+├── .scratch/                # PRDs, issues e specs do tracker local
+├── assets-src/img/          # Originais das imagens (fonte do pipeline)
+├── cypress/                 # Specs E2E e comandos customizados
+├── docs/                    # ADRs, agentes (commits, testes) e operação
+├── netlify/functions/       # Netlify Function do formulário (contact.mjs)
+├── public/                  # Estáticos (CV em PDF, ícones, 404.html)
+├── scripts/                 # optimize-images.mjs e check-image-budget.mjs
+├── src/
+│   ├── components/          # Compartilhados (inclui design-system/)
+│   ├── data/                # Conteúdo tipado (experiências, skills, roadmap…)
+│   ├── hooks/               # Reveal, movimento reduzido, scroll
+│   ├── img/                 # Variantes responsivas geradas (generated/)
+│   ├── pages/               # Seções, formulário e rota /immersive
+│   ├── services/            # Endpoint de contato e integrações
+│   ├── styles/              # design-system.css (tokens, vidro, grão)
+│   └── theme/               # Tokens TS, paletas MUI e ColorModeProvider
+├── vite.config.ts           # Vite, PWA e configuração do Vitest
+├── netlify.toml             # Build Netlify + functions + SPA fallback
+└── package.json             # Dependências, engines e scripts
 ```
+
+> Rode `npm run images:optimize` após trocar um original em `assets-src/img/`.
+> O build não gera imagens; `src/img/generated/` é versionado.
 
 ## 🎨 Componentes
 
@@ -285,14 +276,14 @@ portfolio-2025/
   - Paleta escura local para preservar a atmosfera imersiva nos dois temas
   - Movimento reduzido abre o portal direto no conteúdo
 
-### 💼 Experience
-- **Localização**: `src/pages/experience/experience.tsx`
-- **Função**: Apresentação das experiências profissionais
+### 💼 Selected Work
+- **Localização**: `src/pages/selectedWork/selectedWork.tsx`
+- **Função**: Cases reais em narrativa contínua (substitui Experiência + Jornada)
 - **Características**:
-  - Grid de 3 colunas no desktop (2 no tablet, 1 no mobile)
-  - Cards de vidro com numeração, período, empresa e cargo
-  - Dados reais de `src/data/experiences.ts`
-  - Hover com elevação respeitando `prefers-reduced-motion`
+  - Capítulos com numeral, período, empresa e papel
+  - Blocos de contexto, desafio, decisão e resultado
+  - Stack em tags mono e divisores hairline
+  - Dados de `src/data/selectedWorks.ts`; âncoras antigas preservadas
 
 ### 🔧 Skills
 - **Localização**: `src/pages/skills/skills.tsx`
@@ -303,14 +294,23 @@ portfolio-2025/
   - Conteúdo de `src/data/skills.ts`
   - Grid responsivo 4/3/2/1
 
-### 🎯 Philosophy
-- **Localização**: `src/pages/filosofia/filosofia.tsx`
-- **Função**: Apresentação de valores pessoais
+### 🧠 IA Maturity
+- **Localização**: `src/pages/iaMaturity/iaMaturity.tsx`
+- **Função**: Mapa de competência em IA em cinco camadas
 - **Características**:
-  - Seção editorial escura com declaração em Syne
-  - Destaque em âmbar e régua hairline
-  - Foto com tratamento duotônico e vinheta
-  - CTA para LinkedIn em pill
+  - Coluna contínua com hairlines, sem cards
+  - Rail sticky com numeral gigante e índice ativo por scroll
+  - Capacidades em micro-grid e evidência em mono
+  - Conteúdo de `src/data/aiMaturity.ts`
+
+### 🎯 Manifesto
+- **Localização**: `src/pages/manifesto/manifesto.tsx`
+- **Função**: Princípios técnicos e de trabalho (absorve a antiga Filosofia)
+- **Características**:
+  - Statement como `h2` em escala de display
+  - Foto das mãos em faixa full-bleed
+  - Sete princípios com numeral recortado e impacto em itálico
+  - Conteúdo de `src/data/principles.ts`
 
 ### 📁 GitHub
 - **Localização**: `src/pages/github/github.tsx`
@@ -320,10 +320,11 @@ portfolio-2025/
   - Logo monocromático via Simple Icons
   - Link externo com `rel="noopener noreferrer"`
 
-### 📬 ContactForm
+### 📬 Contato
 - **Localização**: `src/pages/formContact/contactForm.tsx`
-- **Função**: Formulário de contato
+- **Função**: Proposta de valor + formulário de contato
 - **Características**:
+  - Três frentes em composição tipográfica (sem cards), com CTA que preenche o formulário
   - Card de vidro com inputs nativos estilizados
   - Validação de nome, e-mail e mensagem
   - Honeypot, tratamento de 429 e estado offline
@@ -441,50 +442,36 @@ export default defineConfig({
 
 ## 🚀 Deploy
 
-### 🌐 Netlify (Recomendado)
-```toml
-# netlify.toml
-[build]
-  publish = "dist"
-  command = "npm run build"
+### 🐙 GitHub Pages (produção)
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
+O site é publicado em **https://scriblet.github.io/portfolio-2025/** pelo
+workflow `.github/workflows/deploy.yml` a cada push em `main`:
 
-### ▲ Vercel
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "devCommand": "npm run dev"
-}
-```
+1. `npm ci` + `npm run build` com `VITE_BASE_PATH=/portfolio-2025/`.
+2. `dist/404.html` é gerado a partir do `index.html` (fallback SPA das rotas).
+3. O diretório `dist/` vai para o Pages via `actions/deploy-pages`.
 
-### 🐙 GitHub Pages
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
-on:
-  push:
-    branches: [ main ]
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm install
-      - run: npm run build
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-```
+Variáveis de build (Settings → Secrets and variables → Actions):
+
+| Tipo     | Nome                    | Uso                                     |
+| -------- | ----------------------- | --------------------------------------- |
+| Variable | `VITE_CONTACT_ENDPOINT` | URL pública da function (ver abaixo)    |
+| Variable | `VITE_GA_MEASUREMENT_ID`| Google Analytics                        |
+
+### 📬 Netlify (somente as functions)
+
+O Pages é estático e **não serve `/api/*`**. A Netlify Function de contato
+(`netlify/functions/contact.mjs`) roda em um deploy separado no Netlify —
+`netlify.toml` já configura build, functions e o fallback SPA.
+
+- Segundo site Netlify no mesmo repositório: build vazio, publish `public`,
+  functions `netlify/functions`.
+- Segredo `DISCORD_WEBHOOK_URL` (nunca `VITE_*`).
+- CORS liberado para `scriblet.github.io` e `lucasnonato.site`
+  (extras em `CONTACT_ALLOWED_ORIGINS`).
+
+Passo a passo completo, contrato HTTP e rotação do webhook:
+[`docs/CONTACT-ENDPOINT.md`](docs/CONTACT-ENDPOINT.md).
 
 ## 🤝 Contribuição
 

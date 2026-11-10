@@ -1,6 +1,6 @@
 # Issue — Seções Skills, Filosofia e banner GitHub
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-secoes-conteudo/PRD.md`

@@ -1,6 +1,6 @@
 # Issue — Envio, payload e feedback via snackbar
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-formularios-contato/PRD.md`

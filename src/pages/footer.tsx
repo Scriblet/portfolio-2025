@@ -7,8 +7,7 @@ import styles from "./pages.module.scss";
 
 const footerNav = [
   { label: "Home", to: "home" },
-  { label: "Experiência", to: "experience" },
-  { label: "Jornada", to: "jornada" },
+  { label: "Trabalho", to: "selected-work" },
   { label: "Habilidades", to: "skills" },
   { label: "Contato", to: "contact" },
 ];
@@ -44,19 +43,23 @@ const Footer = () => {
             {SITE_CONFIG.TAGLINE}. Portfólio em constante evolução.
           </p>
           <div className={styles.footerSocials}>
-            {socials.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                className={styles.footerSocialLink}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                onClick={() => trackPortfolioEvents.socialLinkClick(label.toLowerCase())}
-              >
-                <Icon fontSize="small" />
-              </a>
-            ))}
+            {socials
+              .filter(({ href }) => Boolean(href))
+              .map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  className={styles.footerSocialLink}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  onClick={() =>
+                    trackPortfolioEvents.socialLinkClick(label.toLowerCase())
+                  }
+                >
+                  <Icon fontSize="small" />
+                </a>
+              ))}
           </div>
         </div>
 

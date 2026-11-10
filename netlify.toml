@@ -3,14 +3,14 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20.10"
+  NODE_VERSION = "22"
 
 # Netlify Functions (endpoint POST /api/contact)
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# SPA fallback — deve vir depois das rotas de função para não sombrear /api/*
+# SPA fallback: deve vir depois das functions para não sombrear /api/*.
 [[redirects]]
   from = "/*"
   to = "/index.html"

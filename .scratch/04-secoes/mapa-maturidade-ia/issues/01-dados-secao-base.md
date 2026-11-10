@@ -1,6 +1,6 @@
 # Issue — Mapa de Maturidade em IA: dados + seção base renderizada
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/04-secoes/mapa-maturidade-ia/PRD.md`

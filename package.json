@@ -3,10 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22.19"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit && vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings=0",
     "preview": "vite preview",
     "test": "vitest run",
     "test:unit": "vitest run",
@@ -17,6 +20,8 @@
     "test:e2e:open": "start-server-and-test dev:test http://localhost:5174 \"cypress open\"",
     "test:e2e:preview": "npm run build && start-server-and-test preview:test 4173 \"cypress run --config baseUrl=http://127.0.0.1:4173\"",
     "test:e2e:spec": "cypress run --spec",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "images:check": "node scripts/check-image-budget.mjs",
     "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
@@ -58,6 +63,7 @@
     "install": "^0.13.0",
     "jsdom": "^31.0.0",
     "postcss": "^8.5.3",
+    "sharp": "^0.35.5",
     "start-server-and-test": "^3.0.13",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",

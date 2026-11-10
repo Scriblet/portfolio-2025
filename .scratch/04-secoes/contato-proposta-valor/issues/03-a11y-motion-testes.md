@@ -1,6 +1,6 @@
 # Issue — Contato com Proposta de Valor: a11y + motion + testes de regressão
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/04-secoes/contato-proposta-valor/PRD.md`

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { heroMeta, portraitImage, wordmark } from "./content";
 import { useStickyProgress } from "../../hooks/useStickyProgress";
+import { ResponsivePicture } from "../../components/ResponsivePicture";
 import { GlassPanel } from "./ui";
 import styles from "./immersive.module.scss";
 
@@ -25,11 +26,13 @@ const PortalHero = () => {
         data-testid="immersive-hero-stage"
       >
         <div className={styles.heroPhoto}>
-          <img
+          <ResponsivePicture
+            {...portraitImage}
             className={styles.heroImage}
-            src={portraitImage}
             alt="Retrato de Lucas Nonato com fundo roxo."
-            data-testid="immersive-hero-image"
+            loading="eager"
+            fetchPriority="high"
+            testId="immersive-hero-image"
           />
           <div className={styles.heroTint} aria-hidden="true" />
           <div className={styles.heroVignette} aria-hidden="true" />

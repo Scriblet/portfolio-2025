@@ -2,7 +2,7 @@ import { alpha, IconButton, useTheme } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useReducedMotion } from "framer-motion";
-import { useColorMode } from "../theme/ColorModeProvider";
+import { useColorMode } from "../theme/ColorModeContext";
 import { trackEvent } from "../services/analytics";
 import type { ColorMode } from "../theme/palettes";
 

@@ -1,10 +1,10 @@
 import { Box, alpha, useTheme } from "@mui/material";
 
 export type SectionFallbackVariant =
-  | "experience"
-  | "timeline"
+  | "iaMaturity"
+  | "manifesto"
+  | "selectedWork"
   | "skills"
-  | "philosophy"
   | "github"
   | "contact"
   | "footer";
@@ -23,10 +23,10 @@ type SectionFallbackProps = {
 // termina de carregar. Valores acompanham a proporção real de cada seção em
 // mobile (xs) e desktop (md).
 const MIN_HEIGHT: Record<SectionFallbackVariant, { xs: string; md: string }> = {
-  experience: { xs: "40vh", md: "45vh" },
-  timeline: { xs: "40vh", md: "45vh" },
+  iaMaturity: { xs: "60vh", md: "70vh" },
+  manifesto: { xs: "50vh", md: "60vh" },
+  selectedWork: { xs: "70vh", md: "80vh" },
   skills: { xs: "40vh", md: "45vh" },
-  philosophy: { xs: "30vh", md: "32vh" },
   github: { xs: "30vh", md: "32vh" },
   contact: { xs: "30vh", md: "32vh" },
   footer: { xs: "30vh", md: "30vh" },

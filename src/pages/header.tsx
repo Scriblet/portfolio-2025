@@ -12,8 +12,9 @@ import { trackPortfolioEvents } from "../services/analytics";
 import styles from "./header.module.scss";
 
 const menuItems = [
-  { text: "Experiência", to: "experience" },
-  { text: "Jornada", to: "jornada" },
+  { text: "IA", to: "ia-maturity" },
+  { text: "Manifesto", to: "manifesto" },
+  { text: "Trabalho", to: "selected-work" },
   { text: "Habilidades", to: "skills" },
   { text: "Contato", to: "contact" },
 ];
@@ -41,6 +42,7 @@ export default function Header() {
   useEffect(() => {
     if (!mobileOpen) return;
 
+    const trigger = menuButtonRef.current;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMobileOpen(false);
     };
@@ -57,7 +59,7 @@ export default function Header() {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
-      menuButtonRef.current?.focus();
+      trigger?.focus();
     };
   }, [mobileOpen]);
 
@@ -216,7 +218,11 @@ export default function Header() {
                     onClick={(e) => {
                       e.preventDefault();
                       setMobileOpen(false);
-                      handleNavClick(item.to);
+                      // O drawer trava o scroll do body enquanto está aberto.
+                      // Fechar e rolar no mesmo tick faz o scroll suave parar
+                      // no lugar errado; o timeout roda depois do cleanup que
+                      // destrava o body.
+                      window.setTimeout(() => handleNavClick(item.to), 0);
                     }}
                   >
                     {item.text}

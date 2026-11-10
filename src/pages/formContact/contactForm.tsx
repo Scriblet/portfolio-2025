@@ -1,12 +1,10 @@
-import { useState } from "react";
-import {
-  LocationOn,
-  Mail,
-} from "@mui/icons-material";
+import { useRef, useState } from "react";
+import { ArrowOutward, LocationOn } from "@mui/icons-material";
 import DownloadCvButton from "../../components/DownloadCvButton";
-import { useSnackbar } from "../../components/feedback/SnackbarProvider";
-import { SOCIAL_LINKS, SITE_CONFIG } from "../../data";
+import { useSnackbar } from "../../components/feedback/snackbarContext";
+import { SOCIAL_LINKS, SITE_CONFIG, valuePropositions } from "../../data";
 import { trackPortfolioEvents } from "../../services/analytics";
+import { CONTACT_ENDPOINT } from "../../services/contactEndpoint";
 import {
   GlassPanel,
   PillButton,
@@ -25,12 +23,14 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const sectionContent = {
   label: "Contato",
   index: "07",
-  headline: "Vamos construir algo juntos?",
-  body: "Seja para uma vaga, um projeto ou só para trocar ideia sobre tecnologia, me mande uma mensagem.",
+  headline: "Vamos resolver",
+  accent: "algo real?",
+  body: "Três frentes em que eu costumo entrar. Escolha a que dói mais hoje — ou escreva abaixo.",
 };
 
 const ContactForm = () => {
   const { notify } = useSnackbar();
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState("");
@@ -38,6 +38,24 @@ const ContactForm = () => {
   const [website, setWebsite] = useState(""); // honeypot
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
+
+  const handleProposalClick = (prompt: string) => {
+    setMessage(prompt);
+    setErrors((previous) => ({ ...previous, message: undefined }));
+
+    const target = messageRef.current;
+    if (!target) return;
+
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+    target.scrollIntoView?.({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "center",
+    });
+    target.focus({ preventScroll: true });
+  };
 
   const validate = (): FieldErrors => {
     const next: FieldErrors = {};
@@ -86,7 +104,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -164,27 +182,64 @@ const ContactForm = () => {
       aria-labelledby="contact-title"
       data-testid="contact-section"
     >
-      <div className={styles.contactGrid}>
-        <div className={styles.contactCopy} data-reveal>
-          <SectionLabel tone="dark">
-            {sectionContent.label} / {sectionContent.index}
-          </SectionLabel>
+      <header className={styles.contactIntro} data-reveal>
+        <SectionLabel tone="dark">
+          {sectionContent.label} / {sectionContent.index}
+        </SectionLabel>
+        <div className={styles.contactIntroGrid}>
           <h2 id="contact-title" className={styles.contactTitle}>
-            {sectionContent.headline}
+            {sectionContent.headline}{" "}
+            <em className={styles.contactTitleAccent}>
+              {sectionContent.accent}
+            </em>
           </h2>
           <p className={styles.contactBody}>{sectionContent.body}</p>
+        </div>
+      </header>
+
+      <div className={styles.contactProposals}>
+        {valuePropositions.map((proposal) => (
+          <button
+            key={proposal.id}
+            type="button"
+            className={styles.contactProposal}
+            onClick={() => handleProposalClick(proposal.prompt)}
+            data-testid={`contact-proposal-${proposal.id}`}
+            data-reveal
+          >
+            <span className={styles.contactProposalNumber} aria-hidden="true">
+              {proposal.number}
+            </span>
+            <span className={styles.contactProposalTitle}>
+              {proposal.title}
+            </span>
+            <span className={styles.contactProposalText}>
+              {proposal.description}
+            </span>
+            <span className={styles.contactProposalBenefit}>
+              {proposal.benefit}
+            </span>
+            <span className={styles.contactProposalCta}>
+              {proposal.ctaLabel}
+              <ArrowOutward fontSize="inherit" aria-hidden="true" />
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.contactGrid}>
+        <div className={styles.contactCopy} data-reveal>
+          <h3 className={styles.contactAsideTitle}>Prefere ir direto?</h3>
+          <p className={styles.contactAsideBody}>
+            Me chame no LinkedIn. É só dizer qual das três frentes está mais
+            perto do seu problema.
+          </p>
 
           <div className={styles.contactActions}>
             <PillButton
-              href={`mailto:${SITE_CONFIG.EMAIL}`}
-              testId="contact-email"
-            >
-              Enviar e-mail
-            </PillButton>
-            <PillButton
               href={SOCIAL_LINKS.LINKEDIN}
               external
-              variant="ghost-light"
+              variant="ghost-dark"
               testId="contact-linkedin"
             >
               LinkedIn
@@ -276,6 +331,7 @@ const ContactForm = () => {
               <textarea
                 id="contact-message"
                 name="message"
+                ref={messageRef}
                 rows={4}
                 maxLength={2000}
                 value={message}
@@ -315,10 +371,6 @@ const ContactForm = () => {
         <p>
           <LocationOn fontSize="small" sx={{ fontSize: 13, mr: 0.5 }} />
           {SITE_CONFIG.LOCATION}
-        </p>
-        <p>
-          <Mail fontSize="small" sx={{ fontSize: 13, mr: 0.5 }} />
-          <a href={`mailto:${SITE_CONFIG.EMAIL}`}>{SITE_CONFIG.EMAIL}</a>
         </p>
       </div>
     </section>

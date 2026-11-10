@@ -6,4 +6,7 @@ export * from './experiences';
 export * from './skills';
 export * from './projects';
 export * from './testimonials';
-export * from './timeline';
+export * from './aiMaturity';
+export * from './principles';
+export * from './selectedWorks';
+export * from './contact';

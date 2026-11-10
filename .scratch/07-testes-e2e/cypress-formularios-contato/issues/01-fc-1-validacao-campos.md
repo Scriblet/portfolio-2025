@@ -1,6 +1,6 @@
 # Issue — Validação client-side do formulário de contato
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-formularios-contato/PRD.md`

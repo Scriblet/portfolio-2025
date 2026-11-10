@@ -1,7 +1,5 @@
 import {
-  createContext,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useReducer,
@@ -17,25 +15,22 @@ import {
   useTheme,
 } from "@mui/material";
 import { trackPortfolioEvents } from "../../services/analytics";
+import {
+  SnackbarContext,
+  type NotifyOptions,
+  type SnackbarContextValue,
+  type SnackbarSeverity,
+} from "./snackbarContext";
 
-export type SnackbarSeverity = "success" | "error" | "warning" | "info";
-
-export type NotifyOptions = {
-  severity: SnackbarSeverity;
-  title?: string;
-  message: string;
-  /** Origem da notificação, usada apenas para analytics (sem dados pessoais). */
-  context?: string;
-};
+export type {
+  NotifyOptions,
+  SnackbarContextValue,
+  SnackbarSeverity,
+} from "./snackbarContext";
 
 type SnackbarMessage = NotifyOptions & {
   id: number;
   context: string;
-};
-
-type SnackbarContextValue = {
-  notify: (options: NotifyOptions) => void;
-  close: () => void;
 };
 
 type State = {
@@ -48,8 +43,6 @@ type Action =
   | { type: "notify"; message: SnackbarMessage }
   | { type: "close" }
   | { type: "exited" };
-
-const SnackbarContext = createContext<SnackbarContextValue | null>(null);
 
 const MAX_QUEUE = 3;
 
@@ -205,14 +198,6 @@ export const SnackbarProvider = ({ children }: { children: ReactNode }) => {
       </Snackbar>
     </SnackbarContext.Provider>
   );
-};
-
-export const useSnackbar = (): SnackbarContextValue => {
-  const context = useContext(SnackbarContext);
-  if (!context) {
-    throw new Error("useSnackbar deve ser usado dentro de SnackbarProvider");
-  }
-  return context;
 };
 
 export default SnackbarProvider;

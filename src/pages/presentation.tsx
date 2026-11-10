@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import ImgPresentation from "../img/retrato-hero.jpg";
+import { portraitHero } from "../img/responsive";
+import { ResponsivePicture } from "../components/ResponsivePicture";
 import { SITE_CONFIG } from "../data";
 import { GlassPanel, PillButton } from "../components/design-system";
 import DownloadCvButton from "../components/DownloadCvButton";
@@ -33,13 +34,13 @@ function Presentation() {
         data-testid="presentation-stage"
       >
         <div className={styles.heroPhoto} aria-hidden="true">
-          <img
-            src={ImgPresentation}
+          <ResponsivePicture
+            {...portraitHero}
             alt=""
             className={styles.heroImage}
+            loading="eager"
             fetchPriority="high"
-            decoding="async"
-            data-testid="presentation-image"
+            testId="presentation-image"
           />
         </div>
         <span className={styles.heroTint} aria-hidden="true" />

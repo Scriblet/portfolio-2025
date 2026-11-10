@@ -1,9 +1,11 @@
 import { experiences, skills } from '../../data';
 import { SOCIAL_LINKS } from '../../data/social';
-import portraitHero from '../../img/retrato-hero.jpg';
+import { CONTACT_ENDPOINT } from '../../services/contactEndpoint';
+import { portraitHero as portraitResponsive } from '../../img/responsive';
 
 // Retrato oficial de Lucas Nonato usado no portal e na seção Sobre.
-export const portraitImage = portraitHero;
+// Objeto responsivo (AVIF/WebP/JPEG) consumido por <ResponsivePicture>.
+export const portraitImage = portraitResponsive;
 
 // Dados reais exibidos no HUD do hero e da seção Sobre.
 // Fonte: currículo de Lucas Nonato (public/cv/lucas-nonato-cv.pdf).
@@ -100,8 +102,8 @@ export const contactContent = {
   headline: 'Vamos construir algo juntos?',
   body: 'Seja para uma vaga, um projeto ou só para trocar ideia sobre tecnologia, me mande uma mensagem.',
   primaryAction: {
-    label: 'Enviar e-mail',
-    href: `mailto:${PERSON.email}`,
+    label: 'Enviar mensagem',
+    href: '#immersive-contact-form',
   },
   secondaryAction: {
     label: 'LinkedIn',
@@ -110,7 +112,7 @@ export const contactContent = {
   form: {
     id: 'immersive-contact-form',
     title: 'Mande uma mensagem',
-    action: '/api/contact',
+    action: CONTACT_ENDPOINT,
   },
   footer: {
     email: PERSON.email,

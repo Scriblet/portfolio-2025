@@ -14,6 +14,7 @@
   05-immersive/   # refactor visual imersivo (onda 6)
   06-site-refactor/ # refactor visual das seções da home (índice próprio em 06-site-refactor/README.md)
   07-testes-e2e/  # testes automatizados E2E com Cypress (onda 7)
+  08-correcoes-review/ # correções da avaliação de 2026-11 (CI, contato, imagens, README, E2E)
   README.md       # este índice
 ```
 
@@ -84,6 +85,24 @@ Análise do site e das interações: `.scratch/07-testes-e2e/ANALISE.md`.
 Ordem de implementação: `cypress-infraestrutura` primeiro (os demais dependem dele);
 depois `cypress-smoke-navegacao` → `cypress-secoes-conteudo` →
 `cypress-formularios-contato` → `cypress-pwa-offline` → `cypress-a11y-responsivo`.
+
+## 08 — Correções da avaliação (2026-11)
+
+Lote criado a partir da avaliação do site (nota 8/10): CI em Node 22, contato
+funcional em produção (`/api/contact` retorna 404 no GitHub Pages), imagens
+otimizadas, README consistente e cobertura E2E crítica.
+
+| # | Slug | Título | Status |
+|---|------|--------|--------|
+| 30 | `ci-node-22` | CI consistente em Node 22 e lint limpo | ready-for-agent |
+| 31 | `contato-producao` | Contato funcional em produção | ready-for-agent |
+| 32 | `otimizacao-imagens` | Otimização de imagens | ready-for-agent |
+| 33 | `readme-consistencia` | README consistente com o repositório | ready-for-agent |
+| 34 | `e2e-cobertura-critica` | Cobertura E2E crítica | ready-for-agent |
+
+Ordem sugerida: `ci-node-22` → `contato-producao` (urgente — conversão morta
+em produção) → `otimizacao-imagens` → `readme-consistencia` →
+`e2e-cobertura-critica` (cobre o núcleo; PWA/a11y seguem na onda 7).
 
 ## Roadmap sugerido
 

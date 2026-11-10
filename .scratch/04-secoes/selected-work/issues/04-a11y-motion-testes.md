@@ -1,6 +1,6 @@
 # Issue — Selected Work: a11y + motion + testes
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/04-secoes/selected-work/PRD.md`

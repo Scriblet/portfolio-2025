@@ -1,12 +1,12 @@
 import { alpha, createTheme, responsiveFontSizes } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
-import { designTokens } from "./theme/designTokens";
+import { designTokens } from "./designTokens";
 import {
   FOCUS_RING_COLOR,
   getPalette,
   interactiveTokens,
   type ColorMode,
-} from "./theme/palettes";
+} from "./palettes";
 
 const { transition } = interactiveTokens;
 

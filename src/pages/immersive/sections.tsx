@@ -8,6 +8,7 @@ import {
   skillsContent,
 } from "./content";
 import { ImmersiveContactForm } from "./ImmersiveContactForm";
+import { ResponsivePicture } from "../../components/ResponsivePicture";
 import {
   GlassPanel,
   Hairline,
@@ -72,8 +73,8 @@ export const About = () => (
 
     <figure className={styles.aboutOrbit} aria-hidden="true">
       <span className={styles.aboutOrbitRing} />
-      <img
-        src={portraitImage}
+      <ResponsivePicture
+        {...portraitImage}
         alt=""
         className={styles.aboutOrbitImage}
         loading="lazy"

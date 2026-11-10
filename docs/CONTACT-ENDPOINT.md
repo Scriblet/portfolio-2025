@@ -46,8 +46,9 @@ Todas as respostas são JSON com `Cache-Control: no-store`.
 | Status | Corpo                                   | Quando                                                     |
 | ------ | --------------------------------------- | ---------------------------------------------------------- |
 | `200`  | `{"ok":true}`                           | mensagem aceita (ou honeypot preenchido — descarte silencioso) |
+| `204`  | vazio                                   | preflight `OPTIONS` (CORS) — nunca valida payload nem chama o Discord |
 | `400`  | `{"ok":false,"error":"invalid_payload"}`| JSON inválido ou campo fora das regras                     |
-| `405`  | `{"ok":false,"error":"method_not_allowed"}` | método diferente de `POST` (inclui header `Allow: POST`) |
+| `405`  | `{"ok":false,"error":"method_not_allowed"}` | método diferente de `POST`/`OPTIONS` (header `Allow: POST, OPTIONS`) |
 | `429`  | `{"ok":false,"error":"rate_limited"}`   | mais de 5 requisições por IP em 1 minuto (header `Retry-After: 60`) |
 | `502`  | `{"ok":false,"error":"upstream_error"}` | Discord recusou, timeout (8s) ou falha de rede             |
 | `503`  | `{"ok":false,"error":"not_configured"}` | `DISCORD_WEBHOOK_URL` ausente/inválida no ambiente         |
@@ -114,7 +115,7 @@ netlify env:list
 
 ## 4. Testar localmente
 
-Pré-requisitos: Node 20+, Netlify CLI (`npm i -g netlify-cli`).
+Pré-requisitos: Node 22.19+, Netlify CLI (`npm i -g netlify-cli`).
 
 1. Copie `.env.example` para `.env` e preencha `DISCORD_WEBHOOK_URL`.
 2. Rode:
@@ -171,7 +172,73 @@ O token antigo deixa de funcionar assim que o webhook é deletado/regenerado.
 
 ---
 
-## 6. Observabilidade e privacidade
+## 6. Deploy com o site estático no GitHub Pages
+
+O site é publicado em `https://scriblet.github.io/portfolio-2025/` (GitHub Pages,
+100% estático). **Não existe function no GitHub Pages**: por isso
+`POST /api/contact` responde 404 lá. A função roda em um deploy separado no
+Netlify, e o cliente precisa apontar para ela.
+
+### 6.1 Configurar o endpoint no cliente
+
+No build do GitHub Actions, defina a variável de repositório
+**Settings → Secrets and variables → Actions → Variables**:
+
+| Nome                    | Exemplo                                                     |
+| ----------------------- | ----------------------------------------------------------- |
+| `VITE_CONTACT_ENDPOINT` | `https://lucas-contato.netlify.app/api/contact`             |
+
+O workflow já a repassa ao build (`deploy.yml`). Sem a variável, o fallback é
+`/api/contact` (útil só em `netlify dev`).
+
+Localmente, copie `.env.example` → `.env` e defina o mesmo valor para testar o
+endpoint remoto.
+
+### 6.2 Publicar somente as functions
+
+Crie um segundo site Netlify ligado ao mesmo repositório e configure em
+**Site configuration → Build & deploy**:
+
+- **Build command:** vazio
+- **Publish directory:** `public`
+- **Functions directory:** `netlify/functions`
+
+Ou, via CLI, a partir da raiz do repositório:
+
+```bash
+netlify deploy --prod --dir=public --functions=netlify/functions
+```
+
+Configure `DISCORD_WEBHOOK_URL` nesse site (seção 3) e, se necessário,
+`CONTACT_ALLOWED_ORIGINS` (seção 6.3).
+
+### 6.3 CORS
+
+Como o site e a função ficam em origens diferentes, a função responde CORS
+apenas para origens autorizadas:
+
+- Padrão: `https://scriblet.github.io` e `https://lucasnonato.site`.
+- Extras: variável `CONTACT_ALLOWED_ORIGINS`, separada por vírgula
+  (ex.: `http://localhost:5173`).
+- Requisições de origem não autorizada continuam funcionando server-to-server
+  (sem header `Access-Control-Allow-Origin`), mas o navegador bloqueia a leitura.
+
+### 6.4 Verificação em produção
+
+```bash
+# deve responder 204 com Access-Control-Allow-Origin
+curl -i -X OPTIONS https://<site-functions>.netlify.app/api/contact \
+  -H "Origin: https://scriblet.github.io" \
+  -H "Access-Control-Request-Method: POST"
+
+# deve responder 400 (payload vazio), não 404
+curl -i -X POST https://<site-functions>.netlify.app/api/contact \
+  -H "Content-Type: application/json" -d '{}'
+```
+
+---
+
+## 7. Observabilidade e privacidade
 
 - Logs da function registram apenas `[contact] status=<código> at=<timestamp>`
   e erros genéricos de configuração/upstream.
@@ -183,9 +250,9 @@ O token antigo deixa de funcionar assim que o webhook é deletado/regenerado.
 
 ---
 
-## 7. Testes
+## 8. Testes
 
-- E2E com mock de rota: specs em `cypress/e2e/form-contato-*.cy.ts`
+- E2E com mock de rota: `cypress/e2e/contact-form.cy.ts`
   (`cy.interceptContact(...)`) — cobrem sucesso, erro, rate limit, validação
   client-side e payload enviado, sem depender do Discord.
 - Teste manual do endpoint real: `netlify dev` + `curl` (seção 4).
@@ -195,5 +262,5 @@ O token antigo deixa de funcionar assim que o webhook é deletado/regenerado.
 npm run dev:test
 
 # terminal 2 — um spec por vez (ver docs/agents/testing.md)
-npm run test:e2e:spec -- cypress/e2e/form-contato-envio.cy.ts
+npm run test:e2e:spec -- cypress/e2e/contact-form.cy.ts
 ```

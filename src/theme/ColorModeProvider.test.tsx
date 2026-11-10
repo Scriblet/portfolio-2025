@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
+import { ColorModeProvider } from "./ColorModeProvider";
 import {
-  ColorModeProvider,
   getInitialColorMode,
   getSystemColorMode,
   readStoredColorMode,
-  useColorMode,
-} from "./ColorModeProvider";
+} from "./colorMode";
+import { useColorMode } from "./ColorModeContext";
 
 const STORAGE_KEY = "portfolio-color-mode";
 

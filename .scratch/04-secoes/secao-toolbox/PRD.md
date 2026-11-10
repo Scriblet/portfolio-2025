@@ -1,6 +1,6 @@
 # PRD — Seção Stack/Toolbox
 
-Status: done
+Status: removed
 Feature slug: `secao-toolbox`
 
 ## Problem Statement

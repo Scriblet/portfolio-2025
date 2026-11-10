@@ -1,6 +1,6 @@
 # Issue — Manifesto Técnico: dados + seção base renderizada
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/04-secoes/manifesto-tecnico/PRD.md`

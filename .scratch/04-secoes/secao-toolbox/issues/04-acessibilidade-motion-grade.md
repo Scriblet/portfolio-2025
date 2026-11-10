@@ -1,6 +1,6 @@
 # Issue — Acessibilidade e motion da grade
 
-Status: ready-for-agent
+Status: removed
 
 ## Parent
 PRD: `.scratch/04-secoes/secao-toolbox/PRD.md`

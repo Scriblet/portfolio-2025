@@ -1,6 +1,6 @@
 # Issue — Contato com Proposta de Valor: dados + cartões mantendo o formulário
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/04-secoes/contato-proposta-valor/PRD.md`

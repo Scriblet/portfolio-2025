@@ -1,6 +1,6 @@
 # Issue — Formulário da página /immersive: validação e feedback inline
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-formularios-contato/PRD.md`

@@ -54,13 +54,9 @@ export const trackPortfolioEvents = {
     trackEvent('hover', 'interaction', 'presentation_image');
   },
 
-  // Seção Experience
-  experienceView: () => {
-    trackEvent('view', 'section', 'experience');
-  },
-
-  experienceCardClick: (company: string) => {
-    trackEvent('click', 'experience', `company_${company.toLowerCase().replace(/\s+/g, '_')}`);
+  // Seção Selected Work
+  selectedWorkView: () => {
+    trackEvent('view', 'section', 'selected_work');
   },
 
   // Seção Skills

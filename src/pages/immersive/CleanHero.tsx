@@ -1,5 +1,6 @@
 import { heroMeta, portraitImage, wordmark } from "./content";
-import { useColorMode } from "../../theme/ColorModeProvider";
+import { ResponsivePicture } from "../../components/ResponsivePicture";
+import { useColorMode } from "../../theme/ColorModeContext";
 import { GlassPanel } from "./ui";
 import styles from "./immersive.module.scss";
 
@@ -22,10 +23,11 @@ const CleanHero = () => {
       data-testid="immersive-hero"
     >
       <div className={styles.heroCleanPhoto} aria-hidden="true">
-        <img
+        <ResponsivePicture
+          {...portraitImage}
           className={styles.heroCleanImage}
-          src={portraitImage}
           alt=""
+          loading="eager"
         />
         <div className={styles.heroCleanTint} />
         <div className={styles.heroCleanVignette} />

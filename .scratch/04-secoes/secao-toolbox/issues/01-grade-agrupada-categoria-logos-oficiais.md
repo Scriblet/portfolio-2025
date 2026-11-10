@@ -1,6 +1,6 @@
 # Issue — Dados centralizados + grade agrupada por categoria com logos oficiais
 
-Status: ready-for-agent
+Status: removed
 
 ## Parent
 PRD: `.scratch/04-secoes/secao-toolbox/PRD.md`

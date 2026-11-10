@@ -1,6 +1,6 @@
 # Issue — Navegação por âncoras e menu mobile (drawer)
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-smoke-navegacao/PRD.md`

@@ -59,7 +59,7 @@ describe("conteúdo da prévia imersiva", () => {
   });
 
   it("mantém contato com e-mail e links sociais", () => {
-    expect(contactContent.primaryAction.href).toMatch(/^mailto:/);
+    expect(contactContent.primaryAction.href).toBe('#immersive-contact-form');
     expect(contactContent.secondaryAction.href).toMatch(/linkedin/);
     expect(contactContent.footer.social.length).toBeGreaterThanOrEqual(1);
   });

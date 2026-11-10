@@ -28,15 +28,28 @@ const Immersive = () => {
 
   useEffect(() => {
     const previousTitle = document.title;
-    const robots = document.createElement('meta');
-    robots.name = 'robots';
+    // Reaproveita o <meta name="robots"> do index.html: um segundo tag
+    // duplicado seria ignorado pelos buscadores (vale o primeiro).
+    const existingRobots = document.querySelector<HTMLMetaElement>(
+      'meta[name="robots"]',
+    );
+    const robots = existingRobots ?? document.createElement('meta');
+    const previousRobots = existingRobots?.content;
+
+    if (!existingRobots) {
+      robots.name = 'robots';
+      document.head.appendChild(robots);
+    }
     robots.content = 'noindex, nofollow';
-    document.head.appendChild(robots);
     document.title = 'Preview imersivo — Lucas Nonato';
 
     return () => {
       document.title = previousTitle;
-      robots.remove();
+      if (existingRobots && previousRobots !== undefined) {
+        existingRobots.content = previousRobots;
+      } else {
+        robots.remove();
+      }
     };
   }, []);
 

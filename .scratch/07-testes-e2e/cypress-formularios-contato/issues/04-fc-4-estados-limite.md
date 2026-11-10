@@ -1,6 +1,6 @@
 # Issue — Estados limite: rate limit 429, offline e feedback de download do CV
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-formularios-contato/PRD.md`

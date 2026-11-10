@@ -9,15 +9,15 @@ import SectionFallback, {
 } from "./components/SectionFallback";
 import LazySectionErrorBoundary from "./components/LazySectionErrorBoundary";
 import { GrainOverlay } from "./components/design-system";
-import { RevealRoot } from "./hooks/useRevealOnScroll";
+import { RevealRoot } from "./hooks/RevealRoot";
 const Roadmap = lazy(() => import("./pages/roadmap/roadmap"));
 const Immersive = lazy(() => import("./pages/immersive/immersive"));
 
 // Dobra inicial (Header + Presentation) continua eager; todo o resto vira
 // chunk próprio, baixado logo após o primeiro commit.
-const Experience = lazy(() => import("./pages/experience/experience"));
-const Timeline = lazy(() => import("./pages/timeline/timeline"));
-const PhilosophyBanner = lazy(() => import("./pages/filosofia/filosofia"));
+const IAMaturity = lazy(() => import("./pages/iaMaturity/iaMaturity"));
+const Manifesto = lazy(() => import("./pages/manifesto/manifesto"));
+const SelectedWork = lazy(() => import("./pages/selectedWork/selectedWork"));
 const SkillsSection = lazy(() => import("./pages/skills/skills"));
 const GithubBanner = lazy(() => import("./pages/github/github"));
 const ContactForm = lazy(() => import("./pages/formContact/contactForm"));
@@ -45,14 +45,14 @@ const Portfolio = () => (
     <RevealRoot>
       <main className="main-content" id="home">
         <Presentation />
-        <LazySection variant="experience" anchorId="experience">
-          <Experience />
+        <LazySection variant="iaMaturity" anchorId="ia-maturity">
+          <IAMaturity />
         </LazySection>
-        <LazySection variant="timeline" anchorId="jornada">
-          <Timeline />
+        <LazySection variant="manifesto" anchorId="manifesto">
+          <Manifesto />
         </LazySection>
-        <LazySection variant="philosophy">
-          <PhilosophyBanner />
+        <LazySection variant="selectedWork" anchorId="selected-work">
+          <SelectedWork />
         </LazySection>
         <LazySection variant="skills" anchorId="skills">
           <SkillsSection />

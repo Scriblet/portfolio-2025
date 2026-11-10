@@ -1,6 +1,6 @@
 # Issue — Filtro por categoria opcional no cliente
 
-Status: ready-for-agent
+Status: removed
 
 ## Parent
 PRD: `.scratch/04-secoes/secao-toolbox/PRD.md`

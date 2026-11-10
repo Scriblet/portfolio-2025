@@ -1,6 +1,6 @@
 # Issue — Selected Work: dados + seção base + remoção de Experience/Jornada
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/04-secoes/selected-work/PRD.md`

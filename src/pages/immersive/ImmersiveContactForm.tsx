@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CONTACT_ENDPOINT } from "../../services/contactEndpoint";
 import styles from "./immersive.module.scss";
 
 type FieldErrors = {
@@ -50,7 +51,7 @@ export const ImmersiveContactForm = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

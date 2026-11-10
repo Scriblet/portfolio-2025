@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 /**
@@ -54,16 +54,4 @@ export const useRevealOnScroll = () => {
   }, [reduced]);
 
   return rootRef;
-};
-
-/**
- * Wrapper que aplica o reveal em todos os filhos com `[data-reveal]`.
- */
-export const RevealRoot = ({ children }: { children: ReactNode }) => {
-  const ref = useRevealOnScroll();
-  return (
-    <div ref={ref} className="ds-reveal-root">
-      {children}
-    </div>
-  );
 };

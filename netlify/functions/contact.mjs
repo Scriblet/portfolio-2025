@@ -27,15 +27,44 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 /** @type {Map<string, number[]>} */
 const rateLimitStore = new Map();
 
-const json = (status, body, extraHeaders = {}) =>
+const json = (status, body, request, extraHeaders = {}) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
+      ...corsHeaders(request),
       ...extraHeaders,
     },
   });
+
+/** Origens autorizadas a chamar o endpoint de outro domínio. */
+const DEFAULT_ALLOWED_ORIGINS = [
+  "https://scriblet.github.io",
+  "https://lucasnonato.site",
+];
+
+const getAllowedOrigins = () =>
+  new Set([
+    ...DEFAULT_ALLOWED_ORIGINS,
+    ...(process.env.CONTACT_ALLOWED_ORIGINS ?? "")
+      .split(",")
+      .map((origin) => origin.trim())
+      .filter(Boolean),
+  ]);
+
+const corsHeaders = (request) => {
+  const origin = request.headers.get("origin");
+  if (!origin || !getAllowedOrigins().has(origin)) return {};
+
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+    Vary: "Origin",
+  };
+};
 
 /** Log seguro: apenas status HTTP e timestamp, nunca dados do visitante. */
 const log = (status) => {
@@ -157,12 +186,20 @@ const getWebhookUrl = () => {
 };
 
 export default async (req) => {
+  // Preflight CORS: o site estático (GitHub Pages) chama esta função
+  // cross-origin. OPTIONS nunca valida payload nem chama o Discord.
+  if (req.method === "OPTIONS") {
+    log(204);
+    return new Response(null, { status: 204, headers: corsHeaders(req) });
+  }
+
   if (req.method !== "POST") {
     log(405);
     return json(
       405,
       { ok: false, error: "method_not_allowed" },
-      { Allow: "POST" },
+      req,
+      { Allow: "POST, OPTIONS" },
     );
   }
 
@@ -173,6 +210,7 @@ export default async (req) => {
     return json(
       429,
       { ok: false, error: "rate_limited" },
+      req,
       { "Retry-After": "60" },
     );
   }
@@ -181,13 +219,13 @@ export default async (req) => {
 
   if (!payload.ok) {
     log(400);
-    return json(400, { ok: false, error: "invalid_payload" });
+    return json(400, { ok: false, error: "invalid_payload" }, req);
   }
 
   // Honeypot preenchido: 200 falso, nada é enviado.
   if (payload.honeypot) {
     log(200);
-    return json(200, { ok: true });
+    return json(200, { ok: true }, req);
   }
 
   const webhookUrl = getWebhookUrl();
@@ -197,7 +235,7 @@ export default async (req) => {
       "[contact] DISCORD_WEBHOOK_URL ausente ou inválida; mensagem não enviada.",
     );
     log(503);
-    return json(503, { ok: false, error: "not_configured" });
+    return json(503, { ok: false, error: "not_configured" }, req);
   }
 
   const controller = new AbortController();
@@ -214,16 +252,16 @@ export default async (req) => {
     if (!response.ok) {
       console.error(`[contact] Discord respondeu ${response.status}.`);
       log(502);
-      return json(502, { ok: false, error: "upstream_error" });
+      return json(502, { ok: false, error: "upstream_error" }, req);
     }
 
     log(200);
-    return json(200, { ok: true });
+    return json(200, { ok: true }, req);
   } catch {
     // Timeout, DNS, rede: detalhes nunca vão para o cliente.
     console.error("[contact] Falha de rede ao enviar para o Discord.");
     log(502);
-    return json(502, { ok: false, error: "upstream_error" });
+    return json(502, { ok: false, error: "upstream_error" }, req);
   } finally {
     clearTimeout(timer);
   }

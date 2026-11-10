@@ -1,6 +1,6 @@
 # Issue — Manifesto Técnico: visual editorial + responsividade
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/04-secoes/manifesto-tecnico/PRD.md`

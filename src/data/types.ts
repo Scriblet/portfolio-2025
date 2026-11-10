@@ -85,21 +85,59 @@ export interface Testimonial {
   avatarUrl?: string;
 }
 
-export type MilestoneType =
-  | 'formacao'
-  | 'certificacao'
-  | 'profissional'
-  | 'conquista';
-
-export interface Milestone {
+/** Camada do mapa de maturidade em IA (seção #ia-maturity). */
+export interface AiMaturityLayer {
   id: string;
-  type: MilestoneType;
+  /** Numeral exibido na calha, ex.: "01". */
+  number: string;
   title: string;
-  institution: string;
-  /** Período legível, ex.: "2024 — Atual" ou "2019". */
+  /** Tese de uma linha que abre a camada. */
+  thesis: string;
+  capabilities: string[];
+  /** Onde a camada aparece no trabalho real. */
+  evidence: string;
+}
+
+/** Princípio do manifesto técnico (seção #manifesto). */
+export interface Principle {
+  id: string;
+  /** Numeral exibido como capítulo, ex.: "01". */
+  number: string;
+  title: string;
+  /** Frase de impacto em itálico. */
+  impact: string;
+  consequence: string;
+}
+
+/** Cartão de proposta de valor da seção #contact. */
+export interface ValueProposition {
+  id: string;
+  /** Numeral exibido no cartão, ex.: "01". */
+  number: string;
+  title: string;
+  description: string;
+  /** Ganho concreto em uma linha. */
+  benefit: string;
+  ctaLabel: string;
+  /** Texto inicial carregado no formulário ao clicar no cartão. */
+  prompt: string;
+}
+
+/** Case da seção #selected-work. */
+export interface SelectedWork {
+  id: string;
+  /** Numeral exibido como capítulo, ex.: "01". */
+  number: string;
+  company: string;
+  /** Período legível, ex.: "mar/2026 — atual". */
   period: string;
-  description?: string;
-  url?: string;
-  /** Data ordenável (ISO ou ano) para a timeline mais recente primeiro. */
-  date: string;
+  /** Data ordenável (ISO) para manter o case mais recente primeiro. */
+  start: string;
+  role: string;
+  headline: string;
+  context: string;
+  challenge: string;
+  action: string;
+  outcome: string;
+  stack: string[];
 }
