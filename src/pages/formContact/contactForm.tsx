@@ -25,7 +25,7 @@ const sectionContent = {
   index: "07",
   headline: "Vamos resolver",
   accent: "algo real?",
-  body: "Três frentes em que eu costumo entrar. Escolha a que dói mais hoje — ou escreva abaixo.",
+  body: "Três frentes em que eu costumo entrar. Escolha a que dói mais hoje, ou escreva abaixo.",
 };
 
 const ContactForm = () => {

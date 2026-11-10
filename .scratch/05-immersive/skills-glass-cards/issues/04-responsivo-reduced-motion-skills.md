@@ -1,4 +1,4 @@
-# Issue — Responsivo e reduced motion dos cards de skills
+# Issue: Responsivo e reduced motion dos cards de skills
 
 Status: done
 

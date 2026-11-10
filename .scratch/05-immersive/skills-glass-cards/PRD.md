@@ -6,7 +6,7 @@ scope: site
 owner: agent
 ---
 
-# PRD — Skills Glass Cards
+# PRD: Skills Glass Cards
 
 ## Resumo / objetivo
 
@@ -62,9 +62,9 @@ Substituir a seção "Roster" de linhas por uma grade de cards de glass flutuant
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/pages/immersive/sections.tsx` — novo componente `Skills` em substituição a `Roster`; remover `Releases`.
-- `src/pages/immersive/content.ts` — `skillsContent`, `skillCards`.
-- `src/data/skills.ts` — fonte única das habilidades.
-- `src/pages/immersive/immersive.tsx` — remover `ReleasesDeck` e `<Releases />`.
-- `src/pages/immersive/ReleasesDeck.tsx` — remover arquivo se não for mais usado.
-- `src/pages/immersive/immersive.module.scss` — estilos dos cards de glass.
+- `src/pages/immersive/sections.tsx`: novo componente `Skills` em substituição a `Roster`; remover `Releases`.
+- `src/pages/immersive/content.ts`: `skillsContent`, `skillCards`.
+- `src/data/skills.ts`: fonte única das habilidades.
+- `src/pages/immersive/immersive.tsx`: remover `ReleasesDeck` e `<Releases />`.
+- `src/pages/immersive/ReleasesDeck.tsx`: remover arquivo se não for mais usado.
+- `src/pages/immersive/immersive.module.scss`: estilos dos cards de glass.

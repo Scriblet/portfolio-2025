@@ -1,4 +1,4 @@
-# PRD — Header com Scroll Inteligente
+# PRD: Header com Scroll Inteligente
 
 Status: ready-for-agent
 Feature slug: `header-scroll-inteligente`
@@ -9,7 +9,7 @@ O Header atual é um AppBar fixo com backdrop blur que permanece sempre visível
 
 ## Solution
 
-Fazer o Header inteligente ao scroll: ao descer a página, o cabeçalho se esconde suavemente para liberar espaço de leitura; ao subir (qualquer movimento ascendente), ele reaparece de imediato, garantindo que a navegação esteja sempre a um gesto de distância. O comportamento deve ser animado com o Framer Motion já presente no projeto, respeitar preferências de movimento reduzido (sem animação, apenas mostrar/esconder), manter o backdrop blur quando visível, e nunca esconder o foco de teclado que estiver dentro do Header — se o usuário estiver navegando por teclado, o Header volta a aparecer para não perder acessibilidade.
+Fazer o Header inteligente ao scroll: ao descer a página, o cabeçalho se esconde suavemente para liberar espaço de leitura; ao subir (qualquer movimento ascendente), ele reaparece de imediato, garantindo que a navegação esteja sempre a um gesto de distância. O comportamento deve ser animado com o Framer Motion já presente no projeto, respeitar preferências de movimento reduzido (sem animação, apenas mostrar/esconder), manter o backdrop blur quando visível, e nunca esconder o foco de teclado que estiver dentro do Header, se o usuário estiver navegando por teclado, o Header volta a aparecer para não perder acessibilidade.
 
 ## User Stories
 
@@ -34,14 +34,14 @@ Fazer o Header inteligente ao scroll: ao descer a página, o cabeçalho se escon
 
 - Módulo do Header como seam principal, consumindo um hook de scroll reutilizável: a decisão "visível/escondido" nasce no hook (direção e posição do scroll) e o componente apenas aplica o estado, mantendo a lógica de scroll fora da hierarquia visual.
 - Contrato do hook de scroll: expõe o estado de visibilidade do Header a partir da direção de rolagem e da posição absoluta, incluindo um limiar mínimo para evitar oscilação (pequenos ajustes não trocam o estado), e um gatilho de foco que força a visibilidade quando um elemento dentro do Header recebe foco.
-- Decisão arquitetural — animação via Framer Motion: o deslocamento para esconder/mostrar usa as primitivas de animação já presentes no projeto, com duração curta, e é desativado (sem deslocamento animado) quando prefers-reduced-motion está ativo.
+- Decisão arquitetural: animação via Framer Motion: o deslocamento para esconder/mostrar usa as primitivas de animação já presentes no projeto, com duração curta, e é desativado (sem deslocamento animado) quando prefers-reduced-motion está ativo.
 - Acessibilidade como parte do contrato: quando escondido, o Header sai da ordem de tabulação (e é ignorado por leitores de tela); ao receber foco interno, ele volta a ficar visível imediatamente, sem exigir um gesto de scroll.
-- O Header mantém sua composição atual (AppBar, backdrop blur, navegação por âncoras para #experience, #skills, #contact) e o comportamento de âncora não muda — o scroll inteligente apenas alterna a visibilidade do container.
+- O Header mantém sua composição atual (AppBar, backdrop blur, navegação por âncoras para #experience, #skills, #contact) e o comportamento de âncora não muda, o scroll inteligente apenas alterna a visibilidade do container.
 - Nenhuma dependência nova: o comportamento é construído sobre scroll nativo do documento e Framer Motion, sem libreria de scroll dedicada.
 
 ## Testing Decisions
 
-- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts e tests/header.spec.ts (data-testid já estabelecidos no Header) — verificar que rolar para baixo esconde o Header, rolar para cima o mostra novamente, e que no topo ele está visível.
+- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts e tests/header.spec.ts (data-testid já estabelecidos no Header), verificar que rolar para baixo esconde o Header, rolar para cima o mostra novamente, e que no topo ele está visível.
 - Bom teste aqui é comportamental (visibilidade após scroll simulado) e não snapshot de transform/CSS: o teste deve falhar se o Header sumir fisicamente mas continuar focável, e deve cobrir o caso de foco por teclado trazendo o Header de volta.
 - Cobrir o caminho de âncoras após a mudança (herdado de tests/app.spec.ts e tests/experience.spec.ts): clicar em um link de seção ainda navega para a âncora correspondente.
 - O caso prefers-reduced-motion deve ser verificado manualmente ou por contexto de emulação do Playwright, confirmando que o estado muda sem animação perceptível, sem que isso vire um teste frágil de timing.
@@ -52,7 +52,7 @@ Fazer o Header inteligente ao scroll: ao descer a página, o cabeçalho se escon
 - Mudança de layout, conteúdo ou identidade visual do Header.
 - Cabeçalho que muda de cor/tamanho ao rolar (apenas visibilidade).
 - Menu mobile novo, drawer ou navegação por gestos.
-- Compressão do Header ao rolar (efeito "shrink") — apenas esconder/mostrar.
+- Compressão do Header ao rolar (efeito "shrink"): apenas esconder/mostrar.
 - Mudanças nas seções alvo das âncoras.
 
 ## Further Notes

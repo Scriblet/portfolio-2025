@@ -1,4 +1,4 @@
-# PRD — Cobertura E2E crítica
+# PRD: Cobertura E2E crítica
 
 Status: ready-for-agent
 Feature slug: `e2e-cobertura-critica`
@@ -11,14 +11,14 @@ infraestrutura Cypress já está completa (comandos `visitApp`,
 `test:e2e:preview`). Quedas em navegação, conteúdo das seções e no formulário
 de contato passam verdes e só são descobertas pelo visitante. Existe um plano
 completo em `.scratch/07-testes-e2e/` (5 PRDs com issues `ready-for-agent`),
-mas nada dele foi implementado — o gargalo não é planejamento, é execução do
+mas nada dele foi implementado: o gargalo não é planejamento, é execução do
 núcleo crítico.
 
 ## Solution
 
-Definir e implementar a barra mínima de cobertura do caminho crítico — smoke
+Definir e implementar a barra mínima de cobertura do caminho crítico, smoke
 expandido, navegação (header, drawer, âncoras, tema), conteúdo das seções e o
-fluxo do formulário de contato (validação, honeypot, envio stubado, feedback) —
+fluxo do formulário de contato (validação, honeypot, envio stubado, feedback),
 tudo rodando verde no job `e2e` do CI. Os PRDs da onda 7 continuam como plano
 completo (PWA/offline e a11y profunda ficam lá); este PRD garante que o núcleo
 que sustenta o portfólio esteja coberto antes de qualquer release.
@@ -36,7 +36,7 @@ que sustenta o portfólio esteja coberto antes de qualquer release.
 
 - Seam principal: camada de testes E2E. Os specs usam os comandos já existentes
   (`visitApp`, `interceptContact`, `waitForSection`, `resetTheme`) e sempre
-  interceptam `POST /api/contact` — nunca dependem do Discord nem de
+  interceptam `POST /api/contact`: nunca dependem do Discord nem de
   `netlify dev`.
 - Fatia 1 cobre smoke/rotas/navegação/tema; fatia 2 cobre conteúdo das seções
   (Experiência, Jornada, Skills, Filosofia, GitHub, Footer) com links íntegros;

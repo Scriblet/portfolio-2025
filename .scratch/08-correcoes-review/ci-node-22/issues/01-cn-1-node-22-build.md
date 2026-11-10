@@ -1,4 +1,4 @@
-# Issue — Node 22 em todas as superfícies de build
+# Issue: Node 22 em todas as superfícies de build
 
 Status: done
 
@@ -20,4 +20,4 @@ versão.
 - [ ] Lint, testes unitários e build passam em Node 22
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente

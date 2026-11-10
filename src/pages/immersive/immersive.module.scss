@@ -306,7 +306,7 @@
   transition: transform 0.1s linear;
 }
 
-/* Receita única de vidro — evita duplicação de tokens entre consumidores. */
+/* Receita única de vidro: evita duplicação de tokens entre consumidores. */
 @mixin glassDark {
   background-color: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -343,7 +343,7 @@
   @include glassDark;
 }
 
-/* Hairline decorativa — 1px com cor de token. */
+/* Hairline decorativa: 1px com cor de token. */
 .hairline {
   display: block;
   width: 100%;
@@ -357,7 +357,7 @@
   background: var(--hairline-light);
 }
 
-/* Numeral vazado — tipografia base reutilizável; o consumidor define o layout. */
+/* Numeral vazado: tipografia base reutilizável; o consumidor define o layout. */
 .indexNumeral {
   display: block;
   font-family: var(--font-display);
@@ -701,6 +701,10 @@
   width: min(28vw, 380px);
   aspect-ratio: 1;
   transform: translateY(-50%);
+}
+
+.aboutOrbitRing,
+.aboutOrbitImage {
   opacity: 0.55;
 }
 
@@ -1351,7 +1355,7 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Hero clean — respeita o tema ativo (dark / light)                  */
+/* Hero clean: respeita o tema ativo (dark / light)                  */
 /* ------------------------------------------------------------------ */
 
 .heroClean {
@@ -1437,7 +1441,7 @@
  * Superfície e tipografia claras. No /immersive os tokens escuros não trocam
  * de valor via `[data-mui-color-scheme="light"]` (a página não é filha de
  * `.app-container`), então a variante clara precisa fixar os valores claros
- * diretamente — o mesmo branco do site (light-bg / light-text).
+ * diretamente, o mesmo branco do site (light-bg / light-text).
  */
 .heroCleanLight {
   background: var(--light-bg);

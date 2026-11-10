@@ -1,4 +1,4 @@
-# Issue — Acessibilidade e motion da grade
+# Issue: Acessibilidade e motion da grade
 
 Status: removed
 

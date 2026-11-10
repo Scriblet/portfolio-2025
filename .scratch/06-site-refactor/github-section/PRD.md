@@ -25,7 +25,7 @@ claro, CTA pill e o logo como elemento grÃ¡fico, mantendo o link real do
 - Fundo `var(--void)` ou `var(--void-2)`.
 - Painel `GlassPanel` com texto Ã  esquerda e logo Ã  direita.
 - Label "Open source / 07", tÃ­tulo Syne e corpo Inter.
-- CTA `PillButton` ghost/solid com Ã­cone â†—.
+- CTA `PillButton` ghost/solid com Ã­cone â†-.
 - Logo do GitHub sem fundo, com tratamento monocromÃ¡tico.
 
 ## Requisitos funcionais

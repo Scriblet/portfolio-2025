@@ -1,4 +1,4 @@
-# Issue — Documentar a camada de dados e publicar exemplos de nova seção
+# Issue: Documentar a camada de dados e publicar exemplos de nova seção
 
 Status: ready-for-agent
 

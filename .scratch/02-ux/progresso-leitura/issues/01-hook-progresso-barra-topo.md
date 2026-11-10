@@ -1,4 +1,4 @@
-# Issue — Hook de progresso e barra fina no topo (0–100%)
+# Issue: Hook de progresso e barra fina no topo (0–100%)
 
 Status: ready-for-agent
 

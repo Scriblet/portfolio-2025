@@ -1,4 +1,4 @@
-# Issue — Specs de smoke, navegação e tema
+# Issue: Specs de smoke, navegação e tema
 
 Status: done
 
@@ -21,4 +21,4 @@ formulário aparecer. Critérios detalhados nos issues
 - [ ] Specs verdes em `npm run test:e2e:preview`
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente

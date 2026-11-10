@@ -1,4 +1,4 @@
-# PRD — CI consistente em Node 22 e lint limpo
+# PRD: CI consistente em Node 22 e lint limpo
 
 Status: ready-for-agent
 Feature slug: `ci-node-22`
@@ -19,7 +19,7 @@ runner quebra o build de produção sem explicação aparente. Além disso, o
 
 Alinhar todas as superfícies de build (`deploy.yml`, `netlify.toml`, `engines`
 do `package.json`, `.nvmrc`) para Node 22 e zerar os warnings do ESLint sem
-desativar regras — mantendo o contrato de que `npm run lint`,
+desativar regras: mantendo o contrato de que `npm run lint`,
 `npm run test:unit` e `npm run build` rodam limpos na mesma versão de Node,
 local e em CI.
 

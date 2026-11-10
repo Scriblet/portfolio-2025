@@ -1,4 +1,4 @@
-# Issue — Contato com Proposta de Valor: a11y + motion + testes de regressão
+# Issue: Contato com Proposta de Valor: a11y + motion + testes de regressão
 
 Status: done
 

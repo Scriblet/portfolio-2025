@@ -1,4 +1,4 @@
-# Issue — Contato com Proposta de Valor: visual + CTAs + responsividade
+# Issue: Contato com Proposta de Valor: visual + CTAs + responsividade
 
 Status: done
 

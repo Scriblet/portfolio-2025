@@ -1,4 +1,4 @@
-# Issue — Contraste dos textos secundários e headings semânticos corretos
+# Issue: Contraste dos textos secundários e headings semânticos corretos
 
 Status: ready-for-agent
 

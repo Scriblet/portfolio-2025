@@ -1,4 +1,4 @@
-# Issue — Selected Work: narrativa dos cases + visual responsivo
+# Issue: Selected Work: narrativa dos cases + visual responsivo
 
 Status: done
 

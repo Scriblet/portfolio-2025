@@ -1,4 +1,4 @@
-# PRD — PWA e Offline Básico
+# PRD: PWA e Offline Básico
 
 Status: done
 Feature slug: `pwa-offline`
@@ -35,14 +35,14 @@ Transformar o portfólio em um PWA básico e instalável: manifest com nome, íc
 - Módulo de Build/CI como seam principal: o build do Vite passa a gerar o manifest e registrar o service worker, de forma que o resultado PWA é emitido automaticamente a cada build publicado na Netlify, sem arquivos estáticos duplicados para manter à mão.
 - Contrato do manifesto: name/short_name, display standalone, orientação/portrait, cores de tema e fundo alinhadas à paleta escura existente (background #121212, primary #673ab7), ícones em 192px e 512px (incluindo um ícone mascarável para Android), sem alterar nenhum componente visual existente.
 - Contrato do service worker: estratégia de cache-first para assets estáticos versionados (JS/CSS/imagens gerados pelo Vite) e network-first com fallback em cache para a navegação, de modo que o shell da SPA responde offline após a primeira visita.
-- Decisão arquitetural — cache versionado por build: a chave de cache é derivada do hash do build, e na ativação de um novo worker os caches de versões antigas são removidos, evitando conteúdo obsoleto preso no dispositivo.
+- Decisão arquitetural: cache versionado por build: a chave de cache é derivada do hash do build, e na ativação de um novo worker os caches de versões antigas são removidos, evitando conteúdo obsoleto preso no dispositivo.
 - Módulo de UI (App shell): um componente de fallback offline, renderizado apenas quando o navegador sinaliza estado offline e o conteúdo solicitado não está em cache, com mensagem clara e botão de nova tentativa; o fluxo de instalação usa o prompt nativo (beforeinstallprompt) capturado de forma discreta, sem banner intrusivo, e some silenciosamente em navegadores sem suporte.
-- Decisão de progressividade: todas as capacidades PWA são aditivas — navegadores sem service worker ou sem suporte a instalação degradam para o comportamento atual da SPA, sem regressão visual ou funcional.
+- Decisão de progressividade: todas as capacidades PWA são aditivas, navegadores sem service worker ou sem suporte a instalação degradam para o comportamento atual da SPA, sem regressão visual ou funcional.
 - O formulário de contato (consumer do serviço de webhook) mantém seu contrato atual: sem rede, o envio falha e o usuário recebe feedback de erro, sem simulação de sucesso offline.
 
 ## Testing Decisions
 
-- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts (data-testid e estrutura de asserção já estabelecida no projeto) — verificar que, com a rede simulada como offline após uma visita inicial, o conteúdo principal (âncoras #experience, #skills, #contact da composição Header → Presentation → Experience → Skills → ContactForm → Footer) continua acessível.
+- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts (data-testid e estrutura de asserção já estabelecida no projeto), verificar que, com a rede simulada como offline após uma visita inicial, o conteúdo principal (âncoras #experience, #skills, #contact da composição Header → Presentation → Experience → Skills → ContactForm → Footer) continua acessível.
 - Bom teste aqui é comportamental (o que o visitante consegue fazer offline) e não teste de snapshot de CSS ou de hash de build: o teste deve falhar se um visitante offline perder o acesso ao conteúdo, mas não deve quebrer por mudança irrelevante de nome de arquivo versionado.
 - Cobrir o fallback offline (mensagem visível quando offline sem conteúdo cacheado) e a ausência de regressão no fluxo normal quando online (app carrega e âncoras funcionam), usando as mesmas convenções de data-testid dos specs existentes.
 - Decisões de cache/ativação do worker devem ser validadas manualmente ou por inspeção de build (instalabilidade no Chrome), complementando o E2E, já que o Playwright não cobre todo o ciclo de vida do service worker de forma confiável.
@@ -58,7 +58,7 @@ Transformar o portfólio em um PWA básico e instalável: manifest com nome, íc
 
 ## Further Notes
 
-- Risco principal: cache preso em versões antigas — mitigado pelo versionamento por build e pela limpeza na ativação.
+- Risco principal: cache preso em versões antigas: mitigado pelo versionamento por build e pela limpeza na ativação.
 - OS ícones PWA devem reutilizar uma arte já existente do portfólio (favicon) em tamanhos maiores, sem identidade nova.
 - O navegador iOS Safari tem suporte limitado a instalação PWA; o comportamento esperado é degradação silenciosa para a SPA normal, sem erros.
 - Performance: o worker não deve aumentar o tempo de primeira visita; o cache é populado em segundo plano após o carregamento inicial.

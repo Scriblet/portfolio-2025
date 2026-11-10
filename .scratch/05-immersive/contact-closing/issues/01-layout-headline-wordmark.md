@@ -1,4 +1,4 @@
-# Issue — Layout do fechamento escuro e headline
+# Issue: Layout do fechamento escuro e headline
 
 Status: done
 

@@ -6,7 +6,7 @@ scope: site
 owner: agent
 ---
 
-# PRD — Contact Closing
+# PRD: Contact Closing
 
 ## Resumo / objetivo
 
@@ -69,9 +69,9 @@ Criar o fechamento da rota `/immersive`: uma seção `#contact` escura com headl
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/pages/immersive/sections.tsx` — novo componente `Contact` em substituição a `Closing`.
-- `src/pages/immersive/content.ts` — `contactContent`, `PERSON`, `SOCIAL_LINKS`.
-- `src/data/social.ts` — fonte dos links sociais.
-- `src/pages/immersive/immersive.tsx` — renderizar `Contact` como última seção.
-- `src/pages/immersive/immersive.module.scss` — estilos do fechamento e card de formulário.
+- `src/pages/immersive/sections.tsx`: novo componente `Contact` em substituição a `Closing`.
+- `src/pages/immersive/content.ts`: `contactContent`, `PERSON`, `SOCIAL_LINKS`.
+- `src/data/social.ts`: fonte dos links sociais.
+- `src/pages/immersive/immersive.tsx`: renderizar `Contact` como última seção.
+- `src/pages/immersive/immersive.module.scss`: estilos do fechamento e card de formulário.
 - Formulário de contato existente no portfólio principal pode servir de referência para validação e endpoint.

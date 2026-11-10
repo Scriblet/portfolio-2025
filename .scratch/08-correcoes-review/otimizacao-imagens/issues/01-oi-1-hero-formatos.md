@@ -1,4 +1,4 @@
-# Issue — Hero em AVIF/WebP com srcset e orçamento de peso
+# Issue: Hero em AVIF/WebP com srcset e orçamento de peso
 
 Status: done
 
@@ -19,4 +19,4 @@ Orçamento: ≤ 120 KB no formato servido à viewport principal.
 - [ ] Peso do asset servido ≤ 120 KB e LCP medido sem regressão
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente

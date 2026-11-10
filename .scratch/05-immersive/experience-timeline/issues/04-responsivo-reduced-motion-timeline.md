@@ -1,4 +1,4 @@
-# Issue — Responsivo e reduced motion da timeline
+# Issue: Responsivo e reduced motion da timeline
 
 Status: done
 

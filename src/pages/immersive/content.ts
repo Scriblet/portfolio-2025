@@ -84,7 +84,7 @@ export const experienceContent = {
   index: '03',
   heading: 'Trajetória profissional',
   description:
-    'Cinco passagens — de consultoria de UX a engenharia de IA — conectadas pela obsessão em resolver problemas com código bem feito.',
+    'Cinco passagens (de consultoria de UX a engenharia de IA) conectadas pela obsessão em resolver problemas com código bem feito.',
 } as const;
 
 export const experienceTimeline = experiences.map((experience) => ({

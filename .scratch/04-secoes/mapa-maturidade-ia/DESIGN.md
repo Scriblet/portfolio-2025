@@ -1,4 +1,4 @@
-# DESIGN — Mapa de Maturidade em IA
+# DESIGN: Mapa de Maturidade em IA
 
 ## Conceito em uma frase
 
@@ -12,7 +12,7 @@ Corte arquitetural de uma pilha: uma coluna contínua de cinco camadas dividida 
 +------------------------------------------------------------------+
 |  COMPETÊNCIA EM IA / 02                                          |
 |  Onde a IA vira sistema                                          |
-|  O mapa do que eu coloco de pé — não um ranking de senioridade.  |
+|  O mapa do que eu coloco de pé, não um ranking de senioridade.  |
 +------------------------------------------------------------------+
 |                                                                  |
 |  +-----+  +---------------------------------------------------+  |
@@ -64,7 +64,7 @@ Corte arquitetural de uma pilha: uma coluna contínua de cinco camadas dividida 
 - **Container**: `width: min(1320px, calc(100% - clamp(24px, 6vw, 112px)))`, centralizado.
 - **Estrutura geral**: seção full-width com fundo `--void`. Conteúdo em coluna central.
 - **Header da seção**: label mono + `h2` headline + parágrafo de apoio, alinhados à esquerda, max-width 72ch.
-- **Corpo**: grid de duas colunas no desktop — rail fixo à esquerda + pilha contínua à direita.
+- **Corpo**: grid de duas colunas no desktop: rail fixo à esquerda + pilha contínua à direita.
   - `grid-template-columns: 96px 1fr` desktop.
   - Mobile: coluna única, com número da camada flutuando na calha.
 - **Rail sticky** (desktop):
@@ -141,7 +141,7 @@ Corte arquitetural de uma pilha: uma coluna contínua de cinco camadas dividida 
 - Rail: fade-in 600ms após header.
 - Camadas: reveal por scroll com IntersectionObserver (`threshold: 0.25`), `translateY(28px)→0`, 700ms, stagger 100ms entre camadas.
 
-### Scroll — rail ativo
+### Scroll: rail ativo
 - Cada camada acende o índice correspondente no rail quando entra no centro da viewport (IntersectionObserver `rootMargin: '-45% 0px -45% 0px'`).
 - Índice ativo: opacidade 1, cor `--paper`.
 - Numeral gigante "05" permanece sutil; apenas o índice 01–05 acende.

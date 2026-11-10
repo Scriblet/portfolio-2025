@@ -1,6 +1,6 @@
-# Issue — Header auto-hide no scroll e barra de progresso de leitura
+# Issue: Header auto-hide no scroll e barra de progresso de leitura
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-smoke-navegacao/PRD.md`

@@ -1,4 +1,4 @@
-# Issue — Motion discreto e leitura estável em zoom
+# Issue: Motion discreto e leitura estável em zoom
 
 Status: ready-for-agent
 

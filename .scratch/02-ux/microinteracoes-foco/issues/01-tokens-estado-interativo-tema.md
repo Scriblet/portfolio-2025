@@ -1,4 +1,4 @@
-# Issue — Tokens centrais de estado interativo no tema
+# Issue: Tokens centrais de estado interativo no tema
 
 Status: ready-for-agent
 

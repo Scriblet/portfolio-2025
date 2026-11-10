@@ -8,7 +8,7 @@ const sectionContent = {
   label: "Princípios",
   index: "03",
   eyebrow: "Como eu construo",
-  lead: "Sete regras que eu uso para decidir — não para decorar.",
+  lead: "Sete regras que eu uso para decidir, não para decorar.",
   close: "Os cases abaixo são o teste dessas regras.",
 };
 

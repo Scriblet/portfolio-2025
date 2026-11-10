@@ -1,4 +1,4 @@
-# Draft issues — 02-ux (rascunho pré-quiz)
+# Draft issues: 02-ux (rascunho pré-quiz)
 
 > Gerado a partir de 4 PRDs: header-scroll-inteligente, progresso-leitura, microinteracoes-foco, hierarquia-tipografica.
 > Não publicar antes do quiz do usuário. Ordem sugerida dentro de cada feature é a ordem de entrega.
@@ -9,7 +9,7 @@
 
 ### 1.1 Hook de direção de scroll e Header esconde/mostra
 
-- **Blocked by:** Nenhuma — primeiro da feature
+- **Blocked by:** Nenhuma: primeiro da feature
 - **User stories covered:** 1, 2, 8, 9, 10, 13, 15
 - **What to build:** Hook reutilizável que expõe visível/escondido a partir da direção e posição do scroll, com Header consumindo o estado e animando via Framer Motion, mantendo visual atual com backdrop blur e links por âncoras.
 - **Acceptance criteria:**
@@ -32,7 +32,7 @@
 
 ### 1.3 Polimento de scroll: limiar anti-piscada, reduced motion e contraste
 
-- **Blocked by:** 1.1 (polimento sobre o comportamento base) — pode ser feita em paralelo com 1.2
+- **Blocked by:** 1.1 (polimento sobre o comportamento base), pode ser feita em paralelo com 1.2
 - **User stories covered:** 5, 6, 12, 14
 - **What to build:** Limiar mínimo de scroll para trocar estado, transição curta e responsiva, sem animação de deslocamento com prefers-reduced-motion, e contraste mantido sobre conteúdo rolado.
 - **Acceptance criteria:**
@@ -58,7 +58,7 @@
 
 ### 2.1 Hook de progresso e barra fina no topo (0–100%)
 
-- **Blocked by:** Nenhuma — primeiro da feature
+- **Blocked by:** Nenhuma: primeiro da feature
 - **User stories covered:** 1, 2, 3, 8, 10, 11
 - **What to build:** Hook reutilizável que expõe progresso normalizado 0–1 a partir da posição de scroll, com barra fina fixa no topo usando a cor primária da paleta atual e suavização pelo Framer Motion.
 - **Acceptance criteria:**
@@ -82,7 +82,7 @@
 
 ### 2.3 Acessibilidade e movimento reduzido da barra
 
-- **Blocked by:** 2.1 — pode ser feita em paralelo com 2.2
+- **Blocked by:** 2.1: pode ser feita em paralelo com 2.2
 - **User stories covered:** 5, 6, 9
 - **What to build:** Barra apresentada como indicador de progresso informativo sem live regions verbosas, sem interceptar foco, sem suavização automática com prefers-reduced-motion, e comunicando progresso também por posição/tamanho, não só por cor.
 - **Acceptance criteria:**
@@ -93,7 +93,7 @@
 
 ### 2.4 Sincronia com âncoras, integração com o Header e E2E
 
-- **Blocked by:** 2.1, 2.2, 2.3 — e integração visual com 1.1 (header-scroll-inteligente) para compor sem conflito
+- **Blocked by:** 2.1, 2.2, 2.3, e integração visual com 1.1 (header-scroll-inteligente) para compor sem conflito
 - **User stories covered:** 12, 14, 16
 - **What to build:** Barra reflete a posição real após saltos por âncora, compõe visualmente com o Header inteligente sem sobrepor links, e é coberta por E2E automatizado de scroll simulado.
 - **Acceptance criteria:**
@@ -108,7 +108,7 @@
 
 ### 3.1 Tokens centrais de estado interativo no tema
 
-- **Blocked by:** Nenhuma — primeiro da feature
+- **Blocked by:** Nenhuma: primeiro da feature
 - **User stories covered:** 2, 9, 10, 15, 16
 - **What to build:** Definições centrais de hover, focus-visible, active e transições curtas com duração e curva únicas no tema MUI, consumidas por links do Header, botões e futuros componentes interativos.
 - **Acceptance criteria:**
@@ -160,7 +160,7 @@
 
 ### 4.1 Escala tipográfica central e responsiva no tema
 
-- **Blocked by:** Nenhuma — primeiro da feature
+- **Blocked by:** Nenhuma: primeiro da feature
 - **User stories covered:** 1, 2, 6, 7, 8, 11, 12
 - **What to build:** Escala explícita de títulos, subtítulos, corpo e legenda definida uma única vez no tema, com tamanhos responsivos nos breakpoints atuais, e consumida pelas seções da página.
 - **Acceptance criteria:**

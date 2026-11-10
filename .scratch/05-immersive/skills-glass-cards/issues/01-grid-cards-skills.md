@@ -1,4 +1,4 @@
-# Issue — Grid de cards de glass e mapeamento de skills
+# Issue: Grid de cards de glass e mapeamento de skills
 
 Status: done
 

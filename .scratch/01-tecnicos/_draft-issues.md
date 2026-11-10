@@ -1,15 +1,15 @@
-# Rascunho de issues — lote 01-tecnicos (revisão antes de publicar)
+# Rascunho de issues: lote 01-tecnicos (revisão antes de publicar)
 
 Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
 `dados-centralizados` (fundação) → `seguranca-contato` (independente) → `seo-metadados` + `code-splitting-lazy` (paralelizáveis após fundação) → `pwa-offline` (após SEO + splitting) → `testes-a11y-visual` (por último, DOM final).
 
-> Rascunho para quiz do usuário — nada publicado ainda.
+> Rascunho para quiz do usuário: nada publicado ainda.
 
 ---
 
-## dados-centralizados — 4 slices
+## dados-centralizados: 4 slices
 
-### DC-1 — Fundação da camada de dados tipada
+### DC-1: Fundação da camada de dados tipada
 - **Title:** Criar camada de dados tipada e expor site/social como fonte única
 - **Blocked by:** None
 - **User stories covered:** 3, 4, 9, 10, 13
@@ -21,7 +21,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] `tsc --noEmit` passa; testes existentes passam sem mudança de seletor
   - [ ] Campo obrigatório removido do tipo quebra o build (erro de compilação imediato)
 
-### DC-2 — Migrar Experience e Skills para a fonte única
+### DC-2: Migrar Experience e Skills para a fonte única
 - **Title:** Renderizar Experience e Skills a partir da nova camada de dados
 - **Blocked by:** DC-1
 - **User stories covered:** 1, 2, 6, 11
@@ -32,7 +32,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Asserts de teste leem a mesma fonte de dados renderizada pelo componente
   - [ ] Build e `tsc --noEmit` passam
 
-### DC-3 — Migrar Header, GitHub, Footer e blindar dados vazios
+### DC-3: Migrar Header, GitHub, Footer e blindar dados vazios
 - **Title:** Renderizar Header/GitHub/Footer a partir da fonte única com fallback seguro
 - **Blocked by:** DC-1
 - **User stories covered:** 8, 12
@@ -43,7 +43,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Nenhuma regressão visual/estrutural detectada pelos testes existentes
   - [ ] `tsc --noEmit` e suite existente verdes
 
-### DC-4 — Documentar a camada e preparar novas seções
+### DC-4: Documentar a camada e preparar novas seções
 - **Title:** Documentar a camada de dados e publicar exemplos de nova seção
 - **Blocked by:** DC-3
 - **User stories covered:** 5, 7, 14
@@ -56,13 +56,13 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
 
 ---
 
-## seguranca-contato — 3 slices
+## seguranca-contato: 3 slices
 
-### SC-1 — Endpoint server-side de contato validado e protegido
+### SC-1: Endpoint server-side de contato validado e protegido
 - **Title:** Criar endpoint server-side de contato com validação e rate limit
 - **Blocked by:** None
 - **User stories covered:** 4, 5, 6, 7, 8, 10
-- **What to build:** Função server-side que recebe o payload do formulário, valida email/mensagem, aplica rate limit por IP, bloqueia payloads malformados e envia ao destino final usando segredo apenas no servidor — nenhum segredo no bundle do cliente.
+- **What to build:** Função server-side que recebe o payload do formulário, valida email/mensagem, aplica rate limit por IP, bloqueia payloads malformados e envia ao destino final usando segredo apenas no servidor, nenhum segredo no bundle do cliente.
 - **Acceptance criteria:**
   - [ ] `POST /api/contact` com payload válido retorna 200 e entrega a mensagem ao destino final
   - [ ] Payload malformado (sem email/mensagem válida) retorna 400 com shape de erro estável
@@ -70,7 +70,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Destino/segredo configurado apenas via variável de ambiente no servidor; bundle do cliente não contém o webhook
   - [ ] Logs server-side não registram dados sensíveis; setup documentado em `.env.example`
 
-### SC-2 — Formulário falando com o novo endpoint com mesma UX
+### SC-2: Formulário falando com o novo endpoint com mesma UX
 - **Title:** Migrar formulário para o endpoint seguro mantendo a UX
 - **Blocked by:** SC-1
 - **User stories covered:** 1, 2, 3, 12, 15
@@ -82,7 +82,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Labels e `aria-describedby` de erro presentes (navegação por teclado/leitor ok)
   - [ ] Nenhuma referência ao webhook antigo permanece no código do cliente
 
-### SC-3 — Prova E2E, telemetria e documentação de deploy
+### SC-3: Prova E2E, telemetria e documentação de deploy
 - **Title:** Cobrir endpoint com E2E mockado, telemetria e docs de deploy
 - **Blocked by:** SC-2
 - **User stories covered:** 9, 11, 13, 14
@@ -96,9 +96,9 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
 
 ---
 
-## seo-metadados — 3 slices
+## seo-metadados: 3 slices
 
-### SEO-1 — Metadados essenciais, idioma e assets de marca
+### SEO-1: Metadados essenciais, idioma e assets de marca
 - **Title:** Entregar metadados essenciais e assets de marca no head
 - **Blocked by:** DC-1 (fonte única de textos via config central)
 - **User stories covered:** 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 13
@@ -110,7 +110,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Título/descrição são lidos da fonte centralizada (atualizável sem editar HTML)
   - [ ] Favicon e imagem respondem 200
 
-### SEO-2 — Dados estruturados Person e testes de regressão de SEO
+### SEO-2: Dados estruturados Person e testes de regressão de SEO
 - **Title:** Adicionar dados estruturados Person e testes de regressão de SEO
 - **Blocked by:** SEO-1
 - **User stories covered:** 4, 14
@@ -121,7 +121,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Remover manualmente uma tag essencial faz a suite falhar
   - [ ] Sem regressão nos testes existentes
 
-### SEO-3 — Auditoria Lighthouse SEO e guia de validação manual
+### SEO-3: Auditoria Lighthouse SEO e guia de validação manual
 - **Title:** Validar Lighthouse SEO ≥ 95 e documentar validação manual de previews
 - **Blocked by:** SEO-2
 - **User stories covered:** 12
@@ -134,9 +134,9 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
 
 ---
 
-## code-splitting-lazy — 4 slices
+## code-splitting-lazy: 4 slices
 
-### CS-1 — Separar vendor do bundle inicial e medir o ganho
+### CS-1: Separar vendor do bundle inicial e medir o ganho
 - **Title:** Configurar code-splitting do vendor e registrar baseline de bundle
 - **Blocked by:** DC-4 (placeholders determinísticos da fonte única)
 - **User stories covered:** 6, 9, 15
@@ -147,7 +147,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] App carrega e funciona igual ao baseline (suite verde)
   - [ ] Sem mudança de comportamento visível para o visitante
 
-### CS-2 — Lazy das seções de conteúdo com skeleton sem shift
+### CS-2: Lazy das seções de conteúdo com skeleton sem shift
 - **Title:** Adiar Experience/Skills com skeleton de altura preservada
 - **Blocked by:** CS-1
 - **User stories covered:** 1, 3, 4, 13
@@ -159,7 +159,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Conteúdo continua indexável após o lazy (cabeçalho + estrutura presentes no DOM)
   - [ ] Navegação por âncora até as seções adiadas funciona
 
-### CS-3 — Lazy das demais seções e imagens preguiçosas
+### CS-3: Lazy das demais seções e imagens preguiçosas
 - **Title:** Adiar Philosophy/GitHub/Contact/Footer e aplicar loading preguiçoso em imagens
 - **Blocked by:** CS-2
 - **User stories covered:** 2, 5, 8, 10, 12
@@ -171,7 +171,7 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Suite existente verde, incluido navegação por âncoras
   - [ ] Consumo inicial de dados reduzido em relação ao baseline
 
-### CS-4 — Fallback de erro de chunk, acessibilidade de movimento e prova E2E
+### CS-4: Fallback de erro de chunk, acessibilidade de movimento e prova E2E
 - **Title:** Cobrir falha de chunk com retry e provar lazy E2E
 - **Blocked by:** CS-3
 - **User stories covered:** 7, 11, 14
@@ -184,20 +184,20 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
 
 ---
 
-## pwa-offline — 4 slices
+## pwa-offline: 4 slices
 
-### PWA-1 — Manifest instalável e ícones gerados pelo build
+### PWA-1: Manifest instalável e ícones gerados pelo build
 - **Title:** Gerar manifest e ícones PWA a partir do build
 - **Blocked by:** SEO-1 e CS-1 (assets/metadados do SEO com chunks separados)
 - **User stories covered:** 3, 9, 15
-- **What to build:** Site passa a ter manifesto com nome, modo standalone e cores alinhadas ao tema escuro, e ícones nos tamanhos essenciais inclusive mascarável, tudo gerado pelo processo de build a cada deploy — sem arquivos duplicados à mão.
+- **What to build:** Site passa a ter manifesto com nome, modo standalone e cores alinhadas ao tema escuro, e ícones nos tamanhos essenciais inclusive mascarável, tudo gerado pelo processo de build a cada deploy, sem arquivos duplicados à mão.
 - **Acceptance criteria:**
   - [ ] Manifesto gerado em build com nome, display standalone e tema/fundo alinhados à paleta atual
   - [ ] Ícones 192px e 512px (inclusive mascarável) publicados e consistentes com a identidade existente
   - [ ] Navegador Android oferece instalação a partir da tela inicial
   - [ ] Rebuild gera manifest/ícones sem edição manual
 
-### PWA-2 — Service worker com cache versionado por build
+### PWA-2: Service worker com cache versionado por build
 - **Title:** Registrar service worker com cache-first versionado por build
 - **Blocked by:** PWA-1
 - **User stories covered:** 1, 2, 10, 11
@@ -208,22 +208,22 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Chave de cache amarrada ao hash do build; novo build remove caches obsoletos
   - [ ] Primeira visita não fica mais lenta (cache populado em background)
 
-### PWA-3 — Tela de fallback offline amigável e acessível
+### PWA-3: Tela de fallback offline amigável e acessível
 - **Title:** Exibir fallback offline acessível com nova tentativa
 - **Blocked by:** PWA-2
 - **User stories covered:** 4, 5, 6, 7
-- **What to build:** Visitante que cai para offline sem o conteúdo em cache vê mensagem clara com botão de nova tentativa — anunciada por leitor de tela, respeitando movimento reduzido e com alvos de toque generosos — em vez de página em branco.
+- **What to build:** Visitante que cai para offline sem o conteúdo em cache vê mensagem clara com botão de nova tentativa, anunciada por leitor de tela, respeitando movimento reduzido e com alvos de toque generosos, em vez de página em branco.
 - **Acceptance criteria:**
   - [ ] Offline sem conteúdo em cache exibe mensagem clara + botão de nova tentativa
   - [ ] Fallback anunciado de forma acessível (papel de alerta/status, foco ordenado)
   - [ ] Animação/transição do fallback respeita `prefers-reduced-motion`
   - [ ] Elementos legíveis e tocáveis em telas pequenas
 
-### PWA-4 — Prompt de instalação discreto, E2E offline e auditoria Lighthouse
+### PWA-4: Prompt de instalação discreto, E2E offline e auditoria Lighthouse
 - **Title:** Adicionar instalação discreta, E2E offline e auditoria PWA
 - **Blocked by:** PWA-3
 - **User stories covered:** 8, 12, 13, 14, 16
-- **What to build:** Oferta de instalação não intrusiva usando o prompt nativo do navegador, teste E2E simulando offline pós-primeira visita, e auditoria Lighthouse de instalabilidade/offline aprovada — com degradação silenciosa para a SPA normal onde não houver suporte.
+- **What to build:** Oferta de instalação não intrusiva usando o prompt nativo do navegador, teste E2E simulando offline pós-primeira visita, e auditoria Lighthouse de instalabilidade/offline aprovada, com degradação silenciosa para a SPA normal onde não houver suporte.
 - **Acceptance criteria:**
   - [ ] Prompt de instalação aparece de forma discreta sem bloquear o conteúdo; navegadores sem suporte degradam em silêncio
   - [ ] E2E de offline prova que o conteúdo principal segue acessível e falha se um visitante offline perder o acesso
@@ -232,9 +232,9 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
 
 ---
 
-## testes-a11y-visual — 4 slices
+## testes-a11y-visual: 4 slices
 
-### TA-1 — Infraestrutura axe no CI com gate de zero violações críticas
+### TA-1: Infraestrutura axe no CI com gate de zero violações críticas
 - **Title:** Adicionar axe E2E com gate de zero violações críticas no CI
 - **Blocked by:** DC-4, CS-4, PWA-4 (DOM final das fatias anteriores)
 - **User stories covered:** 4, 7, 10, 12, 15
@@ -245,11 +245,11 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] Foco e ordem de headings checados automaticamente nas páginas críticas
   - [ ] Violações moderadas rastreadas sem bloquear (registradas no backlog)
 
-### TA-2 — Correções semânticas e de contraste para atingir o gate
+### TA-2: Correções semânticas e de contraste para atingir o gate
 - **Title:** Corrigir contraste, labels, foco e ordem de headings
 - **Blocked by:** TA-1
 - **User stories covered:** 1, 2, 3, 8, 9, 11, 13
-- **What to build:** Correções mínimas de acessibilidade no conteúdo e tema — heading vazio corrigido, SVGs decorativos silenciados, alts descritivos, foco visível, contraste mínimo e alvos de toque adequados, com screenshots estabilizados sob movimento reduzido.
+- **What to build:** Correções mínimas de acessibilidade no conteúdo e tema, heading vazio corrigido, SVGs decorativos silenciados, alts descritivos, foco visível, contraste mínimo e alvos de toque adequados, com screenshots estabilizados sob movimento reduzido.
 - **Acceptance criteria:**
   - [ ] Gate axe passa com zero violações críticas/sérias
   - [ ] Foco visível em todos os interativos; heading order lógica sem elementos vazios
@@ -257,18 +257,18 @@ Gerado a partir dos 6 PRDs do lote. Ordem sugerida de publicação/execução:
   - [ ] SVGs decorativos com `aria-hidden`; alts descritivos em imagens de conteúdo
   - [ ] Nenhuma mudança visual além das correções de acessibilidade
 
-### TA-3 — Regressão visual por viewport com máscara de animação
+### TA-3: Regressão visual por viewport com máscara de animação
 - **Title:** Adicionar screenshots de regressão visual por viewport
 - **Blocked by:** TA-2
 - **User stories covered:** 5, 6, 13
 - **What to build:** Baseline de screenshots nas viewports mobile/tablet/desktop com animações desabilitadas e máscara sobre elementos em movimento, gerando diff visual rápido a cada run.
 - **Acceptance criteria:**
   - [ ] Screenshots capturados em 3 viewports (mobile, tablet, desktop) em estado de movimento reduzido
-  - [ ] Elementos animados mascarados — sem flake por movimento
+  - [ ] Elementos animados mascarados: sem flake por movimento
   - [ ] Diff visual < threshold em runs limpos
   - [ ] Uma mudança proposital de layout é detectada pelo diff
 
-### TA-4 — Aprovar baselines e documentar atualização de snapshots
+### TA-4: Aprovar baselines e documentar atualização de snapshots
 - **Title:** Aprovar baselines visuais e documentar o fluxo de atualização
 - **Blocked by:** TA-3
 - **User stories covered:** 14

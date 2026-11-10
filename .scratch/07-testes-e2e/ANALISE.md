@@ -1,4 +1,4 @@
-# Análise do site e das interações — base dos testes E2E (Cypress)
+# Análise do site e das interações: base dos testes E2E (Cypress)
 
 Status: done
 Onda: `07-testes-e2e`
@@ -9,14 +9,14 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
 
 ## 1. Rotas e páginas
 
-- Bootstrap: `src/main.tsx` — `ColorModeProvider` → `ThemeProvider` (MUI) →
+- Bootstrap: `src/main.tsx`: `ColorModeProvider` → `ThemeProvider` (MUI) →
   `SnackbarProvider` → `BrowserRouter` com `basename = import.meta.env.BASE_URL`.
 - Rotas (`src/App.tsx`):
   - `*` (catch-all) → `Portfolio` (home). **Não há página 404**: qualquer URL
     desconhecida renderiza a home. Em produção o GitHub Pages usa `dist/404.html`
     = cópia do `index.html` (SPA fallback, `deploy.yml`).
   - `/immersive` → `src/pages/immersive/immersive.tsx` (**lazy**), seta
-    `document.title = 'Preview imersivo — Lucas Nonato'` e `<meta name="robots"
+    `document.title = 'Preview imersivo: Lucas Nonato'` e `<meta name="robots"
     content="noindex, nofollow">` no mount (revertido no unmount).
   - `/roadmap` → **somente DEV** (`import.meta.env.DEV`); em build de produção a
     URL cai no catch-all e mostra a home.
@@ -40,7 +40,7 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
 - Links desktop: "Experiência" `#experience`, "Jornada" `#jornada`,
   "Habilidades" `#skills`, "Contato" `#contact` (mesmo scroll com offset −80).
   **Sem destaque de seção ativa** (`aria-current` não existe).
-- Links dev-only no header: `/roadmap` e `/immersive` (RouterLink) — só em `npm run dev`.
+- Links dev-only no header: `/roadmap` e `/immersive` (RouterLink), só em `npm run dev`.
 - Ações: `InstallButton` (`install-button`), `ThemeToggle` (`theme-toggle`),
   CTA "Contato" (`header-cta`).
 - **Drawer mobile** (`mobile-menu-button` → `mobile-menu`): `role="dialog"
@@ -92,7 +92,7 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
 - Tags são `<span>` **não clicáveis**; sem filtros. `onMouseEnter` só dispara analytics.
 
 ### GitHub (`src/pages/github/github.tsx`)
-- `github-section` — **banner estático**, sem busca/estatísticas de API.
+- `github-section`: **banner estático**, sem busca/estatísticas de API.
 - Links externos para `https://github.com/scriblet`: `github-link` (PillButton) e
   logo com `aria-label="Abrir perfil no GitHub"`, ambos `target="_blank"`.
 
@@ -117,13 +117,13 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
     → warning "Você está offline. Verifique a conexão e tente novamente."
   - Snackbar (`snackbar-host`, `snackbar-{success,error,warning,info}`): auto-hide
     4–7 s por severidade, **ignora clickaway**, fecha com Escape/botão "Fechar".
-- Backend: Netlify Function `netlify/functions/contact.mjs` — honeypot descarta
+- Backend: Netlify Function `netlify/functions/contact.mjs`, honeypot descarta
   com `200 {ok:true}`, rate limit 5 req/IP/60 s → `429`, webhook Discord server-only.
   **`npm run dev` (Vite puro) NÃO serve a function** → em E2E usar `cy.intercept`.
 
 ### Footer (`src/pages/footer.tsx`)
 - Sociais `target="_blank" rel="noopener noreferrer"`: GitHub e LinkedIn com URL;
-  **Instagram e Twitter têm `href=""`** (`src/data/social.ts`) — comportamento
+  **Instagram e Twitter têm `href=""`** (`src/data/social.ts`), comportamento
   atual a documentar nos testes (possível bug).
 - Nav do rodapé ("Home", "Experiência", "Jornada", "Habilidades", "Contato") com
   react-scroll (offset −80). Fine print com ano corrente.
@@ -141,7 +141,7 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
 
 ## 5. PWA / Offline
 
-- `vite-plugin-pwa` (`registerType: 'autoUpdate'`, `devOptions.enabled: false` —
+- `vite-plugin-pwa` (`registerType: 'autoUpdate'`, `devOptions.enabled: false`,
   **SW não roda em dev**; só em build/preview). Precache inclui JS/CSS/imagens/woff
   e o PDF do CV; `navigateFallback: 'index.html'` com denylist `/\/api\//`.
 - Manifest inline: standalone, theme `#0a0814`, ícones 192/512/maskable em `public/`.
@@ -154,11 +154,11 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
 
 ## 6. Página `/immersive`
 
-- `immersive-page` — prévia experimental, `noindex`, tema adaptativo (herda o
+- `immersive-page`: prévia experimental, `noindex`, tema adaptativo (herda o
   global; sem ThemeToggle).
 - Nav (`ImmersiveNav`): âncoras nativas por hash `#about`, `#skills`, `#experience`,
   `#contact` (sem react-scroll), marca → `#immersive-hero`, CTA `RouterLink to="/"`.
-- `CleanHero` (`immersive-hero`, `immersive-wordmark`, `immersive-hero-meta`) —
+- `CleanHero` (`immersive-hero`, `immersive-wordmark`, `immersive-hero-meta`),
   **sem interações clicáveis**. ⚠️ `PortalHero.tsx` tem testids próprios mas é
   **código morto** (não importado). **Não existe `ReleasesDeck`** no repo.
 - `immersive-about`, `immersive-skills` (cards `immersive-skill-card` repetido),
@@ -179,7 +179,7 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
   `data-revealed="true"` uma única vez. **Esperar `[data-revealed="true"]`** ou
   forçar `prefers-reduced-motion: reduce` (aí nada é ocultado, `App.css`).
 - Framer Motion mínimo em runtime (`DownloadCvButton` hover/tap). Sem `@keyframes`
-  em CSS — tudo `transition`/transform. Sem loops infinitos ativos.
+  em CSS: tudo `transition`/transform. Sem loops infinitos ativos.
 - Header auto-hide com `transform .25s` (vira `none` em reduced motion).
 - `useStickyProgress` escreve `--p` via rAF durante o scroll do hero.
 - `ReadingProgress` (barra `reading-progress-bar`, transition 120 ms).
@@ -198,7 +198,7 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
 
 ## 9. Infra de testes atual
 
-- Vitest (jsdom) — `npm run test:unit`, 9 arquivos, 42 testes (hooks, tema, dados,
+- Vitest (jsdom): `npm run test:unit`, 9 arquivos, 42 testes (hooks, tema, dados,
   componentes). Cobertura de lógica; nada de navegador.
 - **Não existe Cypress nem Playwright** (sem `cypress.config.*`, pasta `tests/`
   vazia, `test-results/.last-run.json` é resíduo).
@@ -232,7 +232,7 @@ embasar os PRDs de testes automatizados. Fatos verificados no código em 08/11/2
    limpar entre testes; assertar `data-mui-color-scheme`.
 8. Instagram/Twitter do footer com `href=""` (comportamento atual).
 9. Snackbars somem sozinhos e ignoram clickaway (só Escape/botão "Fechar").
-10. Reduced motion desliga reveals e transições — útil para estabilizar specs.
+10. Reduced motion desliga reveals e transições: útil para estabilizar specs.
 
 ## 12. Cobertura proposta → mapa dos PRDs
 

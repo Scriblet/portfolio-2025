@@ -1,4 +1,4 @@
-# Issue — Imagem da filosofia otimizada com lazy-load
+# Issue: Imagem da filosofia otimizada com lazy-load
 
 Status: done
 

@@ -1,4 +1,4 @@
-# Issue — Toggle no header + tema reativo com persistência
+# Issue: Toggle no header + tema reativo com persistência
 
 Status: ready-for-agent
 

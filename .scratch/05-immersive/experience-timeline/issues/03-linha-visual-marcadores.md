@@ -1,4 +1,4 @@
-# Issue — Linha visual e marcadores da timeline
+# Issue: Linha visual e marcadores da timeline
 
 Status: done
 

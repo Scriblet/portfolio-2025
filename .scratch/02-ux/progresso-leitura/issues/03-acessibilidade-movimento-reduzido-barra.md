@@ -1,4 +1,4 @@
-# Issue — Acessibilidade e movimento reduzido da barra
+# Issue: Acessibilidade e movimento reduzido da barra
 
 Status: ready-for-agent
 

@@ -1,4 +1,4 @@
-# Issue — Manifesto Técnico: header + a11y + motion + testes
+# Issue: Manifesto Técnico: header + a11y + motion + testes
 
 Status: done
 

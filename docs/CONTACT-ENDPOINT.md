@@ -45,8 +45,8 @@ Todas as respostas são JSON com `Cache-Control: no-store`.
 
 | Status | Corpo                                   | Quando                                                     |
 | ------ | --------------------------------------- | ---------------------------------------------------------- |
-| `200`  | `{"ok":true}`                           | mensagem aceita (ou honeypot preenchido — descarte silencioso) |
-| `204`  | vazio                                   | preflight `OPTIONS` (CORS) — nunca valida payload nem chama o Discord |
+| `200`  | `{"ok":true}`                           | mensagem aceita (ou honeypot preenchido, descarte silencioso) |
+| `204`  | vazio                                   | preflight `OPTIONS` (CORS), nunca valida payload nem chama o Discord |
 | `400`  | `{"ok":false,"error":"invalid_payload"}`| JSON inválido ou campo fora das regras                     |
 | `405`  | `{"ok":false,"error":"method_not_allowed"}` | método diferente de `POST`/`OPTIONS` (header `Allow: POST, OPTIONS`) |
 | `429`  | `{"ok":false,"error":"rate_limited"}`   | mais de 5 requisições por IP em 1 minuto (header `Retry-After: 60`) |
@@ -84,7 +84,7 @@ Valores de embed são truncados em 1020 caracteres (limite do Discord: 1024).
 - IP obtido de `x-nf-client-connection-ip` (preenchido pela Netlify) com
   fallback para o primeiro valor de `x-forwarded-for`.
 - Estado **em memória** do processo da função. Em cenários de múltiplas
-  instâncias, o limite é por instância — suficiente para conter spam simples,
+  instâncias, o limite é por instância: suficiente para conter spam simples,
   não é uma garantia distribuída. Se isso virar problema, migrar para
   Netlify Blobs/Upstash.
 - Ao exceder: `429` + `Retry-After: 60`.
@@ -253,7 +253,7 @@ curl -i -X POST https://<site-functions>.netlify.app/api/contact \
 ## 8. Testes
 
 - E2E com mock de rota: `cypress/e2e/contact-form.cy.ts`
-  (`cy.interceptContact(...)`) — cobrem sucesso, erro, rate limit, validação
+  (`cy.interceptContact(...)`): cobrem sucesso, erro, rate limit, validação
   client-side e payload enviado, sem depender do Discord.
 - Teste manual do endpoint real: `netlify dev` + `curl` (seção 4).
 
@@ -261,6 +261,6 @@ curl -i -X POST https://<site-functions>.netlify.app/api/contact \
 # terminal 1
 npm run dev:test
 
-# terminal 2 — um spec por vez (ver docs/agents/testing.md)
+# terminal 2: um spec por vez (ver docs/agents/testing.md)
 npm run test:e2e:spec -- cypress/e2e/contact-form.cy.ts
 ```

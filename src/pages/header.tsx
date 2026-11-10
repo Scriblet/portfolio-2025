@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState, type FocusEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type FocusEvent } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { scroller } from "react-scroll";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { SITE_CONFIG } from "../data";
 import useScrollDirection from "../hooks/useScrollDirection";
-import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
+import { useHeroIntro } from "../hooks/heroIntroContext";
+import { HERO_INTRO } from "../hooks/heroIntroTiming";
 import ThemeToggle from "../components/ThemeToggle";
 import InstallButton from "../components/pwa/InstallButton";
 import { trackPortfolioEvents } from "../services/analytics";
@@ -34,10 +35,15 @@ export default function Header() {
   const [focusWithin, setFocusWithin] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const { hidden: scrollHidden } = useScrollDirection();
-  const reduced = usePrefersReducedMotion();
+  const { phase } = useHeroIntro();
   const isDev = import.meta.env.DEV;
 
-  const hidden = scrollHidden && !focusWithin;
+  // Durante a intro o header entra junto da abertura das cortinas e fica
+  // inerte até o hold do wordmark terminar. Depois volta ao comportamento
+  // de esconder ao descer a página.
+  const introCurtains = phase === "curtains";
+  const hidden = !introCurtains && scrollHidden && !focusWithin;
+  const inert = introCurtains || hidden;
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -85,14 +91,16 @@ export default function Header() {
     <>
       <header
         className={styles.navWrap}
-        style={{
-          transform: hidden ? "translateY(-140%)" : "translateY(0)",
-          transition: reduced
-            ? "none"
-            : "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-        {...(hidden ? { inert: true } : {})}
-        aria-hidden={hidden ? "true" : undefined}
+        style={
+          {
+            "--header-intro-delay": `${HERO_INTRO.CURTAINS_HOLD_MS}ms`,
+            "--header-intro-duration": `${HERO_INTRO.HEADER_ENTER_MS}ms`,
+          } as CSSProperties
+        }
+        data-intro={phase !== "complete" ? "true" : undefined}
+        data-hidden={hidden ? "true" : undefined}
+        {...(inert ? { inert: true } : {})}
+        aria-hidden={inert ? "true" : undefined}
         onFocusCapture={handleFocus}
         onBlurCapture={handleBlur}
         data-testid="site-header"

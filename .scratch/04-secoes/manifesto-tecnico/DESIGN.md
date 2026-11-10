@@ -1,4 +1,4 @@
-# DESIGN — Manifesto Técnico
+# DESIGN: Manifesto Técnico
 
 ## Conceito em uma frase
 
@@ -14,7 +14,7 @@ Spread editorial: a tese ocupa o topo em escala de display, a foto das mãos apa
 |  Como eu construo                                                |
 |  Construo software e interfaces acessíveis onde design e         |
 |  engenharia são a mesma decisão.                                 |
-|  Sete regras que eu uso para decidir — não para decorar.         |
+|  Sete regras que eu uso para decidir, não para decorar.         |
 +------------------------------------------------------------------+
 |  [faixa full-bleed com foto das mãos]                            |
 +------------------------------------------------------------------+

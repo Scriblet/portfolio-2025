@@ -1,4 +1,4 @@
-# PRD — Toast de Contato
+# PRD: Toast de Contato
 
 Status: ready-for-agent
 Feature slug: `snackbar-contato`

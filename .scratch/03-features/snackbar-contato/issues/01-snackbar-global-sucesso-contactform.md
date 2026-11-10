@@ -1,4 +1,4 @@
-# Issue — Sistema global de snackbar + sucesso do ContactForm
+# Issue: Sistema global de snackbar + sucesso do ContactForm
 
 Status: ready-for-agent
 

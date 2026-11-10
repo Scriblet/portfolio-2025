@@ -1,4 +1,4 @@
-# Issue — Documentação das regras de E2E e limpeza dos resíduos da suíte antiga
+# Issue: Documentação das regras de E2E e limpeza dos resíduos da suíte antiga
 
 Status: done
 

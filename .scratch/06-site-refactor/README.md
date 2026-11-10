@@ -1,4 +1,4 @@
-# Onda 7 — Refactor do site com o design imersivo
+# Onda 7: Refactor do site com o design imersivo
 
 > O portfólio inteiro passa a usar a linguagem visual da rota `/immersive`.
 > Base técnica: `src/styles/design-system.css`, `src/theme/designTokens.ts`,

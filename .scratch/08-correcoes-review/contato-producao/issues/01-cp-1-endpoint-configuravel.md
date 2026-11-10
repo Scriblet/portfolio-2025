@@ -1,4 +1,4 @@
-# Issue — Endpoint de contato configurável por ambiente
+# Issue: Endpoint de contato configurável por ambiente
 
 Status: done
 
@@ -19,4 +19,4 @@ unitário do módulo que resolve o endpoint.
 - [ ] Teste unitário cobre a resolução do endpoint
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente

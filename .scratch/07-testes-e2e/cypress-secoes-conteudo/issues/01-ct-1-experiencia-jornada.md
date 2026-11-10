@@ -1,4 +1,4 @@
-# Issue — Seções Experiência e Jornada: cards, marcas e certificados
+# Issue: Seções Experiência e Jornada: cards, marcas e certificados
 
 Status: done
 

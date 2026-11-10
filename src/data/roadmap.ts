@@ -202,14 +202,14 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 6,
     title: "Refactor imersivo",
-    goal: "Uma experiência editorial imersiva aplicada ao portfólio inteiro: vidro arquitetônico, tipografia Syne, narrativa por seções e movimento contido — sem perder acessibilidade nem performance.",
+    goal: "Uma experiência editorial imersiva aplicada ao portfólio inteiro: vidro arquitetônico, tipografia Syne, narrativa por seções e movimento contido, sem perder acessibilidade nem performance.",
     status: "done",
     items: [
       {
         slug: "design-system-immersive",
         title: "Design system imersivo",
         summary:
-          "Tokens, tipografia Syne/Inter/Sora, vidro, grão e primitivas com foco e contraste AA — agora globais.",
+          "Tokens, tipografia Syne/Inter/Sora, vidro, grão e primitivas com foco e contraste AA, agora globais.",
         category: "UX",
         status: "done",
         issuesDone: 4,
@@ -424,8 +424,8 @@ export const roadmapWaves: RoadmapWave[] = [
   {
     id: 9,
     title: "Testes E2E",
-    goal: "Cobertura ponta a ponta das interações críticas do site com Cypress — navegação, conteúdo, contato, PWA e acessibilidade — sempre opt-in, sem voltar a travar a máquina no loop de desenvolvimento.",
-    status: "in-progress",
+    goal: "Cobertura ponta a ponta das interações críticas do site com Cypress (navegação, conteúdo, contato, PWA e acessibilidade), sempre opt-in, sem voltar a travar a máquina no loop de desenvolvimento.",
+    status: "done",
     items: [
       {
         slug: "cypress-infraestrutura",
@@ -444,17 +444,17 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "Home, rotas, âncoras do header e do footer, drawer mobile, tema e header ao rolar.",
         category: "Técnico",
-        status: "in-progress",
-        issuesDone: 2,
+        status: "done",
+        issuesDone: 4,
         issuesTotal: 4,
         dependsOn: ["cypress-infraestrutura"],
-        note: "navigation.cy.ts cobre rotas, âncoras, drawer, tema e progresso; faltam auto-hide e meta theme-color.",
+        note: "theme.cy.ts e header-scroll.cy.ts fecham auto-hide, meta theme-color e progresso.",
       },
       {
         slug: "cypress-secoes-conteudo",
         title: "Conteúdo das seções",
         summary:
-          "Experiência, jornada, skills, GitHub e footer renderizados com links íntegros.",
+          "Mapa de IA, manifesto, selected work, skills, GitHub e footer renderizados com links íntegros.",
         category: "Técnico",
         status: "done",
         issuesDone: 3,
@@ -478,8 +478,8 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "Service worker em build, conteúdo em cache, fallback de navegação, OfflineNotice e instalação.",
         category: "Técnico",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 3,
         issuesTotal: 3,
         dependsOn: ["cypress-infraestrutura"],
       },
@@ -489,8 +489,8 @@ export const roadmapWaves: RoadmapWave[] = [
         summary:
           "axe-core na home e na /immersive, navegação por teclado e viewports móveis.",
         category: "Técnico",
-        status: "pending",
-        issuesDone: 0,
+        status: "done",
+        issuesDone: 3,
         issuesTotal: 3,
         dependsOn: ["cypress-infraestrutura"],
       },

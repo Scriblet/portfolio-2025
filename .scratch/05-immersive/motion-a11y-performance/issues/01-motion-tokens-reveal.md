@@ -1,4 +1,4 @@
-# Issue — Tokens de movimento e componente Reveal
+# Issue: Tokens de movimento e componente Reveal
 
 Status: done
 

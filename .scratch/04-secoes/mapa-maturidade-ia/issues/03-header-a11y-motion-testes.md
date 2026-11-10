@@ -1,4 +1,4 @@
-# Issue — Mapa de Maturidade em IA: header + a11y + motion + testes
+# Issue: Mapa de Maturidade em IA: header + a11y + motion + testes
 
 Status: done
 

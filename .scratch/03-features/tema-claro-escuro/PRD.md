@@ -1,4 +1,4 @@
-# PRD — Tema Claro/Escuro
+# PRD: Tema Claro/Escuro
 
 Status: ready-for-agent
 Feature slug: `tema-claro-escuro`
@@ -58,5 +58,5 @@ Adicionar um toggle de tema claro/escuro visível e acessível no portfólio, co
 
 ## Further Notes
 
-- Atenção a pisar em cores fixas fora do tema (incluindo animações Framer Motion e estilos de cards) — o objetivo é que nenhum componente precise de mudança para adaptar-se ao novo tema.
+- Atenção a pisar em cores fixas fora do tema (incluindo animações Framer Motion e estilos de cards), o objetivo é que nenhum componente precise de mudança para adaptar-se ao novo tema.
 - Se a feature de hierarquia tipográfica tiver alterado a escala tipográfica, consumi-la sem duplicar definições de tipografia no novo sistema de temas.

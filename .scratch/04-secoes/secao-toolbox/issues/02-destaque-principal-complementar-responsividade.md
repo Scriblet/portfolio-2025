@@ -1,4 +1,4 @@
-# Issue — Destaque principal vs complementar e responsividade
+# Issue: Destaque principal vs complementar e responsividade
 
 Status: removed
 

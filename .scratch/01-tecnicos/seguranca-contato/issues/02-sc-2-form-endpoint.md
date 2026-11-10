@@ -1,4 +1,4 @@
-# Issue — Migrar formulário para o endpoint seguro mantendo a UX
+# Issue: Migrar formulário para o endpoint seguro mantendo a UX
 
 Status: ready-for-agent
 

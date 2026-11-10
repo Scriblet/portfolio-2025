@@ -1,4 +1,4 @@
-# Issue — Mapa de Maturidade em IA: dados + seção base renderizada
+# Issue: Mapa de Maturidade em IA: dados + seção base renderizada
 
 Status: done
 

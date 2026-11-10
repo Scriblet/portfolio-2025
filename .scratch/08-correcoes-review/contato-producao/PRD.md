@@ -1,4 +1,4 @@
-# PRD — Contato funcional em produção
+# PRD: Contato funcional em produção
 
 Status: ready-for-agent
 Feature slug: `contato-producao`
@@ -6,11 +6,11 @@ Feature slug: `contato-producao`
 ## Problem Statement
 
 Em produção o portfólio é servido como estático no GitHub Pages
-(`Server: GitHub.com`) e `POST /api/contact` responde **404** — verificado no ar
+(`Server: GitHub.com`) e `POST /api/contact` responde **404**, verificado no ar
 em 2026-11-08. O endpoint só existe como Netlify Function
 (`netlify/functions/contact.mjs`), ativa apenas no `netlify dev`. Consequência:
 todo envio do formulário de contato (home e `/immersive`) falha com "Não foi
-possível enviar" para qualquer visitante real — a feature mais importante de
+possível enviar" para qualquer visitante real: a feature mais importante de
 conversão do portfólio está morta em produção. Além disso, o endpoint está
 hardcoded como caminho relativo no cliente, sem forma de apontar para outro host.
 
@@ -45,10 +45,10 @@ completo para Netlify (contrato HTTP idêntico, muda a URL pública).
 
 ## Implementation Decisions
 
-- Seam principal: serviço/API — o contrato `POST /api/contact` de
+- Seam principal: serviço/API: o contrato `POST /api/contact` de
   `docs/CONTACT-ENDPOINT.md` é a fonte de verdade e não muda (200/400/405/429/
   502/503, mesmos corpos JSON, `Cache-Control: no-store`).
-- Seam secundário: componente — `contactForm.tsx` e
+- Seam secundário: componente: `contactForm.tsx` e
   `ImmersiveContactForm.tsx` passam a ler `import.meta.env.VITE_CONTACT_ENDPOINT`
   com fallback `/api/contact`; nenhuma mudança de UX.
 - Publicação: deployment Netlify só-de-functions (ou Worker equivalente) com

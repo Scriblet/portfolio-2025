@@ -1,4 +1,4 @@
-# Issue — Hook de progresso do portal
+# Issue: Hook de progresso do portal
 
 Status: done
 

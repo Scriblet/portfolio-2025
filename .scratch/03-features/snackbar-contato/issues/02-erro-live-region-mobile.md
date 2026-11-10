@@ -1,4 +1,4 @@
-# Issue — Erro, live region, mobile e movimento reduzido
+# Issue: Erro, live region, mobile e movimento reduzido
 
 Status: ready-for-agent
 

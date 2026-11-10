@@ -1,4 +1,4 @@
-# Brief fechado — Onda 8: Mapa de Maturidade em IA + Manifesto
+# Brief fechado: Onda 8: Mapa de Maturidade em IA + Manifesto
 
 Decisões tomadas com o Lucas em 2026-11-09. **Não reabrir.** Este arquivo é a
 entrada única para o design e para a implementação.
@@ -12,79 +12,79 @@ entrada única para o design e para a implementação.
 | Marcador de nível | **Sem marcador.** As camadas descrevem atuação; nada de nota, selo ou "onde estou". |
 | RAG | Sem experiência em produção. A evidência da camada 03 diz explicitamente **"estudo aplicado e protótipos"**. |
 | Agentes | **Em produção** na plataforma de IA (Aura/Vivo). |
-| Evidências | **Empresas anonimizadas.** Usar "plataforma de IA de grande porte", "produto de seguros", "consultoria" — sem nomes próprios no mapa. |
+| Evidências | **Empresas anonimizadas.** Usar "plataforma de IA de grande porte", "produto de seguros", "consultoria", sem nomes próprios no mapa. |
 | Manifesto | **7 princípios**, incluindo "Shipar faz parte do design". |
 | Headline do mapa | **"Onde a IA vira sistema"** |
 | Headline do manifesto | **"Como eu construo"** |
 | Ambição visual | **Puxar para o imersivo**: mais contraste, mais presença tipográfica e movimento do que a home atual, sem virar uma segunda `/immersive`. |
 
-## 1. Mapa de Maturidade em IA — conteúdo final
+## 1. Mapa de Maturidade em IA: conteúdo final
 
 - **Label:** `Competência em IA / 02`
 - **Headline:** Onde a IA vira sistema
-- **Apoio:** O mapa do que eu coloco de pé — não um ranking de senioridade.
+- **Apoio:** O mapa do que eu coloco de pé, não um ranking de senioridade.
 - **Fecho:** As camadas de baixo sustentam as de cima. Nenhuma funciona sozinha.
 
-### Camada 01 — Produto e uso
+### Camada 01: Produto e uso
 - **Tese:** IA só vale quando muda o trabalho de alguém.
 - **Capacidades:** mapear onde IA gera ganho real; revisão de código e documentação assistidas; prototipar para validar hipótese antes de investir.
 - **Evidência:** rotina de engenharia em produto.
 
-### Camada 02 — Integração de modelos
+### Camada 02: Integração de modelos
 - **Tese:** Modelo bom é modelo que aguenta produção.
 - **Capacidades:** LLMs via API em TypeScript/Node; embeddings e busca; validação de resposta, retry e fallback.
 - **Evidência:** plataforma de IA de grande porte.
 
-### Camada 03 — Contexto e RAG
+### Camada 03: Contexto e RAG
 - **Tese:** Resposta boa começa com contexto bom.
 - **Capacidades:** chunking e indexação; vector stores; prompt estruturado; avaliação de relevância.
 - **Evidência:** estudo aplicado e protótipos.
 
-### Camada 04 — Agentes e orquestração
+### Camada 04: Agentes e orquestração
 - **Tese:** Agente é software com ferramentas, não chatbot com personalidade.
 - **Capacidades:** tool calling; memória e estado; fluxos multi-step com revisão humana; limites e permissões.
 - **Evidência:** em produção na plataforma de IA.
 
-### Camada 05 — Operação e governança
+### Camada 05: Operação e governança
 - **Tese:** O que não é observado não é confiável.
 - **Capacidades:** traces de prompt; avaliação e regressão; custo e latência; privacidade, OAuth2/mTLS e versionamento de prompts.
 - **Evidência:** práticas de CI/CD e segurança aplicadas a produto.
 
-## 2. Manifesto — conteúdo final
+## 2. Manifesto: conteúdo final
 
 - **Label:** `Princípios / 03`
 - **Headline:** Como eu construo
 - **Abertura (herdada da Filosofia, ampliada):** Construo software e interfaces acessíveis onde design e engenharia são a mesma decisão.
-- **Apoio:** Sete regras que eu uso para decidir — não para decorar.
+- **Apoio:** Sete regras que eu uso para decidir, não para decorar.
 - **Fecho:** Os cases abaixo são o teste dessas regras.
 
 Cada princípio tem número, título, frase de impacto e 1–2 linhas de consequência.
 
-**01 — Código é meio, não fim.**
+**01: Código é meio, não fim.**
 *O problema vem antes da stack.*
 Já vi sistema tecnicamente elegante que ninguém usava. Entender o problema e medir o custo da solução vem antes de escolher a ferramenta.
 
-**02 — Acessibilidade é padrão, não feature.**
+**02: Acessibilidade é padrão, não feature.**
 *Se não funciona para todos, não está pronto.*
 Semântica, teclado e contraste entram no primeiro commit, não no backlog de polimento.
 
-**03 — IA amplifica intenção.**
+**03: IA amplifica intenção.**
 *Sem direção, é ruído com latência.*
 Modelo não conserta requisito vago. Meu trabalho é dar contexto, limite e critério de sucesso antes de pedir uma resposta.
 
-**04 — Simples escala.**
+**04: Simples escala.**
 *Complexidade é dívida com juros altos.*
 Prefiro uma solução chata que o time inteiro entende a uma arquitetura brilhante que só uma pessoa mantém.
 
-**05 — Aprendizado contínuo é o único estado estável.**
+**05: Aprendizado contínuo é o único estado estável.**
 *Toda solução vira legado. A curiosidade fica.*
 Saí do front para full stack, do full stack para IA. O que não mudou foi a disposição de recomeçar como iniciante.
 
-**06 — Colaboração é arquitetura.**
+**06: Colaboração é arquitetura.**
 *Time que não conversa constrói acoplamento.*
 Documentação, revisão e decisões explícitas são infraestrutura. O código é consequência.
 
-**07 — Shipar faz parte do design.**
+**07: Shipar faz parte do design.**
 *Pronto é melhor que perfeito, desde que o pronto seja honesto.*
 Sistema bonito que não chega em produção é hipótese. Entrego em fatias pequenas, com critério de pronto.
 
@@ -103,7 +103,7 @@ A primeira versão do protótipo foi considerada **simples demais**: cinco cards
 idênticos e sete linhas idênticas repetiam o padrão `label + headline + lead`
 de todas as seções. O redesign foi aprovado com estas duas estruturas:
 
-### Mapa — diagrama de pilha contínuo, não cards
+### Mapa: diagrama de pilha contínuo, não cards
 - Uma única coluna contínua dividida por hairlines, como corte de arquitetura.
 - Rail fixo (sticky) à esquerda no desktop com um numeral gigante **05** e o
   índice 01–05; a camada ativa acende no rail conforme o scroll.
@@ -112,7 +112,7 @@ de todas as seções. O redesign foi aprovado com estas duas estruturas:
 - No mobile o rail vira apenas os números na calha, sem sticky.
 - Superfície sólida com hairline (decisão já validada).
 
-### Manifesto — spread editorial, não lista
+### Manifesto: spread editorial, não lista
 - O statement é o próprio `h2`, em escala de display (5–6rem): a seção começa
   pela tese, não por um título genérico.
 - "Como eu construo" passa a label/eyebrow acima do statement.

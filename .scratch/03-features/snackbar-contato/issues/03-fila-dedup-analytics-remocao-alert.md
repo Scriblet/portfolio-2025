@@ -1,4 +1,4 @@
-# Issue — Fila/dedup + analytics + remoção do Alert
+# Issue: Fila/dedup + analytics + remoção do Alert
 
 Status: ready-for-agent
 

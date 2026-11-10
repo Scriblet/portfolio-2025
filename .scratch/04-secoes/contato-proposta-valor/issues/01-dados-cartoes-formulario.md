@@ -1,4 +1,4 @@
-# Issue — Contato com Proposta de Valor: dados + cartões mantendo o formulário
+# Issue: Contato com Proposta de Valor: dados + cartões mantendo o formulário
 
 Status: done
 

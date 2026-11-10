@@ -1,3 +1,3 @@
 #!/bin/sh
-# Conventional Commits v1.0.0 — see docs/agents/commits.md
+# Conventional Commits v1.0.0: see docs/agents/commits.md
 exec node "$(dirname "$0")/commit-msg.js" "$1"

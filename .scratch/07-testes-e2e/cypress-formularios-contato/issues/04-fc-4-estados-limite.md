@@ -1,4 +1,4 @@
-# Issue — Estados limite: rate limit 429, offline e feedback de download do CV
+# Issue: Estados limite: rate limit 429, offline e feedback de download do CV
 
 Status: done
 

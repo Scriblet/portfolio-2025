@@ -1,6 +1,6 @@
-# Issue — Viewports responsivos, alvos de toque e reduced motion
+# Issue: Viewports responsivos, alvos de toque e reduced motion
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-a11y-responsivo/PRD.md`

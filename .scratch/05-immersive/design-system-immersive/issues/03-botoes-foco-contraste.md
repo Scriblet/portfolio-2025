@@ -1,4 +1,4 @@
-# Issue — Botões, foco e contraste acessível
+# Issue: Botões, foco e contraste acessível
 
 Status: done
 

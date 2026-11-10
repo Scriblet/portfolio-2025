@@ -1,4 +1,4 @@
-# Issue — Comandos de suporte, servidor de teste e regras de estabilidade
+# Issue: Comandos de suporte, servidor de teste e regras de estabilidade
 
 Status: done
 

@@ -10,6 +10,7 @@ import SectionFallback, {
 import LazySectionErrorBoundary from "./components/LazySectionErrorBoundary";
 import { GrainOverlay } from "./components/design-system";
 import { RevealRoot } from "./hooks/RevealRoot";
+import { HeroIntroProvider } from "./hooks/useHeroIntro";
 const Roadmap = lazy(() => import("./pages/roadmap/roadmap"));
 const Immersive = lazy(() => import("./pages/immersive/immersive"));
 
@@ -39,38 +40,40 @@ const LazySection = ({ variant, anchorId, children }: LazySectionProps) => (
 );
 
 const Portfolio = () => (
-  <div className="app-container">
-    <ReadingProgress />
-    <Header />
-    <RevealRoot>
-      <main className="main-content" id="home">
-        <Presentation />
-        <LazySection variant="iaMaturity" anchorId="ia-maturity">
-          <IAMaturity />
+  <HeroIntroProvider>
+    <div className="app-container">
+      <ReadingProgress />
+      <Header />
+      <RevealRoot>
+        <main className="main-content" id="home">
+          <Presentation />
+          <LazySection variant="iaMaturity" anchorId="ia-maturity">
+            <IAMaturity />
+          </LazySection>
+          <LazySection variant="manifesto" anchorId="manifesto">
+            <Manifesto />
+          </LazySection>
+          <LazySection variant="selectedWork" anchorId="selected-work">
+            <SelectedWork />
+          </LazySection>
+          <LazySection variant="skills" anchorId="skills">
+            <SkillsSection />
+          </LazySection>
+          <LazySection variant="github">
+            <GithubBanner />
+          </LazySection>
+          <LazySection variant="contact" anchorId="contact">
+            <ContactForm />
+          </LazySection>
+        </main>
+        <LazySection variant="footer">
+          <Footer />
         </LazySection>
-        <LazySection variant="manifesto" anchorId="manifesto">
-          <Manifesto />
-        </LazySection>
-        <LazySection variant="selectedWork" anchorId="selected-work">
-          <SelectedWork />
-        </LazySection>
-        <LazySection variant="skills" anchorId="skills">
-          <SkillsSection />
-        </LazySection>
-        <LazySection variant="github">
-          <GithubBanner />
-        </LazySection>
-        <LazySection variant="contact" anchorId="contact">
-          <ContactForm />
-        </LazySection>
-      </main>
-      <LazySection variant="footer">
-        <Footer />
-      </LazySection>
-    </RevealRoot>
-    <OfflineNotice />
-    <GrainOverlay />
-  </div>
+      </RevealRoot>
+      <OfflineNotice />
+      <GrainOverlay />
+    </div>
+  </HeroIntroProvider>
 );
 
 export default function App() {

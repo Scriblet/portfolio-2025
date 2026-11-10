@@ -1,4 +1,4 @@
-# PRD — Microinterações e Estados de Foco Consistentes
+# PRD: Microinterações e Estados de Foco Consistentes
 
 Status: ready-for-agent
 Feature slug: `microinteracoes-foco`
@@ -9,7 +9,7 @@ Hoje os elementos interativos do portfólio (links do Header, botões, cards de 
 
 ## Solution
 
-Padronizar os estados interativos de toda a superfície interativa em um único sistema: regras consistentes de hover (elevação/sombra ou realce sutil), focus-visible (anel de foco sempre visível com contraste adequado sobre o tema escuro), active/pressed (resposta imediata ao toque), e transições curtas e previsíveis para cada estado — tudo derivado do tema MUI existente, com duração e curva únicas, e com respeito completo a prefers-reduced-motion (transições de estado podem permanecer instantâneas, mas sem deslocamento ou animação de escala). O objetivo é que qualquer elemento interativo "pareça" pertencer ao mesmo produto, funcione para mouse, toque e teclado, e seja auditável visualmente em uma única passada.
+Padronizar os estados interativos de toda a superfície interativa em um único sistema: regras consistentes de hover (elevação/sombra ou realce sutil), focus-visible (anel de foco sempre visível com contraste adequado sobre o tema escuro), active/pressed (resposta imediata ao toque), e transições curtas e previsíveis para cada estado, tudo derivado do tema MUI existente, com duração e curva únicas, e com respeito completo a prefers-reduced-motion (transições de estado podem permanecer instantâneas, mas sem deslocamento ou animação de escala). O objetivo é que qualquer elemento interativo "pareça" pertencer ao mesmo produto, funcione para mouse, toque e teclado, e seja auditável visualmente em uma única passada.
 
 ## User Stories
 
@@ -32,16 +32,16 @@ Padronizar os estados interativos de toda a superfície interativa em um único 
 
 ## Implementation Decisions
 
-- Módulo de tema (src/theme.ts) como seam principal: a padronização nasce em um único lugar — tokens de transição (duração e curva compartilhadas), estilo de focus-visible (anel com contraste sobre o tema escuro) e regras de hover/active — consumidos pelos componentes via sistema MUI, em vez de estilos espalhados por arquivo.
+- Módulo de tema (src/theme.ts) como seam principal: a padronização nasce em um único lugar, tokens de transição (duração e curva compartilhadas), estilo de focus-visible (anel com contraste sobre o tema escuro) e regras de hover/active, consumidos pelos componentes via sistema MUI, em vez de estilos espalhados por arquivo.
 - Contrato do tema: cada estado interativo (hover, focus-visible, active) tem uma definição central que cobre links do Header, botões, cards de Skills, campos do ContactForm e qualquer elemento interativo futuro; novos componentes herdam o padrão sem sobrescritas ad-hoc.
-- Decisão arquitetural — foco via MUI: o comportamento de focus-visible do MUI é estendido com o anel customizado do tema (sempre presente em navegação por teclado, suprimido em clique de mouse, conforme a convenção focus-visible), sem implementar um sistema paralelo de foco.
+- Decisão arquitetural: foco via MUI: o comportamento de focus-visible do MUI é estendido com o anel customizado do tema (sempre presente em navegação por teclado, suprimido em clique de mouse, conforme a convenção focus-visible), sem implementar um sistema paralelo de foco.
 - Decisão de movimento: as microinterações usam transições curtas sobre propriedades baratas (cor, sombra, opacidade); com prefers-reduced-motion, deslocamento e escala são removidos e restam apenas mudanças instantâneas de cor/sombra.
-- Os componentes existentes (Header, Skills, ContactForm) apenas consomem o tema — nenhuma mudança de lógica de comportamento, apenas herança dos estados padronizados; os dados hardcoded de Skills e o webhook do formulário não são tocados por este PRD.
+- Os componentes existentes (Header, Skills, ContactForm) apenas consomem o tema, nenhuma mudança de lógica de comportamento, apenas herança dos estados padronizados; os dados hardcoded de Skills e o webhook do formulário não são tocados por este PRD.
 - Nenhuma dependência nova; tudo é construído sobre o sistema de tema MUI v7 e Framer Motion já presentes.
 
 ## Testing Decisions
 
-- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts e tests/header.spec.ts — verificar que todos os elementos interativos principais são alcançáveis por teclado e que o estado de foco visível é aplicado (presença do anel, sem depender de pixel exato de sombra).
+- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts e tests/header.spec.ts, verificar que todos os elementos interativos principais são alcançáveis por teclado e que o estado de foco visível é aplicado (presença do anel, sem depender de pixel exato de sombra).
 - Bom teste aqui é comportamental e de cobertura (todo controle interativo alcança o foco e exibe indicador) e não snapshot de CSS: o teste deve enumerar os elementos interativos da composição (Header, Skills, ContactForm, Footer) e falhar se algum deles ficar sem foco visível, mas não deve quebrar por ajuste fino de cor ou sombra.
 - Cobrir a ausência de regressão no formulário de contato (fluxo de preenchimento e envio herdado dos specs existentes) e na navegação por âncoras do Header.
 - O comportamento com prefers-reduced-motion deve ser verificado por emulação de contexto no Playwright (estado muda sem animação), sem testes frágeis de timing.

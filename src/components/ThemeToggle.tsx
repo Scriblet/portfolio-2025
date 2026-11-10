@@ -35,6 +35,8 @@ const ThemeToggle = () => {
       onClick={handleToggle}
       color="inherit"
       sx={{
+        minWidth: 44,
+        minHeight: 44,
         // Herda a cor do AppBar; não fixa text.primary para não perder
         // contraste enquanto o header ainda usa o fundo escuro.
         transition: shouldReduceMotion ? "none" : undefined,

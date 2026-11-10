@@ -1,4 +1,4 @@
-# Issue — Botão principal de download com asset estático
+# Issue: Botão principal de download com asset estático
 
 Status: ready-for-agent
 

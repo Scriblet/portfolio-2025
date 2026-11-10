@@ -4,7 +4,7 @@ import type { SocialLinks } from './types';
 //
 // Nota intencional: GITHUB aponta para https://github.com/scriblet para ficar
 // alinhado ao banner da seção Github e ao README. O fallback anterior em
-// analytics.config.ts era https://github.com/LucasNonato — unificação proposital.
+// analytics.config.ts era https://github.com/LucasNonato; unificação proposital.
 export const SOCIAL_LINKS: SocialLinks = {
   GITHUB: import.meta.env.VITE_GITHUB_URL || 'https://github.com/scriblet',
   LINKEDIN:

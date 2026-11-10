@@ -14,7 +14,7 @@ const logoByKey = {
   arcotech: arcotechLogo,
 } as const;
 
-/** Avião de papel — marca da Finger Consultoria (pedido explícito). */
+/** Avião de papel: marca da Finger Consultoria (pedido explícito). */
 const FingerMark = () => (
   <svg
     viewBox="0 0 24 24"

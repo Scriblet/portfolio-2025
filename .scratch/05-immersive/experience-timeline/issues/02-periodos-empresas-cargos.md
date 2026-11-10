@@ -1,4 +1,4 @@
-# Issue — Períodos, empresas e cargos com dados reais
+# Issue: Períodos, empresas e cargos com dados reais
 
 Status: done
 
@@ -17,11 +17,11 @@ Aplicar tipografia e espaçamento corretos aos campos de período, empresa, carg
 - [x] Cargo em Inter 500, uppercase tracking 0.12em, cor `#9EA5A8`.
 - [x] Descrição em Inter 400, 14–15px, `max-width: 62ch`, line-height 1.68.
 - [x] Valores reais:
-  - Vivo (Telefônica Brasil) — Consultor de IA / AI Software Engineer — mar/2026 – atual
-  - Porto Seguro — Desenvolvedor de Software Pleno — jan/2024 – mar/2026
-  - Thoughtworks — Consultant Developer — abr/2022 – ago/2023
-  - ArcoTech (Escola em Movimento) — Full Stack Developer — jun/2021 – mar/2022
-  - Finger Consultoria — Founder & UX Designer — ago/2019 – jun/2021
+  - Vivo (Telefônica Brasil): Consultor de IA / AI Software Engineer, mar/2026 – atual
+  - Porto Seguro: Desenvolvedor de Software Pleno, jan/2024 – mar/2026
+  - Thoughtworks: Consultant Developer, abr/2022 – ago/2023
+  - ArcoTech (Escola em Movimento): Full Stack Developer, jun/2021 – mar/2022
+  - Finger Consultoria: Founder & UX Designer, ago/2019 – jun/2021
 - [x] Teste valida presença dos períodos reais no DOM.
 
 ## Blocked by

@@ -5,6 +5,30 @@
   right: clamp(14px, 3.5vw, 56px);
   z-index: 100;
   pointer-events: none;
+  transform: translateY(0);
+  transition: transform 0.25s var(--ease-out);
+}
+
+.navWrap[data-hidden="true"] {
+  transform: translateY(-140%);
+}
+
+@keyframes navIntroIn {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-100% - 24px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .navWrap[data-intro="true"] {
+    animation: navIntroIn var(--header-intro-duration, 700ms) var(--ease-out)
+      var(--header-intro-delay, 1200ms) both;
+  }
 }
 
 .nav {
@@ -79,7 +103,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  height: 42px;
+  height: 44px;
   margin-left: 10px;
   padding-left: 18px;
   background: var(--paper);
@@ -114,8 +138,8 @@
 .menuButton {
   display: none;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   color: var(--paper);
   background: transparent;
   border: none;
@@ -275,6 +299,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .navWrap {
+    transition: none;
+  }
+
   .navLink,
   .navCta,
   .drawerLink {

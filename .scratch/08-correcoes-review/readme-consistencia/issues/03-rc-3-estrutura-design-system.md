@@ -1,4 +1,4 @@
-# Issue — Árvore do projeto e design system documentados
+# Issue: Árvore do projeto e design system documentados
 
 Status: done
 
@@ -11,7 +11,7 @@ Atualizar a estrutura de diretórios do README (`src/data`, `src/theme`,
 `.scratch/`) e as seções de componentes/sistema de design conforme implementado
 (tokens, vidro, grão, foco, primitivas). Corrigir a descrição do contato:
 formulário com validação client-side que envia a um endpoint server-side com
-webhook fora do bundle — não "integrado com Discord webhook" no cliente.
+webhook fora do bundle: não "integrado com Discord webhook" no cliente.
 
 ## Acceptance criteria
 - [ ] Árvore de diretórios reflete o repositório real (conferida caminho a caminho)

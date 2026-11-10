@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress'
 
 /**
- * Cypress E2E — configuração base.
+ * Cypress E2E: configuração base.
  *
  * Regras do repo (docs/agents/testing.md):
  * - E2E é opt-in: nunca no loop de desenvolvimento.

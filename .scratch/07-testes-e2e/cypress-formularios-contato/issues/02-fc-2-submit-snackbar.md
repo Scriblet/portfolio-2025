@@ -1,4 +1,4 @@
-# Issue — Envio, payload e feedback via snackbar
+# Issue: Envio, payload e feedback via snackbar
 
 Status: done
 

@@ -1,4 +1,4 @@
-# Issue — Aceitação de produção do contato e docs operacionais
+# Issue: Aceitação de produção do contato e docs operacionais
 
 Status: ready-for-human
 

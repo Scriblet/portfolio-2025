@@ -6,7 +6,7 @@ scope: site
 owner: agent
 ---
 
-# PRD — Design System Imersivo
+# PRD: Design System Imersivo
 
 ## Resumo / objetivo
 
@@ -90,9 +90,9 @@ compartilhem a mesma linguagem sem reimplementar valores.
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/styles/design-system.css` — custom properties e classes globais `ds-*`.
-- `src/theme/designTokens.ts` — tokens em TypeScript.
-- `src/components/design-system/index.tsx` — primitivas compartilhadas.
-- `src/theme.ts` e `src/theme/palettes.ts` — tema MUI alinhado ao DS.
-- `src/main.tsx` — importa fontes e CSS global.
-- `src/pages/immersive/*` — referência visual e laboratório.
+- `src/styles/design-system.css`: custom properties e classes globais `ds-*`.
+- `src/theme/designTokens.ts`: tokens em TypeScript.
+- `src/components/design-system/index.tsx`: primitivas compartilhadas.
+- `src/theme.ts` e `src/theme/palettes.ts`: tema MUI alinhado ao DS.
+- `src/main.tsx`: importa fontes e CSS global.
+- `src/pages/immersive/*`: referência visual e laboratório.

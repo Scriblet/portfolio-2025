@@ -1,4 +1,4 @@
-# PRD — Otimização de imagens
+# PRD: Otimização de imagens
 
 Status: ready-for-agent
 Feature slug: `otimizacao-imagens`
@@ -10,8 +10,8 @@ O portfólio carrega JPEGs pesados nas duas superfícies mais visíveis:
 `multiracial-hands-coming-together.jpg` (821 KB, seção de filosofia). Não há
 `<picture>`/`srcset`, então o mesmo arquivo é servido em qualquer viewport; a
 imagem da filosofia não tem `loading="lazy"` nem dimensões declaradas (risco de
-CLS ao entrar na viewport). Em mobile 3G — típico de quem abre link de portfólio
-— isso derruba o LCP e o score de performance, exatamente onde o site quer
+CLS ao entrar na viewport). Em mobile 3G, típico de quem abre link de portfólio,
+isso derruba o LCP e o score de performance, exatamente onde o site quer
 parecer premium.
 
 ## Solution
@@ -46,7 +46,7 @@ verificado automaticamente para impedir regressão futura.
 - Anti-regressão: verificação automatizada (script ou teste de unidade) que
   falha se qualquer asset de `src/img`/`public` passar do peso orçado, com a
   tabela de orçamentos versionada junto do PRD.
-- Orçamento também revisa `public/og-preview.jpg` (95 KB, aceitável — apenas
+- Orçamento também revisa `public/og-preview.jpg` (95 KB, aceitável, apenas
   confirmar formato/dimensões 1200×630).
 
 ## Fora do escopo

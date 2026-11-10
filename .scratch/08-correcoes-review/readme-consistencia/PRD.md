@@ -1,4 +1,4 @@
-# PRD — README consistente com o repositório
+# PRD: README consistente com o repositório
 
 Status: ready-for-agent
 Feature slug: `readme-consistencia`
@@ -36,7 +36,7 @@ citada no README precisa ser executável como está.
 
 ## Implementation Decisions
 
-- Seam principal: documentação — `README.md` é o artefato; `.env.example` e
+- Seam principal: documentação: `README.md` é o artefato; `.env.example` e
   `docs/CONTACT-ENDPOINT.md` são conferidos e alinhados se divergirem.
 - Pré-requisitos: Node ≥ 22.19 (alinhado a `engines`/`.nvmrc` do PRD
   `ci-node-22`), npm atual; scripts listados são exatamente os do
@@ -59,5 +59,5 @@ citada no README precisa ser executável como está.
 
 ## Dependências de outros PRDs
 
-- `ci-node-22` (para citar `engines`/`.nvmrc` coerentes — se ainda não
+- `ci-node-22` (para citar `engines`/`.nvmrc` coerentes, se ainda não
   existirem, documentar a versão mínima exigida hoje).

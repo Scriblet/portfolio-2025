@@ -1,4 +1,4 @@
-# Issue — Cobrir endpoint com E2E mockado, telemetria e docs de deploy
+# Issue: Cobrir endpoint com E2E mockado, telemetria e docs de deploy
 
 Status: ready-for-agent
 

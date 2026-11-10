@@ -1,4 +1,4 @@
-# Issue — Formulário da página /immersive: validação e feedback inline
+# Issue: Formulário da página /immersive: validação e feedback inline
 
 Status: done
 

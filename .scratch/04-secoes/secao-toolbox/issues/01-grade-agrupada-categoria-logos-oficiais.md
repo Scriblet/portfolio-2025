@@ -1,4 +1,4 @@
-# Issue — Dados centralizados + grade agrupada por categoria com logos oficiais
+# Issue: Dados centralizados + grade agrupada por categoria com logos oficiais
 
 Status: removed
 

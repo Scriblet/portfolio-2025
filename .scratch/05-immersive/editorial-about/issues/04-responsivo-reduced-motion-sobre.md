@@ -1,4 +1,4 @@
-# Issue — Responsivo e reduced motion do Sobre
+# Issue: Responsivo e reduced motion do Sobre
 
 Status: done
 

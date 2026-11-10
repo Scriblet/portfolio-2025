@@ -1,4 +1,4 @@
-# PRD — Conteúdo das seções: experiência, jornada, skills, GitHub e footer
+# PRD: Conteúdo das seções: experiência, jornada, skills, GitHub e footer
 
 Status: draft
 Feature slug: `cypress-secoes-conteudo`
@@ -63,10 +63,10 @@ noreferrer"` + `href` absoluto e válido.
   `github-link`, logo do GitHub, "Ver certificado", sociais do footer e
   `contact-linkedin`.
 - Comportamento documentado (não regressão): Instagram/Twitter do footer hoje
-  têm `href=""` — o spec deve registrá-lo explicitamente (teste que espera o
+  têm `href=""`: o spec deve registrá-lo explicitamente (teste que espera o
   estado atual, com comentário apontando o bug conhecido) em vez de falso-positivo.
 - Conteúdo vindo de `src/data/*`: os specs devem verificar presença e coerência
-  (ex.: empresa não vazia), não copiar a copy inteira — mudança de texto não é
+  (ex.: empresa não vazia), não copiar a copy inteira, mudança de texto não é
   regressão.
 - Skill cards: assertar presença dos 10 `skill-card-*` (lista de slugs em
   comentário no spec) e pelo menos uma tag por card; cuidado com `/`, `&` e
@@ -75,7 +75,7 @@ noreferrer"` + `href` absoluto e válido.
 ## Testing Decisions
 
 - Testar o contrato estrutural (existe card, existe marca, link é externo seguro),
-  não a cópia literal — textos vivem em `src/data` e evoluem.
+  não a cópia literal: textos vivem em `src/data` e evoluem.
 - `waitForSection` antes de cada seção (lazy loading).
 - Preferir `data-testid` e atributos HTML (`target`, `rel`, `dateTime`) a textos.
 - Os testes devem falhar se: uma experiência sumir, uma marca não renderizar
@@ -84,7 +84,7 @@ noreferrer"` + `href` absoluto e válido.
 ## Out of Scope
 
 - Formulários (PRD `cypress-formularios-contato`), PWA, acessibilidade.
-- Testes de busca/estatísticas do GitHub — não existem no app (banner estático).
+- Testes de busca/estatísticas do GitHub: não existem no app (banner estático).
 - Conteúdo da `/immersive` (coberto pelo smoke + formulário imersivo).
 - Corrigir `href=""` do Instagram/Twitter (é issue de produto, não deste PRD).
 
@@ -93,4 +93,4 @@ noreferrer"` + `href` absoluto e válido.
 - Dependências: PRD `cypress-infraestrutura`.
 - Os 5 nomes de `company-mark-*` são contrato público dos testes (data-testid);
   se a chave de marca mudar em `src/data/types.ts`, os specs devem mudar junto.
-- Marcas são SVG inline (`?raw`) — assertar `svg` com `currentColor`, não snapshot.
+- Marcas são SVG inline (`?raw`): assertar `svg` com `currentColor`, não snapshot.

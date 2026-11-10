@@ -1,4 +1,4 @@
-# Issue — Responsivo e reduced motion do hero
+# Issue: Responsivo e reduced motion do hero
 
 Status: done
 

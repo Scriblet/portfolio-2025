@@ -1,11 +1,11 @@
-# PRD — Indicador de Progresso de Leitura
+# PRD: Indicador de Progresso de Leitura
 
 Status: ready-for-agent
 Feature slug: `progresso-leitura`
 
 ## Problem Statement
 
-A página é uma single-page longa (Header → Presentation → Experience → PhilosophyBanner → Skills → GithubBanner → ContactForm → Footer) sem nenhum sinal de quanto falta para chegar ao fim. O visitante não sabe se já viu tudo, se falta muito conteúdo, ou onde está na leitura — o que reduz o consumo completo do portfólio e aumenta a chance de abandonar antes das seções de contato, que são justamente a conversão mais importante. Sem um indicador de posição, a experiência de leitura de uma página única longa depende apenas da intuição do visitante.
+A página é uma single-page longa (Header → Presentation → Experience → PhilosophyBanner → Skills → GithubBanner → ContactForm → Footer) sem nenhum sinal de quanto falta para chegar ao fim. O visitante não sabe se já viu tudo, se falta muito conteúdo, ou onde está na leitura, o que reduz o consumo completo do portfólio e aumenta a chance de abandonar antes das seções de contato, que são justamente a conversão mais importante. Sem um indicador de posição, a experiência de leitura de uma página única longa depende apenas da intuição do visitante.
 
 ## Solution
 
@@ -41,14 +41,14 @@ Adicionar uma barra fina de progresso de leitura fixa no topo da viewport (0–1
 
 ## Testing Decisions
 
-- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts (data-testid e composição da página já verificados) — verificar que a barra existe, que está em 0% (ou próxima) no topo e que atinge 100% ao rolar até o rodapé.
+- Seam de teste principal: Playwright E2E em tests/, seguindo o prior art de tests/app.spec.ts (data-testid e composição da página já verificados), verificar que a barra existe, que está em 0% (ou próxima) no topo e que atinge 100% ao rolar até o rodapé.
 - Bom teste aqui é comportamental (a barra reflete a posição de leitura) e não snapshot de largura em pixels: o teste deve tolerar diferenças de suavização de animação, verificando estados estáveis (início, meio, fim), não valores intermediários exatos em um instante qualquer.
 - Cobrir o caso de página curta ou altura ainda não resolvida (barra não quebra, sem valores inválidos) e a compatibilidade com a navegação por âncoras herdada dos specs existentes.
 - O comportamento com prefers-reduced-motion deve ser verificado manualmente ou por emulação de contexto no Playwright, sem testes frágeis de timing de animação.
 
 ## Out of Scope
 
-- Progresso por seção individual (ex.: "você está em Skills") — apenas progresso global da página.
+- Progresso por seção individual (ex.: "você está em Skills"), apenas progresso global da página.
 - Scroll inteligente do Header (PRD separado: header-scroll-inteligente), embora os dois devam compor visualmente.
 - Marcadores clicáveis ou sumário da página.
 - Salvamento de posição de leitura entre visitas.

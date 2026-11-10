@@ -1,4 +1,4 @@
-# Issue — Renderizar Header/GitHub/Footer a partir da fonte única com fallback seguro
+# Issue: Renderizar Header/GitHub/Footer a partir da fonte única com fallback seguro
 
 Status: ready-for-agent
 

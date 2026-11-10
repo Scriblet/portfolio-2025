@@ -1,4 +1,4 @@
-# Issue — Adicionar instalação discreta, E2E offline e auditoria PWA
+# Issue: Adicionar instalação discreta, E2E offline e auditoria PWA
 
 Status: ready-for-agent
 
@@ -6,7 +6,7 @@ Status: ready-for-agent
 PRD: `.scratch/01-tecnicos/pwa-offline/PRD.md`
 
 ## What to build
-Oferta de instalação não intrusiva usando o prompt nativo do navegador, teste E2E simulando offline pós-primeira visita, e auditoria Lighthouse de instalabilidade/offline aprovada — com degradação silenciosa para a SPA normal onde não houver suporte.
+Oferta de instalação não intrusiva usando o prompt nativo do navegador, teste E2E simulando offline pós-primeira visita, e auditoria Lighthouse de instalabilidade/offline aprovada, com degradação silenciosa para a SPA normal onde não houver suporte.
 
 ## Acceptance criteria
 - [ ] Prompt de instalação aparece de forma discreta sem bloquear o conteúdo; navegadores sem suporte degradam em silêncio

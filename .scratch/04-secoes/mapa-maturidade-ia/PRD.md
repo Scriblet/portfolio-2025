@@ -5,11 +5,11 @@ scope: site
 owner: agent
 ---
 
-# PRD — Mapa de Maturidade em IA
+# PRD: Mapa de Maturidade em IA
 
 ## Resumo / objetivo
 
-Criar uma seção dedicada que posicione Lucas como engenheiro de IA, não apenas como desenvolvedor que usa IA. A seção mostra, em forma de mapa de maturidade, as camadas de competência com inteligência artificial — desde o uso produtivo até a engenharia de agentes, RAG, MLOps e governança. O objetivo é comunicar clareza sobre o que ele sabe fazer com IA e em que nível de profundidade.
+Criar uma seção dedicada que posicione Lucas como engenheiro de IA, não apenas como desenvolvedor que usa IA. A seção mostra, em forma de mapa de maturidade, as camadas de competência com inteligência artificial, desde o uso produtivo até a engenharia de agentes, RAG, MLOps e governança. O objetivo é comunicar clareza sobre o que ele sabe fazer com IA e em que nível de profundidade.
 
 ## Problem Statement
 
@@ -45,11 +45,11 @@ Adicionar uma nova seção de página única, acessível pela âncora `#ia-matur
 - **Fundo**: usar `var(--void)` ou `var(--void-2)` para separação da seção anterior.
 - **Layout**: desktop em formato de escada/pirâmide ou coluna central com camadas empilhadas; mobile em coluna única com camadas em ordem crescente de maturidade.
 - **Camadas sugeridas**:
-  1. **Uso produtivo** — usar IA para acelerar tarefas diárias, revisar código, gerar documentação.
-  2. **Integração de modelos** — consumir APIs de LLM, embeddings, guardrails, validação de respostas.
-  3. **Engenharia de prompts & RAG** — sistemas de retrieval, chunking, vetor stores, prompt engineering estruturado.
-  4. **Agentes & orquestração** — agentes autônomos, ferramentas, memória, fluxos multi-step.
-  5. **MLOps & governança** — observabilidade, custos, segurança, privacidade, versionamento de prompts.
+  1. **Uso produtivo**: usar IA para acelerar tarefas diárias, revisar código, gerar documentação.
+  2. **Integração de modelos**: consumir APIs de LLM, embeddings, guardrails, validação de respostas.
+  3. **Engenharia de prompts & RAG**: sistemas de retrieval, chunking, vetor stores, prompt engineering estruturado.
+  4. **Agentes & orquestração**: agentes autônomos, ferramentas, memória, fluxos multi-step.
+  5. **MLOps & governança**: observabilidade, custos, segurança, privacidade, versionamento de prompts.
 - **Tipografia**: heading da seção no padrão das demais; título da camada em destaque; descrição e tags em cor secundária.
 - **Cores**: gradiente ou cor progressiva para indicar maturidade (ex.: violeta → âmbar → esmeralda).
 - **Ícones**: um ícone por camada (ex.: `Psychology`, `Hub`, `Storage`, `SmartToy`, `Policy`) usando MUI Icons.
@@ -87,13 +87,13 @@ Adicionar uma nova seção de página única, acessível pela âncora `#ia-matur
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/data/aiMaturity.ts` — fonte única das camadas de maturidade.
-- `src/data/types.ts` — adicionar tipo `AiMaturityLevel`.
-- `src/pages/ia-maturity/iaMaturity.tsx` — componente da seção.
-- `src/pages/ia-maturity/iaMaturity.module.scss` — estilos específicos.
-- `src/App.tsx` — registrar a seção no fluxo da página (sugestão: após `SkillsSection`).
-- `src/pages/header.tsx` — adicionar item de menu.
-- `tests/iaMaturity.spec.ts` (modelo) — teste de renderização e ordenação.
+- `src/data/aiMaturity.ts`: fonte única das camadas de maturidade.
+- `src/data/types.ts`: adicionar tipo `AiMaturityLevel`.
+- `src/pages/ia-maturity/iaMaturity.tsx`: componente da seção.
+- `src/pages/ia-maturity/iaMaturity.module.scss`: estilos específicos.
+- `src/App.tsx`: registrar a seção no fluxo da página (sugestão: após `SkillsSection`).
+- `src/pages/header.tsx`: adicionar item de menu.
+- `tests/iaMaturity.spec.ts` (modelo): teste de renderização e ordenação.
 
 ## Further Notes
 

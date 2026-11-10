@@ -1,4 +1,4 @@
-# Issue — Card de glass com formulário de contato
+# Issue: Card de glass com formulário de contato
 
 Status: done
 

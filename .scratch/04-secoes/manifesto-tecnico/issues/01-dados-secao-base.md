@@ -1,4 +1,4 @@
-# Issue — Manifesto Técnico: dados + seção base renderizada
+# Issue: Manifesto Técnico: dados + seção base renderizada
 
 Status: done
 

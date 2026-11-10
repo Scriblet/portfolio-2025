@@ -1,4 +1,4 @@
-# Issue — Validar Lighthouse SEO ≥ 95 e documentar validação manual de previews
+# Issue: Validar Lighthouse SEO ≥ 95 e documentar validação manual de previews
 
 Status: ready-for-agent
 

@@ -1,4 +1,4 @@
-# Issue — Seção de deploy fiel ao GitHub Pages
+# Issue: Seção de deploy fiel ao GitHub Pages
 
 Status: done
 

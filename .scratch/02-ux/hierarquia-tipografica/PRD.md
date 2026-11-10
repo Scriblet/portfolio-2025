@@ -1,4 +1,4 @@
-# PRD — Hierarquia Tipográfica
+# PRD: Hierarquia Tipográfica
 
 Status: ready-for-agent
 Feature slug: `hierarquia-tipografica`
@@ -40,7 +40,7 @@ Estabelecer uma escala tipográfica explícita e consistente em toda a página (
 ## Testing Decisions
 
 - Bom teste aqui é validar estrutura semântica e presença/ausência visual, não pixels exatos: ordem e unicidade do título principal, ausência do elemento vazio na seção Experience, e contraste mínimo dos textos secundários.
-- Módulo testado: testes E2E Playwright existentes (prior art: tests/app.spec.ts) como base — estender com asserções de headings e de que o elemento vazio não aparece; testes de componente/serviço apenas se houver lógica de tema reutilizável que mereça cobertura unitária.
+- Módulo testado: testes E2E Playwright existentes (prior art: tests/app.spec.ts) como base, estender com asserções de headings e de que o elemento vazio não aparece; testes de componente/serviço apenas se houver lógica de tema reutilizável que mereça cobertura unitária.
 - Verificação manual em desktop e viewport mobile para confirmar que a hierarquia se mantém em ambos.
 - Critério de aceite: nenhum teste E2E pré-existente deve falhar por mudança de texto ou estrutura; qualquer ajuste em teste deve refletir uma intenção (novo título/ausência do vazio), não uma quebra acidental.
 
@@ -49,7 +49,7 @@ Estabelecer uma escala tipográfica explícita e consistente em toda a página (
 - Tema claro/escuro (feature separada).
 - Reescrita dos textos da seção Experience ou inclusão de novos conteúdos.
 - Redesign completo da identidade visual, paleta de cores primária ou logotipo.
-- Mudança da tipografia da fonte (família) — apenas escala, pesos e contraste.
+- Mudança da tipografia da fonte (família): apenas escala, pesos e contraste.
 - Atualização do banner GitHub ou adição de projetos em destaque (feature separada).
 - Novas dependências ou sistema de design externo.
 

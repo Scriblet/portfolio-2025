@@ -1,4 +1,4 @@
-# Issue — Âncoras sem bloqueio e cobertura E2E do scroll inteligente
+# Issue: Âncoras sem bloqueio e cobertura E2E do scroll inteligente
 
 Status: ready-for-agent
 

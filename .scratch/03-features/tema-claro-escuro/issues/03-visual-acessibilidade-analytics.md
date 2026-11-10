@@ -1,4 +1,4 @@
-# Issue — Qualidade visual, acessibilidade e analytics de tema
+# Issue: Qualidade visual, acessibilidade e analytics de tema
 
 Status: ready-for-agent
 

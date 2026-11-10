@@ -1,4 +1,4 @@
-# PRD — PWA e offline: conteúdo em cache, OfflineNotice e instalação
+# PRD: PWA e offline: conteúdo em cache, OfflineNotice e instalação
 
 Status: draft
 Feature slug: `cypress-pwa-offline`
@@ -10,7 +10,7 @@ O portfólio é um PWA com service worker (precachê do shell, do CV em PDF e da
 imagens), aviso de offline com recarga e botão de instalação. Nada disso é
 testado: o service worker só existe no build de produção, e uma regressão no
 `navigateFallback`, no cache ou no `OfflineNotice` faria o visitante offline ver
-uma página em branco — exatamente o cenário que motivou o PWA.
+uma página em branco: exatamente o cenário que motivou o PWA.
 
 ## Solution
 
@@ -72,7 +72,7 @@ Cypress (intercepts e eventos `offline`/`online`), sem depender da conexão real
 
 ## Testing Decisions
 
-- É a única área em que o runtime é determinístico apenas no build — os specs
+- É a única área em que o runtime é determinístico apenas no build, os specs
   devem falhar claro se rodarem contra dev (validar `navigator.serviceWorker`
   presente e marcar `this.skip()` com mensagem explícita se não houver SW).
 - Assertar comportamento visitante (conteúdo acessível offline), não chaves de
@@ -84,16 +84,16 @@ Cypress (intercepts e eventos `offline`/`online`), sem depender da conexão real
 ## Out of Scope
 
 - Push notifications, background sync, fila offline do formulário.
-- Ciclo completo de atualização de SW (`skipWaiting`/`clientsClaim`) — inspecionado
+- Ciclo completo de atualização de SW (`skipWaiting`/`clientsClaim`), inspecionado
   manualmente/por build.
-- Auditoria Lighthouse (instalabilidade/perf) — fica em issue de docs/manual.
+- Auditoria Lighthouse (instalabilidade/perf): fica em issue de docs/manual.
 - iOS/Safari (instalação limitada; degradação esperada é não mostrar o botão).
 
 ## Further Notes
 
 - Dependências: PRD `cypress-infraestrutura` (necessário o modo preview/CI).
-- Risco: timing do registro do SW em CI — mitigado com `serviceWorker.ready` e
+- Risco: timing do registro do SW em CI: mitigado com `serviceWorker.ready` e
   retries; se persistir, isolar em `before` com uma visita de aquecimento.
-- `navigateFallback` tem denylist `/\/api\//` — um spec deve confirmar que
+- `navigateFallback` tem denylist `/\/api\//`: um spec deve confirmar que
   `/api/contact` não devolve HTML do shell (intercept `forceNetworkError` e
   assertar que não houve render de app nessa rota).

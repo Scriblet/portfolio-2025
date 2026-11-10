@@ -5,7 +5,7 @@ scope: site
 owner: agent
 ---
 
-# PRD — Manifesto Técnico
+# PRD: Manifesto Técnico
 
 ## Resumo / objetivo
 
@@ -44,12 +44,12 @@ Adicionar uma nova seção de página única, acessível pela âncora `#manifest
 - **Layout**: desktop em coluna central ou grid assimétrico; mobile em coluna única.
 - **Tipografia**: título do princípio em destaque (Syne ou equivalente), frase de impacto em itálico ou cor de destaque, explicação em cor secundária.
 - **Princípios sugeridos**:
-  1. **Código é meio, não fim.** — A melhor engenharia resolve problemas reais de pessoas reais.
-  2. **Acessibilidade é padrão, não feature.** — Produtos inclusivos são produtos melhores para todos.
-  3. **IA amplifica intenção.** — Tecnologia sem direção é ruído; direção sem tecnologia é lenta.
-  4. **Simples escala.** — Sistemas claros são mais fáceis de manter, testar e evoluir.
-  5. **Aprendizado contínuo é o único estado estável.** — Toda solução válida um dia será legado; a curiosidade permanece.
-  6. **Colaboração é arquitetura.** — Grandes produtos nascem de times que comunicam bem.
+  1. **Código é meio, não fim.**: A melhor engenharia resolve problemas reais de pessoas reais.
+  2. **Acessibilidade é padrão, não feature.**: Produtos inclusivos são produtos melhores para todos.
+  3. **IA amplifica intenção.**: Tecnologia sem direção é ruído; direção sem tecnologia é lenta.
+  4. **Simples escala.**: Sistemas claros são mais fáceis de manter, testar e evoluir.
+  5. **Aprendizado contínuo é o único estado estável.**, Toda solução válida um dia será legado; a curiosidade permanece.
+  6. **Colaboração é arquitetura.**: Grandes produtos nascem de times que comunicam bem.
 - **Cores**: usar uma cor de destaque por princípio ou cor única para toda a seção.
 - **Numeradores**: números grandes e sutis (01, 02...) ao fundo ou ao lado de cada princípio.
 
@@ -83,13 +83,13 @@ Adicionar uma nova seção de página única, acessível pela âncora `#manifest
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/data/principles.ts` — fonte única dos princípios.
-- `src/data/types.ts` — adicionar tipo `Principle`.
-- `src/pages/manifesto/manifesto.tsx` — componente da seção.
-- `src/pages/manifesto/manifesto.module.scss` — estilos específicos.
-- `src/App.tsx` — registrar a seção no fluxo da página (sugestão: após `ia-maturity` ou antes de `SkillsSection`).
-- `src/pages/header.tsx` — adicionar item de menu.
-- `tests/manifesto.spec.ts` (modelo) — teste de renderização.
+- `src/data/principles.ts`: fonte única dos princípios.
+- `src/data/types.ts`: adicionar tipo `Principle`.
+- `src/pages/manifesto/manifesto.tsx`: componente da seção.
+- `src/pages/manifesto/manifesto.module.scss`: estilos específicos.
+- `src/App.tsx`: registrar a seção no fluxo da página (sugestão: após `ia-maturity` ou antes de `SkillsSection`).
+- `src/pages/header.tsx`: adicionar item de menu.
+- `tests/manifesto.spec.ts` (modelo): teste de renderização.
 
 ## Further Notes
 

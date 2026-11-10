@@ -1,4 +1,4 @@
-# Issue — Preferência do sistema e fallback de armazenamento
+# Issue: Preferência do sistema e fallback de armazenamento
 
 Status: ready-for-agent
 

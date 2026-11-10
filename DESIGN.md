@@ -1,4 +1,4 @@
-# Design — Lucas Nonato Portfolio
+# Design: Lucas Nonato Portfolio
 
 Documento de design do portfólio. A linguagem imersiva nasceu na rota
 `/immersive` e agora é o sistema visual de todo o site.
@@ -8,7 +8,7 @@ Documento de design do portfólio. A linguagem imersiva nasceu na rota
 - **Registro**: portfólio pessoal / creative-developer. Design é o produto.
 - **Tom**: técnico, editado, com arquitetura clara. Sem clichês de SaaS, sem
   métricas-herói genéricas.
-- **Big idea**: uma interface que parece um HUD sofisticado — vidro fosco,
+- **Big idea**: uma interface que parece um HUD sofisticado, vidro fosco,
   tipografia expansiva, scroll como narrativa. Ainda é um portfólio: Hero,
   Experiência, Jornada, Filosofia, Habilidades, Stack, GitHub, Contato.
 
@@ -90,16 +90,16 @@ Ritmo vertical: `padding-block: clamp(120px, 18vh, 200px)`.
 
 ### Seções do site
 
-1. **Header + Hero** — header glass pill fixo; hero portal full-bleed com
+1. **Header + Hero**: header glass pill fixo; hero portal full-bleed com
    cortinas que abrem no scroll, wordmark de abertura e conteúdo editorial
    sobre a foto.
-2. **Experiência** — cards de vidro com numeração e dados de `experiences.ts`.
-3. **Jornada** — timeline vertical com trilho em degradê e marcadores.
-4. **Filosofia** — seção editorial escura com foto e CTA.
-5. **Habilidades** — grid de cards de vidro de `skills.ts`.
-6. **GitHub** — painel de vidro com CTA e logo.
-7. **Contato** — fechamento com headline oversized, card de vidro e formulário.
-8. **Rodapé** — wordmark, links mono, sociais e hairline.
+2. **Experiência**: cards de vidro com numeração e dados de `experiences.ts`.
+3. **Jornada**: timeline vertical com trilho em degradê e marcadores.
+4. **Filosofia**: seção editorial escura com foto e CTA.
+5. **Habilidades**: grid de cards de vidro de `skills.ts`.
+6. **GitHub**: painel de vidro com CTA e logo.
+7. **Contato**: fechamento com headline oversized, card de vidro e formulário.
+8. **Rodapé**: wordmark, links mono, sociais e hairline.
 
 ## 6. Componentes
 
@@ -107,13 +107,13 @@ Ritmo vertical: `padding-block: clamp(120px, 18vh, 200px)`.
 
 Em `src/components/design-system/`:
 
-- `GlassPanel` — superfície de vidro (dark/light).
-- `Hairline` — linha de 1px com token.
-- `GrainOverlay` — grão SVG fixo.
-- `IndexNumeral` — numeral vazado.
-- `PillButton` — botão-pílula com ícone.
-- `PillIcon` — ícone circular.
-- `SectionLabel` — label editorial mono.
+- `GlassPanel`: superfície de vidro (dark/light).
+- `Hairline`: linha de 1px com token.
+- `GrainOverlay`: grão SVG fixo.
+- `IndexNumeral`: numeral vazado.
+- `PillButton`: botão-pílula com ícone.
+- `PillIcon`: ícone circular.
+- `SectionLabel`: label editorial mono.
 
 ### Seções
 
@@ -128,7 +128,7 @@ Em `src/components/design-system/`:
 
 ### Referência
 
-- `src/pages/immersive/` — laboratório e referência visual (portal scroll-driven,
+- `src/pages/immersive/`: laboratório e referência visual (portal scroll-driven,
   Sobre, Skills, Experiência e Contato).
 
 ## 7. Movimento

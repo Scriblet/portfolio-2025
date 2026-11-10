@@ -7,7 +7,7 @@ const sectionContent = {
   index: "04",
   heading: "Cases,",
   accent: "não cargos",
-  lead: "Cinco entregas reais com contexto, decisão e resultado — o que um currículo não cabe.",
+  lead: "Cinco entregas reais com contexto, decisão e resultado, o que não cabe num currículo.",
 };
 
 /**

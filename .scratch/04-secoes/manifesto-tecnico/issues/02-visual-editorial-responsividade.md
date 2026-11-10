@@ -1,4 +1,4 @@
-# Issue — Manifesto Técnico: visual editorial + responsividade
+# Issue: Manifesto Técnico: visual editorial + responsividade
 
 Status: done
 

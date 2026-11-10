@@ -1,4 +1,4 @@
-# Issue — Selected Work: dados + seção base + remoção de Experience/Jornada
+# Issue: Selected Work: dados + seção base + remoção de Experience/Jornada
 
 Status: done
 

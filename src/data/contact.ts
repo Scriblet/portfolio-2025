@@ -3,7 +3,7 @@ import type { ValueProposition } from './types';
 // Fonte única das propostas exibidas em #contact.
 //
 // Cada cartão preenche o formulário com um texto inicial. O ganho é uma linha
-// concreta — sem promessa que não possa ser sustentada numa conversa.
+// concreta, sem promessa que não possa ser sustentada numa conversa.
 export const valuePropositions: ValueProposition[] = [
   {
     id: 'ia-no-produto',

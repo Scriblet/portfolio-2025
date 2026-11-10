@@ -5,11 +5,11 @@ scope: site
 owner: agent
 ---
 
-# PRD — Selected Work
+# PRD: Selected Work
 
 ## Resumo / objetivo
 
-Substituir as seções redundantes `Experience` e `Jornada` por uma única seção narrativa de "Selected Work" — uma lista de cases reais que Lucas entregou, contada com foco em impacto, decisão técnica e evolução de carreira. A nova seção mantém a função da timeline (mostrar trajetória) mas eleva a qualidade da narrativa para um portfólio de engenharia de IA.
+Substituir as seções redundantes `Experience` e `Jornada` por uma única seção narrativa de "Selected Work", uma lista de cases reais que Lucas entregou, contada com foco em impacto, decisão técnica e evolução de carreira. A nova seção mantém a função da timeline (mostrar trajetória) mas eleva a qualidade da narrativa para um portfólio de engenharia de IA.
 
 ## Problem Statement
 
@@ -51,12 +51,12 @@ Remover as seções `Experience` e `Jornada` atuais e criar uma seção única `
   - Tags de stack.
 - **Tipografia**: headline do case em destaque, corpo em largura confortável (`max-width: 65ch`), período em fonte monoespaçada ou uppercase.
 - **Cases sugeridos**:
-  1. **Aura (Vivo/Telefônica)** — integração de LLMs e agentes na plataforma Aura.
-  2. **Porto Seguro** — aplicações web e serviços com foco em performance e integração.
-  3. **Thoughtworks** — consultoria, acessibilidade e TDD em times diversos.
-  4. **ArcoTech / Escola em Movimento** — produto educacional full stack.
-  5. **Finger Consultoria** — fundação, UX research e design de carreira.
-  6. **Hackathons e iniciativas** — prova de velocidade e criatividade (opcional).
+  1. **Aura (Vivo/Telefônica)**: integração de LLMs e agentes na plataforma Aura.
+  2. **Porto Seguro**: aplicações web e serviços com foco em performance e integração.
+  3. **Thoughtworks**: consultoria, acessibilidade e TDD em times diversos.
+  4. **ArcoTech / Escola em Movimento**: produto educacional full stack.
+  5. **Finger Consultoria**: fundação, UX research e design de carreira.
+  6. **Hackathons e iniciativas**: prova de velocidade e criatividade (opcional).
 - **Conexão entre cases**: divisor sutil, numerador de case ou linha vertical indicando continuidade.
 - **Imagens/capas**: primeira entrega pode ser sem imagens ou com capas leves e provisórias; priorizar texto.
 
@@ -96,14 +96,14 @@ Remover as seções `Experience` e `Jornada` atuais e criar uma seção única `
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/data/selectedWorks.ts` — nova fonte única dos cases.
-- `src/data/types.ts` — adicionar tipo `SelectedWork`.
-- `src/pages/selected-work/selectedWork.tsx` — componente da seção.
-- `src/pages/selected-work/selectedWork.module.scss` — estilos específicos.
-- `src/App.tsx` — substituir `Experience` e `Timeline` por `SelectedWork`.
-- `src/pages/header.tsx` — atualizar item de menu.
-- `src/pages/experience/experience.tsx` e `src/pages/timeline/timeline.tsx` — podem ser removidos ou mantidos como não usados.
-- `tests/selectedWork.spec.ts` (modelo) — teste de renderização e ordenação.
+- `src/data/selectedWorks.ts`: nova fonte única dos cases.
+- `src/data/types.ts`: adicionar tipo `SelectedWork`.
+- `src/pages/selected-work/selectedWork.tsx`: componente da seção.
+- `src/pages/selected-work/selectedWork.module.scss`, estilos específicos.
+- `src/App.tsx`: substituir `Experience` e `Timeline` por `SelectedWork`.
+- `src/pages/header.tsx`: atualizar item de menu.
+- `src/pages/experience/experience.tsx` e `src/pages/timeline/timeline.tsx`, podem ser removidos ou mantidos como não usados.
+- `tests/selectedWork.spec.ts` (modelo): teste de renderização e ordenação.
 
 ## Further Notes
 

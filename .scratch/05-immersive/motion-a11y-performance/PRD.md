@@ -6,7 +6,7 @@ scope: site
 owner: agent
 ---
 
-# PRD — Motion, Acessibilidade e Performance
+# PRD: Motion, Acessibilidade e Performance
 
 ## Resumo / objetivo
 
@@ -77,8 +77,8 @@ Unificar a linguagem de movimento da rota `/immersive` e fechar o contrato de ac
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/pages/immersive/hooks.ts` — `usePrefersReducedMotion`, `useStickyProgress`, `useRevealOnScroll`, `useViewportProgress`.
-- `src/pages/immersive/immersive.module.scss` — media query `prefers-reduced-motion` e classes `[data-reveal]`.
-- `src/pages/immersive/immersive.tsx` — aplica `data-motion="ready"` e landmarks.
-- `src/pages/immersive/hooks.ts` — hooks reais (`usePrefersReducedMotion`, `useScrollProgress`, `useRevealOnScroll`).
-- `src/pages/immersive/PortalHero.tsx`, `sections.tsx` — consumidores dos contratos.
+- `src/pages/immersive/hooks.ts`: `usePrefersReducedMotion`, `useStickyProgress`, `useRevealOnScroll`, `useViewportProgress`.
+- `src/pages/immersive/immersive.module.scss`: media query `prefers-reduced-motion` e classes `[data-reveal]`.
+- `src/pages/immersive/immersive.tsx`: aplica `data-motion="ready"` e landmarks.
+- `src/pages/immersive/hooks.ts`: hooks reais (`usePrefersReducedMotion`, `useScrollProgress`, `useRevealOnScroll`).
+- `src/pages/immersive/PortalHero.tsx`, `sections.tsx`, consumidores dos contratos.

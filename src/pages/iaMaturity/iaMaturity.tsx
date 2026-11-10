@@ -8,7 +8,7 @@ const sectionContent = {
   index: "02",
   heading: "Onde a IA vira",
   accent: "sistema",
-  lead: "O mapa do que eu coloco de pé — não um ranking de senioridade.",
+  lead: "O mapa do que eu coloco de pé, não um ranking de senioridade.",
   close:
     "As camadas de baixo sustentam as de cima. Nenhuma funciona sozinha.",
 };

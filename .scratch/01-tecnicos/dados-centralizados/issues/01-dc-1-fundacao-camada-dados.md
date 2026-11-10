@@ -1,4 +1,4 @@
-# Issue — Criar camada de dados tipada e expor site/social como fonte única
+# Issue: Criar camada de dados tipada e expor site/social como fonte única
 
 Status: ready-for-agent
 

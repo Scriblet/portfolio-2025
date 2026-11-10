@@ -6,7 +6,7 @@ scope: site
 owner: agent
 ---
 
-# PRD — Editorial About
+# PRD: Editorial About
 
 ## Resumo / objetivo
 
@@ -62,8 +62,8 @@ Reformular a seção Statement existente em uma seção **Sobre** com ritmo edit
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/pages/immersive/sections.tsx` — substituir/adaptar `Statement` para `About`.
-- `src/pages/immersive/content.ts` — `aboutContent`, `PERSON`.
-- `src/pages/immersive/immersive.tsx` — atualizar ordem das seções (`About` após `PortalHero`).
-- `src/pages/immersive/immersive.module.scss` — estilos da seção Sobre e HUD.
-- `src/pages/immersive/ImmersiveNav.tsx` — link "Sobre" aponta para `#about`.
+- `src/pages/immersive/sections.tsx`: substituir/adaptar `Statement` para `About`.
+- `src/pages/immersive/content.ts`: `aboutContent`, `PERSON`.
+- `src/pages/immersive/immersive.tsx`: atualizar ordem das seções (`About` após `PortalHero`).
+- `src/pages/immersive/immersive.module.scss`: estilos da seção Sobre e HUD.
+- `src/pages/immersive/ImmersiveNav.tsx`: link "Sobre" aponta para `#about`.

@@ -1,4 +1,4 @@
-# Issue — Primitivas de vidro, grão e rótulos
+# Issue: Primitivas de vidro, grão e rótulos
 
 Status: done
 

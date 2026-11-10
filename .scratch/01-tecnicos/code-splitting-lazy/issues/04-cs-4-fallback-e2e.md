@@ -1,4 +1,4 @@
-# Issue — Cobrir falha de chunk com retry e provar lazy E2E
+# Issue: Cobrir falha de chunk com retry e provar lazy E2E
 
 Status: ready-for-agent
 

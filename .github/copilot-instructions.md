@@ -99,6 +99,9 @@ npx playwright test --ui  # UI interativa de testes
 
 ## Padrões e Convenções Comuns
 
+### Copy (obrigatório)
+Nunca use travessão (em dash, U+2014) em texto do repositório: copy do site, dados, comentários ou docs. Use vírgula, dois-pontos, parênteses, ponto final ou `·`. O `npm run lint` falha em travessão (ESLint `local/no-em-dash` + `npm run lint:text`). Regra completa em `docs/agents/copy.md`.
+
 ### Estrutura de Arquivo de Componente
 ```
 src/pages/experience/

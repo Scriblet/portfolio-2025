@@ -5,7 +5,7 @@ import { GlassPanel } from "./ui";
 import styles from "./immersive.module.scss";
 
 /**
- * Hero "clean" — adapta ao tema do usuário.
+ * Hero "clean": adapta ao tema do usuário.
  *
  * No dark mode mantém a atmosfera escura do portal; no light mode vira uma
  * versão clara, sem o efeito scroll-driven de abertura. Os metadados usam o

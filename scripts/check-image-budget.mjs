@@ -57,7 +57,7 @@ const main = async () => {
   }
 
   console.log(
-    `[images:check] ok — ${files.length} arquivos, ${total.toFixed(0)} KB (limite ${TOTAL_KB} KB)`,
+    `[images:check] ok: ${files.length} arquivos, ${total.toFixed(0)} KB (limite ${TOTAL_KB} KB)`,
   );
 };
 

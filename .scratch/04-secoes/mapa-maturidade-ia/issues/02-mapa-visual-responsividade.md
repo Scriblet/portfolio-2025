@@ -1,4 +1,4 @@
-# Issue — Mapa de Maturidade em IA: mapa visual + responsividade
+# Issue: Mapa de Maturidade em IA: mapa visual + responsividade
 
 Status: done
 

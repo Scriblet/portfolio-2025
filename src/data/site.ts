@@ -5,7 +5,7 @@ export const SITE_CONFIG: SiteConfig = {
   NAME: import.meta.env.VITE_SITE_NAME || 'Lucas Nonato - Portfolio',
   DESCRIPTION:
     import.meta.env.VITE_SITE_DESCRIPTION ||
-    'Portfólio de Lucas Nonato — Consultor de IA, Software Engineer e Full Stack.',
+    'Portfólio de Lucas Nonato: Consultor de IA, Software Engineer e Full Stack.',
   BASE_URL: import.meta.env.VITE_BASE_URL || 'http://localhost:3000',
   AUTHOR: import.meta.env.VITE_AUTHOR || 'Lucas Nonato',
   EMAIL: import.meta.env.VITE_AUTHOR_EMAIL || 'lucas.nonato1@hotmail.com',

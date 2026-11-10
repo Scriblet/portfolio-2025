@@ -1,4 +1,4 @@
-# Issue — Renderizar Experience e Skills a partir da nova camada de dados
+# Issue: Renderizar Experience e Skills a partir da nova camada de dados
 
 Status: ready-for-agent
 

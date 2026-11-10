@@ -1,4 +1,4 @@
-# Issue — ESLint zero warnings no código do app
+# Issue: ESLint zero warnings no código do app
 
 Status: done
 
@@ -18,4 +18,4 @@ dependência real do efeito. Comportamento do app não muda.
 - [ ] Testes unitários continuam passando sem alteração de comportamento
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente

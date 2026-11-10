@@ -1,4 +1,4 @@
-# Issue — Herança em Skills e ContactForm, resposta de toque e reduced motion
+# Issue: Herança em Skills e ContactForm, resposta de toque e reduced motion
 
 Status: ready-for-agent
 

@@ -1,4 +1,4 @@
-# Issue — Dados centralizados + timeline cronológica com âncora e menu
+# Issue: Dados centralizados + timeline cronológica com âncora e menu
 
 Status: ready-for-agent
 

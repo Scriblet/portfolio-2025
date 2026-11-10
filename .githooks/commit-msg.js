@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Conventional Commits v1.0.0 — see docs/agents/commits.md
+// Conventional Commits v1.0.0: see docs/agents/commits.md
 import { readFileSync } from "node:fs";
 
 const TYPES = [

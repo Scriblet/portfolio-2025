@@ -1,6 +1,6 @@
-# Issue — OfflineNotice: aviso, recarga e volta online
+# Issue: OfflineNotice: aviso, recarga e volta online
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-pwa-offline/PRD.md`

@@ -1,4 +1,4 @@
-# Issue — Hook de direção de scroll e Header esconde/mostra
+# Issue: Hook de direção de scroll e Header esconde/mostra
 
 Status: ready-for-agent
 

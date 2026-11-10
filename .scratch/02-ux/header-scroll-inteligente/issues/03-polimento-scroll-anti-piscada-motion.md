@@ -1,4 +1,4 @@
-# Issue — Polimento de scroll: limiar anti-piscada, reduced motion e contraste
+# Issue: Polimento de scroll: limiar anti-piscada, reduced motion e contraste
 
 Status: ready-for-agent
 

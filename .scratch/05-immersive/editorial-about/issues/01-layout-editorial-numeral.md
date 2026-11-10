@@ -1,4 +1,4 @@
-# Issue — Layout split editorial e numeral vazado
+# Issue: Layout split editorial e numeral vazado
 
 Status: done
 

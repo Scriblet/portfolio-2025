@@ -1,4 +1,4 @@
-# Issue — Auditoria de foco e contraste
+# Issue: Auditoria de foco e contraste
 
 Status: done
 

@@ -1,4 +1,4 @@
-# Issue — Configurar code-splitting do vendor e registrar baseline de bundle
+# Issue: Configurar code-splitting do vendor e registrar baseline de bundle
 
 Status: ready-for-agent
 

@@ -1,4 +1,4 @@
-# Issue — Seções Skills, Filosofia e banner GitHub
+# Issue: Seções Skills, Filosofia e banner GitHub
 
 Status: done
 

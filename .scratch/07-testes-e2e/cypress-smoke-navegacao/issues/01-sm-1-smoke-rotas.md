@@ -1,4 +1,4 @@
-# Issue — Smoke da home e rotas (/, /immersive, catch-all, /roadmap)
+# Issue: Smoke da home e rotas (/, /immersive, catch-all, /roadmap)
 
 Status: done
 

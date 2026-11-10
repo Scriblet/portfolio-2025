@@ -1,4 +1,4 @@
-# PRD — Download de CV
+# PRD: Download de CV
 
 Status: ready-for-agent
 Feature slug: `download-cv`
@@ -35,7 +35,7 @@ Adicionar um botão claro de download de CV em PDF na área principal do portfó
 - Contrato do serviço de analítica: reutilizar o evento de download de currículo já existente no módulo de analytics (sem criar evento novo), registrando apenas a ocorrência do download (sem dados pessoais).
 - Módulo de arquivo estático: o PDF vive como asset público versionado no repositório; o botão referencia a URL pública do asset, e o nome de download é definido via atributo de download do link.
 - Decisão de UX: comportamento padrão de download direto com fallback de abertura em nova guia quando o navegador não suporta o atributo; sem navegação interna nem tela intermediária.
-- Decisão de escopo de conteúdo: nenhum conteúdo gerado dinamicamente — o PDF é um arquivo único mantido pelo profissional; o portfólio não gera nem personaliza o CV.
+- Decisão de escopo de conteúdo: nenhum conteúdo gerado dinamicamente, o PDF é um arquivo único mantido pelo profissional; o portfólio não gera nem personaliza o CV.
 - Acessibilidade: rótulo acessível contendo ação e formato; foco visível e ordem de tabulação preservada; contraste conforme o tema atual.
 
 ## Testing Decisions
@@ -56,4 +56,4 @@ Adicionar um botão claro de download de CV em PDF na área principal do portfó
 ## Further Notes
 
 - O evento de analytics já previsto no serviço analítico torna esta feature de baixo custo de instrumentação; validar que o nome do evento e o contrato não mudam.
-- Risco principal: bloqueios de download em navegadores/schemas móveis — mitigado pelo fallback de abertura em nova guia.
+- Risco principal: bloqueios de download em navegadores/schemas móveis, mitigado pelo fallback de abertura em nova guia.

@@ -362,7 +362,7 @@ const ShippedBand = () => {
           </Typography>
           <Typography variant="caption" color="text.secondary">
             {shippedWaves.length} ondas · {shipped.prds} PRDs ·{" "}
-            {shipped.issuesTotal} issues — abra para ver o histórico
+            {shipped.issuesTotal} issues · abra para ver o histórico
           </Typography>
         </Stack>
       </AccordionSummary>
@@ -429,7 +429,7 @@ const Roadmap = () => {
             </Typography>
             <Typography color="text.secondary" sx={{ mt: 1, maxWidth: 720 }}>
               Foco atual e próximos passos. O que já foi entregue fica recolhido
-              no fim da página — esta rota só é montada em desenvolvimento.
+              no fim da página; esta rota só é montada em desenvolvimento.
             </Typography>
           </Box>
 

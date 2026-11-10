@@ -1,4 +1,4 @@
-# Issue — Adiar Philosophy/GitHub/Contact/Footer e aplicar loading preguiçoso em imagens
+# Issue: Adiar Philosophy/GitHub/Contact/Footer e aplicar loading preguiçoso em imagens
 
 Status: ready-for-agent
 

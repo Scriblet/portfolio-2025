@@ -1,4 +1,4 @@
-# Issue — Responsividade, links de certificado e acessibilidade
+# Issue: Responsividade, links de certificado e acessibilidade
 
 Status: ready-for-agent
 

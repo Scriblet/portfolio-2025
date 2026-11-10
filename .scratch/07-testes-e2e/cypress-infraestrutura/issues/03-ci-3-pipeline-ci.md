@@ -1,4 +1,4 @@
-# Issue — Pipeline de CI com a suíte E2E e artefatos de falha
+# Issue: Pipeline de CI com a suíte E2E e artefatos de falha
 
 Status: done
 

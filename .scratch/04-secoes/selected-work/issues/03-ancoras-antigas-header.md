@@ -1,4 +1,4 @@
-# Issue — Selected Work: âncoras antigas + header
+# Issue: Selected Work: âncoras antigas + header
 
 Status: done
 

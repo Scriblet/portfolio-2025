@@ -5,11 +5,11 @@ scope: site
 owner: agent
 ---
 
-# PRD — Contato com Proposta de Valor
+# PRD: Contato com Proposta de Valor
 
 ## Resumo / objetivo
 
-Reformular a seção de contato para que, além do formulário, ela comunique claramente **como Lucas pode ajudar** — proposta de valor direcionada a recrutadores, times de produto e líderes técnicos. A seção transforma o contato de "me mande uma mensagem" em "é assim que eu resolvo problemas do seu time".
+Reformular a seção de contato para que, além do formulário, ela comunique claramente **como Lucas pode ajudar**, proposta de valor direcionada a recrutadores, times de produto e líderes técnicos. A seção transforma o contato de "me mande uma mensagem" em "é assim que eu resolvo problemas do seu time".
 
 ## Problem Statement
 
@@ -43,9 +43,9 @@ Reformular a seção `#contact` mantendo o formulário funcional, mas adicionand
 - **Fundo**: manter `var(--void-2)` ou tom escuro consistente com o footer.
 - **Layout**: desktop com grid 2 colunas (propostas + formulário) ou propostas em topo e formulário abaixo; mobile empilhado.
 - **Cartões de proposta sugeridos**:
-  1. **Integrar IA no seu produto** — "Levo LLMs, agentes e RAG do conceito à produção, com governança e observabilidade."
-  2. **Acelerar times com qualidade** — "Refatoro legados, subo cobertura de testes e reduzo débito técnico sem parar a entrega."
-  3. **Arquitetar para escala** — "Desenho sistemas claros, documentados e prontos para crescer com o negócio."
+  1. **Integrar IA no seu produto**: "Levo LLMs, agentes e RAG do conceito à produção, com governança e observabilidade."
+  2. **Acelerar times com qualidade**: "Refatoro legados, subo cobertura de testes e reduzo débito técnico sem parar a entrega."
+  3. **Arquitetar para escala**: "Desenho sistemas claros, documentados e prontos para crescer com o negócio."
 - **Tipografia**: headline da seção reformulado (ex.: "Vamos resolver algo real?"), título dos cartões em destaque, corpo em cor secundária.
 - **CTA**: cada cartão pode ter um link de e-mail com assunto pré-preenchido relevante (ex.: `mailto:lucas.nonato1@hotmail.com?subject=Vaga:+Engenheiro+de+IA`).
 - **Formulário**: manter campos, validação, honeypot, snackbar e analytics atuais.
@@ -82,11 +82,11 @@ Reformular a seção `#contact` mantendo o formulário funcional, mas adicionand
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/data/contact.ts` (novo) — fonte das propostas de valor.
-- `src/pages/formContact/contactForm.tsx` — refatorar para incluir propostas.
-- `src/pages/formContact/contactForm.module.scss` — estilos adicionais para os cartões.
-- `src/data/types.ts` — adicionar tipo `ValueProposition`.
-- `tests/contact.spec.ts` (existente) — garantir que continua passando.
+- `src/data/contact.ts` (novo): fonte das propostas de valor.
+- `src/pages/formContact/contactForm.tsx`: refatorar para incluir propostas.
+- `src/pages/formContact/contactForm.module.scss`: estilos adicionais para os cartões.
+- `src/data/types.ts`: adicionar tipo `ValueProposition`.
+- `tests/contact.spec.ts` (existente): garantir que continua passando.
 
 ## Further Notes
 

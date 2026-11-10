@@ -41,7 +41,7 @@ const Immersive = () => {
       document.head.appendChild(robots);
     }
     robots.content = 'noindex, nofollow';
-    document.title = 'Preview imersivo — Lucas Nonato';
+    document.title = 'Preview imersivo · Lucas Nonato';
 
     return () => {
       document.title = previousTitle;

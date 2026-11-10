@@ -1,4 +1,4 @@
-# Issue — Contrato prefers-reduced-motion
+# Issue: Contrato prefers-reduced-motion
 
 Status: done
 

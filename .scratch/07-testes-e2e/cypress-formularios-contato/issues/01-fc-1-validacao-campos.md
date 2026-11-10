@@ -1,4 +1,4 @@
-# Issue — Validação client-side do formulário de contato
+# Issue: Validação client-side do formulário de contato
 
 Status: done
 

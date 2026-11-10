@@ -29,8 +29,8 @@ Este é um portfólio profissional que apresenta:
 - **Manifesto técnico** com sete princípios e a foto das mãos em faixa full-bleed
 - **Links para GitHub** e projetos
 - **Formulário de contato** integrado a uma Netlify Function que notifica via Discord
-- **Rota `/immersive`** — refactor visual com portal scroll-driven e deck de releases
-- **Rota `/roadmap`** — roadmap do projeto com o estado de cada onda (montada apenas em desenvolvimento)
+- **Rota `/immersive`**: refactor visual com portal scroll-driven e deck de releases
+- **Rota `/roadmap`**: roadmap do projeto com o estado de cada onda (montada apenas em desenvolvimento)
 
 ### 🎨 Design
 - Interface moderna e minimalista
@@ -177,15 +177,15 @@ npm install
 ```
 
 O `install` roda o script `prepare`, que aponta os hooks de commit para
-`.githooks/` (Conventional Commits — ver `docs/agents/commits.md`).
+`.githooks/` (Conventional Commits: ver `docs/agents/commits.md`).
 
 3. **Configure as variáveis de ambiente** (opcional)
 ```bash
 cp .env.example .env
 ```
 
-- `DISCORD_WEBHOOK_URL` — segredo **server-only** da Netlify Function.
-- `VITE_CONTACT_ENDPOINT` — URL pública da function; vazio usa `/api/contact`
+- `DISCORD_WEBHOOK_URL`: segredo **server-only** da Netlify Function.
+- `VITE_CONTACT_ENDPOINT`: URL pública da function; vazio usa `/api/contact`
   (só funciona com `netlify dev`). Detalhes em `docs/CONTACT-ENDPOINT.md`.
 
 4. **Inicie o servidor de desenvolvimento**
@@ -207,7 +207,8 @@ http://localhost:5173
 npm run dev                # Vite em http://localhost:5173
 
 # Qualidade
-npm run lint               # ESLint (falha em erro e em warning)
+npm run lint               # ESLint + checagem de copy (falha em erro e em warning)
+npm run lint:text          # Só a checagem de copy (travessão proibido)
 npm run test:unit          # Vitest + jsdom (loop padrão, ~2s)
 npm run test:unit:watch    # Vitest em watch
 
@@ -215,7 +216,7 @@ npm run test:unit:watch    # Vitest em watch
 npm run build              # tsc --noEmit (app e node) + vite build
 npm run preview            # Serve o dist em http://localhost:4173
 
-# E2E (opt-in — ver docs/agents/testing.md)
+# E2E (opt-in: ver docs/agents/testing.md)
 npm run dev:test           # Dev server em :5174 para os specs
 npm run test:e2e:spec -- cypress/e2e/<spec>.cy.ts  # Um spec
 npm run test:e2e:preview   # Build + preview + suíte completa (CI)
@@ -342,9 +343,9 @@ portfolio-2025/
 
 ### 🎨 Tokens e paleta
 Fonte única de verdade:
-- `src/styles/design-system.css` — CSS custom properties e classes `ds-*`.
-- `src/theme/designTokens.ts` — os mesmos valores em TypeScript.
-- `src/theme/palettes.ts` — paletas MUI por modo.
+- `src/styles/design-system.css`: CSS custom properties e classes `ds-*`.
+- `src/theme/designTokens.ts`: os mesmos valores em TypeScript.
+- `src/theme/palettes.ts`: paletas MUI por modo.
 
 | Token | Dark | Light |
 |---|---|---|
@@ -461,7 +462,7 @@ Variáveis de build (Settings → Secrets and variables → Actions):
 ### 📬 Netlify (somente as functions)
 
 O Pages é estático e **não serve `/api/*`**. A Netlify Function de contato
-(`netlify/functions/contact.mjs`) roda em um deploy separado no Netlify —
+(`netlify/functions/contact.mjs`) roda em um deploy separado no Netlify;
 `netlify.toml` já configura build, functions e o fallback SPA.
 
 - Segundo site Netlify no mesmo repositório: build vazio, publish `public`,
@@ -488,6 +489,7 @@ Passo a passo completo, contrato HTTP e rotação do webhook:
 - Escreva commits descritivos
 - Teste a responsividade em múltiplos dispositivos
 - Mantenha a acessibilidade (WCAG guidelines)
+- **Nunca use travessão (em dash, U+2014) no texto**: troque por vírgula, dois-pontos, parênteses ou ponto final. O `npm run lint` bloqueia. Regra completa em [`docs/agents/copy.md`](docs/agents/copy.md)
 
 ### 🐛 Reportar Bugs
 - Use as Issues do GitHub

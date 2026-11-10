@@ -1,4 +1,4 @@
-# PRD — Acessibilidade e responsivo: axe-core, teclado e viewports
+# PRD: Acessibilidade e responsivo: axe-core, teclado e viewports
 
 Status: draft
 Feature slug: `cypress-a11y-responsivo`
@@ -44,7 +44,7 @@ preferência ativa, nada fica `opacity: 0` nem depende de reveal).
    WCAG em silêncio.
 9. Como mantenedor, quero exceções documentadas (allowlist com justificativa),
    para saber o que é aceito e o que é pendência.
-10. Como mantenedor, quero que rodar a11y não torne a suíte lenta — uma varredura
+10. Como mantenedor, quero que rodar a11y não torne a suíte lenta, uma varredura
     por página/estado basta.
 
 ## Implementation Decisions
@@ -61,10 +61,10 @@ preferência ativa, nada fica `opacity: 0` nem depende de reveal).
   alcançar `theme-toggle`, `mobile-menu-button`/links, CTAs e campos; Escape fecha
   `mobile-menu` e `snackbar-*`; assertar `:focus-visible` (outline) via estilo
   computado em um elemento focado.
-- Responsivo: `cy.viewport` em 375×812, 768×1024 e 1280×720 — drawer presente em
+- Responsivo: `cy.viewport` em 375×812, 768×1024 e 1280×720, drawer presente em
   375, links do header ausentes em 375, `header-cta` ausente em ≤520, tudo visível
   em 1280. Alvos de toque: botões principais com área ≥44px (medida por bounding
-  client rect) — tolerância registrada se algum ícone for menor.
+  client rect): tolerância registrada se algum ícone for menor.
 - Reduced motion: `cy.enableReducedMotion()` → assertar que `[data-reveal]` está
   visível sem `data-revealed="true"` e que transições do header são `none`;
   comparar com `disableReducedMotion` (reais aparecem com reveal).
@@ -74,17 +74,17 @@ preferência ativa, nada fica `opacity: 0` nem depende de reveal).
 
 - A11y automatizado cobre o que axe vê (contraste, roles, labels); navegação por
   teclado cobre ordem/foco; leitura real por leitor de tela continua manual.
-- Uma varredura por página/estado, sem loops — custo baixo em CI.
+- Uma varredura por página/estado, sem loops: custo baixo em CI.
 - Allowlist de violações aceitas vive em `cypress/support/a11y-exceptions.ts`
-  (ou comentário no spec) com justificativa por item — nada de silenciar tudo.
-- Falhas de axe devem apontar o seletor do elemento — o spec deve logar
+  (ou comentário no spec) com justificativa por item: nada de silenciar tudo.
+- Falhas de axe devem apontar o seletor do elemento, o spec deve logar
   `violation.id`, `impact` e `nodes`.
 
 ## Out of Scope
 
 - Auditoria manual com NVDA/VoiceOver (fica checklist de release).
 - Corrigir gaps de produto (skip link ausente, `href=""` de Instagram/Twitter,
-  destaque de seção ativa) — issues de produto, não deste PRD.
+  destaque de seção ativa): issues de produto, não deste PRD.
 - i18n/multi-idioma (site é pt-BR fixo).
 - Testes de performance (Lighthouse) e contraste em todas as cópias.
 
@@ -93,8 +93,8 @@ preferência ativa, nada fica `opacity: 0` nem depende de reveal).
 - Dependências: PRD `cypress-infraestrutura` (comandos, dependência
   `@axe-core/cypress`/`cypress-axe` declarada lá).
 - Risco: axe + MUI pode acusar violações do próprio MUI (ex.: contraste de
-  tooltip) — preferir escopo (`main`, `header`) e allowlist justificada a
+  tooltip): preferir escopo (`main`, `header`) e allowlist justificada a
   desativar regras globais.
 - `prefers-reduced-motion` também é o modo padrão de estabilidade da suíte
-  (PRD de infra) — este PRD valida que o comportamento do app com a preferência
+  (PRD de infra): este PRD valida que o comportamento do app com a preferência
   ativa está correto, não só que os testes ficam estáveis.

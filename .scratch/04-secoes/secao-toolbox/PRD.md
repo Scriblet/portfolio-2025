@@ -1,4 +1,4 @@
-# PRD — Seção Stack/Toolbox
+# PRD: Seção Stack/Toolbox
 
 Status: removed
 Feature slug: `secao-toolbox`
@@ -32,7 +32,7 @@ Adicionar uma nova seção de página única, acessível pela âncora `#toolbox`
 
 - **Estrutura de página**: nova seção em `src/pages/` com âncora `#toolbox`, `data-testid` e heading `h2` no padrão das demais seções; compor com MUI v7 (Grid, Card, Chip, Tooltip, Typography).
 - **Integração global**: registrar a seção em `App.tsx` em posição narrativa coerente (após Skills, por exemplo) e adicionar entrada correspondente ao menu do Header com link âncora.
-- **Contrato de dados**: módulos tipados em `src/data/` (dependência: camada de dados ainda não existe) — `categories` (id, título, descrição opcional) e `technologies` (id, name, categoryId, iconKey/asset, level opcional: "principal" | "complementar", url opcional). Nenhuma tecnologia hardcoded no componente.
+- **Contrato de dados**: módulos tipados em `src/data/` (dependência: camada de dados ainda não existe), `categories` (id, título, descrição opcional) e `technologies` (id, name, categoryId, iconKey/asset, level opcional: "principal" | "complementar", url opcional). Nenhuma tecnologia hardcoded no componente.
 - **Ícones oficiais**: usar assets SVG oficiais ou variantes confiáveis (ex.: pacote de ícones de devicon ou assets oficiais), com `alt`/texto acessível, `loading="lazy"`, dimensões reservadas e fundo neutro compatível com o tema escuro (não forçar fundo branco sobre logo que exige contraste).
 - **Agrupamento visual**: cabeçalho por categoria com separação clara (título + grade própria), espaçamento e hierarquia via tokens do tema; sem acordeões na primeira entrega, para manter escaneabilidade.
 - **Filtro por categoria (opcional escopo mínimo)**: se incluído, implementar como chips de filtro com estado local, sem rota, mantendo grade completa acessível por padrão.
@@ -57,7 +57,7 @@ Adicionar uma nova seção de página única, acessível pela âncora `#toolbox`
 
 ## Out of Scope
 
-- Níveis de proficiência com barras de progresso ou percentuais (ex.: "React 90%") — esta entrega mostra agrupamento e destaque, não métrica quantitativa.
+- Níveis de proficiência com barras de progresso ou percentuais (ex.: "React 90%"), esta entrega mostra agrupamento e destaque, não métrica quantitativa.
 - Avaliações, certificados ou links de certificação por tecnologia (ficam na seção Jornada/Carreira).
 - Repositórios, métricas de uso ou integração com GitHub API.
 - Busca textual de tecnologias ou paginação da grade.

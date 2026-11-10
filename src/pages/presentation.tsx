@@ -1,10 +1,9 @@
-import { useRef } from "react";
 import { portraitHero } from "../img/responsive";
 import { ResponsivePicture } from "../components/ResponsivePicture";
 import { SITE_CONFIG } from "../data";
 import { GlassPanel, PillButton } from "../components/design-system";
 import DownloadCvButton from "../components/DownloadCvButton";
-import { useStickyProgress } from "../hooks/useStickyProgress";
+import { useHeroIntro } from "../hooks/heroIntroContext";
 import styles from "./presentation.module.scss";
 
 const heroMeta = {
@@ -16,23 +15,17 @@ const [firstName, ...restName] = SITE_CONFIG.AUTHOR.split(" ");
 const lastName = restName.join(" ");
 
 function Presentation() {
-  const heroRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-
-  useStickyProgress(heroRef, stageRef, 1);
+  const { phase, isIntro } = useHeroIntro();
 
   return (
     <section
-      ref={heroRef}
       className={styles.hero}
       aria-labelledby="presentation-title"
       data-testid="presentation-section"
+      data-intro={isIntro ? "true" : undefined}
+      data-intro-phase={phase}
     >
-      <div
-        ref={stageRef}
-        className={styles.heroStage}
-        data-testid="presentation-stage"
-      >
+      <div className={styles.heroStage} data-testid="presentation-stage">
         <div className={styles.heroPhoto} aria-hidden="true">
           <ResponsivePicture
             {...portraitHero}
@@ -98,19 +91,18 @@ function Presentation() {
           <span className={styles.metaValue}>{heroMeta.bottomRight.value}</span>
         </GlassPanel>
 
-        <div className={styles.wordmark} aria-hidden="true">
+        <div
+          className={styles.wordmark}
+          aria-hidden="true"
+          data-testid="presentation-wordmark"
+        >
           <span className={styles.wordFirst}>{firstName}</span>
           <span className={styles.wordSecond}>{lastName}</span>
         </div>
 
         <div className={styles.scrollCue} aria-hidden="true">
           <span className={styles.scrollCueLine} />
-          <span className={styles.scrollCueLabels}>
-            <span className={styles.scrollCueOpen}>Scroll para abrir</span>
-            <span className={styles.scrollCueExplore}>
-              Scroll para explorar
-            </span>
-          </span>
+          <span className={styles.scrollCueLabel}>Scroll para explorar</span>
         </div>
       </div>
     </section>

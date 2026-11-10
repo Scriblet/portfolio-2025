@@ -1,4 +1,4 @@
-# Issue — Gerar manifest e ícones PWA a partir do build
+# Issue: Gerar manifest e ícones PWA a partir do build
 
 Status: ready-for-agent
 
@@ -6,7 +6,7 @@ Status: ready-for-agent
 PRD: `.scratch/01-tecnicos/pwa-offline/PRD.md`
 
 ## What to build
-Site passa a ter manifesto com nome, modo standalone e cores alinhadas ao tema escuro, e ícones nos tamanhos essenciais inclusive mascarável, tudo gerado pelo processo de build a cada deploy — sem arquivos duplicados à mão.
+Site passa a ter manifesto com nome, modo standalone e cores alinhadas ao tema escuro, e ícones nos tamanhos essenciais inclusive mascarável, tudo gerado pelo processo de build a cada deploy, sem arquivos duplicados à mão.
 
 ## Acceptance criteria
 - [ ] Manifesto gerado em build com nome, display standalone e tema/fundo alinhados à paleta atual

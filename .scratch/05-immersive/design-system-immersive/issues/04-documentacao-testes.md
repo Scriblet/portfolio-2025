@@ -1,4 +1,4 @@
-# Issue — Documentação e testes do design system
+# Issue: Documentação e testes do design system
 
 Status: done
 

@@ -1,4 +1,4 @@
-# Issue — Focus-visible acessível: anel com contraste e forma
+# Issue: Focus-visible acessível: anel com contraste e forma
 
 Status: ready-for-agent
 

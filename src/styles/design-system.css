@@ -1,5 +1,5 @@
 /**
- * Design system imersivo — camada global.
+ * Design system imersivo: camada global.
  *
  * A linguagem visual nasceu na rota `/immersive` e passa a valer para todo o
  * portfólio. Este arquivo é a fonte única de verdade em CSS custom properties;
@@ -7,13 +7,13 @@
  */
 
 :root {
-  /* Dark palette (identidade principal — púrpura tecnológico) */
+  /* Dark palette (identidade principal: púrpura tecnológico) */
   --void: #0a0814;
   --void-2: #120e22;
   --surface: #1e1830;
   --paper: #f2eefb;
   --paper-2: #a9a0c4;
-  --muted: #6b6285;
+  --muted: #9a90b3;
 
   /* Light palette (seções claras) */
   --light-bg: #f7f5fa;
@@ -23,13 +23,13 @@
   --light-border: #ddd7ec;
 
   /* Accents */
-  --violet: #7c3aed;
-  --magenta: #c026d3;
-  --magenta-soft: rgba(192, 38, 211, 0.12);
+  --violet: #9b6bff;
+  --magenta: #e04cf0;
+  --magenta-soft: rgba(224, 76, 240, 0.12);
   --deep-purple: #4c1d95;
   --danger: #f43f5e;
 
-  /* Aliases legados — mantêm as seções antigas funcionando durante a
+  /* Aliases legados: mantêm as seções antigas funcionando durante a
      migração para a paleta púrpura. */
   --emerald: var(--violet);
   --amber: var(--magenta);
@@ -170,7 +170,7 @@ body {
   padding-block: clamp(120px, 18vh, 200px);
 }
 
-/* Vidro — receita única. */
+/* Vidro: receita única. */
 .ds-glass {
   border-radius: var(--glass-radius);
 }

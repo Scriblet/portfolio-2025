@@ -1,6 +1,6 @@
-# Issue — Conteúdo em cache e fallback de navegação offline
+# Issue: Conteúdo em cache e fallback de navegação offline
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-pwa-offline/PRD.md`

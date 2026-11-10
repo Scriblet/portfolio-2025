@@ -1,4 +1,4 @@
-# Issue — Estados do formulário e reduced motion do Contato
+# Issue: Estados do formulário e reduced motion do Contato
 
 Status: done
 

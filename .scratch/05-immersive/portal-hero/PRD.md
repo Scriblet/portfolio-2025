@@ -6,11 +6,11 @@ scope: site
 owner: agent
 ---
 
-# PRD — Portal Hero
+# PRD: Portal Hero
 
 ## Resumo / objetivo
 
-Criar o momento assinatura da rota `/immersive`: um hero scroll-driven onde dois painéis arquitetônicos se abrem para revelar uma foto pessoal, enquanto o wordmark "LUCAS NONATO" se divide em duas metades. Quatro meta-cantos de glass exibem dados reais do currículo (nome, cargo, localização, anos de experiência, stack principal). O gesto deve ser 100% scroll-driven e reversível — subir a página fecha o portal.
+Criar o momento assinatura da rota `/immersive`: um hero scroll-driven onde dois painéis arquitetônicos se abrem para revelar uma foto pessoal, enquanto o wordmark "LUCAS NONATO" se divide em duas metades. Quatro meta-cantos de glass exibem dados reais do currículo (nome, cargo, localização, anos de experiência, stack principal). O gesto deve ser 100% scroll-driven e reversível, subir a página fecha o portal.
 
 ## Requisitos funcionais
 
@@ -59,8 +59,8 @@ Criar o momento assinatura da rota `/immersive`: um hero scroll-driven onde dois
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/pages/immersive/PortalHero.tsx` — componente principal a ser refatorado para dados reais e meta-cantos.
-- `src/pages/immersive/hooks.ts` — `useStickyProgress` e `usePrefersReducedMotion`.
-- `src/pages/immersive/immersive.module.scss` — estilos do portal, painéis, wordmark, meta-cantos.
-- `src/pages/immersive/content.ts` — `PERSON`, `heroMeta`, `wordmark`.
-- `src/img/retrato-hero.jpg` — asset de retrato.
+- `src/pages/immersive/PortalHero.tsx`: componente principal a ser refatorado para dados reais e meta-cantos.
+- `src/pages/immersive/hooks.ts`: `useStickyProgress` e `usePrefersReducedMotion`.
+- `src/pages/immersive/immersive.module.scss`: estilos do portal, painéis, wordmark, meta-cantos.
+- `src/pages/immersive/content.ts`: `PERSON`, `heroMeta`, `wordmark`.
+- `src/img/retrato-hero.jpg`: asset de retrato.

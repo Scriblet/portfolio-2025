@@ -1,15 +1,15 @@
-# PRD — Segurança do formulário de contato
+# PRD: Segurança do formulário de contato
 
 Status: ready-for-agent
 Feature slug: `seguranca-contato`
 
 ## Problem Statement
 
-Como mantenedor, o webhook do Discord está hardcoded no cliente (`DISCORD_WEBHOOK` em `contactForm.tsx`) — qualquer visitante pode inspecionar o bundle, extrair a URL e fazer spam/phishing. Além disso, sem validação de servidor nem rate limit, o formulário é vulnerável e pode expor dados.
+Como mantenedor, o webhook do Discord está hardcoded no cliente (`DISCORD_WEBHOOK` em `contactForm.tsx`), qualquer visitante pode inspecionar o bundle, extrair a URL e fazer spam/phishing. Além disso, sem validação de servidor nem rate limit, o formulário é vulnerável e pode expor dados.
 
 ## Solution
 
-Remover webhook do cliente, expor endpoint mínimo em Netlify Function (`/api/contact`) que valida payload, aplica rate limit e envia ao Discord com segredo via env — mantendo mesma UX, porém segura e auditável.
+Remover webhook do cliente, expor endpoint mínimo em Netlify Function (`/api/contact`) que valida payload, aplica rate limit e envia ao Discord com segredo via env, mantendo mesma UX, porém segura e auditável.
 
 ## User Stories
 
@@ -31,13 +31,13 @@ Remover webhook do cliente, expor endpoint mínimo em Netlify Function (`/api/co
 
 ## Implementation Decisions
 
-- **Seam principal:** Serviço/API — contrato HTTP `POST /api/contact` + E2E com stub.
-- **Seam secundário:** Componente — `contactForm.tsx` passa a `fetch('/api/contact')`.
+- **Seam principal:** Serviço/API: contrato HTTP `POST /api/contact` + E2E com stub.
+- **Seam secundário:** Componente: `contactForm.tsx` passa a `fetch('/api/contact')`.
 - Módulos afetados: nova função `netlify/functions/contact.ts`, `src/pages/formContact/contactForm.tsx`, `src/services/analytics.ts` (eventos já existentes), `.env.example`, `netlify.toml`.
 - Decisões:
   - Validação compartilhada: cliente usa mesma regra mínima; servidor é autoridade (zod ou manual).
   - Rate limit in-memory por IP (simples) com `429 Retry-After`.
-  - Sem concorrência de dados — endpoint stateless.
+  - Sem concorrência de dados: endpoint stateless.
   - Token/Discord URL apenas em env server-side, nunca prefixado `VITE_`.
   - Fallback: se função indisponível, exibe erro genérico sem expor detalhes.
 - Protótipo: não se aplica.

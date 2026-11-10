@@ -1,4 +1,4 @@
-# Issue — Specs do formulário de contato
+# Issue: Specs do formulário de contato
 
 Status: done
 
@@ -20,4 +20,4 @@ Discord nem de `netlify dev`. Critérios detalhados nos issues `01-fc-1` a
 - [ ] Specs verdes em `npm run test:e2e:preview`
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente

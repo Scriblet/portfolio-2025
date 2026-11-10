@@ -1,4 +1,4 @@
-# Issue — Reveal com stagger e remoção final do deck
+# Issue: Reveal com stagger e remoção final do deck
 
 Status: done
 

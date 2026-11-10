@@ -1,4 +1,4 @@
-# Issue — Tokens e tipografia do sistema imersivo
+# Issue: Tokens e tipografia do sistema imersivo
 
 Status: done
 

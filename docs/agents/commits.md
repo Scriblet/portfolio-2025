@@ -15,12 +15,12 @@ Every commit message MUST match the format below. The rule is enforced locally b
 [optional footer(s)]
 ```
 
-- **type** — one of the allowed types below (lowercase).
-- **scope** — optional, lowercase, names the area touched (e.g. `data`, `contact`, `seo`, `theme`, `agents`).
-- **!** — marks a breaking change; also add a `BREAKING CHANGE:` footer explaining it.
-- **description** — imperative, present tense, no trailing period, max 100 characters.
-- **body** — optional, wrapped at ~72 characters, explains *what* and *why* (not how).
-- **footer(s)** — optional; `BREAKING CHANGE: ...`, `Refs: #123`, `Co-authored-by: ...`.
+- **type**: one of the allowed types below (lowercase).
+- **scope**: optional, lowercase, names the area touched (e.g. `data`, `contact`, `seo`, `theme`, `agents`).
+- **!**: marks a breaking change; also add a `BREAKING CHANGE:` footer explaining it.
+- **description**: imperative, present tense, no trailing period, max 100 characters.
+- **body**: optional, wrapped at ~72 characters, explains *what* and *why* (not how).
+- **footer(s)**: optional; `BREAKING CHANGE: ...`, `Refs: #123`, `Co-authored-by: ...`.
 
 ## Allowed types
 

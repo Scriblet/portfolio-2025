@@ -52,7 +52,7 @@ $RECYCLE.BIN/
 # Temporary files
 *.tmp
 *.temp
-# Cypress (E2E — opt-in, ver docs/agents/testing.md)
+# Cypress (E2E: opt-in, ver docs/agents/testing.md)
 /cypress/videos/
 /cypress/screenshots/
 /cypress/downloads/

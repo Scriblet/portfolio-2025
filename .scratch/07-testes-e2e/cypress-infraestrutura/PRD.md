@@ -1,4 +1,4 @@
-# PRD — Infraestrutura de testes E2E com Cypress
+# PRD: Infraestrutura de testes E2E com Cypress
 
 Status: done
 Feature slug: `cypress-infraestrutura`
@@ -11,8 +11,8 @@ dados) mas nada garante que um visitante consiga navegar, alternar tema, preench
 o formulário ou ver o site offline depois de uma mudança. Já existiu uma suíte de
 100+ testes de navegador (Playwright) que foi removida por congelar a máquina no
 loop de desenvolvimento (`docs/agents/testing.md`). Hoje qualquer regressão visual
-ou de interação só é percebida manualmente. Sem uma base de E2E estável — runner,
-servidor, comandos e regras de execução — não vale a pena escrever specs.
+ou de interação só é percebida manualmente. Sem uma base de E2E estável, runner,
+servidor, comandos e regras de execução: não vale a pena escrever specs.
 
 ## Solution
 
@@ -47,8 +47,8 @@ da suíte antiga (`tests/` vazio, `test-results/.last-run.json`).
    rodar a mesma suíte contra dev (`/`), preview local e o GitHub Pages
    (`/portfolio-2025/`).
 8. Como mantenedor, quero que a documentação de testes (`docs/agents/testing.md`,
-   AGENTS.md) descreva Cypress como runner E2E com a mesma regra de ouro — E2E
-   fora do loop de desenvolvimento — para o time não repetir o erro da suíte antiga.
+   AGENTS.md) descreva Cypress como runner E2E com a mesma regra de ouro, E2E
+   fora do loop de desenvolvimento: para o time não repetir o erro da suíte antiga.
 9. Como mantenedor, quero confirmar em CI que `lint`, Vitest e `build` continuam
    passando junto dos novos specs, para não quebrar a entrega atual.
 10. Como visitante, quero que o site continue exatamente igual: nenhum código de
@@ -65,17 +65,17 @@ da suíte antiga (`tests/` vazio, `test-results/.last-run.json`).
   service worker ativa). Em CI o build é feito antes e o preview sobe com o
   `VITE_BASE_PATH` do ambiente.
 - Contrato de comandos de suporte:
-  - `cy.visitApp(path?)` — visita respeitando `CYPRESS_BASE_URL` e o base path;
+  - `cy.visitApp(path?)`: visita respeitando `CYPRESS_BASE_URL` e o base path;
     em `beforeLoad` limpa `localStorage` (incluindo `portfolio-color-mode`) e
     força `prefers-reduced-motion: reduce` por padrão (estabilidade).
-  - `cy.enableReducedMotion()` / `cy.disableReducedMotion()` — stub de `matchMedia`.
-  - `cy.resetTheme(mode?)` — reseta/grava `portfolio-color-mode`.
-  - `cy.interceptContact(response)` — faz stub de `POST /api/contact` com o
+  - `cy.enableReducedMotion()` / `cy.disableReducedMotion()`, stub de `matchMedia`.
+  - `cy.resetTheme(mode?)`: reseta/grava `portfolio-color-mode`.
+  - `cy.interceptContact(response)`: faz stub de `POST /api/contact` com o
     status/corpo desejado e registra o alias `@postContact`.
-  - `cy.waitForSection(testid)` — espera o `section-fallback` sair e o elemento
+  - `cy.waitForSection(testid)`: espera o `section-fallback` sair e o elemento
     final ficar visível (cobrindo as seções lazy).
 - Estabilidade: retries `{ runMode: 1, openMode: 0 }`; viewport padrão 1280×720;
-  `video: false` local e `screenshotOnRunFailure: true`; sem waits fixos — sempre
+  `video: false` local e `screenshotOnRunFailure: true`; sem waits fixos, sempre
   asserções com retry ou `data-revealed`/`section-fallback` como condição.
 - Scripts npm: `test:e2e` (headless, exige servidor via `start-server-and-test`),
   `test:e2e:open` (runner), `test:e2e:spec` (repasse de `--spec`). `test` e
@@ -110,11 +110,11 @@ da suíte antiga (`tests/` vazio, `test-results/.last-run.json`).
 - Migração para Playwright ou qualquer outro runner; Cypress é a escolha única.
 - Testes visuais/snapshot, testes de API da Netlify Function isolada, carga/perf.
 - Alterar comportamento do app (inclusive o `href=""` de Instagram/Twitter e a
-  falta de skip link — registrados para outros PRDs).
+  falta de skip link: registrados para outros PRDs).
 
 ## Further Notes
 
-- Risco principal: recriar a suíte pesada que congelava a máquina — mitigado por
+- Risco principal: recriar a suíte pesada que congelava a máquina, mitigado por
   reduced motion por padrão, `video: false` local, 1 spec por vez e suíte completa
   só em CI (regra a ser escrita em `docs/agents/testing.md`).
 - O PRD deve ser implementado primeiro: todos os outros PRDs da onda dependem

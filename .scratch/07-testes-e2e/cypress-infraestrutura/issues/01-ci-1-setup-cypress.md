@@ -1,4 +1,4 @@
-# Issue — Setup do Cypress: config, estrutura e scripts
+# Issue: Setup do Cypress: config, estrutura e scripts
 
 Status: done
 

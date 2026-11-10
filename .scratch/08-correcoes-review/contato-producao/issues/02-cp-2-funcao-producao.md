@@ -1,4 +1,4 @@
-# Issue — Função /api/contact publicada em produção com CORS restrito
+# Issue: Função /api/contact publicada em produção com CORS restrito
 
 Status: ready-for-human
 
@@ -20,10 +20,10 @@ verdade.
 - [ ] CORS permite apenas a origem do portfólio, com pré-flight
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente
 
 ## Comments
-- 2026-11-08: parte de código pronta e verificada — `json()`/`corsHeaders()` com
+- 2026-11-08: parte de código pronta e verificada: `json()`/`corsHeaders()` com
   origem restrita, `CONTACT_ALLOWED_ORIGINS`, preflight `OPTIONS` 204 e
   `Allow: POST, OPTIONS`; contrato e deploy das functions documentados em
   `docs/CONTACT-ENDPOINT.md` §6. Falta o deploy externo (Netlify + segredo

@@ -1,4 +1,4 @@
-# Issue — Tipografia, tags e estados de hover dos cards
+# Issue: Tipografia, tags e estados de hover dos cards
 
 Status: done
 

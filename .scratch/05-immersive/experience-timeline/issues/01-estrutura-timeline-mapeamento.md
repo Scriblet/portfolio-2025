@@ -1,4 +1,4 @@
-# Issue — Estrutura da timeline e mapeamento de experiências
+# Issue: Estrutura da timeline e mapeamento de experiências
 
 Status: done
 

@@ -1,4 +1,4 @@
-# PRD — Smoke e navegação: home, rotas, header, drawer e tema
+# PRD: Smoke e navegação: home, rotas, header, drawer e tema
 
 Status: draft
 Feature slug: `cypress-smoke-navegacao`
@@ -10,7 +10,7 @@ Nada garante que o portfólio carregue, que a navegação por âncoras leve à s
 certa, que o menu mobile abra e feche, que o tema alterne e persista, ou que o
 header se comporte ao rolar. São as interações que todo visitante usa primeiro e
 que mudanças no shell (header, lazy sections, framer-motion, scroll) quebram em
-silêncio — hoje só uma inspeção manual perceberia.
+silêncio: hoje só uma inspeção manual perceberia.
 
 ## Solution
 
@@ -62,7 +62,7 @@ progresso de leitura.
   `mobile-menu-button`, `role="dialog"` do `mobile-menu`, Escape, overlay e
   trava de `body` (`overflow: hidden`).
 - `/immersive`: assertar `immersive-page`, title e `<meta name="robots">`.
-  `/roadmap` em produção: visita e espera a home (`presentation-section`) — o
+  `/roadmap` em produção: visita e espera a home (`presentation-section`), o
   spec deve rodar contra build/preview, não contra dev.
 - Usar `cy.enableReducedMotion()` por padrão para neutralizar reveals/transições.
 
@@ -70,12 +70,12 @@ progresso de leitura.
 
 - Comportamental, não visual: importa o que o visitante consegue fazer (chegar à
   seção, mudar tema, abrir menu), não a posição exata em pixels ou a estilização.
-- Smoke primeiro (home carrega, seções principais existem) — roda em todo CI.
+- Smoke primeiro (home carrega, seções principais existem), roda em todo CI.
 - Evitar acoplamento a textos de copy quando houver `data-testid`; textos são
   aceitos apenas onde são o contrato (ex.: rótulo do botão de tema em
   `aria-label`).
 - Não duplicar o que o Vitest já cobre (resolução de tema inicial, hooks de
-  scroll) — aqui valida-se a integração no navegador.
+  scroll): aqui valida-se a integração no navegador.
 
 ## Out of Scope
 
@@ -83,13 +83,13 @@ progresso de leitura.
 - Conteúdo detalhado das seções e links externos (PRD `cypress-secoes-conteudo`).
 - PWA/offline (PRD `cypress-pwa-offline`) e acessibilidade (PRD `cypress-a11y-responsivo`).
 - Corrigir o destaque de seção ativa no header (hoje não existe) ou adicionar
-  skip link — são gaps de produto, não de teste.
+  skip link: são gaps de produto, não de teste.
 
 ## Further Notes
 
 - Dependências: PRD `cypress-infraestrutura` (comandos `visitApp`, `resetTheme`,
   `enableReducedMotion`, `waitForSection`).
 - Risco: as seções lazy podem ainda estar em `section-fallback` quando o scroll
-  terminar — por isso `waitForSection` é obrigatório antes de asserir conteúdo.
+  terminar: por isso `waitForSection` é obrigatório antes de asserir conteúdo.
 - Links "Roadmap"/"Imersivo" do header só existem em dev; os specs devem rodar
   contra build/preview para cobrir o comportamento de produção.

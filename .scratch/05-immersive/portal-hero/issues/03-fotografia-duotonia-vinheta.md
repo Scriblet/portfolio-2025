@@ -1,4 +1,4 @@
-# Issue — Fotografia, duotonia e vinheta do hero
+# Issue: Fotografia, duotonia e vinheta do hero
 
 Status: done
 

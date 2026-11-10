@@ -1,4 +1,4 @@
-# Issue — Escala tipográfica central e responsiva no tema
+# Issue: Escala tipográfica central e responsiva no tema
 
 Status: ready-for-agent
 

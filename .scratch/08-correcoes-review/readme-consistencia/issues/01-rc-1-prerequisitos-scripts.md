@@ -1,4 +1,4 @@
-# Issue — Pré-requisitos, scripts e variáveis de ambiente reais
+# Issue: Pré-requisitos, scripts e variáveis de ambiente reais
 
 Status: done
 
@@ -19,4 +19,4 @@ obsoleta tipo `VITE_DISCORD_WEBHOOK_URL`). Toda instrução testada como está.
 - [ ] Cada instrução de instalação executada com sucesso durante a revisão
 
 ## Blocked by
-- Nenhum — pode começar imediatamente
+- Nenhum: pode começar imediatamente

@@ -1,15 +1,15 @@
-# PRD — Configuração centralizada de dados
+# PRD: Configuração centralizada de dados
 
 Status: ready-for-agent
 Feature slug: `dados-centralizados`
 
 ## Problem Statement
 
-Como mantenedor, atualizar empresa, skill, link social ou texto exige caçar arrays hardcoded dentro de `experience.tsx`, `skills.tsx`, `header.tsx`, `github.tsx`, `footer.tsx` e configs — isso gera duplicidade, testes frágeis e atrito para novas seções (Projetos, Depoimentos, Timeline).
+Como mantenedor, atualizar empresa, skill, link social ou texto exige caçar arrays hardcoded dentro de `experience.tsx`, `skills.tsx`, `header.tsx`, `github.tsx`, `footer.tsx` e configs, isso gera duplicidade, testes frágeis e atrito para novas seções (Projetos, Depoimentos, Timeline).
 
 ## Solution
 
-Centralizar todos os dados de conteúdo em `src/data/` tipado (experiences, skills, social, site, projects, testimonials), com componentes passando a ser puros consumidores via props — permitindo atualização, testes e reuso por novas seções sem tocar em JSX.
+Centralizar todos os dados de conteúdo em `src/data/` tipado (experiences, skills, social, site, projects, testimonials), com componentes passando a ser puros consumidores via props, permitindo atualização, testes e reuso por novas seções sem tocar em JSX.
 
 ## User Stories
 
@@ -30,19 +30,19 @@ Centralizar todos os dados de conteúdo em `src/data/` tipado (experiences, skil
 
 ## Implementation Decisions
 
-- **Seam principal:** Componente (render) + build — mesmo DOM antes/depois; `tsc` valida tipos.
-- **Seam secundário:** E2E — testes existentes devem passar sem mudança de seletor.
+- **Seam principal:** Componente (render) + build: mesmo DOM antes/depois; `tsc` valida tipos.
+- **Seam secundário:** E2E: testes existentes devem passar sem mudança de seletor.
 - Módulos afetados: novo `src/data/` (`experiences.ts`, `skills.ts`, `social.ts`, `site.ts`, `projects.ts`, `testimonials.ts`, `types.ts`, `index.ts`), `src/pages/experience/experience.tsx`, `src/pages/skills/skills.tsx`, `src/pages/header.tsx`, `src/pages/github/github.tsx`, `src/pages/footer.tsx`, `src/config/analytics.config.ts`.
 - Decisões:
   - Painel de tipos explícitos; arrays `as const` onde fizer sentido.
-  - `SITE_CONFIG` passa a ler de `src/data/site.ts` (ou re-exporta) — unifica `VITE_*` com fallback.
+  - `SITE_CONFIG` passa a ler de `src/data/site.ts` (ou re-exporta), unifica `VITE_*` com fallback.
   - Componentes recebem dados via import direto (sem context global nesta fase) para manter simplicidade.
-  - Nenhum fetch runtime — dados estáticos tipados.
+  - Nenhum fetch runtime: dados estáticos tipados.
 - Protótipo: não se aplica.
 
 ## Testing Decisions
 
-- Bom teste = render externo + typecheck — não teste de import.
+- Bom teste = render externo + typecheck: não teste de import.
 - Testar em: existente `tests/experience.spec.ts`, `tests/app.spec.ts` (skills), mais `tsc --noEmit`.
 - Priors: asserts por `data-testid="experience-card-*"` + leitura de `src/data/*` no teste.
 - Casos: render idêntico (count + textos), ordem preservada, build passa.

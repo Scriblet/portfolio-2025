@@ -1,4 +1,4 @@
-# Issue — Registrar service worker com cache-first versionado por build
+# Issue: Registrar service worker com cache-first versionado por build
 
 Status: ready-for-agent
 

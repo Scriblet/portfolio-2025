@@ -90,3 +90,43 @@ Cypress.Commands.add('waitForSection', (testId: string) => {
   cy.get('[data-testid="section-fallback"]').should('not.exist')
   cy.get(`[data-testid="${testId}"]`).should('be.visible')
 })
+
+/**
+ * Garante que o service worker está ativo e controlando a página.
+ *
+ * Só existe no build de produção: specs de PWA precisam rodar contra o
+ * preview (4173). Se não houver SW, falha com mensagem explícita em vez de
+ * dar falso positivo.
+ */
+Cypress.Commands.add('requireServiceWorker', () => {
+  cy.window({ log: false }).then((win) => {
+    if (!('serviceWorker' in win.navigator)) {
+      throw new Error(
+        'Service worker indisponível: rode os specs de PWA contra build/preview (npm run test:e2e:preview).',
+      )
+    }
+
+    return win.navigator.serviceWorker.ready.then((registration) => {
+      if (!registration.active) {
+        throw new Error('Service worker registrado, mas sem worker ativo.')
+      }
+
+      if (win.navigator.serviceWorker.controller) return undefined
+
+      return new Cypress.Promise<void>((resolve, reject) => {
+        const timeout = win.setTimeout(() => {
+          reject(new Error('Service worker não assumiu o controle da página.'))
+        }, 10000)
+
+        win.navigator.serviceWorker.addEventListener(
+          'controllerchange',
+          () => {
+            win.clearTimeout(timeout)
+            resolve()
+          },
+          { once: true },
+        )
+      })
+    })
+  })
+})

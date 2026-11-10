@@ -23,10 +23,10 @@ Only when one of these is true:
 When it is allowed, run **one spec at a time**:
 
 ```bash
-# terminal 1 — dedicated E2E dev server on :5174
+# terminal 1: dedicated E2E dev server on :5174
 npm run dev:test
 
-# terminal 2 — a single spec, headless
+# terminal 2: a single spec, headless
 npm run test:e2e:spec -- cypress/e2e/smoke-home.cy.ts
 ```
 
@@ -36,12 +36,14 @@ Never run the whole suite locally. The full suite belongs to CI.
 
 | Script | What it does |
 | --- | --- |
-| `npm run dev:test` | Vite dev server on `:5174` (strict port) for E2E — does not collide with `npm run dev` |
+| `npm run dev:test` | Vite dev server on `:5174` (strict port) for E2E: does not collide with `npm run dev` |
 | `npm run preview:test` | Vite preview on `:4173` (needs `npm run build`) |
 | `npm run test:e2e` | Starts the dev server and runs all specs headless |
 | `npm run test:e2e:open` | Starts the dev server and opens the Cypress runner |
 | `npm run test:e2e:preview` | Builds, starts preview and runs the suite against the built app |
 | `npm run test:e2e:spec` | Runs one spec (`-- <path>`) against an already-running server |
+| `npm run typecheck` | App and Vite config type-check without bundling |
+| `npm run lint` | ESLint (including the em dash rule) and text check |
 
 `test:e2e:preview` is required for PWA/service-worker specs: the worker is only
 generated in a production build (`devOptions.enabled: false`).
@@ -50,17 +52,19 @@ generated in a production build (`devOptions.enabled: false`).
 
 Defined in `cypress/support/commands.ts` (types in `cypress/support/index.d.ts`):
 
-- `cy.visitApp(path?)` — visits through the configured base path, clears
+- `cy.visitApp(path?)`: visits through the configured base path, clears
   `localStorage` and installs the `prefers-reduced-motion` stub.
-- `cy.enableReducedMotion()` / `cy.disableReducedMotion()` — control that stub.
+- `cy.enableReducedMotion()` / `cy.disableReducedMotion()`: control that stub.
   Reduced motion is **on by default** so reveals/transitions do not cause flakes.
-- `cy.resetTheme(mode?)` — resets/writes `localStorage["portfolio-color-mode"]`
+- `cy.resetTheme(mode?)`: resets/writes `localStorage["portfolio-color-mode"]`
   (reload to apply).
-- `cy.interceptContact({ statusCode, body, delay })` — stubs `POST /api/contact`
+- `cy.interceptContact({ statusCode, body, delay })`: stubs `POST /api/contact`
   and exposes `@postContact`. Never let the real POST escape: `vite` does not
   serve the Netlify function, and CI must not call Discord.
-- `cy.waitForSection(testId)` — waits for the lazy section fallback to disappear
+- `cy.waitForSection(testId)`: waits for the lazy section fallback to disappear
   and the final element to be visible.
+- `cy.requireServiceWorker()`: waits for the service worker to control the page.
+  Only works against build/preview; PWA specs skip on the dev server.
 
 ## Conventions
 
@@ -80,9 +84,9 @@ Defined in `cypress/support/commands.ts` (types in `cypress/support/index.d.ts`)
 
 `.github/workflows/ci.yml` has two jobs:
 
-- `quality` — `images:check` + `lint` + `test:unit` + `build` and a type-check of
+- `quality`: `images:check` + `lint` + `test:unit` + `build` and a type-check of
   the Cypress specs (`npx tsc -p cypress/tsconfig.json --noEmit`).
-- `e2e` — `npm run test:e2e:preview` (build + preview on `:4173` + full suite),
+- `e2e`: `npm run test:e2e:preview` (build + preview on `:4173` + full suite),
   so the service worker is active. Screenshots and videos are uploaded as
   artifacts when the job fails.
 
@@ -92,7 +96,7 @@ The jobs stay independent, so a flaky E2E run is visible without hiding unit res
 
 - Vitest covers the logic that changes most often (hooks, reducers, preference
   resolution, validation) in seconds.
-- Cypress covers real navigation, theming, forms and PWA behavior — but it is
+- Cypress covers real navigation, theming, forms and PWA behavior, but it is
   heavy, so it stays out of every edit cycle.
 - The old Playwright suite (100+ browser tests with fixed waits and infinite
   Framer Motion loops) saturated CPU/RAM locally; this split exists to avoid
@@ -107,7 +111,18 @@ The jobs stay independent, so a flaky E2E run is visible without hiding unit res
 | --- | --- |
 | `smoke-home.cy.ts` | home responde e o hero aparece |
 | `navigation.cy.ts` | rotas, âncoras, drawer, tema persistido, progresso |
+| `theme.cy.ts` | alternância, meta theme-color, persistência e herança no /immersive |
+| `header-scroll.cy.ts` | auto-hide, retorno ao topo, foco no header e progresso |
 | `sections.cy.ts` | conteúdo real das seções e links do footer |
 | `contact-form.cy.ts` | validação, honeypot, sucesso, 429/500/offline e `req.body` |
+| `pwa-offline.cy.ts` | OfflineNotice, recarga e volta online |
+| `pwa-cache.cy.ts` | shell e CV no precache, catch-all e denylist de `/api` |
+| `pwa-installacao.cy.ts` | beforeinstallprompt, prompt nativo e modo standalone |
+| `a11y-axe.cy.ts` | axe-core na home, /immersive, erros, drawer e tema claro |
+| `a11y-teclado.cy.ts` | ordem de Tab, foco visível, Escape no drawer e snackbar |
+| `responsivo-viewports.cy.ts` | 375/768/1280, alvos de toque e reduced motion |
+
+`a11y-axe.cy.ts` usa `cypress/support/a11y.ts` para injetar `axe-core`; exceções
+justificadas vivem em `cypress/support/a11y-exceptions.ts`.
 
 - The full suite runs in CI only.

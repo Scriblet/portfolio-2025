@@ -1,4 +1,4 @@
-# Issue — Acessibilidade: Header escondido sai da tabulação e foco traz de volta
+# Issue: Acessibilidade: Header escondido sai da tabulação e foco traz de volta
 
 Status: ready-for-agent
 

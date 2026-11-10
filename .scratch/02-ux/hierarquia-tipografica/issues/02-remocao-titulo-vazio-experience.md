@@ -1,4 +1,4 @@
-# Issue — Remoção do título vazio na Experience preservando o ritmo
+# Issue: Remoção do título vazio na Experience preservando o ritmo
 
 Status: ready-for-agent
 

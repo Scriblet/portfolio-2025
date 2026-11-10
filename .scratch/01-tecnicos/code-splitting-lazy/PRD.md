@@ -1,11 +1,11 @@
-# PRD — Code-splitting e lazy loading
+# PRD: Code-splitting e lazy loading
 
 Status: ready-for-agent
 Feature slug: `code-splitting-lazy`
 
 ## Problem Statement
 
-Como visitante mobile, sinto travamento no primeiro carregamento porque todo o SPA (Presentation, Experience, Philosophy, Skills, GitHub, Contact, Footer) é carregado e executado de uma vez — JS bundle grande, imagens pesadas e animações competindo. Isso piora LCP/INP e aumenta taxa de saída.
+Como visitante mobile, sinto travamento no primeiro carregamento porque todo o SPA (Presentation, Experience, Philosophy, Skills, GitHub, Contact, Footer) é carregado e executado de uma vez, JS bundle grande, imagens pesadas e animações competindo. Isso piora LCP/INP e aumenta taxa de saída.
 
 ## Solution
 
@@ -31,8 +31,8 @@ Carregar só a dobra inicial (Presentation+Header), adiar seções abaixo da dob
 
 ## Implementation Decisions
 
-- **Seam principal:** E2E + build — Lighthouse (LCP/CLS/INP) + Playwright provando adição de chunks sob scroll.
-- **Seam secundário:** Componente — `App.tsx` passa a lazy-load Experience, PhilosophyBanner, SkillsSection, GithubBanner, ContactForm, Footer; Presentation e Header ficam eager.
+- **Seam principal:** E2E + build: Lighthouse (LCP/CLS/INP) + Playwright provando adição de chunks sob scroll.
+- **Seam secundário:** Componente: `App.tsx` passa a lazy-load Experience, PhilosophyBanner, SkillsSection, GithubBanner, ContactForm, Footer; Presentation e Header ficam eager.
 - Módulos afetados: `src/App.tsx`, `vite.config.ts` (build.rollupOptions), `src/img/*` (adicionar `loading="lazy"`, `decoding="async"`).
 - Decisões:
   - `React.lazy(() => import('./pages/...'))` com `lazySection` helper + `Suspense` com skeleton de mesma altura (CLS 0).
@@ -44,7 +44,7 @@ Carregar só a dobra inicial (Presentation+Header), adiar seções abaixo da dob
 
 ## Testing Decisions
 
-- Bom teste = comportamento externo (tempo de dobra, chunk carregado, CLS) — não implementação interna de chunk.
+- Bom teste = comportamento externo (tempo de dobra, chunk carregado, CLS), não implementação interna de chunk.
 - Testar em: Lighthouse CI + Playwright (`tests/perf.spec.ts`).
 - Priors: `tests/app.spec.ts` com `waitUntil: networkidle` + leitura de `performance.getEntriesByType('navigation')`.
 - Casos: Presentation renderizada sem esperar Info chunk; scroll carrega Experience; fallback aparece sob throttling; CLS < 0.1; anchor navigation funciona.
@@ -57,5 +57,5 @@ Carregar só a dobra inicial (Presentation+Header), adiar seções abaixo da dob
 
 ## Further Notes
 
-- Risco: `react-scroll` com lazy sections precisa `offset` ajustado — testar em `tests/header.spec.ts`.
+- Risco: `react-scroll` com lazy sections precisa `offset` ajustado, testar em `tests/header.spec.ts`.
 - Depende de `dados-centralizados` para placeholders determinísticos.

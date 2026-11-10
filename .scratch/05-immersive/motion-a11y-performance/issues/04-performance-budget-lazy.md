@@ -1,4 +1,4 @@
-# Issue — Orçamento de performance e lazy loading
+# Issue: Orçamento de performance e lazy loading
 
 Status: done
 

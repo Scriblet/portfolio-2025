@@ -1,4 +1,4 @@
-# Issue — Adiar Experience/Skills com skeleton de altura preservada
+# Issue: Adiar Experience/Skills com skeleton de altura preservada
 
 Status: ready-for-agent
 

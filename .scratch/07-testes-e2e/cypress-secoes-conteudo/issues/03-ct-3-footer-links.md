@@ -1,4 +1,4 @@
-# Issue — Footer: sociais, âncoras e comportamento documentado dos links vazios
+# Issue: Footer: sociais, âncoras e comportamento documentado dos links vazios
 
 Status: done
 

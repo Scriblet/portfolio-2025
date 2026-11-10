@@ -1,6 +1,6 @@
-# Issue — InstallButton: prompt de instalação e modo standalone
+# Issue: InstallButton: prompt de instalação e modo standalone
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-pwa-offline/PRD.md`

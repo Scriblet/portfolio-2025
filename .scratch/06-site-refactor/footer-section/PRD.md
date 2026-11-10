@@ -18,7 +18,7 @@ tipografia do design system.
 
 - `src/pages/footer.tsx` usa `Box` MUI, `IconButton`, `MuiLink` e scroll suave
   via `react-scroll`.
-- JÃ¡ hÃ¡ Ã¡rea de toque 44Ã—44 e analytics nos cliques.
+- JÃ¡ hÃ¡ Ã¡rea de toque 44Ã-44 e analytics nos cliques.
 
 ## DireÃ§Ã£o visual (referÃªncia `/immersive`)
 
@@ -32,14 +32,14 @@ tipografia do design system.
 
 1. Refatorar o rodapÃ© para a linguagem imersiva.
 2. Manter scroll suave, analytics e links reais.
-3. Manter alvos de 44Ã—44.
+3. Manter alvos de 44Ã-44.
 4. Usar `Hairline` e tokens.
 5. Garantir responsividade e reduced motion.
 
 ## CritÃ©rios de aceitaÃ§Ã£o
 
 - [x] RodapÃ© usa tokens, sem hex hardcoded.
-- [x] Links e Ã­cones mantÃªm 44Ã—44 e foco visÃ­vel.
+- [x] Links e Ã­cones mantÃªm 44Ã-44 e foco visÃ­vel.
 - [x] Scroll suave e analytics preservados.
 - [x] Contraste AA em links e fine print.
 - [x] Sem overflow em 320â€“1920px.

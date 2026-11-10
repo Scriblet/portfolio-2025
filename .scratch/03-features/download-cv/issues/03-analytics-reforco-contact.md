@@ -1,4 +1,4 @@
-# Issue — Analytics e reforço em Contact
+# Issue: Analytics e reforço em Contact
 
 Status: ready-for-agent
 

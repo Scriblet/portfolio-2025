@@ -1,4 +1,4 @@
-# Issue — Adicionar dados estruturados Person e testes de regressão de SEO
+# Issue: Adicionar dados estruturados Person e testes de regressão de SEO
 
 Status: ready-for-agent
 

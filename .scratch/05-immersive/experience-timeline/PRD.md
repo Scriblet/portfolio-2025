@@ -6,7 +6,7 @@ scope: site
 owner: agent
 ---
 
-# PRD — Experience Timeline
+# PRD: Experience Timeline
 
 ## Resumo / objetivo
 
@@ -32,11 +32,11 @@ Transformar a seção "Trajectory" em uma **timeline vertical de Experiência** 
 - **Descrição**: Inter 400, 14–15px, cor `#9EA5A8`, `max-width: 62ch`, line-height 1.68.
 - **Headline**: "Cinco passagens, nenhuma linha reta." ou similar derivado de `experiences.length`.
 - **Experiências reais**:
-  1. Vivo (Telefônica Brasil) — Consultor de IA / AI Software Engineer — mar/2026 – atual
-  2. Porto Seguro — Desenvolvedor de Software Pleno — jan/2024 – mar/2026
-  3. Thoughtworks — Consultant Developer — abr/2022 – ago/2023
-  4. ArcoTech (Escola em Movimento) — Full Stack Developer — jun/2021 – mar/2022
-  5. Finger Consultoria — Founder & UX Designer — ago/2019 – jun/2021
+  1. Vivo (Telefônica Brasil): Consultor de IA / AI Software Engineer, mar/2026 – atual
+  2. Porto Seguro: Desenvolvedor de Software Pleno, jan/2024 – mar/2026
+  3. Thoughtworks: Consultant Developer, abr/2022 – ago/2023
+  4. ArcoTech (Escola em Movimento): Full Stack Developer, jun/2021 – mar/2022
+  5. Finger Consultoria: Founder & UX Designer, ago/2019 – jun/2021
 
 ## Interações e estados
 
@@ -63,8 +63,8 @@ Transformar a seção "Trajectory" em uma **timeline vertical de Experiência** 
 
 ## Notas de implementação (componentes/arquivos envolvidos)
 
-- `src/pages/immersive/sections.tsx` — novo componente `Experience` em substituição a `Trajectory`.
-- `src/pages/immersive/content.ts` — `experienceContent`, `experienceTimeline`.
-- `src/data/experiences.ts` — fonte única das experiências e datas.
-- `src/pages/immersive/immersive.tsx` — atualizar ordem (`Experience` após `Skills`).
-- `src/pages/immersive/immersive.module.scss` — estilos da timeline.
+- `src/pages/immersive/sections.tsx`: novo componente `Experience` em substituição a `Trajectory`.
+- `src/pages/immersive/content.ts`: `experienceContent`, `experienceTimeline`.
+- `src/data/experiences.ts`: fonte única das experiências e datas.
+- `src/pages/immersive/immersive.tsx`: atualizar ordem (`Experience` após `Skills`).
+- `src/pages/immersive/immersive.module.scss`: estilos da timeline.

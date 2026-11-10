@@ -1,4 +1,4 @@
-# Issue — Navegação por âncoras e menu mobile (drawer)
+# Issue: Navegação por âncoras e menu mobile (drawer)
 
 Status: done
 

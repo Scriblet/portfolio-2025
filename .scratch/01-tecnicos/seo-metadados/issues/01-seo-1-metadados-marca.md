@@ -1,4 +1,4 @@
-# Issue — Entregar metadados essenciais e assets de marca no head
+# Issue: Entregar metadados essenciais e assets de marca no head
 
 Status: ready-for-agent
 

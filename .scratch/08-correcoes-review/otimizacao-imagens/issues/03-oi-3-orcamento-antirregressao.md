@@ -1,4 +1,4 @@
-# Issue — Orçamento de imagens com verificação anti-regressão
+# Issue: Orçamento de imagens com verificação anti-regressão
 
 Status: done
 

@@ -1,4 +1,4 @@
-# Issue — Robustez: mobile, contraste, casos inválidos e não-bloqueio da conversão
+# Issue: Robustez: mobile, contraste, casos inválidos e não-bloqueio da conversão
 
 Status: ready-for-agent
 

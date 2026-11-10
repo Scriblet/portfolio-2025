@@ -1,4 +1,4 @@
-# Lucas Nonato — Portfólio
+# Lucas Nonato · Portfólio
 
 > Portfólio de Lucas Nonato, Consultor de IA e Software Engineer. Experiência em
 > React, TypeScript, Node.js, integração de LLMs e desenvolvimento web moderno.

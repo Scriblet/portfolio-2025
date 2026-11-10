@@ -1,4 +1,4 @@
-# Issue — Cobertura E2E por enumeração de interativos e sem regressão
+# Issue: Cobertura E2E por enumeração de interativos e sem regressão
 
 Status: ready-for-agent
 

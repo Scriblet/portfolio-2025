@@ -1,4 +1,4 @@
-# Issue — Painéis, wordmark e meta-cantos do hero
+# Issue: Painéis, wordmark e meta-cantos do hero
 
 Status: done
 

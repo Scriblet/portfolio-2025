@@ -1,4 +1,4 @@
-# Issue — Reveal e estados da seção Sobre
+# Issue: Reveal e estados da seção Sobre
 
 Status: done
 

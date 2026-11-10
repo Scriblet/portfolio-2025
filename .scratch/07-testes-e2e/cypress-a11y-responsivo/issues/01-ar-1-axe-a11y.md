@@ -1,6 +1,6 @@
-# Issue — Varredura axe-core na home, /immersive e estados de erro
+# Issue: Varredura axe-core na home, /immersive e estados de erro
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-a11y-responsivo/PRD.md`

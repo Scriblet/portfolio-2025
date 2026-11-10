@@ -1,4 +1,4 @@
-# Issue — Verificação E2E e validação desktop/mobile sem regressão
+# Issue: Verificação E2E e validação desktop/mobile sem regressão
 
 Status: ready-for-agent
 

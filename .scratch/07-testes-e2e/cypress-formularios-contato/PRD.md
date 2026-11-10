@@ -1,4 +1,4 @@
-# PRD — Formulários de contato: validação, envio e feedback
+# PRD: Formulários de contato: validação, envio e feedback
 
 Status: draft
 Feature slug: `cypress-formularios-contato`
@@ -78,7 +78,7 @@ durante o POST e reset do form após sucesso.
 ## Testing Decisions
 
 - Comportamental: o que o visitante vê e faz; nunca assertar classes do MUI
-  (`.MuiAlert-*`) — usar `snackbar-*` e roles/labels.
+  (`.MuiAlert-*`): usar `snackbar-*` e roles/labels.
 - Payload enviado é contrato público do form → assertar chaves e tipos em
   `@postContact`, sem depender do servidor.
 - Um teste por estado de feedback (é onde regressões custam caro) e um por
@@ -96,8 +96,8 @@ durante o POST e reset do form após sucesso.
 ## Further Notes
 
 - Dependências: PRD `cypress-infraestrutura` (principalmente `interceptContact`).
-- `npm run dev` (Vite puro) não serve `/api/contact` — sem intercept o form cai
+- `npm run dev` (Vite puro) não serve `/api/contact`, sem intercept o form cai
   no catch "Não foi possível enviar..."; os specs não devem nunca deixar o POST
   real passar.
 - O auto-hide da snackbar e o timeout de 2500 ms do feedback de download são os
-  únicos timers relevantes — usar `cy.clock`/`cy.tick`.
+  únicos timers relevantes: usar `cy.clock`/`cy.tick`.

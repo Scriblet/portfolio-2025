@@ -1,15 +1,15 @@
-# PRD — SEO técnico e metadados
+# PRD: SEO técnico e metadados
 
 Status: ready-for-agent
 Feature slug: `seo-metadados`
 
 ## Problem Statement
 
-Como visitante/recrutador, ao compartilhar o portfólio no WhatsApp, LinkedIn ou Twitter, vejo apenas título genérico sem imagem e sem descrição — isso reduz cliques, perde contexto e prejudica ranqueamento no Google. Hoje o `index.html` tem apenas `<title>` e `lang="en"`, sem Open Graph, Twitter Cards, canonical, favicon dinâmico ou dados estruturados.
+Como visitante/recrutador, ao compartilhar o portfólio no WhatsApp, LinkedIn ou Twitter, vejo apenas título genérico sem imagem e sem descrição, isso reduz cliques, perde contexto e prejudica ranqueamento no Google. Hoje o `index.html` tem apenas `<title>` e `lang="en"`, sem Open Graph, Twitter Cards, canonical, favicon dinâmico ou dados estruturados.
 
 ## Solution
 
-Entregar um portfólio com metadados técnicos completos: título otimizado, descrição, Open Graph, Twitter Cards, favicon, canonical, `robots`, e JSON-LD `Person` com links sociais — tudo centralizado em `src/config` e refletido no `index.html` — gerando previews ricos e melhor indexação.
+Entregar um portfólio com metadados técnicos completos: título otimizado, descrição, Open Graph, Twitter Cards, favicon, canonical, `robots`, e JSON-LD `Person` com links sociais, tudo centralizado em `src/config` e refletido no `index.html`, gerando previews ricos e melhor indexação.
 
 ## User Stories
 
@@ -30,8 +30,8 @@ Entregar um portfólio com metadados técnicos completos: título otimizado, des
 
 ## Implementation Decisions
 
-- **Seam principal:** E2E / build — teste de leitura do `<head>` servido + Lighthouse SEO baseline.
-- **Seam secundário:** Config centralizada — `SITE_CONFIG` passa a ser fonte para título/descrição/canonical; `index.html` consome valores estáticos estendidos.
+- **Seam principal:** E2E / build: teste de leitura do `<head>` servido + Lighthouse SEO baseline.
+- **Seam secundário:** Config centralizada: `SITE_CONFIG` passa a ser fonte para título/descrição/canonical; `index.html` consome valores estáticos estendidos.
 - Módulos afetados: `index.html`, `src/config/analytics.config.ts` (SITE_CONFIG), `public/` (favicon, imagem OG).
 - Decisões:
   - Suporte apenas a SPA static (sem React Router): metadados estáticos no `index.html` + JSON-LD inline; sem React Helmet Async até haver rotas.
@@ -39,12 +39,12 @@ Entregar um portfólio com metadados técnicos completos: título otimizado, des
   - `lang="pt-BR"`, `title` formato `Nome · Cargo | Tagline`, `og:title`, `og:description`, `twitter:title/description`, `twitter:image`.
   - JSON-LD `Person` com `@context: https://schema.org`, `name`, `jobTitle`, `url`, `sameAs` (GitHub, LinkedIn).
 - Fora da decisão deste PRD: sitemap.xml dinâmico, i18n multi-idioma, analytics de Search Console.
-- Protótipo: não houve snippet de decisão mais precisa que prose — esta seção é a decisão.
+- Protótipo: não houve snippet de decisão mais precisa que prose, esta seção é a decisão.
 
 ## Testing Decisions
 
 - Bom teste = comportamento externo observável (tags no DOM, preview rendering), não string interna.
-- Testar em: `tests/` (Playwright, existente) — novo `tests/seo.spec.ts` lendo `<head>`.
+- Testar em: `tests/` (Playwright, existente): novo `tests/seo.spec.ts` lendo `<head>`.
 - Priors: `tests/app.spec.ts` usando `page.goto` + `locator('head > meta')`, `data-testid` quando criar elementos novos.
 - Casos: presença/conteúdo de OG/Twitter, JSON-LD parseável, favicon 200, canonical, LCP não-regressão.
 

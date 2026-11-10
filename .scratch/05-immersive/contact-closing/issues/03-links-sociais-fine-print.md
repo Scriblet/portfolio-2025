@@ -1,4 +1,4 @@
-# Issue — Links sociais e fine print
+# Issue: Links sociais e fine print
 
 Status: done
 

@@ -39,6 +39,12 @@ declare global {
        * o elemento final ficar visível.
        */
       waitForSection(testId: string): Chainable<void>
+
+      /**
+       * Garante service worker ativo controlando a página. Só funciona no
+       * build/preview; falha com mensagem clara no dev server.
+       */
+      requireServiceWorker(): Chainable<void>
     }
   }
 }

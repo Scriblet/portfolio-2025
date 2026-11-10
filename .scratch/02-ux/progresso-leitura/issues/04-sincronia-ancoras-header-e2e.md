@@ -1,4 +1,4 @@
-# Issue — Sincronia com âncoras, integração com o Header e E2E
+# Issue: Sincronia com âncoras, integração com o Header e E2E
 
 Status: ready-for-agent
 

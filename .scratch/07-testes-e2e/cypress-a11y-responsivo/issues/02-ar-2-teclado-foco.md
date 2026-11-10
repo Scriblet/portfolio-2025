@@ -1,6 +1,6 @@
-# Issue — Navegação por teclado, foco visível e armadilhas de foco
+# Issue: Navegação por teclado, foco visível e armadilhas de foco
 
-Status: ready-for-agent
+Status: done
 
 ## Parent
 PRD: `.scratch/07-testes-e2e/cypress-a11y-responsivo/PRD.md`

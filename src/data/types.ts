@@ -129,7 +129,7 @@ export interface SelectedWork {
   /** Numeral exibido como capítulo, ex.: "01". */
   number: string;
   company: string;
-  /** Período legível, ex.: "mar/2026 — atual". */
+  /** Período legível, ex.: "mar/2026 – atual". */
   period: string;
   /** Data ordenável (ISO) para manter o case mais recente primeiro. */
   start: string;

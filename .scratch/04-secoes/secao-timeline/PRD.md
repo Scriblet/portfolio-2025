@@ -1,4 +1,4 @@
-# PRD — Seção Jornada/Carreira
+# PRD: Seção Jornada/Carreira
 
 Status: done
 Feature slug: `secao-timeline`
@@ -33,7 +33,7 @@ Adicionar uma nova seção de página única, acessível pela âncora `#jornada`
 
 - **Estrutura de página**: nova seção em `src/pages/` com âncora `#jornada`, `data-testid`, heading `h2` no padrão visual das demais seções; compor com MUI v7 (Box, Stack, Card, Chip, Typography) e linha vertical via CSS ou componente MUI posicionado.
 - **Integração global**: registrar a seção em `App.tsx` (posição narrativa a definir pelo agente, sugerido: após Experience) e adicionar entrada ao menu do Header com link âncora.
-- **Contrato de dados**: módulos tipados em `src/data/` (dependência: camada de dados ainda não existe) — `milestones` com `id`, `type` ("formacao" | "certificacao" | "profissional" | "conquista"), `title`, `institution`, `period` (texto livre, ex.: "2019 — 2021" ou "2023"), `description` opcional, `url` opcional (certificado/projeto) e `order`/`date` para ordenação. Ordenar em memória antes de renderizar (mais recente primeiro) em vez de depender da ordem do array.
+- **Contrato de dados**: módulos tipados em `src/data/` (dependência: camada de dados ainda não existe), `milestones` com `id`, `type` ("formacao" | "certificacao" | "profissional" | "conquista"), `title`, `institution`, `period` (texto livre, ex.: "2019, 2021" ou "2023"), `description` opcional, `url` opcional (certificado/projeto) e `order`/`date` para ordenação. Ordenar em memória antes de renderizar (mais recente primeiro) em vez de depender da ordem do array.
 - **Timeline visual**: linha vertical contínua com marcadores circulares por tipo (forma/cor do tema), alternância desktop (linha central) e mobile (linha à esquerda), usando tokens do tema escuro; evitar bibliotecas de timeline de terceiros na primeira entrega.
 - **Acessibilidade**: lista ordenada semântica (`ol`/`li`) ou `role="list"`/`listitem`, período legível por leitor de tela (texto, não apenas cor), foco visível em itens com links, e contraste AA.
 - **Animações**: Framer Motion para reveal discreto ao entrar na viewport, desativado com `prefers-reduced-motion`; sem animação contínua da linha ou dos marcadores.
@@ -61,7 +61,7 @@ Adicionar uma nova seção de página única, acessível pela âncora `#jornada`
 - Integração com APIs (LinkedIn, GitHub, bolsas de certificado) ou sincronização automática de marcos.
 - Upload ou verificação de certificados/PDFs dentro do portfólio.
 - Detecção automática de idioma ou tradução multilíngue da timeline.
-- Remoção ou reformulação das cards de Experience — esta entrega complementa, não substitui, a seção existente.
+- Remoção ou reformulação das cards de Experience: esta entrega complementa, não substitui, a seção existente.
 - Animação contínua (ex.: linha que se desenha sem parar) ou parallax que prejudique acessibilidade e performance.
 - Depoimentos ou comentários vinculados a marcos específicos.
 

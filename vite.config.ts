@@ -12,7 +12,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
       manifest: {
-        name: 'Lucas Nonato — Portfólio',
+        name: 'Lucas Nonato · Portfólio',
         short_name: 'Lucas Nonato',
         description:
           'Portfólio de Lucas Nonato, desenvolvedor full-stack e consultor de IA.',

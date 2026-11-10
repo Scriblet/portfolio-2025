@@ -1,4 +1,4 @@
-# Issue — Filtro por categoria opcional no cliente
+# Issue: Filtro por categoria opcional no cliente
 
 Status: removed
 
