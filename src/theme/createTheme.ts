@@ -1,4 +1,4 @@
-import { alpha, createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { alpha, createTheme } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
 import { designTokens } from "./designTokens";
 import {
@@ -474,10 +474,10 @@ export const createAppTheme = (mode: ColorMode): Theme => {
     },
   });
 
-  return responsiveFontSizes(baseTheme, {
-    factor: 3, // Intensidade do escalonamento
-    breakpoints: ["xs", "sm", "md", "lg", "xl"],
-  });
+  // A escala já é fluida via clamp() em cada variante. `responsiveFontSizes`
+  // reescreveria esses valores como `NaNrem` (ele espera px/rem numéricos) e
+  // derrubaria todos os headings para o tamanho padrão do navegador.
+  return baseTheme;
 };
 
 /**
