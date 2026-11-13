@@ -1,4 +1,4 @@
-# 🚀 Portfolio 2025 - Lucas Nonato
+# 🚀 Portfólio 2025 - Lucas Nonato
 
 Um portfólio moderno e responsivo desenvolvido com React, TypeScript e Material-UI, apresentando experiências profissionais, habilidades técnicas e projetos de desenvolvimento.
 
@@ -15,7 +15,7 @@ Um portfólio moderno e responsivo desenvolvido com React, TypeScript e Material
 - [📐 Sistema de Design](#-sistema-de-design)
 - [🔧 Configurações](#-configurações)
 - [📱 Testes de Responsividade](#-testes-de-responsividade)
-- [🚀 Deploy](#-deploy)
+- [🚀 Publicação](#-publicação)
 - [🤝 Contribuição](#-contribuição)
 - [📄 Licença](#-licença)
 
@@ -23,22 +23,22 @@ Um portfólio moderno e responsivo desenvolvido com React, TypeScript e Material
 
 Este é um portfólio profissional que apresenta:
 - **Apresentação pessoal** com foto e descrição das áreas de atuação
-- **Cases profissionais** na seção Trabalho, com contexto, decisão e resultado
-- **Habilidades técnicas** organizadas em cards interativos
+- **Estudos de caso profissionais** na seção Trabalho, com contexto, decisão e resultado
+- **Habilidades técnicas** organizadas em cartões interativos
 - **Mapa de maturidade em IA** com cinco camadas de atuação, de produto a governança
-- **Manifesto técnico** com sete princípios e a foto das mãos em faixa full-bleed
+- **Manifesto técnico** com sete princípios e a foto das mãos em faixa de largura total
 - **Links para GitHub** e projetos
 - **Formulário de contato** integrado a uma Netlify Function que notifica via Discord
-- **Rota `/immersive`**: refactor visual com portal scroll-driven e deck de releases
-- **Rota `/roadmap`**: roadmap do projeto com o estado de cada onda (montada apenas em desenvolvimento)
+- **Rota `/immersive`**: refatoração visual com portal guiado por rolagem e painel de versões
+- **Rota `/roadmap`**: plano de evolução do projeto com o estado de cada onda (montada apenas em desenvolvimento)
 
 ### 🎨 Design
 - Interface moderna e minimalista
 - Animações suaves com Framer Motion
 - Temas claro e escuro (o `/immersive` permanece escuro de referência)
-- Design system com tokens em CSS + TypeScript
+- Sistema de design com tokens em CSS + TypeScript
 - Tipografia responsiva e legível
-- Componentes acessíveis (WCAG guidelines)
+- Componentes acessíveis (diretrizes WCAG)
 
 ## ✨ Funcionalidades
 
@@ -48,58 +48,58 @@ Este é um portfólio profissional que apresenta:
 - Layout responsivo que se adapta a diferentes tamanhos de tela
 
 ### 💼 Trabalho
-- Cinco cases em narrativa contínua, do mais recente ao mais antigo
-- Cada case traz contexto, desafio, decisão, resultado e stack
-- Meta por case com período, empresa e papel, sem cards de vidro
+- Cinco estudos de caso em narrativa contínua, do mais recente ao mais antigo
+- Cada estudo de caso traz contexto, desafio, decisão, resultado e pilha de tecnologias
+- Metadados por estudo de caso com período, empresa e papel, sem cartões de vidro
 - Âncoras antigas `#experience` e `#jornada` continuam levando à seção
 
 ### 🔧 Habilidades Técnicas
-- 10 habilidades principais organizadas em cards
+- 10 habilidades principais organizadas em cartões
 - Ícones do Material-UI para identificação visual
-- Tags com tecnologias específicas
-- Efeitos hover para melhor interação
+- Etiquetas com tecnologias específicas
+- Efeitos ao passar o mouse para melhor interação
 
 ### 🧠 Mapa de Maturidade em IA
-- Rail sticky com numeral e índice 01–05 que acende conforme o scroll
-- Cinco camadas em coluna contínua, sem cards: produto, integração, RAG, agentes e governança
+- Trilho fixo com numeral e índice 01–05 que acende conforme a rolagem
+- Cinco camadas em coluna contínua, sem cartões: produto, integração, RAG, agentes e governança
 - Conteúdo de `src/data/aiMaturity.ts`, com evidência explícita por camada
 
 ### 🎯 Manifesto Técnico
-- A tese é o próprio `h2`; "Como eu construo" entra como eyebrow
-- Foto das mãos em faixa full-bleed entre a abertura e os princípios
+- A tese é o próprio `h2`; "Como eu construo" entra como rótulo superior
+- Foto das mãos em faixa de largura total entre a abertura e os princípios
 - Sete princípios de `src/data/principles.ts`, com numeral recortado e impacto em itálico
 
 ### 📁 GitHub
 - Seção dedicada aos projetos no GitHub
-- Call-to-action para seguir no GitHub
+- Chamada para ação para seguir no GitHub
 - Painel de vidro integrado ao tema claro/escuro
 
 ### 📬 Contato
-- Três propostas de valor com ganho e CTA que preenche o formulário
-- Campos para nome, email e mensagem
+- Três propostas de valor com ganho e chamada para ação que preenche o formulário
+- Campos para nome, e-mail e mensagem
 - Validação de formulário
-- Integração com Discord webhook para notificações
-- Feedback visual de envio (sucesso/erro)
+- Integração com webhook do Discord para notificações
+- Retorno visual de envio (sucesso/erro)
 
 ### 🧭 Navegação
-- Header fixo com navegação suave
-- Menu hamburger responsivo para mobile
+- Cabeçalho fixo com navegação suave
+- Menu hambúrguer responsivo para dispositivos móveis
 - Links de ancoragem para seções específicas
-- Footer com links de navegação e redes sociais
+- Rodapé com links de navegação e redes sociais
 
 ## 🛠️ Tecnologias
 
-### Frontend
+### Front-end
 - **React 19.0.0** - Biblioteca JavaScript para construção de interfaces
 - **TypeScript 5.7.2** - Superset tipado do JavaScript
-- **Vite 6.2.0** - Build tool e dev server ultrarrápido
+- **Vite 6.2.0** - Ferramenta de compilação e servidor de desenvolvimento ultrarrápido
 - **Material-UI 7.0.0** - Biblioteca de componentes React
 
 ### Estilização
-- **Material-UI System** - Sistema de design components
+- **Material-UI System** - Sistema de componentes de design
 - **Sass 1.86.0** - Pré-processador CSS
-- **CSS Custom Properties** - Variáveis CSS nativas
-- **Responsive Design** - Mobile-first approach
+- **Propriedades personalizadas CSS** - Variáveis CSS nativas
+- **Design responsivo** - Abordagem mobile-first (prioridade para dispositivos móveis)
 
 ### Animações
 - **Framer Motion 12.6.2** - Biblioteca de animações para React
@@ -107,7 +107,7 @@ Este é um portfólio profissional que apresenta:
 
 ### Navegação
 - **React Router DOM 7.4.0** - Roteamento para aplicações React
-- **React Scroll 1.9.3** - Scroll suave entre seções
+- **React Scroll 1.9.3** - Rolagem suave entre seções
 
 ### Tipografia
 - **Fontsource Syne / Inter / Sora** - Fontes auto-hospedadas do design system
@@ -119,22 +119,22 @@ Este é um portfólio profissional que apresenta:
 
 ## 📱 Responsividade
 
-### 🎯 Breakpoints
+### 🎯 Pontos de Quebra
 ```typescript
 xs: 0px - 599px     // Smartphones
 sm: 600px - 899px   // Tablets pequenos
-md: 900px - 1199px  // Tablets grandes/Laptops
-lg: 1200px - 1535px // Desktops
-xl: 1536px+         // Desktops grandes
+md: 900px - 1199px  // Tablets grandes/Notebooks
+lg: 1200px - 1535px // Computadores de mesa
+xl: 1536px+         // Computadores de mesa grandes
 ```
 
-### 📐 Breakpoints Customizados
+### 📐 Pontos de Quebra Personalizados
 ```css
 320px  // Smartphones muito pequenos
 360px  // Smartphones pequenos
 480px  // Smartphones grandes
 768px  // Tablets
-1024px // Tablets landscape
+1024px // Tablets em modo paisagem
 1440px // Monitores padrão
 ```
 
@@ -153,8 +153,8 @@ body: clamp(0.875rem, 1.5vw, 1rem)
 - ✅ Samsung Galaxy S21 (360×800)
 - ✅ iPad Mini (768×1024)
 - ✅ iPad Air (820×1180)
-- ✅ Desktop FHD (1920×1080)
-- ✅ Desktop 4K (3840×2160)
+- ✅ Computador de mesa FHD (1920×1080)
+- ✅ Computador de mesa 4K (3840×2160)
 
 ## 🚀 Instalação
 
@@ -184,14 +184,14 @@ O `install` roda o script `prepare`, que aponta os hooks de commit para
 cp .env.example .env
 ```
 
-- `DISCORD_WEBHOOK_URL`: segredo **server-only** da Netlify Function.
-- `VITE_CONTACT_ENDPOINT`: URL pública da function; vazio usa `/api/contact`
+- `DISCORD_WEBHOOK_URL`: segredo **exclusivo do servidor** da Netlify Function.
+- `VITE_CONTACT_ENDPOINT`: URL pública da função; vazio usa `/api/contact`
   (só funciona com `netlify dev`). Detalhes em `docs/CONTACT-ENDPOINT.md`.
 
 4. **Inicie o servidor de desenvolvimento**
 ```bash
 npm run dev
-# ou, para testar a function de contato na mesma origem:
+# ou, para testar a função de contato na mesma origem:
 npx netlify dev
 ```
 
@@ -207,19 +207,19 @@ http://localhost:5173
 npm run dev                # Vite em http://localhost:5173
 
 # Qualidade
-npm run lint               # ESLint + checagem de copy (falha em erro e em warning)
-npm run lint:text          # Só a checagem de copy (travessão proibido)
-npm run test:unit          # Vitest + jsdom (loop padrão, ~2s)
-npm run test:unit:watch    # Vitest em watch
+npm run lint               # ESLint + checagem de texto (falha em erro e em aviso)
+npm run lint:text          # Só a checagem de texto (travessão proibido)
+npm run test:unit          # Vitest + jsdom (ciclo padrão, ~2s)
+npm run test:unit:watch    # Vitest em modo de observação
 
-# Build (type-check + bundle)
+# Compilação (checagem de tipos + empacotamento)
 npm run build              # tsc --noEmit (app e node) + vite build
 npm run preview            # Serve o dist em http://localhost:4173
 
-# E2E (opt-in: ver docs/agents/testing.md)
-npm run dev:test           # Dev server em :5174 para os specs
-npm run test:e2e:spec -- cypress/e2e/<spec>.cy.ts  # Um spec
-npm run test:e2e:preview   # Build + preview + suíte completa (CI)
+# E2E (opcional: ver docs/agents/testing.md)
+npm run dev:test           # Servidor de desenvolvimento em :5174 para as especificações
+npm run test:e2e:spec -- cypress/e2e/<spec>.cy.ts  # Uma especificação
+npm run test:e2e:preview   # Compilação + pré-visualização + suíte completa (CI)
 
 # Imagens
 npm run images:optimize    # Gera AVIF/WebP/JPEG em src/img/generated
@@ -230,86 +230,86 @@ npm run images:check       # Valida o orçamento de peso das imagens (CI)
 
 ```
 portfolio-2025/
-├── .github/workflows/       # ci.yml (lint+testes+build) e deploy.yml (Pages)
+├── .github/workflows/       # ci.yml (lint+testes+compilação) e deploy.yml (Pages)
 ├── .githooks/               # commit-msg (Conventional Commits)
-├── .scratch/                # PRDs, issues e specs do tracker local
-├── assets-src/img/          # Originais das imagens (fonte do pipeline)
-├── cypress/                 # Specs E2E e comandos customizados
+├── .scratch/                # PRDs, tarefas e especificações do rastreador local
+├── assets-src/img/          # Originais das imagens (fonte do fluxo de processamento)
+├── cypress/                 # Especificações E2E e comandos personalizados
 ├── docs/                    # ADRs, agentes (commits, testes) e operação
 ├── netlify/functions/       # Netlify Function do formulário (contact.mjs)
 ├── public/                  # Estáticos (CV em PDF, ícones, 404.html)
 ├── scripts/                 # optimize-images.mjs e check-image-budget.mjs
 ├── src/
 │   ├── components/          # Compartilhados (inclui design-system/)
-│   ├── data/                # Conteúdo tipado (experiências, skills, roadmap…)
-│   ├── hooks/               # Reveal, movimento reduzido, scroll
+│   ├── data/                # Conteúdo tipado (experiências, habilidades, plano de evolução…)
+│   ├── hooks/               # Revelação, movimento reduzido, rolagem
 │   ├── img/                 # Variantes responsivas geradas (generated/)
 │   ├── pages/               # Seções, formulário e rota /immersive
 │   ├── services/            # Endpoint de contato e integrações
 │   ├── styles/              # design-system.css (tokens, vidro, grão)
 │   └── theme/               # Tokens TS, paletas MUI e ColorModeProvider
 ├── vite.config.ts           # Vite, PWA e configuração do Vitest
-├── netlify.toml             # Build Netlify + functions + SPA fallback
+├── netlify.toml             # Compilação Netlify + funções + contingência SPA
 └── package.json             # Dependências, engines e scripts
 ```
 
 > Rode `npm run images:optimize` após trocar um original em `assets-src/img/`.
-> O build não gera imagens; `src/img/generated/` é versionado.
+> A compilação não gera imagens; `src/img/generated/` é versionado.
 
 ## 🎨 Componentes
 
-### 🧭 Header
+### 🧭 Cabeçalho
 - **Localização**: `src/pages/header.tsx`
 - **Função**: Navegação principal da aplicação
 - **Características**:
-  - Header glass pill fixo, alinhado ao design imersivo
-  - Wordmark Syne, links mono uppercase e CTA pill
-  - Toggle de tema claro/escuro e instalação PWA
-  - Drawer mobile com foco inicial, fechamento por Escape e restauração de foco
+  - Cabeçalho fixo em pílula de vidro, alinhado ao design imersivo
+  - Marca tipográfica em Syne, links em fonte mono e caixa alta e chamada para ação em pílula
+  - Alternador de tema claro/escuro e instalação do PWA
+  - Menu lateral (gaveta) para dispositivos móveis com foco inicial, fechamento por Escape e restauração de foco
 
-### 🏠 Presentation
+### 🏠 Apresentação
 - **Localização**: `src/pages/presentation.tsx`
-- **Função**: Hero editorial em formato portal
+- **Função**: Abertura editorial em formato de portal
 - **Características**:
-  - Cortinas de vidro que abrem no scroll via `useStickyProgress`
-  - Fotografia full-bleed com tint/vignette e wordmark de abertura
-  - Conteúdo (nome, cargo, tagline e CTAs) revelado ao final da abertura
+  - Cortinas de vidro que abrem com a rolagem via `useStickyProgress`
+  - Fotografia em largura total com tingimento/vinheta e marca tipográfica de abertura
+  - Conteúdo (nome, cargo, slogan e chamadas para ação) revelado ao final da abertura
   - Paleta escura local para preservar a atmosfera imersiva nos dois temas
   - Movimento reduzido abre o portal direto no conteúdo
 
-### 💼 Selected Work
+### 💼 Trabalhos Selecionados
 - **Localização**: `src/pages/selectedWork/selectedWork.tsx`
-- **Função**: Cases reais em narrativa contínua (substitui Experiência + Jornada)
+- **Função**: Estudos de caso reais em narrativa contínua (substitui Experiência + Jornada)
 - **Características**:
   - Capítulos com numeral, período, empresa e papel
   - Blocos de contexto, desafio, decisão e resultado
-  - Stack em tags mono e divisores hairline
+  - Pilha de tecnologias em etiquetas mono e divisores de linha fina
   - Dados de `src/data/selectedWorks.ts`; âncoras antigas preservadas
 
-### 🔧 Skills
+### 🔧 Habilidades
 - **Localização**: `src/pages/skills/skills.tsx`
-- **Função**: Showcase das habilidades técnicas
+- **Função**: Vitrine das habilidades técnicas
 - **Características**:
-  - Cards de vidro com índice, ícone, título, descrição e tags
+  - Cartões de vidro com índice, ícone, título, descrição e etiquetas
   - Ícones do Material-UI por `SkillIconKey`
   - Conteúdo de `src/data/skills.ts`
-  - Grid responsivo 4/3/2/1
+  - Grade responsiva 4/3/2/1
 
-### 🧠 IA Maturity
+### 🧠 Maturidade em IA
 - **Localização**: `src/pages/iaMaturity/iaMaturity.tsx`
 - **Função**: Mapa de competência em IA em cinco camadas
 - **Características**:
-  - Coluna contínua com hairlines, sem cards
-  - Rail sticky com numeral gigante e índice ativo por scroll
-  - Capacidades em micro-grid e evidência em mono
+  - Coluna contínua com linhas finas, sem cartões
+  - Trilho fixo com numeral gigante e índice ativo conforme a rolagem
+  - Capacidades em micrograde e evidência em fonte mono
   - Conteúdo de `src/data/aiMaturity.ts`
 
 ### 🎯 Manifesto
 - **Localização**: `src/pages/manifesto/manifesto.tsx`
 - **Função**: Princípios técnicos e de trabalho (absorve a antiga Filosofia)
 - **Características**:
-  - Statement como `h2` em escala de display
-  - Foto das mãos em faixa full-bleed
+  - Declaração como `h2` em escala de destaque
+  - Foto das mãos em faixa de largura total
   - Sete princípios com numeral recortado e impacto em itálico
   - Conteúdo de `src/data/principles.ts`
 
@@ -317,7 +317,7 @@ portfolio-2025/
 - **Localização**: `src/pages/github/github.tsx`
 - **Função**: Promoção do perfil GitHub
 - **Características**:
-  - Painel de vidro com texto e CTA pill
+  - Painel de vidro com texto e chamada para ação em pílula
   - Logo monocromático via Simple Icons
   - Link externo com `rel="noopener noreferrer"`
 
@@ -325,29 +325,29 @@ portfolio-2025/
 - **Localização**: `src/pages/formContact/contactForm.tsx`
 - **Função**: Proposta de valor + formulário de contato
 - **Características**:
-  - Três frentes em composição tipográfica (sem cards), com CTA que preenche o formulário
-  - Card de vidro com inputs nativos estilizados
+  - Três frentes em composição tipográfica (sem cartões), com chamada para ação que preenche o formulário
+  - Cartão de vidro com campos nativos estilizados
   - Validação de nome, e-mail e mensagem
-  - Honeypot, tratamento de 429 e estado offline
-  - Feedback via snackbar (`aria-live`)
+  - Honeypot (campo armadilha), tratamento de 429 e estado sem conexão
+  - Retorno visual via snackbar (`aria-live`)
 
-### 🦶 Footer
+### 🦶 Rodapé
 - **Localização**: `src/pages/footer.tsx`
 - **Função**: Rodapé com links e informações
 - **Características**:
-  - Wordmark, links mono e ícones sociais ghost
-  - Hairline, wordmark grande e fine print
-  - Scroll suave e analytics preservados
+  - Marca tipográfica, links em fonte mono e ícones sociais vazados
+  - Linha fina, marca tipográfica grande e texto em letras miúdas
+  - Rolagem suave e métricas de análise preservadas
 
 ## 📐 Sistema de Design
 
 ### 🎨 Tokens e paleta
 Fonte única de verdade:
-- `src/styles/design-system.css`: CSS custom properties e classes `ds-*`.
+- `src/styles/design-system.css`: propriedades personalizadas CSS e classes `ds-*`.
 - `src/theme/designTokens.ts`: os mesmos valores em TypeScript.
 - `src/theme/palettes.ts`: paletas MUI por modo.
 
-| Token | Dark | Light |
+| Token | Escuro | Claro |
 |---|---|---|
 | `--void` | `#0a0814` | `#f7f5fa` |
 | `--void-2` | `#120e22` | `#ffffff` |
@@ -362,14 +362,14 @@ O `ColorModeProvider` aplica `data-mui-color-scheme` no `<html>`; o bloco
 ### 📝 Tipografia
 - **Display**: `Syne` 600–800.
 - **Corpo**: `Inter` 300–500.
-- **Labels / mono**: `Sora` 400–600.
+- **Rótulos / mono**: `Sora` 400–600.
 - **Escala**: `clamp()` fluida, carregada via `@fontsource`.
 
 ### 🧊 Vidro, grão e foco
 - Vidro escuro: `--glass-bg`, `--glass-border`, `--glass-shadow`.
 - Vidro claro: `--glass-light-bg`, `--glass-light-border`.
 - Grão SVG fixo em `GrainOverlay` (~7,5% de opacidade).
-- Foco visível global de 2px com offset 3px.
+- Foco visível global de 2px com deslocamento de 3px.
 - `prefers-reduced-motion` remove animações e deslocamentos.
 
 ### 🧩 Primitivas
@@ -400,73 +400,73 @@ export default defineConfig({
 ```
 
 ### 📝 TypeScript (tsconfig.json)
-- **Target**: ES2020
-- **Lib**: ES2020, DOM, DOM.Iterable
-- **Module**: ESNext
-- **Strict**: true
-- **JSX**: react-jsx
+- **Alvo** (`target`): ES2020
+- **Bibliotecas** (`lib`): ES2020, DOM, DOM.Iterable
+- **Módulo** (`module`): ESNext
+- **Modo estrito** (`strict`): true
+- **JSX** (`jsx`): react-jsx
 
-### 🎨 Material-UI Theme (theme.ts)
+### 🎨 Tema do Material-UI (theme.ts)
 - Tipografia responsiva com `clamp()`
 - Paleta de cores customizada
-- Breakpoints padrão do Material-UI
+- Pontos de quebra padrão do Material-UI
 - Componentes personalizados
 
 ### 🔍 ESLint (eslint.config.js)
 - Configuração para TypeScript
-- Rules para React e React Hooks
+- Regras para React e React Hooks
 - Configuração para arquivos .js e .ts
 
 ## 📱 Testes de Responsividade
 
 ### 🛠️ Ferramentas Recomendadas
-1. **Chrome DevTools** - Device emulation
-2. **Firefox Responsive Design Mode**
-3. **Responsively App** - Multi-device testing
-4. **BrowserStack** - Real device testing
+1. **Chrome DevTools** - Emulação de dispositivos
+2. **Firefox** - Modo de design responsivo
+3. **Responsively App** - Testes em múltiplos dispositivos
+4. **BrowserStack** - Testes em dispositivos reais
 
-### ✅ Checklist de Testes
+### ✅ Lista de Verificação de Testes
 - [ ] Textos legíveis em todos os tamanhos
 - [ ] Botões com área de toque adequada (44px+)
 - [ ] Imagens redimensionam corretamente
-- [ ] Navegação funciona em mobile
-- [ ] Formulários usáveis em touch devices
-- [ ] Sem scroll horizontal indesejado
+- [ ] Navegação funciona em dispositivos móveis
+- [ ] Formulários usáveis em dispositivos de toque
+- [ ] Sem rolagem horizontal indesejada
 - [ ] Animações suaves em todos os dispositivos
-- [ ] Performance mantida em dispositivos baixo-end
+- [ ] Desempenho mantido em dispositivos de baixo desempenho
 
-### 📊 Métricas de Performance
-- **Lighthouse Score**: 90+ (mobile)
-- **First Contentful Paint**: < 2s
-- **Largest Contentful Paint**: < 4s
-- **Cumulative Layout Shift**: < 0.1
+### 📊 Métricas de Desempenho
+- **Pontuação no Lighthouse**: 90+ (dispositivos móveis)
+- **First Contentful Paint** (primeira renderização de conteúdo): < 2s
+- **Largest Contentful Paint** (maior renderização de conteúdo): < 4s
+- **Cumulative Layout Shift** (deslocamento cumulativo de layout): < 0.1
 
-## 🚀 Deploy
+## 🚀 Publicação
 
 ### 🐙 GitHub Pages (produção)
 
 O site é publicado em **https://scriblet.github.io/portfolio-2025/** pelo
-workflow `.github/workflows/deploy.yml` a cada push em `main`:
+fluxo de trabalho `.github/workflows/deploy.yml` a cada push em `main`:
 
 1. `npm ci` + `npm run build` com `VITE_BASE_PATH=/portfolio-2025/`.
-2. `dist/404.html` é gerado a partir do `index.html` (fallback SPA das rotas).
+2. `dist/404.html` é gerado a partir do `index.html` (rota de contingência da SPA).
 3. O diretório `dist/` vai para o Pages via `actions/deploy-pages`.
 
-Variáveis de build (Settings → Secrets and variables → Actions):
+Variáveis de compilação (Settings → Secrets and variables → Actions):
 
 | Tipo     | Nome                    | Uso                                     |
 | -------- | ----------------------- | --------------------------------------- |
-| Variable | `VITE_CONTACT_ENDPOINT` | URL pública da function (ver abaixo)    |
-| Variable | `VITE_GA_MEASUREMENT_ID`| Google Analytics                        |
+| Variável | `VITE_CONTACT_ENDPOINT` | URL pública da função (ver abaixo)      |
+| Variável | `VITE_GA_MEASUREMENT_ID`| Google Analytics                        |
 
-### 📬 Netlify (somente as functions)
+### 📬 Netlify (somente as funções)
 
 O Pages é estático e **não serve `/api/*`**. A Netlify Function de contato
-(`netlify/functions/contact.mjs`) roda em um deploy separado no Netlify;
-`netlify.toml` já configura build, functions e o fallback SPA.
+(`netlify/functions/contact.mjs`) roda em uma implantação separada no Netlify;
+`netlify.toml` já configura a compilação, as funções e a rota de contingência da SPA.
 
-- Segundo site Netlify no mesmo repositório: build vazio, publish `public`,
-  functions `netlify/functions`.
+- Segundo site Netlify no mesmo repositório: comando de compilação vazio, diretório de
+  publicação `public` e diretório de funções `netlify/functions`.
 - Segredo `DISCORD_WEBHOOK_URL` (nunca `VITE_*`).
 - CORS liberado para `scriblet.github.io` e `lucasnonato.site`
   (extras em `CONTACT_ALLOWED_ORIGINS`).
@@ -478,24 +478,24 @@ Passo a passo completo, contrato HTTP e rotação do webhook:
 
 ### 🔄 Fluxo de Trabalho
 1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+2. Crie uma branch para sua funcionalidade (`git checkout -b feature/nova-funcionalidade`)
+3. Faça commit das suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Envie para a branch (`git push origin feature/nova-funcionalidade`)
 5. Abra um Pull Request
 
 ### 📋 Padrões de Código
-- Use TypeScript para tipo safety
+- Use TypeScript para segurança de tipos
 - Siga as convenções do ESLint configurado
 - Escreva commits descritivos
 - Teste a responsividade em múltiplos dispositivos
-- Mantenha a acessibilidade (WCAG guidelines)
+- Mantenha a acessibilidade (diretrizes WCAG)
 - **Nunca use travessão (em dash, U+2014) no texto**: troque por vírgula, dois-pontos, parênteses ou ponto final. O `npm run lint` bloqueia. Regra completa em [`docs/agents/copy.md`](docs/agents/copy.md)
 
 ### 🐛 Reportar Bugs
 - Use as Issues do GitHub
 - Descreva os passos para reproduzir
-- Inclua screenshots se aplicável
-- Mencione o dispositivo/browser usado
+- Inclua capturas de tela se aplicável
+- Mencione o dispositivo/navegador usado
 
 ## 📄 Licença
 
@@ -513,7 +513,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ### 🔗 Links
 - **LinkedIn**: [lucas-nonato1](https://www.linkedin.com/in/lucas-nonato1/)
 - **GitHub**: [scriblet](https://github.com/scriblet)
-- **Portfolio**: [Este projeto!]
+- **Portfólio**: [Este projeto!]
 
 ---
 
