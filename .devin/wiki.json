@@ -1,0 +1,162 @@
+{
+  "repo_notes": [
+    {
+      "content": "IDIOMA: toda a wiki deve ser escrita em português do Brasil (pt-BR). Isso vale para títulos de páginas, títulos de seções, texto corrido, tabelas (cabeçalhos e células descritivas), legendas, listas, descrições e o glossário. Não gere nenhuma página ou seção em inglês.",
+      "author": "Lucas Nonato"
+    },
+    {
+      "content": "O QUE FICA EM INGLÊS: apenas identificadores de código e nomes próprios técnicos. Mantenha exatamente como no código, formatados como código: nomes de componentes (`Header`, `Presentation`, `LazySection`, `Immersive`, `Roadmap`, `SnackbarProvider`), rotas (`/immersive`, `/roadmap`), caminhos de arquivos (`src/App.tsx`, `vite.config.ts`), variáveis e constantes (`VITE_BASE_PATH`, `import.meta.env.DEV`, `SITE_CONFIG`, `roadmapWaves`), funções e hooks (`trackPortfolioEvents`, `useHeroIntro`), comandos (`npm run dev`, `npm run test:unit`) e nomes de ferramentas e bibliotecas (React, Vite, Material UI, Framer Motion, Sass, React Router, Vitest, Cypress, Workbox, Netlify, GitHub Actions, PWA). Todo o resto é traduzido.",
+      "author": "Lucas Nonato"
+    },
+    {
+      "content": "DIAGRAMAS MERMAID: mantenha todos os diagramas válidos e renderizáveis. Traduza para pt-BR os labels de texto dos nós, arestas, subgraphs e participantes, mas preserve os identificadores de código dentro deles (nomes de componentes, arquivos, rotas, funções). Use aspas nos labels que tiverem espaços, acentos, parênteses, barras ou dois-pontos, por exemplo: A[\"Ponto de entrada src/main.tsx\"] --> B[\"Componente App\"]. Não use acentos nem espaços nos IDs dos nós, apenas nos labels.",
+      "author": "Lucas Nonato"
+    },
+    {
+      "content": "FONTES E REFERÊNCIAS: preserve todas as citações de arquivos com intervalos de linhas e os blocos de fontes. O rótulo do bloco deve ser traduzido para \"Fontes:\" (em vez de \"Sources:\"), mas os caminhos, links e números de linha continuam idênticos ao formato padrão.",
+      "author": "Lucas Nonato"
+    },
+    {
+      "content": "PONTUAÇÃO: é proibido usar travessão (em dash, o caractere U+2014) em qualquer texto da wiki, inclusive em títulos, tabelas e diagramas. No lugar dele use vírgula, dois-pontos, parênteses, ponto final ou o separador ·. A meia-risca (en dash, U+2013) só pode aparecer em intervalos numéricos ou de datas (linhas 10–20, 0–100%). Essa regra é a mesma do repositório (veja `docs/agents/copy.md` e `npm run lint:text`).",
+      "author": "Lucas Nonato"
+    },
+    {
+      "content": "CONTEXTO DO PROJETO: portfólio profissional de Lucas Nonato (React 19, TypeScript, Vite, Material UI, Sass, React Router). A página principal reúne seções carregadas sob demanda (`LazySection`), um hero com intro sincronizada ao header, formulário de contato com honeypot enviado para um endpoint configurável (função em `netlify/functions`), analytics com `trackPortfolioEvents`, PWA com Workbox e duas rotas experimentais: `/immersive` (preview imersiva) e `/roadmap` (painel de planejamento disponível só em desenvolvimento, alimentado por `src/data/roadmap.ts` e pelas pastas `.scratch/`). Testes unitários com Vitest e E2E com Cypress; CI e deploy em `.github/workflows/`.",
+      "author": "Lucas Nonato"
+    }
+  ],
+  "pages": [
+    {
+      "title": "Visão geral",
+      "purpose": "Visão geral do portfólio: objetivo do site, stack (React, Vite, Material UI, Sass), principais áreas do código e como as partes se conectam."
+    },
+    {
+      "title": "Primeiros passos e scripts do projeto",
+      "purpose": "Instalação, requisitos (`.nvmrc`), variáveis de ambiente (`.env.example`) e todos os scripts de `package.json` (`npm run dev`, `npm run lint`, `npm run typecheck`, `npm run test:unit`, scripts de E2E e de imagens).",
+      "parent": "Visão geral"
+    },
+    {
+      "title": "Mapa do repositório e convenções de trabalho",
+      "purpose": "Estrutura de pastas (`src/`, `public/`, `cypress/`, `docs/`, `.scratch/`, `netlify/`, `scripts/`, `eslint-rules/`) e convenções descritas em `AGENTS.md` e `docs/agents/`: Conventional Commits, regra de copy sem travessão, regras de lint, build e testes.",
+      "parent": "Visão geral"
+    },
+    {
+      "title": "Shell da aplicação e roteamento",
+      "purpose": "Como a aplicação é montada e roteada: `src/main.tsx`, `src/App.tsx`, rotas (página principal, `/immersive`, `/roadmap`) e `VITE_BASE_PATH`."
+    },
+    {
+      "title": "Bootstrap, providers e carregamento sob demanda",
+      "purpose": "Inicialização em `src/main.tsx`, árvore de providers (tema, `SnackbarProvider`, intro do hero), seções lazy com `LazySection`, `SectionFallback` e `LazySectionErrorBoundary`.",
+      "parent": "Shell da aplicação e roteamento"
+    },
+    {
+      "title": "Header, navegação e progresso de leitura",
+      "purpose": "Componente `Header` (`src/pages/header.tsx`), navegação entre seções, comportamento por direção de scroll e `ReadingProgress`.",
+      "parent": "Shell da aplicação e roteamento"
+    },
+    {
+      "title": "Biblioteca de hooks",
+      "purpose": "Hooks em `src/hooks/`: `useHeroIntro`, `useRevealOnScroll` e `RevealRoot`, `useReadingProgress`, `useScrollDirection`, `useStickyProgress`, `useOnlineStatus`, `useInstallPrompt`, `usePrefersReducedMotion`.",
+      "parent": "Shell da aplicação e roteamento"
+    },
+    {
+      "title": "Seções da página do portfólio",
+      "purpose": "Visão geral das seções da página principal em `src/pages/` e da ordem em que aparecem."
+    },
+    {
+      "title": "Hero / Presentation e download do CV",
+      "purpose": "Componente `Presentation`, intro sincronizada com o header, estilos (`presentation.module.scss`, `presentation.styles.ts`) e `DownloadCvButton` com o CV em `public/cv`.",
+      "parent": "Seções da página do portfólio"
+    },
+    {
+      "title": "Seções de conteúdo: IA Maturity, Manifesto, Selected Work, Skills, GitHub e Footer",
+      "purpose": "Componentes `iaMaturity`, `manifesto`, `selectedWork`, `skills`, `github` e `footer`, com os dados que cada um consome.",
+      "parent": "Seções da página do portfólio"
+    },
+    {
+      "title": "Formulário de contato e feedback",
+      "purpose": "Formulário em `src/pages/formContact/contactForm.tsx`, validação, honeypot, envio via `src/services/contactEndpoint.ts` e feedback com snackbars enfileirados.",
+      "parent": "Seções da página do portfólio"
+    },
+    {
+      "title": "Camada de dados de conteúdo",
+      "purpose": "Arquivos em `src/data/` (`site.ts`, `aiMaturity.ts`, `principles.ts`, `selectedWorks.ts`, `skills.ts`, `contact.ts`, `types.ts` e demais) e `SITE_CONFIG`.",
+      "parent": "Seções da página do portfólio"
+    },
+    {
+      "title": "Design system, temas e estilos",
+      "purpose": "Visão geral do sistema visual: tokens, tema do Material UI, modo claro e escuro, folhas de estilo e componentes compartilhados."
+    },
+    {
+      "title": "Design tokens e tema do MUI",
+      "purpose": "`src/theme/`: `designTokens.ts`, `palettes.ts`, `createTheme.ts`, `ColorModeProvider`, `ThemedApp` e `ThemeToggle`.",
+      "parent": "Design system, temas e estilos"
+    },
+    {
+      "title": "Folhas de estilo, layout e responsividade",
+      "purpose": "`src/styles/design-system.css`, `src/styles/responsive-utils.css`, `src/index.css`, `src/App.css`, módulos Sass e estratégia responsiva (inclui `DESIGN.md` e `RESPONSIVITY-IMPROVEMENTS.md`).",
+      "parent": "Design system, temas e estilos"
+    },
+    {
+      "title": "Componentes de UI compartilhados",
+      "purpose": "`src/components/`: design-system, `ResponsivePicture`, `company-marks`, feedback e demais componentes reutilizáveis.",
+      "parent": "Design system, temas e estilos"
+    },
+    {
+      "title": "Rotas experimentais: Immersive e Roadmap",
+      "purpose": "Visão geral das rotas experimentais `/immersive` e `/roadmap` e de como são habilitadas."
+    },
+    {
+      "title": "Página de preview Immersive",
+      "purpose": "Rota `/immersive` em `src/pages/immersive/`: `Immersive`, `PortalHero`, `CleanHero`, `ImmersiveNav`, `ImmersiveContactForm`, `content.ts` e hooks próprios.",
+      "parent": "Rotas experimentais: Immersive e Roadmap"
+    },
+    {
+      "title": "Painel Roadmap e sistema de planejamento .scratch",
+      "purpose": "Rota `/roadmap` (somente com `import.meta.env.DEV`), `src/data/roadmap.ts` e `roadmapWaves`, e o sistema de issues em `.scratch/`.",
+      "parent": "Rotas experimentais: Immersive e Roadmap"
+    },
+    {
+      "title": "Recursos de plataforma: PWA, analytics e SEO",
+      "purpose": "Visão geral dos recursos de plataforma: PWA, analytics e SEO."
+    },
+    {
+      "title": "Progressive Web App e modo offline",
+      "purpose": "Configuração do PWA com Workbox em `vite.config.ts`, `InstallButton`, `OfflineNotice`, `useInstallPrompt` e `useOnlineStatus`.",
+      "parent": "Recursos de plataforma: PWA, analytics e SEO"
+    },
+    {
+      "title": "Analytics e rastreamento de eventos",
+      "purpose": "`src/services/analytics.ts`, `src/config/analytics.config.ts` e `trackPortfolioEvents`.",
+      "parent": "Recursos de plataforma: PWA, analytics e SEO"
+    },
+    {
+      "title": "SEO, metadados e assets estáticos",
+      "purpose": "`index.html`, metadados, imagens Open Graph, `public/robots.txt`, `public/llms.txt`, ícones e pipeline de imagens (`scripts/optimize-images.mjs`, `docs/IMAGES.md`).",
+      "parent": "Recursos de plataforma: PWA, analytics e SEO"
+    },
+    {
+      "title": "Qualidade, testes e entrega",
+      "purpose": "Visão geral da estratégia de qualidade: lint, typecheck, testes e entrega."
+    },
+    {
+      "title": "Testes unitários com Vitest",
+      "purpose": "`vitest.config.ts`, `src/test/setup.ts` e os testes `*.test.ts(x)` espalhados pelo código.",
+      "parent": "Qualidade, testes e entrega"
+    },
+    {
+      "title": "Testes end-to-end com Cypress",
+      "purpose": "`cypress.config.ts` e as specs em `cypress/e2e/` (acessibilidade, PWA, navegação, contato, temas, viewports), com a política de rodar E2E apenas sob demanda.",
+      "parent": "Qualidade, testes e entrega"
+    },
+    {
+      "title": "CI/CD, deploy e backend de contato",
+      "purpose": "`.github/workflows/ci.yml`, `.github/workflows/deploy.yml`, `netlify.toml`, funções em `netlify/functions` e `docs/CONTACT-ENDPOINT.md`.",
+      "parent": "Qualidade, testes e entrega"
+    },
+    {
+      "title": "Glossário",
+      "purpose": "Glossário em pt-BR dos termos do projeto (seções lazy, intro do hero, sistema de reveal, honeypot, snackbar, endpoint de contato, ondas do roadmap etc.), mantendo os identificadores de código em inglês."
+    }
+  ]
+}
